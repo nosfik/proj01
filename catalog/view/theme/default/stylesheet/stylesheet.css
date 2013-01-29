@@ -63,13 +63,13 @@ select {
 label {
 	cursor: pointer;
 }
-/* layout */
+/* layout 
 #container {
 	width: 980px;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: left;
-}
+}*/
 #column-left {
 	float: left;
 	width: 180px;
@@ -88,7 +88,7 @@ label {
 #column-right + #content {
 	margin-right: 195px;
 }
-/* header */
+/* header 
 #header {
 	height: 90px;
 	margin-bottom: 7px;
@@ -100,7 +100,7 @@ label {
 	position: absolute;
 	top: 25px;
 	left: 15px;
-}
+}*/
 #language {
 	position: absolute;
 	top: 15px;
@@ -652,12 +652,14 @@ a.button:hover, input.button:hover {
 	margin-bottom: 20px;
 }
 .box .box-heading {
+	/*
 	-webkit-border-radius: 7px 7px 0px 0px;
 	-moz-border-radius: 7px 7px 0px 0px;
 	-khtml-border-radius: 7px 7px 0px 0px;
 	border-radius: 7px 7px 0px 0px;
 	border: 1px solid #DBDEE1;
 	background: url('../image/background.png') repeat-x;
+	*/
 	padding: 8px 10px 7px 10px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
@@ -666,6 +668,7 @@ a.button:hover, input.button:hover {
 	color: #333;
 }
 .box .box-content {
+	/*
 	background: #FFFFFF;
 	-webkit-border-radius: 0px 0px 7px 7px;
 	-moz-border-radius: 0px 0px 7px 7px;
@@ -674,6 +677,7 @@ a.button:hover, input.button:hover {
 	border-left: 1px solid #DBDEE1;
 	border-right: 1px solid #DBDEE1;
 	border-bottom: 1px solid #DBDEE1;
+	*/
 	padding: 10px;
 }
 /* box products */
@@ -1584,7 +1588,7 @@ a.button:hover, input.button:hover {
 	float: left;
 	width: 48%;
 }
-/* footer */ 
+/* footer 
 #footer {
 	clear: both;
 	overflow: auto;
@@ -1620,6 +1624,7 @@ a.button:hover, input.button:hover {
 #footer .column a:hover {
 	text-decoration: underline;
 }
+*/ 
 #powered {
 	margin-top: 5px;
 	text-align: right;

@@ -1,4 +1,4 @@
-set MYSQLUSER=root
+set MYSQLUSER=pechatnik
 set MYSQLPASS=sa
 
 set DATABASE=pechatnik
