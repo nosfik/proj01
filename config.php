@@ -23,7 +23,7 @@ define('DIR_LOGS', 'Z:\home\pechatnik\www/system/logs/');
 // DB
 define('DB_DRIVER', 'mysql');
 define('DB_HOSTNAME', 'localhost');
-define('DB_USERNAME', 'root');
+define('DB_USERNAME', 'pechatnik');
 define('DB_PASSWORD', 'sa');
 define('DB_DATABASE', 'pechatnik');
 define('DB_PREFIX', '');
