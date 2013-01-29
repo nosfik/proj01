@@ -59,7 +59,7 @@
 					и прочие слова для расскрутки
 					заточенные под поисковых роботов
 					гугла и яндекса.
-					<div id="counter"><img src="pic_for_test/88x31.gif" /></div>
+					<div id="counter"><img src="catalog/view/theme/default/image/pic_for_test/88x31.gif" /></div>
 				</div>
 				<div id="partnership" onMouseOver="$(this).addClass('hover');" onMouseOut="$(this).removeClass('hover');">
 					<div id="robot">

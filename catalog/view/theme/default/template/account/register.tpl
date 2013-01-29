@@ -2,15 +2,138 @@
 <?php if ($error_warning) { ?>
 <div class="warning"><?php echo $error_warning; ?></div>
 <?php } ?>
-<?php echo $column_left; ?><?php echo $column_right; ?>
-<div id="content"><?php echo $content_top; ?>
-  <div class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
-    <?php } ?>
-  </div>
-  <h1><?php echo $heading_title; ?></h1>
-  <p><?php echo $text_account_already; ?></p>
+<div id="content">
+  <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
+  <div id="yellow_cont">
+    <div class="crumbs">
+      <div class="left"></div>
+      <div class="dark">Регистрация</div>
+      <div class="darkEnd"></div>
+    </div>
+
+    <div class="reg_collumn" style="margin-left:150px">
+      <div style="height:220px">
+        <h2>Вход</h2>
+        <div class="reg_field">
+          <p class="reg_p"><label for="reg_email">E-mail<span>*</span></label></p>
+          <input class="input" type="text" id="reg_email" name="email"/>
+          <?php if ($error_email) { ?>
+            <span class="error"><?php echo $error_email; ?></span>
+          <?php } ?>
+        </div>
+        <div class="reg_field">
+          <p class="reg_p"><label for="reg_pass">Пароль<span>*</span></label></p>
+          <input class="input" type="password" id="reg_pass" name="password"/>
+          <?php if ($error_password) { ?>
+            <span class="error"><?php echo $error_password; ?></span>
+          <?php } ?>
+        </div>
+        <div class="reg_field">
+          <p class="reg_p"><label for="reg_pass_rev">Подтвердите пароль<span>*</span></label></p>
+          <input class="input" type="password" id="reg_pass_rev" name="confirm"/>
+           <?php if ($error_confirm) { ?>
+            <span class="error"><?php echo $error_confirm; ?></span>
+            <?php } ?>
+        </div>
+      </div>
+      <h2>Общая информация</h2>
+      <div class="reg_field">
+        <p class="reg_p"><label for="reg_name">Имя<span>*</span></label></p>
+        <input class="input" type="text" id="reg_name" name="firstname"/>
+         <?php if ($error_firstname) { ?>
+            <span class="error"><?php echo $error_firstname; ?></span>
+         <?php } ?>
+      </div>
+      <div class="reg_field">
+        <p class="reg_p"><label for="reg_surname">Фамилия<span>*</span></label></p>
+        <input class="input" type="text" id="reg_surname" name="lastname"/>
+        <?php if ($error_lastname) { ?>
+            <span class="error"><?php echo $error_lastname; ?></span>
+        <?php } ?>
+      </div>
+      <div class="reg_field">
+        <p class="reg_p"><label for="reg_phone">Телефон<span>*</span></label></p>
+        <input class="input" type="text" id="reg_phone" name="telephone"/>
+        <?php if ($error_telephone) { ?>
+          <span class="error"><?php echo $error_telephone; ?></span>
+        <?php } ?>
+      </div>
+      <div class="reg_field">
+        <p class="reg_p"><label for="reg_skype">Skype</label></p>
+        <input class="input" type="text" id="reg_skype" name="skype"/>
+      </div>
+      <div class="reg_field" style="height:20px">
+        <input type="checkbox" id="news" value="1" <?php if ($newsletter) { ?> checked="checked"<?php } ?>/> <label for="news">Получать новости</label>
+      </div>
+      <div class="reg_field">
+        <input type="checkbox" id="email_send" value="1" /> <label for="email_send">Подключить e-mail оповещение</label>
+      </div>
+    </div>
+      <div class="reg_collumn">
+        <div style="height:220px">
+          <h2>Адрес</h2>
+          <div class="reg_field">
+            <p class="reg_p"><label for="reg_city">Город<span>*</span></label></p>
+            <input class="input" type="text" id="reg_city" name="city"/>
+            <?php if ($error_city) { ?>
+            <span class="error"><?php echo $error_city; ?></span>
+            <?php } ?>
+          </div>
+          <div class="reg_field">
+            <p class="reg_p"><label for="reg_region">Область</label></p>
+            <select class="input" id="reg_region" name="zone_id">
+            </select>
+            <?php if ($error_zone) { ?>
+            <span class="error"><?php echo $error_zone; ?></span>
+            <?php } ?>
+          </div>
+          <div class="reg_field">
+            <p class="reg_p"><label for="reg_country">Страна<span>*</span></label></p>
+            <select class="input" name="country_id" id="reg_country">
+              <option value=""><?php echo $text_select; ?></option>
+              <?php foreach ($countries as $country) { ?>
+              <?php if ($country['country_id'] == $country_id) { ?>
+              <option value="<?php echo $country['country_id']; ?>" selected="selected"><?php echo $country['name']; ?></option>
+              <?php } else { ?>
+              <option value="<?php echo $country['country_id']; ?>"><?php echo $country['name']; ?></option>
+              <?php } ?>
+              <?php } ?>
+            </select>
+            <?php if ($error_country) { ?>
+            <span class="error"><?php echo $error_country; ?></span>
+            <?php } ?>
+          </div>
+        </div>
+        <h2>Доставка</h2>
+         <div class="reg_field">
+            <p class="reg_p"><label for="reg_transporter">Перевозчик и подходящий скал для доставки</label></p>
+            <input class="input" type="text" id="reg_transporter" name="transporter"/>
+          </div>
+          <div class="reg_field" style="height: 150px">
+            <p class="reg_p"><label for="reg_note">Примечание</label></p>
+            <textarea style="height: 110px" id="reg_note" name="note"></textarea>
+          </div>
+          <div class="reg_field">
+            <div class="captcha">Код безопасности<br />
+            <img src="catalog/view/theme/default/image/pic_for_test/captcha.jpg" width="120" height="50" /><br />
+            <a href="#">обновить код</a></div>
+            <div class="captcha">Введите код<br /><input type="text" /></div>
+          </div>
+       </div>
+     </div>
+     
+
+      <div id="green_cont">
+          <div style="margin-left:340px" class="bigButton" onMouseOver="$(this).addClass('hover');" onMouseOut="$(this).removeClass('hover');"><a class="left" onclick="$('#reg_submit_button').click()">Отправить заявку</a>
+              <div class="right"></div>
+          </div>
+      </div>
+      <input type="submit" style="display: none" id="reg_submit_button"/>
+</form>
+    
+    
+    
+  
   <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
     <h2><?php echo $text_your_details; ?></h2>
     <div class="content">

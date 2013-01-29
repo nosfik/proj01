@@ -36,30 +36,29 @@ a:hover {color:#d33461}
 #tizers .t3 {margin-left:70px}
 #tizers .t4 {margin-left:60px; width:150px}
 #right_cont #cont {max-width:250px; padding:10px}
-#right_cont #cont .title {width:166px; height:24px; text-align:center; background:url(../image/sprite.png) no-repeat -116px -213px; font-family: 'Cuprum', sans-serif; color:#6b1b3b; text-transform:uppercase; font-size:17px; padding-top:4px; margin: 10px auto 15px auto}
-#right_cont #cont .inCont {width:167px; height:26px; background:url(../image/sprite.png) -295px -215px; margin:10px auto 0 auto}
-#right_cont #cont .inCont input {border:none; outline-style:none; width:145px; height:20px; margin:3px 0 0 10px;}
-#right_cont #cont .inCont .log {background:url(../image/sprite.png) no-repeat -470px -58px}
-#right_cont #cont .inCont .reg {background:url(../image/sprite.png) no-repeat -464px -88px}
-#right_cont #cont #reg_cont {width:167px; margin:10px auto}
-#right_cont #cont .log_cont {width:120px; margin:10px auto 0 auto; text-shadow:1px 1px 0px #7f5d6c; color:#fff; line-height:16px}
-#right_cont #cont .log_cont a {color:#fffbd7}
-#right_cont #cont .log_cont a:hover {color:#ffcccc}
-#right_cont #cont .log_cont span {color:#fffea4}
+#right_cont #login-module {margin-top:20px;}
+#right_cont #login-module .title {width:166px; height:24px; text-align:center; background:url(../image/sprite.png) no-repeat -116px -213px; font-family: 'Cuprum', sans-serif; color:#6b1b3b; text-transform:uppercase; font-size:17px; padding-top:4px; margin: 10px auto 15px auto}
+#right_cont #login-module .inCont {width:167px; height:26px; background:url(../image/sprite.png) -295px -215px; margin:10px auto 0 auto}
+#right_cont #login-module .inCont input {border:none; outline-style:none; width:145px; background-color:#FFFFFF; margin:3px 0 0 10px;}
+#right_cont #login-module #reg_cont {width:167px; margin:10px auto}
+#right_cont #login-module .log_cont {width:120px; margin:10px auto 0 auto; text-shadow:1px 1px 0px #7f5d6c; color:#fff; line-height:16px}
+#right_cont #login-module .log_cont a {color:#fffbd7}
+#right_cont #login-module .log_cont a:hover {color:#ffcccc}
+#right_cont #login-module .log_cont span {color:#fffea4}
 .smallButton {height:23px; float:left}
 .smallButton .left {display:block; float:left; text-decoration:none; color:#000; font-size:11px; text-shadow:1px 1px 0px #fff; padding:3px 0 0 12px; height:23px; background:url(../image/sprite.png) -116px -246px;-webkit-transition: none;-o-transition: none;-moz-transition: none; transition: none; font-family:Tahoma, Geneva, sans-serif; font-style:normal}
 .smallButton .right {width:12px; height:23px; float:left; background:url(../image/sprite.png) -271px -246px;-webkit-transition: none;-o-transition: none;-moz-transition: none; transition: none}
 .smallButton.hover .left {background:url(../image/sprite.png) -295px -246px}
 .smallButton.hover .right {background:url(../image/sprite.png) -450px -246px}
-#right_cont #cont #reg_cont .forgotPass {display:block; float:right; color:#FFF; margin-top:2px}
-#right_cont #cont #reg_cont .forgotPass:hover {color:#000}
-#right_cont #cont .sep {width:166px; height:5px; background:url(../image/sprite.png) -116px -202px; margin:20px auto}
+#right_cont #login-module #reg_cont .forgotPass {display:block; float:right; color:#FFF; margin-top:2px}
+#right_cont #login-module #reg_cont .forgotPass:hover {color:#000}
+#right_cont .sep {width:166px; height:5px; background:url(../image/sprite.png) -116px -202px; margin:20px auto}
 .bigButton {height:48px}
 #right_cont .registration {width:170px; margin:0 auto}
 #right_cont .registration .left {padding:9px 12px 0 35px !important;}
 #right_cont .upl {width:139px; margin:0 auto;}
 #right_cont .upl .left {width:90px; margin:0 auto; font-size:18px!important; padding:9px 0px 0 23px !important}
-.bigButton .left {display:block; float:left; text-decoration:none; color:#0587da; font-size:18px; font-family: 'Open Sans Condensed', sans-serif; text-shadow:1px 1px 0px #fff; padding:9px 0 0 23px; height:45px; background:url(../image/btn_sprite.png);-webkit-transition: none;-o-transition: none;-moz-transition: none; transition: none}
+.bigButton .left {display:block; float:left; text-decoration:none; color:#0587da; font-size:20px; font-family: 'Open Sans Condensed', sans-serif; text-shadow:1px 1px 0px #fff; padding:9px 0 0 23px; height:45px; background:url(../image/btn_sprite.png);-webkit-transition: none;-o-transition: none;-moz-transition: none; transition: none}
 .bigButton .right {width:23px; height:48px; float:left; background:url(../image/btn_sprite.png) -577px -0px;-webkit-transition: none;-o-transition: none;-moz-transition: none; transition: none}
 .bigButton.hover .left {background:url(../image/btn_sprite.png) 0 -56px}
 .bigButton.hover .right {background:url(../image/btn_sprite.png) -577px -56px}
@@ -181,6 +180,7 @@ a:hover {color:#d33461}
 #yellow_cont #order_tab {width:100%; margin:30px 0}
 #yellow_cont #order_tab td {}
 #yellow_cont .field {height:25px; width:250px; margin-top:3px}
+#yellow_cont .reg_p {margin : 0px; padding:0px}
 .orderButton {margin-left:350px; margin-bottom:10px}
 #white_cont {padding:30px 30px; background:#fff; width:880px; margin:0 30px 0 0; float:right}
 #white_cont #top_corr {width:48px; height:24px; background:url(../image/sprite.png) -328px -924px; position:absolute; margin:-48px 0 0 400px;}
@@ -285,6 +285,8 @@ a:hover {color:#d33461}
 #order_step2_new_album_cont {width:190px; margin:20px auto; font-family: 'Open Sans Condensed', sans-serif; font-size:18px; color:#000; text-align:center}
 #order_step2_new_album_cont #album {width:147px; height:105px; background:url(../image/sprite.png) -301px -972px; margin:10px auto; text-align:left}
 #order_step2_new_album_cont #album input {background:#fff; width:107px; height:22px; margin:38px 0 0 25px; border:none; padding:0; text-align:center}
+.reg_field{height:60px;}
+.reg_field .error{margin-top:-11px;}
 .reg_collumn {width:300px; float:left}
 .reg_collumn h2 {font-family: 'Open Sans Condensed', sans-serif; font-size:18px; color:#aa0202; margin-bottom:10px}
 .reg_collumn span {color:#C00; font-size:12px}

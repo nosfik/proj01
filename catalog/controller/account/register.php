@@ -14,24 +14,24 @@ class ControllerAccountRegister extends Controller {
 		$this->load->model('account/customer');
 		
     	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->model_account_customer->addCustomer($this->request->post);
-
-			$this->customer->login($this->request->post['email'], $this->request->post['password']);
-			
-			unset($this->session->data['guest']);
-			
-			// Default Shipping Address
-			if ($this->config->get('config_tax_customer') == 'shipping') {
-				$this->session->data['shipping_country_id'] = $this->request->post['country_id'];
-				$this->session->data['shipping_zone_id'] = $this->request->post['zone_id'];
-				$this->session->data['shipping_postcode'] = $this->request->post['postcode'];				
-			}
-			
-			// Default Payment Address
-			if ($this->config->get('config_tax_customer') == 'payment') {
-				$this->session->data['payment_country_id'] = $this->request->post['country_id'];
-				$this->session->data['payment_zone_id'] = $this->request->post['zone_id'];			
-			}
+  			$this->model_account_customer->addCustomer($this->request->post);
+  
+  			$this->customer->login($this->request->post['email'], $this->request->post['password']);
+  			
+  			unset($this->session->data['guest']);
+  			
+  			// Default Shipping Address
+  			if ($this->config->get('config_tax_customer') == 'shipping') {
+  				$this->session->data['shipping_country_id'] = $this->request->post['country_id'];
+  				$this->session->data['shipping_zone_id'] = $this->request->post['zone_id'];
+  				//$this->session->data['shipping_postcode'] = $this->request->post['postcode'];				
+  			}
+  			
+  			// Default Payment Address
+  			if ($this->config->get('config_tax_customer') == 'payment') {
+  				$this->session->data['payment_country_id'] = $this->request->post['country_id'];
+  				$this->session->data['payment_zone_id'] = $this->request->post['zone_id'];			
+  			}
 							  	  
 	  		$this->redirect($this->url->link('account/success'));
     	} 
@@ -143,11 +143,13 @@ class ControllerAccountRegister extends Controller {
 			$this->data['error_tax_id'] = '';
 		}
 								
-  		if (isset($this->error['address_1'])) {
-			$this->data['error_address_1'] = $this->error['address_1'];
-		} else {
-			$this->data['error_address_1'] = '';
-		}
+  	/*
+		  if (isset($this->error['address_1'])) {
+				  $this->data['error_address_1'] = $this->error['address_1'];
+			  } else {
+				  $this->data['error_address_1'] = '';
+			  }*/
+	  
    		
 		if (isset($this->error['city'])) {
 			$this->data['error_city'] = $this->error['city'];
@@ -155,11 +157,13 @@ class ControllerAccountRegister extends Controller {
 			$this->data['error_city'] = '';
 		}
 		
+		/*
 		if (isset($this->error['postcode'])) {
-			$this->data['error_postcode'] = $this->error['postcode'];
-		} else {
-			$this->data['error_postcode'] = '';
-		}
+					$this->data['error_postcode'] = $this->error['postcode'];
+				} else {
+					$this->data['error_postcode'] = '';
+				}*/
+		
 
 		if (isset($this->error['country'])) {
 			$this->data['error_country'] = $this->error['country'];
@@ -245,11 +249,13 @@ class ControllerAccountRegister extends Controller {
 			$this->data['tax_id'] = '';
 		}
 						
+		/*
 		if (isset($this->request->post['address_1'])) {
-    		$this->data['address_1'] = $this->request->post['address_1'];
-		} else {
-			$this->data['address_1'] = '';
-		}
+					$this->data['address_1'] = $this->request->post['address_1'];
+				} else {
+					$this->data['address_1'] = '';
+				}*/
+		
 
 		if (isset($this->request->post['address_2'])) {
     		$this->data['address_2'] = $this->request->post['address_2'];
@@ -257,13 +263,15 @@ class ControllerAccountRegister extends Controller {
 			$this->data['address_2'] = '';
 		}
 
+		/*
 		if (isset($this->request->post['postcode'])) {
-    		$this->data['postcode'] = $this->request->post['postcode'];
-		} elseif (isset($this->session->data['shipping_postcode'])) {
-			$this->data['postcode'] = $this->session->data['shipping_postcode'];		
-		} else {
-			$this->data['postcode'] = '';
-		}
+					$this->data['postcode'] = $this->request->post['postcode'];
+				} elseif (isset($this->session->data['shipping_postcode'])) {
+					$this->data['postcode'] = $this->session->data['shipping_postcode'];		
+				} else {
+					$this->data['postcode'] = '';
+				}*/
+		
 		
 		if (isset($this->request->post['city'])) {
     		$this->data['city'] = $this->request->post['city'];
@@ -391,9 +399,11 @@ class ControllerAccountRegister extends Controller {
 			}						
 		}
 		
-    	if ((utf8_strlen($this->request->post['address_1']) < 3) || (utf8_strlen($this->request->post['address_1']) > 128)) {
-      		$this->error['address_1'] = $this->language->get('error_address_1');
-    	}
+    	/*
+		if ((utf8_strlen($this->request->post['address_1']) < 3) || (utf8_strlen($this->request->post['address_1']) > 128)) {
+					  $this->error['address_1'] = $this->language->get('error_address_1');
+				}*/
+		
 
     	if ((utf8_strlen($this->request->post['city']) < 2) || (utf8_strlen($this->request->post['city']) > 128)) {
       		$this->error['city'] = $this->language->get('error_city');
@@ -404,9 +414,11 @@ class ControllerAccountRegister extends Controller {
 		$country_info = $this->model_localisation_country->getCountry($this->request->post['country_id']);
 		
 		if ($country_info) {
+			/*
 			if ($country_info['postcode_required'] && (utf8_strlen($this->request->post['postcode']) < 2) || (utf8_strlen($this->request->post['postcode']) > 10)) {
-				$this->error['postcode'] = $this->language->get('error_postcode');
-			}
+							$this->error['postcode'] = $this->language->get('error_postcode');
+						}*/
+			
 			
 			// VAT Validation
 			$this->load->helper('vat');
@@ -465,7 +477,7 @@ class ControllerAccountRegister extends Controller {
 				'iso_code_2'        => $country_info['iso_code_2'],
 				'iso_code_3'        => $country_info['iso_code_3'],
 				'address_format'    => $country_info['address_format'],
-				'postcode_required' => $country_info['postcode_required'],
+				//'postcode_required' => $country_info['postcode_required'],
 				'zone'              => $this->model_localisation_zone->getZonesByCountryId($this->request->get['country_id']),
 				'status'            => $country_info['status']		
 			);
