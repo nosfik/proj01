@@ -527,6 +527,8 @@ class ControllerAccountRegister extends Controller {
 		
 		$captcha->showImage();
 	}	
+  
+ 
 
 	public function country() {
 		$json = array();

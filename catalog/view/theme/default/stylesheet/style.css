@@ -8,6 +8,7 @@ a:hover {color:#d33461}
 #container td {vertical-align:top}
 #left_cont {width:1020px; padding-bottom:230px;}
 #right_cont {width:28%; background:url(../image/right_bg.png) repeat-y top left; padding-bottom:230px}
+#right_cont div.box {width:272px;}
 #header {height:195px; min-width:1020px}
 #logo {float:left;margin:31px 0 0 30px; cursor:pointer}
 #logo #logotype {width:150px; height:163px; background:url(../image/sprite.png); float:left}
@@ -52,7 +53,7 @@ a:hover {color:#d33461}
 .smallButton.hover .right {background:url(../image/sprite.png) -450px -246px}
 #right_cont #login-module #reg_cont .forgotPass {display:block; float:right; color:#FFF; margin-top:2px}
 #right_cont #login-module #reg_cont .forgotPass:hover {color:#000}
-#right_cont .sep {width:166px; height:5px; background:url(../image/sprite.png) -116px -202px; margin:20px auto}
+#right_cont .sep {width:167px; height:5px; background:url(../image/sprite.png) -116px -202px; margin:20px 50px}
 .bigButton {height:48px}
 #right_cont .registration {width:170px; margin:0 auto}
 #right_cont .registration .left {padding:9px 12px 0 35px !important;}
@@ -63,7 +64,7 @@ a:hover {color:#d33461}
 .bigButton.hover .left {background:url(../image/btn_sprite.png) 0 -56px}
 .bigButton.hover .right {background:url(../image/btn_sprite.png) -577px -56px}
 #right_cont #reg_text {color:#FFF; text-shadow:1px 1px 0px #896172; width:130px; margin:0 auto; line-height:16px}
-#right_cont #shop {width:178px; margin:0 auto}
+#right_cont #shop {width:180px; margin:0 auto}
 #right_cont #shop #title_left {float:left; text-align:center; font-family: 'Cuprum', sans-serif; text-transform:uppercase; font-size:14px; padding-left:28px; display:block; color:#FFF; text-shadow:1px 1px 0px #7f5d6c; line-height:18px; background: url(../image/sprite.png) no-repeat -474px -285px}
 #right_cont #shop #title_right {float:left; width:28px; height:40px; background:url(../image/sprite.png) -433px -285px}
 #right_cont #shop #pic {width:180px; height:170px; background:url(../image/sprite.png) 0 -339px; margin:10px 0 0 5px}

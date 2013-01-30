@@ -2,9 +2,12 @@
 <td id="right_cont">
 <?php if ($modules) { ?>
 
-  <?php foreach ($modules as $module) { ?>
-  <?php echo $module; ?>
-  <?php } ?>
+  <?php 
+  foreach ($modules as $module) { 
+      echo $module; 
+      echo '<div class="sep"></div>';
+  } 
+  ?>
 
 <?php } ?>
 </td></tr></table>

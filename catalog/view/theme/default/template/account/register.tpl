@@ -115,12 +115,15 @@
           </div>
           <div class="reg_field">
             <div class="captcha">Код безопасности<br />
-            	<?php if ($error_captcha) { ?>
-						    <span class="error"><?php echo $error_captcha; ?></span>
-						    <?php } ?>
-            <img src="index.php?route=account/register/captcha" alt="" /><br />
-            <a href="#">обновить код</a></div>
-            <div class="captcha">Введите код<br /><input type="text" name="captcha" value="<?php echo $captcha; ?>" /></div>
+            	
+              <div id="captcha-image"><img src="index.php?route=account/register/captcha" alt="captcha" /></div>
+              <a onclick="$('#captcha-image img').attr('src', 'index.php?route=account/register/captcha' +'&_'+ new Date())">обновить код</a>
+            </div>
+            <div class="captcha">Введите код<br /><input type="text" name="captcha" /><br/>
+              <?php if ($error_captcha) { ?>
+                <span class="error"><?php echo $error_captcha; ?></span>
+                <?php } ?>
+            </div>
           </div>
        </div>
      </div>

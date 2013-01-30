@@ -1,6 +1,6 @@
 <?php if (!$this->customer->isLogged()) { ?>
               
-<div id="login-module">
+<div class="box" id="login-module">
   <div class="title">Личный кабинет</div>
   <div>
 	
