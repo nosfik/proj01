@@ -5,10 +5,13 @@ class Customer {
 	private $lastname;
 	private $email;
 	private $telephone;
-	private $fax;
+	private $skype;
 	private $newsletter;
 	private $customer_group_id;
 	private $address_id;
+	private $note;
+	private $transporter;
+	private $send_email;
 	
   	public function __construct($registry) {
 		$this->config = $registry->get('config');
@@ -25,10 +28,14 @@ class Customer {
 				$this->lastname = $customer_query->row['lastname'];
 				$this->email = $customer_query->row['email'];
 				$this->telephone = $customer_query->row['telephone'];
-				$this->fax = $customer_query->row['fax'];
+				$this->skype = $customer_query->row['skype'];
 				$this->newsletter = $customer_query->row['newsletter'];
 				$this->customer_group_id = $customer_query->row['customer_group_id'];
 				$this->address_id = $customer_query->row['address_id'];
+				$this->note = $customer_query->row['note'];
+				$this->transporter = $customer_query->row['transporter'];
+				$this->send_email = $customer_query->row['send_email']; 
+				
 							
       			$this->db->query("UPDATE " . DB_PREFIX . "customer SET cart = '" . $this->db->escape(isset($this->session->data['cart']) ? serialize($this->session->data['cart']) : '') . "', wishlist = '" . $this->db->escape(isset($this->session->data['wishlist']) ? serialize($this->session->data['wishlist']) : '') . "', ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
 			
@@ -84,10 +91,13 @@ class Customer {
 			$this->lastname = $customer_query->row['lastname'];
 			$this->email = $customer_query->row['email'];
 			$this->telephone = $customer_query->row['telephone'];
-			$this->fax = $customer_query->row['fax'];
+			$this->skype = $customer_query->row['skype'];
 			$this->newsletter = $customer_query->row['newsletter'];
 			$this->customer_group_id = $customer_query->row['customer_group_id'];
 			$this->address_id = $customer_query->row['address_id'];
+			$this->note = $customer_query->row['note'];
+			$this->transporter = $customer_query->row['transporter'];
+			$this->send_email = $customer_query->row['send_email']; 
           	
 			$this->db->query("UPDATE " . DB_PREFIX . "customer SET ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
 			
@@ -137,8 +147,20 @@ class Customer {
 		return $this->telephone;
   	}
   
-  	public function getFax() {
-		return $this->fax;
+  	public function getSkype() {
+		return $this->skype;
+  	}
+		
+		public function getNote() {
+		return $this->note;
+  	}
+		
+		public function getSend_email() {
+		return $this->send_email;
+  	}
+		
+		public function getTransporter() {
+		return $this->transporter;
   	}
 	
   	public function getNewsletter() {

@@ -51,7 +51,7 @@ class ControllerAccountEdit extends Controller {
 		$this->data['entry_lastname'] = $this->language->get('entry_lastname');
 		$this->data['entry_email'] = $this->language->get('entry_email');
 		$this->data['entry_telephone'] = $this->language->get('entry_telephone');
-		$this->data['entry_fax'] = $this->language->get('entry_fax');
+		//$this->data['entry_fax'] = $this->language->get('entry_fax');
 
 		$this->data['button_continue'] = $this->language->get('button_continue');
 		$this->data['button_back'] = $this->language->get('button_back');
@@ -124,12 +124,36 @@ class ControllerAccountEdit extends Controller {
 			$this->data['telephone'] = '';
 		}
 
-		if (isset($this->request->post['fax'])) {
-			$this->data['fax'] = $this->request->post['fax'];
+		if (isset($this->request->post['skype'])) {
+			$this->data['skype'] = $this->request->post['skype'];
 		} elseif (isset($customer_info)) {
-			$this->data['fax'] = $customer_info['fax'];
+			$this->data['skype'] = $customer_info['skype'];
 		} else {
-			$this->data['fax'] = '';
+			$this->data['skype'] = '';
+		}
+		
+		if (isset($this->request->post['note'])) {
+			$this->data['note'] = $this->request->post['note'];
+		} elseif (isset($customer_info)) {
+			$this->data['note'] = $customer_info['note'];
+		} else {
+			$this->data['note'] = '';
+		}
+
+	if (isset($this->request->post['transporter'])) {
+			$this->data['transporter'] = $this->request->post['transporter'];
+		} elseif (isset($customer_info)) {
+			$this->data['transporter'] = $customer_info['transporter'];
+		} else {
+			$this->data['transporter'] = '';
+		}
+		
+		if (isset($this->request->post['send_email'])) {
+			$this->data['send_email'] = $this->request->post['send_email'];
+		} elseif (isset($customer_info)) {
+			$this->data['send_email'] = $customer_info['send_email'];
+		} else {
+			$this->data['send_email'] = '';
 		}
 
 		$this->data['back'] = $this->url->link('account/account', '', 'SSL');

@@ -17,7 +17,7 @@
             <a class="left" onclick="$('#module_login').submit();"><?php echo $button_login; ?></a>
             <div class="right"></div>
         </div>
-        <a class="forgotPass" href="#">забыли пароль?</a>
+        <a class="forgotPass" href="<?php echo $this -> url -> link('account/forgotten', '', 'SSL'); ?>">забыли пароль?</a>
     </div>
     <div class="clear"></div>
    

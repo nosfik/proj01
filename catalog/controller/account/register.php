@@ -77,9 +77,9 @@ class ControllerAccountRegister extends Controller {
 		$this->data['entry_customer_group'] = $this->language->get('entry_customer_group');
 		$this->data['entry_company_id'] = $this->language->get('entry_company_id');
 		$this->data['entry_tax_id'] = $this->language->get('entry_tax_id');
-    	$this->data['entry_address_1'] = $this->language->get('entry_address_1');
-    	$this->data['entry_address_2'] = $this->language->get('entry_address_2');
-    	$this->data['entry_postcode'] = $this->language->get('entry_postcode');
+    	//$this->data['entry_address_1'] = $this->language->get('entry_address_1');
+    	//$this->data['entry_address_2'] = $this->language->get('entry_address_2');
+    	//$this->data['entry_postcode'] = $this->language->get('entry_postcode');
     	$this->data['entry_city'] = $this->language->get('entry_city');
     	$this->data['entry_country'] = $this->language->get('entry_country');
     	$this->data['entry_zone'] = $this->language->get('entry_zone');
@@ -131,24 +131,21 @@ class ControllerAccountRegister extends Controller {
 			$this->data['error_confirm'] = '';
 		}
 		
-  		if (isset($this->error['company_id'])) {
-			$this->data['error_company_id'] = $this->error['company_id'];
+  		if (isset($this->error['captcha'])) {
+			$this->data['error_captcha'] = $this->error['captcha'];
 		} else {
-			$this->data['error_company_id'] = '';
-		}
-		
-  		if (isset($this->error['tax_id'])) {
-			$this->data['error_tax_id'] = $this->error['tax_id'];
-		} else {
-			$this->data['error_tax_id'] = '';
-		}
+			$this->data['error_captcha'] = '';
+		}	
+
 								
-  	/*
+  	
+		  /*
 		  if (isset($this->error['address_1'])) {
-				  $this->data['error_address_1'] = $this->error['address_1'];
-			  } else {
-				  $this->data['error_address_1'] = '';
-			  }*/
+							$this->data['error_address_1'] = $this->error['address_1'];
+						} else {
+							$this->data['error_address_1'] = '';
+						}*/
+		  
 	  
    		
 		if (isset($this->error['city'])) {
@@ -157,12 +154,14 @@ class ControllerAccountRegister extends Controller {
 			$this->data['error_city'] = '';
 		}
 		
+		
 		/*
 		if (isset($this->error['postcode'])) {
-					$this->data['error_postcode'] = $this->error['postcode'];
-				} else {
-					$this->data['error_postcode'] = '';
-				}*/
+							$this->data['error_postcode'] = $this->error['postcode'];
+						} else {
+							$this->data['error_postcode'] = '';
+						}*/
+		
 		
 
 		if (isset($this->error['country'])) {
@@ -203,17 +202,37 @@ class ControllerAccountRegister extends Controller {
 			$this->data['telephone'] = '';
 		}
 		
-		if (isset($this->request->post['fax'])) {
-    		$this->data['fax'] = $this->request->post['fax'];
+		if (isset($this->request->post['skype'])) {
+    		$this->data['skype'] = $this->request->post['skype'];
 		} else {
-			$this->data['fax'] = '';
+			$this->data['skype'] = '';
 		}
 		
-		if (isset($this->request->post['company'])) {
-    		$this->data['company'] = $this->request->post['company'];
+		if (isset($this->request->post['note'])) {
+    		$this->data['note'] = $this->request->post['note'];
 		} else {
-			$this->data['company'] = '';
+			$this->data['note'] = '';
 		}
+		
+		if (isset($this->request->post['transporter'])) {
+    		$this->data['transporter'] = $this->request->post['transporter'];
+		} else {
+			$this->data['transporter'] = '';
+		}	
+		
+		if (isset($this->request->post['send_email'])) {
+    		$this->data['send_email'] = $this->request->post['send_email'];
+		} else {
+			$this->data['send_email'] = '';
+		}	
+		
+		if (isset($this->request->post['captcha'])) {
+			$this->data['captcha'] = $this->request->post['captcha'];
+		} else {
+			$this->data['captcha'] = '';
+		}	
+		
+		
 
 		$this->load->model('account/customer_group');
 		
@@ -249,28 +268,30 @@ class ControllerAccountRegister extends Controller {
 			$this->data['tax_id'] = '';
 		}
 						
+		
 		/*
 		if (isset($this->request->post['address_1'])) {
-					$this->data['address_1'] = $this->request->post['address_1'];
+							$this->data['address_1'] = $this->request->post['address_1'];
+						} else {
+							$this->data['address_1'] = '';
+						}
+				
+		
+				if (isset($this->request->post['address_2'])) {
+					$this->data['address_2'] = $this->request->post['address_2'];
 				} else {
-					$this->data['address_1'] = '';
+					$this->data['address_2'] = '';
+				}
+		
+				
+				if (isset($this->request->post['postcode'])) {
+							$this->data['postcode'] = $this->request->post['postcode'];
+						} elseif (isset($this->session->data['shipping_postcode'])) {
+							$this->data['postcode'] = $this->session->data['shipping_postcode'];		
+						} else {
+							$this->data['postcode'] = '';
 				}*/
 		
-
-		if (isset($this->request->post['address_2'])) {
-    		$this->data['address_2'] = $this->request->post['address_2'];
-		} else {
-			$this->data['address_2'] = '';
-		}
-
-		/*
-		if (isset($this->request->post['postcode'])) {
-					$this->data['postcode'] = $this->request->post['postcode'];
-				} elseif (isset($this->session->data['shipping_postcode'])) {
-					$this->data['postcode'] = $this->session->data['shipping_postcode'];		
-				} else {
-					$this->data['postcode'] = '';
-				}*/
 		
 		
 		if (isset($this->request->post['city'])) {
@@ -315,7 +336,38 @@ class ControllerAccountRegister extends Controller {
     		$this->data['newsletter'] = $this->request->post['newsletter'];
 		} else {
 			$this->data['newsletter'] = '';
+		}
+
+		if (isset($this->request->post['skype'])) {
+    		$this->data['skype'] = $this->request->post['skype'];
+		} else {
+			$this->data['skype'] = '';
+		}
+		
+		if (isset($this->request->post['note'])) {
+    		$this->data['note'] = $this->request->post['note'];
+		} else {
+			$this->data['note'] = '';
+		}
+		
+		if (isset($this->request->post['transporter'])) {
+    		$this->data['transporter'] = $this->request->post['transporter'];
+		} else {
+			$this->data['transporter'] = '';
 		}	
+		
+		if (isset($this->request->post['send_email'])) {
+    		$this->data['send_email'] = $this->request->post['send_email'];
+		} else {
+			$this->data['send_email'] = '';
+		}	
+		
+		if (isset($this->request->post['captcha'])) {
+			$this->data['captcha'] = $this->request->post['captcha'];
+		} else {
+			$this->data['captcha'] = '';
+		}	
+	
 
 		if ($this->config->get('config_account_id')) {
 			$this->load->model('catalog/information');
@@ -454,6 +506,11 @@ class ControllerAccountRegister extends Controller {
 			}
 		}
 		
+		if (empty($this->session->data['captcha']) || ($this->session->data['captcha'] != $this->request->post['captcha'])) {
+      		$this->error['captcha'] = $this->language->get('error_captcha');
+    	}
+		
+		
     	if (!$this->error) {
       		return true;
     	} else {
@@ -461,6 +518,16 @@ class ControllerAccountRegister extends Controller {
     	}
   	}
 	
+	public function captcha() {
+		$this->load->library('captcha');
+		
+		$captcha = new Captcha();
+		
+		$this->session->data['captcha'] = $captcha->getCode();
+		
+		$captcha->showImage();
+	}	
+
 	public function country() {
 		$json = array();
 		
@@ -477,7 +544,7 @@ class ControllerAccountRegister extends Controller {
 				'iso_code_2'        => $country_info['iso_code_2'],
 				'iso_code_3'        => $country_info['iso_code_3'],
 				'address_format'    => $country_info['address_format'],
-				//'postcode_required' => $country_info['postcode_required'],
+				'postcode_required' => $country_info['postcode_required'],
 				'zone'              => $this->model_localisation_zone->getZonesByCountryId($this->request->get['country_id']),
 				'status'            => $country_info['status']		
 			);

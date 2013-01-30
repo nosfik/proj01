@@ -2,7 +2,7 @@
 class Captcha {
 	protected $code;
 	protected $width = 35;
-	protected $height = 150;
+	protected $height = 100;
 
 	function __construct() { 
 		$this->code = substr(sha1(mt_rand()), 17, 6); 
