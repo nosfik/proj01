@@ -1639,3 +1639,80 @@ a.button:hover, input.button:hover {
 .banner div img {
 	margin-bottom: 20px;
 }
+#module_cart .content {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color: #EEEEEE;
+    border-radius: 0 7px 7px 7px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 2px 2px #DDDDDD;
+    clear: both;
+    display: none;
+    min-height: 150px;
+    padding: 8px;
+    position: relative;
+    top: -1px;
+}
+#module_cart.active .heading {
+    border-left: 1px solid #EEEEEE;
+    border-radius: 7px 7px 0 0;
+    border-right: 1px solid #EEEEEE;
+    border-top: 1px solid #EEEEEE;
+    margin-top: 5px;
+    padding-bottom: 6px;
+    padding-top: 10px;
+}
+#module_cart.active .content {
+    display: block;
+}
+#module_cart .cart {
+    border-collapse: collapse;
+    margin-bottom: 5px;
+    width: 100%;
+}
+#module_cart .cart td {
+    border-bottom: 1px solid #EEEEEE;
+    color: #000000;
+    padding: 2px 3px;
+    vertical-align: top;
+}
+#module_cart .cart .image {
+    display: none;
+}
+#module_cart .cart .image img {
+    border: 1px solid #EEEEEE;
+    text-align: left;
+}
+#module_cart .cart .name small {
+    color: #666666;
+    line-height: 14px;
+}
+#module_cart .cart td.total, #module_cart .cart td.quantity{
+    text-align: right;
+    vertical-align: middle;
+}
+#module_cart .cart .remove {
+    text-align: right;
+        padding: 0 2px;
+        vertical-align: middle;
+}
+#module_cart .cart .remove img {
+    cursor: pointer;
+}
+#module_cart table.total {
+    border-collapse: collapse;
+    clear: left;
+    float: right;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+#module_cart table.total td {
+    color: #000000;
+}
+#module_cart .checkout {
+    clear: both;
+    text-align: right;
+}
+#module_cart .empty {
+    text-align: center;
+}
