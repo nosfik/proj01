@@ -311,10 +311,18 @@ a:hover {color:#d33461}
 #shop_cont #left_collumn .itemCont a img {-webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease;}
 #shop_cont #left_collumn .itemCont img {border:none; width:110px; margin-bottom:5px}
 #shop_cont #left_collumn .itemCont a:hover img {opacity:0.7}
-#shop_cont #left_collumn .itemCont span {padding-top:5px; color:#d6305d; display:block}
+#shop_cont #left_collumn .itemCont span {padding-top:5px; display:block}
+#shop_cont #left_collumn .itemCont .price {color:#d6305d;}
+#shop_cont #left_collumn .itemCont .price-old {color:#000000; text-decoration: line-through}
+#shop_cont #left_collumn .itemCont .price-new {color:#d6305d;}
+
+
 #shop_cont #left_collumn .itemCont s {display:block; padding-top:5px; }
 #shop_cont #left_collumn #blue {background:#ccd8f5; padding:20px 0 1px 0}
-#shop_cont #center {float:left; width:700px; margin:0 0 0 35px; overflow:hidden}
+#shop_cont #center {float:left; width:730px; margin:0 0 0 35px; overflow:hidden}
+#shop_cont #center #cart_button {width:97px; height:33px; background:url(../image/sprite.png) 0 -979px}
+#shop_cont #center #cart_button a img {width:97px; height:33px; border:none; opacity:0; progid:DXImageTransform.Microsoft.Alpha(opacity=0); -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease; background:url(../image/sprite.png) 0 -1019px}
+#shop_cont #center #cart_button a:hover img {opacity:1; progid:DXImageTransform.Microsoft.Alpha(opacity=100);}
 #shop_cont #center #sort {padding:20px 20px 10px 20px; background:url(../image/text_bg.gif); margin-bottom:20px}
 #shop_cont #center #sort .left {width:110px; float:left}
 #shop_cont #center #sort .right {width:550px; float:left;}
@@ -322,8 +330,11 @@ a:hover {color:#d33461}
 #shop_cont #center .titleTable {width:700px}
 #shop_cont #center .titleTable h2 {font-family: 'Cuprum', sans-serif; font-size:14px; text-transform:uppercase; white-space:nowrap; padding:0 10px; line-height:12px}
 #shop_cont #center .titleTable .line {background: url(../image/dot.gif) repeat-x center}
-#shop_cont #center .forFloat {width:800px}
-#shop_cont #center .forFloat .item {float:left; width:116px; height:230px; margin:15px 30px 0 0; color:#d6305d; line-height:16px}
+#shop_cont #center .forFloat td {padding : 12px;}
+#shop_cont #center .forFloat .featured {padding-bottom:20px;}
+#shop_cont #center .forFloat .item {width:116px; margin:15px 30px 0 0; color:#d6305d; line-height:16px}
+#shop_cont #center .forFloat .item .price-old{display: block;color: #000000; text-decoration: line-through;}
+#shop_cont #center .forFloat .item .price-new{display: block;color: #D6305D;}
 #shop_cont #center .forFloat .item .pic {border-radius:5px; background:#FFF; padding:3px}
 #shop_cont #center .forFloat .item .pic a {margin:0}
 #shop_cont #center .forFloat .item .pic a img {-webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease;}
