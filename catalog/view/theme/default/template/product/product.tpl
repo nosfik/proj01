@@ -1,11 +1,15 @@
 <?php echo $header; ?>
-<div id="content"><?php echo $content_top; ?>
-  <div class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
-    <?php } ?>
+<div id="shop_cont">
+  <?php echo $content_top; ?>
+  <div id="left_collumn">
+    <div id="top"></div>
+    <?php echo $column_left; ?>
+    <div id="bottom"/></div>
   </div>
-  <h1><?php echo $heading_title; ?></h1>
+  <div id="center">
+  <div class="forFloat">
+
+  
   <div class="product-info">
     <?php if ($thumb || $images) { ?>
     <div class="left">
@@ -21,7 +25,15 @@
       <?php } ?>
     </div>
     <?php } ?>
-    <div class="right">
+    <div class="right" style="padding-left:20px">
+      <div class="header-wrapper">
+        <h1><?php echo $heading_title; ?></h1>
+        <div id="button-cart">
+          <a href="#">
+            <img src="catalog/view/theme/default/image/blank.gif">
+          </a>
+        </div>
+      </div>
       <div class="description">
         <?php if ($manufacturer) { ?>
         <span><?php echo $text_manufacturer; ?></span> <a href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a><br />
@@ -30,31 +42,40 @@
         <?php if ($reward) { ?>
         <span><?php echo $text_reward; ?></span> <?php echo $reward; ?><br />
         <?php } ?>
-        <span><?php echo $text_stock; ?></span> <?php echo $stock; ?></div>
-      <?php if ($price) { ?>
-      <div class="price"><?php echo $text_price; ?>
-        <?php if (!$special) { ?>
-        <?php echo $price; ?>
-        <?php } else { ?>
-        <span class="price-old"><?php echo $price; ?></span> <span class="price-new"><?php echo $special; ?></span>
-        <?php } ?>
-        <br />
-        <?php if ($tax) { ?>
-        <span class="price-tax"><?php echo $text_tax; ?> <?php echo $tax; ?></span><br />
-        <?php } ?>
-        <?php if ($points) { ?>
-        <span class="reward"><small><?php echo $text_points; ?> <?php echo $points; ?></small></span><br />
-        <?php } ?>
-        <?php if ($discounts) { ?>
-        <br />
-        <div class="discount">
-          <?php foreach ($discounts as $discount) { ?>
-          <?php echo sprintf($text_discount, $discount['quantity'], $discount['price']); ?><br />
-          <?php } ?>
-        </div>
-        <?php } ?>
       </div>
+      
+      <div id="price">
+        <div class="left"></div>
+        <div class="right">
+           <?php if ($price) { ?>
+            Цена : 
+              <?php if (!$special) { ?>
+              <b><?php echo $price; ?></b>
+              <?php } else { ?>
+              <span class="price-old"><?php echo $price; ?></span> <span class="price-new"><?php echo $special; ?></span>
+              <?php } ?>
+            <?php } ?>
+        </div>
+      
+        <div class="sklad"><?php echo $stock; ?></div>
+        <div class="clear"></div>
+      </div>
+      <?php if ($price) { ?>
+        <?php if ($discounts) { ?>
+          <div style="margin-top:-10px; margin-bottom:10px" class="discount">
+            <?php foreach ($discounts as $discount) { ?>
+            <?php echo sprintf($text_discount, $discount['quantity'], $discount['price']); ?><br />
+            <?php } ?>
+          </div>
+        <?php } ?>
+        
+        <?php if ($points) { ?>
+          <span class="reward"><small><?php echo $text_points; ?> <?php echo $points; ?></small></span><br />
+        <?php } ?>
+        
       <?php } ?>
+      <div><?php echo $description; ?></div>
+     
       <?php if ($options) { ?>
       <div class="options">
         <h2><?php echo $text_option; ?></h2>
@@ -202,15 +223,11 @@
       </div>
       <?php } ?>
       <div class="cart">
-        <div><?php echo $text_qty; ?>
-          <input type="text" name="quantity" size="2" value="<?php echo $minimum; ?>" />
+        <div>
+          <input type="hidden" name="quantity" size="2" value="<?php echo $minimum; ?>" />
           <input type="hidden" name="product_id" size="2" value="<?php echo $product_id; ?>" />
           &nbsp;
-          <input type="button" value="<?php echo $button_cart; ?>" id="button-cart" class="button" />
         </div>
-        <div><span>&nbsp;&nbsp;&nbsp;<?php echo $text_or; ?>&nbsp;&nbsp;&nbsp;</span></div>
-        <div><a onclick="addToWishList('<?php echo $product_id; ?>');"><?php echo $button_wishlist; ?></a><br />
-          <a onclick="addToCompare('<?php echo $product_id; ?>');"><?php echo $button_compare; ?></a></div>
         <?php if ($minimum > 1) { ?>
         <div class="minimum"><?php echo $text_minimum; ?></div>
         <?php } ?>

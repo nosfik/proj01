@@ -591,6 +591,8 @@ class ControllerCatalogProduct extends Controller {
 		$this->data['entry_main_category'] = $this->language->get('entry_main_category');
 		$this->data['entry_seo_title'] = $this->language->get('entry_seo_title');
 		$this->data['entry_seo_h1'] = $this->language->get('entry_seo_h1');
+    $this->data['entry_material'] = $this->language->get('entry_material');
+    $this->data['entry_size'] = $this->language->get('entry_size');
 				
     	$this->data['button_save'] = $this->language->get('button_save');
     	$this->data['button_cancel'] = $this->language->get('button_cancel');
@@ -827,17 +829,38 @@ class ControllerCatalogProduct extends Controller {
 	
 		$this->load->model('catalog/manufacturer');
 		
-    	$this->data['manufacturers'] = $this->model_catalog_manufacturer->getManufacturers();
+    $this->data['manufacturers'] = $this->model_catalog_manufacturer->getManufacturers();
 
-    	if (isset($this->request->post['manufacturer_id'])) {
+    if (isset($this->request->post['manufacturer_id'])) {
       		$this->data['manufacturer_id'] = $this->request->post['manufacturer_id'];
 		} elseif (!empty($product_info)) {
 			$this->data['manufacturer_id'] = $product_info['manufacturer_id'];
 		} else {
       		$this->data['manufacturer_id'] = 0;
-    	} 
-		
-    	if (isset($this->request->post['shipping'])) {
+    } 
+    
+    $this->load->model('catalog/material');
+    $this->data['materials'] = $this->model_catalog_material->getMaterials();
+    if (isset($this->request->post['material_id'])) {
+          $this->data['material_id'] = $this->request->post['material_id'];
+    } elseif (!empty($product_info)) {
+      $this->data['material_id'] = $product_info['material_id'];
+    } else {
+      $this->data['material_id'] = 0;
+    }
+    
+     $this->load->model('catalog/size');
+    $this->data['sizes'] = $this->model_catalog_size->getSizes();
+    if (isset($this->request->post['size_id'])) {
+          $this->data['size_id'] = $this->request->post['size_id'];
+    } elseif (!empty($product_info)) {
+      $this->data['size_id'] = $product_info['size_id'];
+    } else {
+      $this->data['size_id'] = 0;
+    } 
+
+   
+    if (isset($this->request->post['shipping'])) {
       		$this->data['shipping'] = $this->request->post['shipping'];
     	} elseif (!empty($product_info)) {
       		$this->data['shipping'] = $product_info['shipping'];

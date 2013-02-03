@@ -323,6 +323,9 @@ a:hover {color:#d33461}
 #shop_cont #center #cart_button {width:97px; height:33px; background:url(../image/sprite.png) 0 -979px}
 #shop_cont #center #cart_button a img {width:97px; height:33px; border:none; opacity:0; progid:DXImageTransform.Microsoft.Alpha(opacity=0); -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease; background:url(../image/sprite.png) 0 -1019px}
 #shop_cont #center #cart_button a:hover img {opacity:1; progid:DXImageTransform.Microsoft.Alpha(opacity=100);}
+#shop_cont #center #button-cart {width:97px; height:33px; background:url(../image/sprite.png) 0 -979px; float:right;}
+#shop_cont #center #button-cart a img {width:97px; height:33px; border:none; opacity:0; progid:DXImageTransform.Microsoft.Alpha(opacity=0); -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease; background:url(../image/sprite.png) 0 -1019px}
+#shop_cont #center #button-cart a:hover img {opacity:1; progid:DXImageTransform.Microsoft.Alpha(opacity=100);}
 #shop_cont #center #sort {padding:20px 20px 10px 20px; background:url(../image/text_bg.gif); margin-bottom:20px}
 #shop_cont #center #sort .left {width:110px; float:left}
 #shop_cont #center #sort .right {width:550px; float:left;}
@@ -350,11 +353,11 @@ a:hover {color:#d33461}
 #shop_cont #center #right #cart_button {width:97px; height:33px; float:right; background:url(../image/sprite.png) 0 -979px}
 #shop_cont #center #right #cart_button a img {width:97px; height:33px; border:none; opacity:0; progid:DXImageTransform.Microsoft.Alpha(opacity=0); -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease; background:url(../image/sprite.png) 0 -1019px}
 #shop_cont #center #right #cart_button a:hover img {opacity:1; progid:DXImageTransform.Microsoft.Alpha(opacity=100);}
-#shop_cont #center #right #price {float:left; position:relative; margin:20px 0 20px -20px}
-#shop_cont #center #right #price .left {width:42px; height:35px; background:url(../image/sprite.png) -19px -1060px; float:left}
-#shop_cont #center #right #price .right {float:left; background:#ec8098; line-height:27px; padding:0 10px 0 0; font-size:13px; color:#FFF; position:relative; margin-left:-20px}
-#shop_cont #center #right #price .right b {color:#fff5a1}
-#shop_cont #center #right #price .sklad {float:left; background:#51a2d6; line-height:27px; padding:0 10px; font-size:11px; color:#FFF;}
+#shop_cont #center #price {/*float:left;*/ position:relative; overflow: hidden; margin:20px 0 20px -20px}
+#shop_cont #center #price .left {width:42px; height:35px; background:url(../image/sprite.png) -19px -1060px; float:left}
+#shop_cont #center #price .right {float:left; background:#ec8098; line-height:27px; padding:0 10px 0 0; font-size:13px; color:#FFF; position:relative; margin-left:-20px}
+#shop_cont #center #price .right b {color:#fff5a1}
+#shop_cont #center #price .sklad {float:left; background:#51a2d6; line-height:27px; padding:0 10px; font-size:11px; color:#FFF;}
 #full_cart {width:700px; background:#FFF; margin-bottom:30px}
 #full_cart #title {text-align:center; font-family: 'Cuprum', sans-serif; font-size:15px; color:#b94967; text-transform:uppercase; line-height:25px; padding-top:10px}
 #full_cart table {width:700px; margin-bottom:30px}
@@ -382,3 +385,4 @@ a:hover {color:#d33461}
 #full_cart #yellow .coll input {width:230px; height:26px; margin:2px 0 10px 0; padding:0}
 #full_cart #yellow .coll textarea {width:300px; height:140px; margin:2px 0 10px 0; padding:0}
 #green_cont2 {padding:30px 30px; background:#9ad891 url(../image/round_bg.gif); width:640px; position:relative; margin:-30px 0 0 0;}
+.product-info .header-wrapper{overflow: hidden;	padding-top: 9px;}

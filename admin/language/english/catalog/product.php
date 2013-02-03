@@ -46,6 +46,7 @@ $_['entry_quantity']         = 'Quantity:';
 $_['entry_minimum']          = 'Minimum Quantity:<br/><span class="help">Force a minimum ordered amount</span>';
 $_['entry_stock_status']     = 'Out Of Stock Status:<br/><span class="help">Status shown when a product is out of stock</span>';
 $_['entry_price']            = 'Price:';
+$_['entry_material']         = 'Material:';
 $_['entry_tax_class']        = 'Tax Class:';
 $_['entry_points']           = 'Points:<br/><span class="help">Number of points needed to buy this item. If you don\'t want this product to be purchased with points leave as 0.</span>';
 $_['entry_option_points']    = 'Points:';

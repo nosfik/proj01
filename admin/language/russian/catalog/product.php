@@ -49,6 +49,7 @@ $_['entry_price']            = 'Цена:';
 $_['entry_tax_class']        = 'Налог:';
 $_['entry_points']           = 'Баллы:<br/><span class="help">Количество баллов для покупки продукта. Поставьте 0, чтобы не использовать баллы.</span>';
 $_['entry_option_points']    = 'Баллы:';
+$_['entry_material']         = 'Материал:';
 $_['entry_subtract']         = 'Вычитать со склада:';
 $_['entry_weight_class']     = 'Единица измерения веса:';
 $_['entry_weight']           = 'Вес:';

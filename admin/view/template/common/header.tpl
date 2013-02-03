@@ -75,6 +75,9 @@ $(document).ready(function(){
           </li>
           <li><a href="<?php echo $option; ?>"><?php echo $text_option; ?></a></li>
           <li><a href="<?php echo $manufacturer; ?>"><?php echo $text_manufacturer; ?></a></li>
+          <li><a href="<?php echo $material; ?>"><?php echo $text_material; ?></a></li>
+          <li><a href="<?php echo $size; ?>"><?php echo $text_size; ?></a></li>
+          <li><a href="<?php echo $price; ?>"><?php echo $text_price; ?></a></li>
           <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
           <li><a href="<?php echo $review; ?>"><?php echo $text_review; ?></a></li>
           <li><a href="<?php echo $information; ?>"><?php echo $text_information; ?></a></li>

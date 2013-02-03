@@ -209,6 +209,32 @@
                 </select></td>
             </tr>
             <tr>
+              <td><?php echo $entry_material; ?></td>
+               <td><select name="material_id">
+                  <option value="0"><?php echo $text_none; ?></option>
+                  <?php foreach ($materials as $material) { ?>
+                  <?php if ($material['material_id'] == $material_id) { ?>
+                  <option value="<?php echo $material['material_id']; ?>" selected="selected"><?php echo $material['name']; ?></option>
+                  <?php } else { ?>
+                  <option value="<?php echo $material['material_id']; ?>"><?php echo $material['name']; ?></option>
+                  <?php } ?>
+                  <?php } ?>
+                </select></td>
+            </tr>
+            <tr>
+              <td><?php echo $entry_size; ?></td>
+               <td><select name="size_id">
+                  <option value="0"><?php echo $text_none; ?></option>
+                  <?php foreach ($sizes as $size) { ?>
+                  <?php if ($size['size_id'] == $size_id) { ?>
+                  <option value="<?php echo $size['size_id']; ?>" selected="selected"><?php echo $size['name']; ?></option>
+                  <?php } else { ?>
+                  <option value="<?php echo $size['size_id']; ?>"><?php echo $size['name']; ?></option>
+                  <?php } ?>
+                  <?php } ?>
+                </select></td>
+            </tr>
+            <tr>
               <td><?php echo $entry_status; ?></td>
               <td><select name="status">
                   <?php if ($status) { ?>
