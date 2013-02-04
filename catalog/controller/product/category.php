@@ -40,8 +40,19 @@ class ControllerProductCategory extends Controller {
 			'href'      => $this->url->link('common/home'),
        		'separator' => false
    		);	
-			
-		if (isset($this->request->get['path'])) {
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		if (isset($this->request->get['all'])) {
+			$category_id = -1;
+			$category_info = 0;
+		} elseif (isset($this->request->get['path'])) {
 			$path = '';
 		
 			$parts = explode('_', (string)$this->request->get['path']);
@@ -65,13 +76,15 @@ class ControllerProductCategory extends Controller {
 			}		
 		
 			$category_id = (int)array_pop($parts);
+			$category_info = $this->model_catalog_category->getCategory($category_id);
 		} else {
 			$category_id = 0;
+			$category_info = $this->model_catalog_category->getCategory($category_id);
 		}
 		
-		$category_info = $this->model_catalog_category->getCategory($category_id);
-	
-		if ($category_info) {
+		$allProduct = ($category_id == -1);
+			
+	 	if ($allProduct || $category_info) {
 			if ($category_info['seo_title']) {
 		  		$this->document->setTitle($category_info['seo_title']);
 			} else {
@@ -127,38 +140,55 @@ class ControllerProductCategory extends Controller {
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
-								
-			$this->data['categories'] = array();
 			
-			$results = $this->model_catalog_category->getCategories($category_id);
-			
-			foreach ($results as $result) {
+			if(!$allProduct) {
+				$this->data['categories'] = array();
+				$results = $this->model_catalog_category->getCategories($category_id);
+				foreach ($results as $result) {
+					$data = array(
+						'filter_category_id'  => $result['category_id'],
+						'filter_sub_category' => true
+					);
+					
+					$product_total = $this->model_catalog_product->getTotalProducts($data);				
+					
+					$this->data['categories'][] = array(
+						'name'  => $result['name'] . ($this->config->get('config_product_count') ? ' (' . $product_total . ')' : ''),
+						'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url)
+					);
+				}
+				
 				$data = array(
-					'filter_category_id'  => $result['category_id'],
-					'filter_sub_category' => true
+					'filter_category_id' => $category_id, 
+					'sort'               => $sort,
+					'order'              => $order,
+					'start'              => ($page - 1) * $limit,
+					'limit'              => $limit
+				);
+					
+				$product_total = $this->model_catalog_product->getTotalProducts($data); 
+				
+				$results = $this->model_catalog_product->getProducts($data);
+					
+			} else {
+				$data = array(
+					'material' 		=> 1,
+					'size'		 		=> 1,
+					'price'		 		=> 1,
+					'manufacturer'=> 1
 				);
 				
-				$product_total = $this->model_catalog_product->getTotalProducts($data);				
-				
-				$this->data['categories'][] = array(
-					'name'  => $result['name'] . ($this->config->get('config_product_count') ? ' (' . $product_total . ')' : ''),
-					'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url)
-				);
+				$product_total = $this->model_catalog_product->getTotalAllProducts($data);	
+				$results = $this->model_catalog_product->getAllProducts($data);
 			}
+								
+			
+			
+			
 			
 			$this->data['products'] = array();
 			
-			$data = array(
-				'filter_category_id' => $category_id, 
-				'sort'               => $sort,
-				'order'              => $order,
-				'start'              => ($page - 1) * $limit,
-				'limit'              => $limit
-			);
-					
-			$product_total = $this->model_catalog_product->getTotalProducts($data); 
 			
-			$results = $this->model_catalog_product->getProducts($data);
 			
 			foreach ($results as $result) {
 				if ($result['image']) {
@@ -330,7 +360,12 @@ class ControllerProductCategory extends Controller {
 			$pagination->page = $page;
 			$pagination->limit = $limit;
 			$pagination->text = $this->language->get('text_pagination');
-			$pagination->url = $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&page={page}');
+			if($allProduct) {
+				$pagination->url = $this->url->link('product/category', 'all=1&page={page}');
+			} else {
+				$pagination->url = $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&page={page}');
+			}
+			
 		
 			$this->data['pagination'] = $pagination->render();
 		

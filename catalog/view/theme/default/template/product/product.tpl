@@ -232,6 +232,23 @@
         <div class="minimum"><?php echo $text_minimum; ?></div>
         <?php } ?>
       </div>
+		    <table class="attribute">
+		      <?php foreach ($attribute_groups as $attribute_group) { ?>
+		      <thead>
+		        <tr>
+		          <td colspan="2"><?php echo $attribute_group['name']; ?></td>
+		        </tr>
+		      </thead>
+		      <tbody>
+		        <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
+		        <tr>
+		          <td><?php echo $attribute['name']; ?></td>
+		          <td><?php echo $attribute['text']; ?></td>
+		        </tr>
+		        <?php } ?>
+		      </tbody>
+		      <?php } ?>
+		    </table>
       <?php if ($review_status) { ?>
       <div class="review">
         <div><img src="catalog/view/theme/default/image/stars-<?php echo $rating; ?>.png" alt="<?php echo $reviews; ?>" />&nbsp;&nbsp;<a onclick="$('a[href=\'#tab-review\']').trigger('click');"><?php echo $reviews; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('a[href=\'#tab-review\']').trigger('click');"><?php echo $text_write; ?></a></div>
@@ -244,41 +261,8 @@
       <?php } ?>
     </div>
   </div>
-  <div id="tabs" class="htabs"><a href="#tab-description"><?php echo $tab_description; ?></a>
-    <?php if ($attribute_groups) { ?>
-    <a href="#tab-attribute"><?php echo $tab_attribute; ?></a>
-    <?php } ?>
-    <?php if ($review_status) { ?>
-    <a href="#tab-review"><?php echo $tab_review; ?></a>
-    <?php } ?>
-    <?php if ($products) { ?>
-    <a href="#tab-related"><?php echo $tab_related; ?> (<?php echo count($products); ?>)</a>
-    <?php } ?>
-  </div>
-  <div id="tab-description" class="tab-content"><?php echo $description; ?></div>
-  <?php if ($attribute_groups) { ?>
-  <div id="tab-attribute" class="tab-content">
-    <table class="attribute">
-      <?php foreach ($attribute_groups as $attribute_group) { ?>
-      <thead>
-        <tr>
-          <td colspan="2"><?php echo $attribute_group['name']; ?></td>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
-        <tr>
-          <td><?php echo $attribute['name']; ?></td>
-          <td><?php echo $attribute['text']; ?></td>
-        </tr>
-        <?php } ?>
-      </tbody>
-      <?php } ?>
-    </table>
-  </div>
-  <?php } ?>
+
   <?php if ($review_status) { ?>
-  <div id="tab-review" class="tab-content">
     <div id="review"></div>
     <h2 id="review-title"><?php echo $text_write; ?></h2>
     <b><?php echo $entry_name; ?></b><br />
@@ -309,34 +293,48 @@
     <div class="buttons">
       <div class="right"><a id="button-review" class="button"><?php echo $button_continue; ?></a></div>
     </div>
-  </div>
   <?php } ?>
-  <?php if ($products) { ?>
-  <div id="tab-related" class="tab-content">
-    <div class="box-product">
-      <?php foreach ($products as $product) { ?>
-      <div>
-        <?php if ($product['thumb']) { ?>
-        <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
-        <?php } ?>
-        <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
-        <?php if ($product['price']) { ?>
-        <div class="price">
-          <?php if (!$product['special']) { ?>
-          <?php echo $product['price']; ?>
-          <?php } else { ?>
-          <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
-          <?php } ?>
-        </div>
-        <?php } ?>
-        <?php if ($product['rating']) { ?>
-        <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
-        <?php } ?>
-        <a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button"><?php echo $button_cart; ?></a></div>
-      <?php } ?>
-    </div>
-  </div>
+	  <?php if ($products) { ?>
+	  	<table border="0" cellspacing="0" cellpadding="0" class="titleTable">
+  <tbody>
+    <tr>
+      <td class="line"> </td>
+      <td width="10">
+        <h2>Похожие товары</h2>
+      </td>
+      <td class="line"> </td>
+    </tr>
+  </tbody>
+</table>
+  <table><tr>
+		 <?php 
+		 for ($i = 0; $i < sizeof($products); $i++) { 
+		    $product =  $products[$i];
+		    if($i >=5  && $i % 5 == 0) { ?>
+		      </tr><tr>  
+		     <?php } ?>
+		      <td class="item">
+		        <?php if ($product['thumb']) { ?>
+		        <div class="pic"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
+		        <?php } ?>
+		        <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
+		        <?php if ($product['price']) { ?>
+		        <div class="price">
+		          <?php if (!$product['special']) { ?>
+		          Цена : <?php echo $product['price']; ?>
+		          <?php } else { ?>
+		          <span class="price-old">Цена : <?php echo $product['price']; ?></span> <span class="price-new">Цена : <?php echo $product['special']; ?></span>
+		          <?php } ?>
+		        </div>
+		        <?php } ?>
+		        <?php if ($product['rating']) { ?>
+		        <?php } ?>
+		      </td>
+		      <?php } ?>
+		</tr>    
+		</table>
   <?php } ?>
+  
   <?php if ($tags) { ?>
   <div class="tags"><b><?php echo $text_tags; ?></b>
     <?php for ($i = 0; $i < count($tags); $i++) { ?>

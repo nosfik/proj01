@@ -594,8 +594,6 @@ a.button:hover, input.button:hover {
 	background: url('../image/button-active.png') repeat-x;
 }
 .buttons {
-	background: #FFFFFF;
-	border: 1px solid #EEEEEE;
 	overflow: auto;
 	padding: 6px;
 	margin-bottom: 20px;
