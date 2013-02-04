@@ -64,11 +64,13 @@ class ModelCatalogProduct extends Model {
 	}
 	
 	public function getAllProducts($data = array()) {
+	  
 		if ($this->customer->isLogged()) {
 			$customer_group_id = $this->customer->getCustomerGroupId();
 		} else {
 			$customer_group_id = $this->config->get('config_customer_group_id');
 		}	
+
 		$cache = md5(http_build_query($data));
 		$product_data = $this->cache->get('product.all.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . (int)$customer_group_id . '.' . $cache);
 		
@@ -104,6 +106,7 @@ class ModelCatalogProduct extends Model {
 			
 			$this->cache->set('product.all.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . (int)$customer_group_id . '.' . $cache, $product_data);
 		}
+    return $product_data;
 	}
 	
 	

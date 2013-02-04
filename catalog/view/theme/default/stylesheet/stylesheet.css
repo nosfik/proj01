@@ -878,11 +878,11 @@ a.button:hover, input.button:hover {
 .product-list .name {
 	margin-bottom: 3px;
 }
-.product-list .name a {
+/*.product-list .name a {
 	color: #38B0E3;
 	font-weight: bold;
 	text-decoration: none;
-}
+}*/
 .product-list .description {
 	line-height: 15px;
 	margin-bottom: 5px;
@@ -892,12 +892,12 @@ a.button:hover, input.button:hover {
 	color: #7B7B7B;
 }
 .product-list .price {
-	float: right;
+/*	float: right;
 	height: 50px;
 	margin-left: 8px;
 	text-align: right;
 	color: #333333;
-	font-size: 12px;
+	font-size: 12px;*/
 }
 .product-list .price-old {
 	color: #F00;
