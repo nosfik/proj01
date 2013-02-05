@@ -2,7 +2,7 @@
   
   <div class="crumbs">
   <div class="leftShop"></div>
-  <div class="darkShop">Магазин</div>
+  <div class="darkShop"><a href="<?php echo $this->url->link('product/category', 'all=1'); ?>">Магазин</a></div>
   <div class="darkEnd"></div>
   <div class="menu">
     <div class="cont">

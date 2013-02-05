@@ -33,7 +33,28 @@ class ControllerProductCategory extends Controller {
 		} else {
 			$limit = $this->config->get('config_catalog_limit');
 		}
-					
+    
+    if (isset($this->request->get['price'])) {
+       $this->data['price_selected'] = $this->request->get['price'];
+     } else {
+       $this->data['price_selected'] = 0;
+     }
+     if (isset($this->request->get['material'])) {
+       $this->data['material_selected'] = $this->request->get['material'];
+     } else {
+       $this->data['material_selected'] = 0;
+     }
+     if (isset($this->request->get['manufacturer'])) {
+       $this->data['manufacturer_selected'] = $this->request->get['manufacturer'];
+     } else {
+       $this->data['manufacturer_selected'] = 0;
+     }
+     if (isset($this->request->get['size'])) {
+       $this->data['size_selected'] = $this->request->get['size'];
+     } else {
+       $this->data['size_selected'] = 0;
+     }
+				
 		$this->data['breadcrumbs'] = array();
 
    		$this->data['breadcrumbs'][] = array(
@@ -130,17 +151,25 @@ class ControllerProductCategory extends Controller {
 			
 			$url = '';
 			
-			if (isset($this->request->get['sort'])) {
-				$url .= '&sort=' . $this->request->get['sort'];
-			}	
-
+      if (isset($this->request->get['material'])) {
+        $url .= '&material=' . $this->request->get['material'];
+      }
+      if (isset($this->request->get['size'])) {
+        $url .= '&size=' . $this->request->get['size'];
+      }
+      if (isset($this->request->get['manufacturer'])) {
+        $url .= '&manufacturer=' . $this->request->get['manufacturer'];
+      }
+      if (isset($this->request->get['price'])) {
+        $url .= '&price=' . $this->request->get['price'];
+      }
 			if (isset($this->request->get['order'])) {
 				$url .= '&order=' . $this->request->get['order'];
 			}	
-			
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
+
 			$this->data['categories'] = array();
 			if(!$allProduct) {
 				$results = $this->model_catalog_category->getCategories($category_id);
@@ -160,8 +189,10 @@ class ControllerProductCategory extends Controller {
 				
 				$data = array(
 					'filter_category_id' => $category_id, 
-					'sort'               => $sort,
-					'order'              => $order,
+					'material'           => $this->data['material_selected'],
+          'size'               => $this->data['size_selected'],
+          'price'              => $this->data['price_selected'],
+          'manufacturer'       => $this->data['manufacturer_selected'],
 					'start'              => ($page - 1) * $limit,
 					'limit'              => $limit
 				);
@@ -172,15 +203,16 @@ class ControllerProductCategory extends Controller {
 					
 			} else {
 				$data = array(
-					'material' 		=> 0,
-					'size'		 		=> 0,
-					'price'		 		=> 0,
-					'manufacturer'=> 0
+					'material' 		=> $this->data['material_selected'],
+					'size'		 		=> $this->data['size_selected'],
+					'price'		 		=> $this->data['price_selected'],
+					'manufacturer'=> $this->data['manufacturer_selected'],
+					'start'       => ($page - 1) * $limit,
+					'limit'       => $limit
 				);
 				
 				$product_total = $this->model_catalog_product->getTotalAllProducts($data);	
 				$results = $this->model_catalog_product->getAllProducts($data);
-        $this->data['test'] = $results;
 			}
 								
 			
@@ -243,35 +275,158 @@ class ControllerProductCategory extends Controller {
 				);
 			}
 			
+      
+      
+      
+      
+       
+      
+      
+      
+      
 			$url = '';
 	
-			if (isset($this->request->get['limit'])) {
-				$url .= '&limit=' . $this->request->get['limit'];
-			}
-      	
-			if (isset($this->request->get['order'])) {
-				$url .= '&order=' . $this->request->get['order'];
-			}
+			
+      if (isset($this->request->get['material'])) {
+        $url .= '&material=' . $this->request->get['material'];
+      }
+      if (isset($this->request->get['size'])) {
+        $url .= '&size=' . $this->request->get['size'];
+      }
+      if (isset($this->request->get['manufacturer'])) {
+        $url .= '&manufacturer=' . $this->request->get['manufacturer'];
+      }
+      if (isset($this->request->get['limit'])) {
+        $url .= '&limit=' . $this->request->get['limit'];
+      }
+      if (isset($this->request->get['order'])) {
+        $url .= '&order=' . $this->request->get['order'];
+      }
+      
+      
+      
+      
 		 if($allProduct) {
-        $href = 'all=1' .$url;
+        $href = 'all=1';
      } else {
-        $href = 'path=' . $this->request->get['path'] . $url;
+        $href = 'path=' . $this->request->get['path'];
      }
 			
       
       /*
        * PRICES prices TODO
        */
+       $this->data['prices'] = array();
        $prices = $this->model_catalog_price->getPrices();
-        $this->data['prices'] = array();
+       $this->data['price_def'] = $this->url->link('product/category', $href . $url . '&price=0');
        foreach ($prices as $price) {
          $this->data['prices'][] = array(
           'id'    => $price['price_id'],
           'from'  => $price['from'],
           'to'    => $price['to'],
-          'href'  => $this->url->link('product/category', $href . '&price='.$price['price_id'])
+          'href'  => $this->url->link('product/category', $href . $url . '&price='.$price['price_id'])
         );
        }
+      
+      
+      $url = '';
+  
+      
+      if (isset($this->request->get['material'])) {
+        $url .= '&material=' . $this->request->get['material'];
+      }
+      if (isset($this->request->get['price'])) {
+        $url .= '&price=' . $this->request->get['price'];
+      }
+      if (isset($this->request->get['manufacturer'])) {
+        $url .= '&manufacturer=' . $this->request->get['manufacturer'];
+      }
+      if (isset($this->request->get['limit'])) {
+        $url .= '&limit=' . $this->request->get['limit'];
+      }
+        
+      if (isset($this->request->get['order'])) {
+        $url .= '&order=' . $this->request->get['order'];
+      }
+
+       $this->data['sizes'] = array();
+       $sizes = $this->model_catalog_size->getSizes();
+       $this->data['size_def'] = $this->url->link('product/category', $href. $url . '&size=0');
+       foreach ($sizes as $size) {
+         $this->data['sizes'][] = array(
+          'id'     => $size['size_id'],
+          'width'  => $size['width'],
+          'height' => $size['height'],
+          'href'   => $this->url->link('product/category', $href . $url . '&size='.$size['size_id'])
+        );
+       }
+      
+      
+      $url = '';
+  
+      if (isset($this->request->get['size'])) {
+        $url .= '&size=' . $this->request->get['size'];
+      }
+      if (isset($this->request->get['price'])) {
+        $url .= '&price=' . $this->request->get['price'];
+      }
+      if (isset($this->request->get['manufacturer'])) {
+        $url .= '&manufacturer=' . $this->request->get['manufacturer'];
+      }
+      if (isset($this->request->get['limit'])) {
+        $url .= '&limit=' . $this->request->get['limit'];
+      }
+        
+      if (isset($this->request->get['order'])) {
+        $url .= '&order=' . $this->request->get['order'];
+      }
+
+       $this->data['materials'] = array();
+       $materials = $this->model_catalog_material->getMaterials();
+       $this->data['material_def'] = $this->url->link('product/category', $href . $url . '&material=0');
+       foreach ($materials as $material) {
+         $this->data['materials'][] = array(
+          'id'     => $material['material_id'],
+          'name'  => $material['name'],
+          'href'   => $this->url->link('product/category', $href . $url . '&material='.$material['material_id'])
+        );
+       }
+       
+      
+      $url = '';
+  
+      if (isset($this->request->get['size'])) {
+        $url .= '&size=' . $this->request->get['size'];
+      }
+      if (isset($this->request->get['price'])) {
+        $url .= '&price=' . $this->request->get['price'];
+      }
+      if (isset($this->request->get['material'])) {
+        $url .= '&material=' . $this->request->get['material'];
+      }
+      if (isset($this->request->get['limit'])) {
+        $url .= '&limit=' . $this->request->get['limit'];
+      }
+      if (isset($this->request->get['order'])) {
+        $url .= '&order=' . $this->request->get['order'];
+      }
+
+       $this->data['manufacturers'] = array();
+       $manufacturers = $this->model_catalog_manufacturer->getManufacturers();
+       $this->data['manufacturer_def'] = $this->url->link('product/category', $href . $url . '&manufacturer=0');
+       foreach ($manufacturers as $manufacturer) {
+         $this->data['manufacturers'][] = array(
+          'id'     => $manufacturer['manufacturer_id'],
+          'name'  => $manufacturer['name'],
+          'href'   => $this->url->link('product/category', $href . $url . '&manufacturer='.$manufacturer['manufacturer_id'])
+        );
+       }
+      
+      
+      
+      
+      
+      
       
       
 			$this->data['limits'] = array();
@@ -288,17 +443,26 @@ class ControllerProductCategory extends Controller {
       			
 			$url = '';
 	
-			if (isset($this->request->get['sort'])) {
-				$url .= '&sort=' . $this->request->get['sort'];
-			}	
 
-			if (isset($this->request->get['order'])) {
-				$url .= '&order=' . $this->request->get['order'];
-			}
-	
-			if (isset($this->request->get['limit'])) {
-				$url .= '&limit=' . $this->request->get['limit'];
-			}
+
+			  if (isset($this->request->get['material'])) {
+        $url .= '&material=' . $this->request->get['material'];
+      }
+      if (isset($this->request->get['size'])) {
+        $url .= '&size=' . $this->request->get['size'];
+      }
+      if (isset($this->request->get['manufacturer'])) {
+        $url .= '&manufacturer=' . $this->request->get['manufacturer'];
+      }
+      if (isset($this->request->get['price'])) {
+        $url .= '&price=' . $this->request->get['price'];
+      }
+      if (isset($this->request->get['order'])) {
+        $url .= '&order=' . $this->request->get['order'];
+      } 
+      if (isset($this->request->get['limit'])) {
+        $url .= '&limit=' . $this->request->get['limit'];
+      }
 					
 			$pagination = new Pagination();
 			$pagination->total = $product_total;
@@ -314,7 +478,6 @@ class ControllerProductCategory extends Controller {
 		
 			$this->data['pagination'] = $pagination->render();
 		
-			$this->data['sort'] = $sort;
 			$this->data['order'] = $order;
 			$this->data['limit'] = $limit;
 		
@@ -343,20 +506,26 @@ class ControllerProductCategory extends Controller {
 				$url .= '&path=' . $this->request->get['path'];
 			}
 									
-			if (isset($this->request->get['sort'])) {
-				$url .= '&sort=' . $this->request->get['sort'];
-			}	
-
-			if (isset($this->request->get['order'])) {
-				$url .= '&order=' . $this->request->get['order'];
-			}
-				
+			if (isset($this->request->get['material'])) {
+        $url .= '&material=' . $this->request->get['material'];
+      }
+      if (isset($this->request->get['size'])) {
+        $url .= '&size=' . $this->request->get['size'];
+      }
+      if (isset($this->request->get['manufacturer'])) {
+        $url .= '&manufacturer=' . $this->request->get['manufacturer'];
+      }
+      if (isset($this->request->get['price'])) {
+        $url .= '&price=' . $this->request->get['price'];
+      }
+      if (isset($this->request->get['order'])) {
+        $url .= '&order=' . $this->request->get['order'];
+      } 
+      if (isset($this->request->get['limit'])) {
+        $url .= '&limit=' . $this->request->get['limit'];
+      }
 			if (isset($this->request->get['page'])) {
 				$url .= '&page=' . $this->request->get['page'];
-			}
-						
-			if (isset($this->request->get['limit'])) {
-				$url .= '&limit=' . $this->request->get['limit'];
 			}
 						
 			$this->data['breadcrumbs'][] = array(

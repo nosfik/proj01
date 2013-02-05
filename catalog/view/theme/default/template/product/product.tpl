@@ -222,16 +222,11 @@
         <?php } ?>
       </div>
       <?php } ?>
-      <div class="cart">
-        <div>
           <input type="hidden" name="quantity" size="2" value="<?php echo $minimum; ?>" />
           <input type="hidden" name="product_id" size="2" value="<?php echo $product_id; ?>" />
-          &nbsp;
-        </div>
         <?php if ($minimum > 1) { ?>
         <div class="minimum"><?php echo $text_minimum; ?></div>
         <?php } ?>
-      </div>
 		    <table class="attribute">
 		      <?php foreach ($attribute_groups as $attribute_group) { ?>
 		      <thead>

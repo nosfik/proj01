@@ -1774,7 +1774,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (65,'4456','','','','','','','',1,5,'data/frame4.jpg',8,1,'466.0000',0,0,'2013-02-01','0.00000000',1,'0.00000000','0.00000000','0.00000000',1,1,1,1,1,'2013-02-02 16:06:59','2013-02-02 16:46:54',6,0,1),(66,'цук ','','','','','','','',1,5,'data/frame.jpg',9,1,'0.0000',0,0,'2013-02-01','0.00000000',1,'0.00000000','0.00000000','0.00000000',1,1,1,1,1,'2013-02-02 16:11:40','2013-02-03 21:06:15',8,0,0),(67,'пыв','','','','','','','',1,5,'data/Corbis-42-29243612.jpg',9,1,'253.0000',0,0,'2013-02-01','0.00000000',1,'0.00000000','0.00000000','0.00000000',1,1,1,1,1,'2013-02-02 17:45:58','0000-00-00 00:00:00',4,0,0),(68,'йцуйц','','','','','','','',1,5,'data/big.jpg',0,1,'346.0000',0,0,'2013-02-01','0.00000000',1,'0.00000000','0.00000000','0.00000000',1,1,1,1,1,'2013-02-02 19:12:17','2013-02-04 14:48:41',124,0,0),(69,'hfg','','','','','','','',1,5,'data/Corbis-42-29965284.jpg',0,1,'0.0000',0,0,'2013-02-01','0.00000000',1,'0.00000000','0.00000000','0.00000000',1,1,1,1,1,'2013-02-02 19:12:58','2013-02-03 10:11:03',1,2,0),(70,'5767','','','','','','','',1,5,'data/frame.jpg',0,1,'0.0000',0,0,'2013-02-01','0.00000000',1,'0.00000000','0.00000000','0.00000000',1,1,1,1,1,'2013-02-02 19:13:47','0000-00-00 00:00:00',2,0,0);
+INSERT INTO `product` VALUES (65,'4456','','','','','','','',1,5,'data/frame4.jpg',8,1,'466.0000',0,0,'2013-02-01','0.00000000',1,'0.00000000','0.00000000','0.00000000',1,1,1,1,1,'2013-02-02 16:06:59','2013-02-02 16:46:54',7,0,1),(66,'цук ','','','','','','','',1,5,'data/frame.jpg',9,1,'0.0000',0,0,'2013-02-01','0.00000000',1,'0.00000000','0.00000000','0.00000000',1,1,1,1,1,'2013-02-02 16:11:40','2013-02-03 21:06:15',16,0,0),(67,'пыв','','','','','','','',1,5,'data/Corbis-42-29243612.jpg',9,1,'253.0000',0,0,'2013-02-01','0.00000000',1,'0.00000000','0.00000000','0.00000000',1,1,1,1,1,'2013-02-02 17:45:58','0000-00-00 00:00:00',8,0,0),(68,'йцуйц','','','','','','','',1,5,'data/big.jpg',0,1,'90.0000',0,0,'2013-02-01','0.00000000',1,'0.00000000','0.00000000','0.00000000',1,1,1,1,1,'2013-02-02 19:12:17','2013-02-05 23:17:29',125,4,1),(69,'hfg','','','','','','','',1,5,'data/Corbis-42-29965284.jpg',0,1,'0.0000',0,0,'2013-02-01','0.00000000',1,'0.00000000','0.00000000','0.00000000',1,1,1,1,1,'2013-02-02 19:12:58','2013-02-03 10:11:03',1,2,0),(70,'5767','','','','','','','',1,5,'data/frame.jpg',0,1,'0.0000',0,0,'2013-02-01','0.00000000',1,'0.00000000','0.00000000','0.00000000',1,1,1,1,1,'2013-02-02 19:13:47','0000-00-00 00:00:00',2,0,0);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1856,7 +1856,7 @@ CREATE TABLE `product_discount` (
   `date_end` date NOT NULL DEFAULT '0000-00-00',
   PRIMARY KEY (`product_discount_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=445 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=447 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1865,7 +1865,7 @@ CREATE TABLE `product_discount` (
 
 LOCK TABLES `product_discount` WRITE;
 /*!40000 ALTER TABLE `product_discount` DISABLE KEYS */;
-INSERT INTO `product_discount` VALUES (442,66,1,1,2,'321.0000','2013-02-01','2013-02-28'),(444,68,1,2,1,'120.0000','2013-02-01','2013-02-28');
+INSERT INTO `product_discount` VALUES (442,66,1,1,2,'321.0000','2013-02-01','2013-02-28'),(446,68,1,2,1,'120.0000','2013-02-01','2013-02-28');
 /*!40000 ALTER TABLE `product_discount` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1992,7 +1992,7 @@ CREATE TABLE `product_reward` (
   `customer_group_id` int(11) NOT NULL DEFAULT '0',
   `points` int(8) NOT NULL DEFAULT '0',
   PRIMARY KEY (`product_reward_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=572 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=574 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2001,7 +2001,7 @@ CREATE TABLE `product_reward` (
 
 LOCK TABLES `product_reward` WRITE;
 /*!40000 ALTER TABLE `product_reward` DISABLE KEYS */;
-INSERT INTO `product_reward` VALUES (559,69,1,0),(556,70,1,0),(551,65,1,0),(553,67,1,0),(569,66,1,0),(571,68,1,0);
+INSERT INTO `product_reward` VALUES (559,69,1,0),(556,70,1,0),(551,65,1,0),(553,67,1,0),(569,66,1,0),(573,68,1,0);
 /*!40000 ALTER TABLE `product_reward` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2345,7 +2345,7 @@ CREATE TABLE `size` (
   `height` double NOT NULL DEFAULT '0',
   `sort_order` int(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`size_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2821,4 +2821,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-02-04 23:04:16
+-- Dump completed on 2013-02-06  0:04:11

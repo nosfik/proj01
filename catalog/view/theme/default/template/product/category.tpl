@@ -10,7 +10,6 @@
   <div id="center">
   <div class="forFloat">
    
-  <h1><?php echo $heading_title; ?></h1>
   <?php if ($thumb || $description) { ?>
   <div class="category-info">
     <?php if ($thumb) { ?>
@@ -44,31 +43,54 @@
     <?php } ?>
   </div>
   <?php } ?>
-  <?php if ($products) { ?>
+
     <div id="sort">
   <div class="left">Сортировка товара:</div>
   <div class="right">
-    <select id="price-filter">
-      <option value="0">По цене</option>
+    <select onchange="location = this.value" id="price-filter">
+      <option value="<?php echo $price_def;?>">По цене</option>
       <?php foreach($prices as $price) {?>
-        <option value="<?php echo $price['id'];?>"><?php echo $price['from'];?> - <?php echo $price['to'];?></option>
+        <?php if($price['id'] == $price_selected) {?>
+          <option value="<?php echo $price['href'];?>" selected="selected"><?php echo $price['from'];?> - <?php echo $price['to'];?></option>
+        <?php } else { ?>
+           <option value="<?php echo $price['href'];?>"><?php echo $price['from'];?> - <?php echo $price['to'];?></option> 
+        <?php } ?>
       <?php } ?>
     </select>
-    <select>
-      <option>По производителю</option>
-      <option>По цене </option>
+    <select onchange="location = this.value" id="manufacturer-filter">
+      <option value="<?php echo $manufacturer_def;?>">По производителю</option>
+      <?php foreach($manufacturers as $manufacturer) {?>
+        <?php if($manufacturer['id'] == $manufacturer_selected) {?>
+          <option value="<?php echo $manufacturer['href'];?>" selected="selected"><?php echo $manufacturer['name'];?></option>
+        <?php } else { ?>
+           <option value="<?php echo $manufacturer['href'];?>"><?php echo $manufacturer['name'];?></option> 
+        <?php } ?>
+      <?php } ?>
     </select>
-    <select>
-      <option>По размеру</option>
-      <option>По цене </option>
+    <select onchange="location = this.value" id="size-filter">
+      <option value="<?php echo $size_def;?>">По размеру</option>
+      <?php foreach($sizes as $size) {?>
+        <?php if($size['id'] == $size_selected) {?>
+          <option value="<?php echo $size['href'];?>" selected="selected"><?php echo $size['width'];?> X <?php echo $size['height'];?></option>
+        <?php } else { ?>
+           <option value="<?php echo $size['href'];?>"><?php echo $size['width'];?> X <?php echo $size['height'];?></option> 
+        <?php } ?>
+      <?php } ?>
     </select>
-    <select>
-      <option>По материалу</option>
-      <option>По цене </option>
+    <select onchange="location = this.value" id="material-filter">
+      <option value="<?php echo $material_def;?>">По материалу</option>
+      <?php foreach($materials as $material) {?>
+        <?php if($material['id'] == $material_selected) {?>
+          <option value="<?php echo $material['href'];?>" selected="selected"><?php echo $material['name'];?></option>
+        <?php } else { ?>
+           <option value="<?php echo $material['href'];?>"><?php echo $material['name'];?></option> 
+        <?php } ?>
+      <?php } ?>
     </select>
   </div>
   <div class="clear"></div>
 </div>
+  <?php if ($products) { ?>
   <div class="product-compare"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div>
   <div class="product-list">
     <table><tr>
@@ -120,21 +142,9 @@
   <?php } ?>
   <?php if (!$categories && !$products) { ?>
   <div class="content"><?php echo $text_empty; ?></div>
-  <div class="buttons">
-    <div class="right"><a href="<?php echo $continue; ?>" class="button"><?php echo $button_continue; ?></a></div>
-  </div>
+
   <?php } ?>
   <?php echo $content_bottom; ?></div>
   </div></div>
-  <script type="text/javascript"><!--
-  var price = {};
-    <?php foreach ($prices as $price) { ?>
-    price[<?php echo $price['id'];?>] = '<?php echo $price['href'];?>';
-    <?php } ?>
-        
-   $('#price-filter').change(function() {
-     
-    window.location = $('<div />').html(price[$(this).attr('value')]).text();
-  });
-  //--></script> 
+
 <?php echo $footer; ?>

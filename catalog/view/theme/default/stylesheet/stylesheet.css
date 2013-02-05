@@ -1054,7 +1054,7 @@ a.button:hover, input.button:hover {
 	color: #4D4D4D;
 }*/
 .product-info .description span {
-	color: #38B0E3;
+	color: #000000;
 }
 .product-info .description a {
 	color: #4D4D4D;
@@ -1070,10 +1070,12 @@ a.button:hover, input.button:hover {
 	color: #333333;
 }
 .product-info .price-old {
-	color: #F00;
+	color: #000000;
 	text-decoration: line-through;
 }
 .product-info .price-new {
+	 color: #FFF5A1;
+	 font-weight: 700;
 }
 .product-info .price-tax {
 	font-size: 12px;

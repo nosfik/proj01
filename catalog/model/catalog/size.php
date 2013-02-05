@@ -31,7 +31,7 @@ class ModelCatalogSize extends Model {
       $size_data = $this->cache->get('size.' . (int)$this->config->get('config_store_id') . '.' . (int)$this->config->get('config_language_id'));
     
       if (!$size_data) {
-        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "size ORDER BY from");
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "size ORDER BY sort_order");
   
         $size_data = $query->rows;
       
