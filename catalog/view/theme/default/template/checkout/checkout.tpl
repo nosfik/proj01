@@ -1,11 +1,15 @@
-<?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
-<div id="content"><?php echo $content_top; ?>
-  <div class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
-    <?php } ?>
-  </div>
-  <h1><?php echo $heading_title; ?></h1>
+<?php echo $header; ?>
+<div id="shop_cont">
+<?php echo $content_top; ?>
+<div id="left_collumn">
+  <div id="top"></div>
+  <?php echo $column_left; ?>
+  <div id="bottom"/></div>
+
+</div>
+<div id="center">
+  <div class="forFloat">
+    <?php echo $content_bottom; ?>
   <div class="checkout">
     <div id="checkout">
       <div class="checkout-heading"><?php echo $text_checkout_option; ?></div>
@@ -41,7 +45,9 @@
       <div class="checkout-content"></div>
     </div>
   </div>
-  <?php echo $content_bottom; ?></div>
+  <?php echo $content_bottom; ?></div>  </div>
+</div>
+</div>
 <script type="text/javascript"><!--
 $('#checkout .checkout-content input[name=\'account\']').live('change', function() {
 	if ($(this).attr('value') == 'register') {

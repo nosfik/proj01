@@ -29,7 +29,7 @@
       <div class="header-wrapper">
         <h1><?php echo $heading_title; ?></h1>
         <div id="button-cart">
-          <a href="#">
+          <a>
             <img src="catalog/view/theme/default/image/blank.gif">
           </a>
         </div>

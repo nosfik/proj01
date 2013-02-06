@@ -1492,10 +1492,8 @@ a.button:hover, input.button:hover {
 	display: none;
 }
 .cart-total {
-	border-top: 1px solid #DDDDDD;
-	overflow: auto;
-	padding-top: 8px;
-	margin-bottom: 15px;
+	margin-right:32px;
+	float:right;
 }
 .cart-total table {
 	float: right;
