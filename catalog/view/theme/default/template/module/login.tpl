@@ -39,13 +39,13 @@
   
   <div class="box" id="login-module">
     <div class="title">Личный кабинет</div>
-    <div lass="log_cont">
+    <div class="log_cont">
       <div>Вы вошли как <a href="<?php echo $this -> url -> link('account/account', '', 'SSL'); ?>"><?php echo $this->customer->getFirstname();?></a></div>
        <ul>
           <li><a href="<?php echo $this -> url -> link('account/account', '', 'SSL'); ?>">Мои настройки</a></li>
-          <li><a href="<?php echo $this -> url -> link('account/account', '', 'SSL'); ?>">Адрес для доставки</a></li>
+          <li><a href="<?php echo $this -> url -> link('account/address', '', 'SSL'); ?>">Адрес для доставки</a></li>
           <li><a href="<?php echo $this -> url -> link('account/order', '', 'SSL'); ?>">История заказов</a></li>
-          <li><a href="<?php echo $this -> url -> link('account/account', '', 'SSL'); ?>">Мои скидки</a></li>
+          <li><a href="<?php echo $this -> url -> link('product/special', '', 'SSL'); ?>">Мои скидки</a></li>
         </ul>
     </div>
     <div class="bigButton upl" onMouseOver="$(this).addClass('hover');" onMouseOut="$(this).removeClass('hover');"><a class="left" href="#">Загрузить фото</a>

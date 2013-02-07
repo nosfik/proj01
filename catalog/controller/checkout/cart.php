@@ -402,10 +402,10 @@ class ControllerCheckoutCart extends Controller {
 
 			unset($this->session->data['success']);
 
-			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/error/not_found.tpl')) {
-				$this->template = $this->config->get('config_template') . '/template/error/not_found.tpl';
+			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/error/not_found_p.tpl')) {
+				$this->template = $this->config->get('config_template') . '/template/error/not_found_p.tpl';
 			} else {
-				$this->template = 'default/template/error/not_found.tpl';
+				$this->template = 'default/template/error/not_found_p.tpl';
 			}
 			
 			$this->children = array(
