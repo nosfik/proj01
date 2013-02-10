@@ -12,6 +12,7 @@ class Customer {
 	private $note;
 	private $transporter;
 	private $send_email;
+  private $uploadToken;
 	
   	public function __construct($registry) {
 		$this->config = $registry->get('config');
@@ -35,7 +36,7 @@ class Customer {
 				$this->note = $customer_query->row['note'];
 				$this->transporter = $customer_query->row['transporter'];
 				$this->send_email = $customer_query->row['send_email']; 
-				
+				$this->uploadToken = $this->customer_id. '.' . $customer_query->row['password'];
 							
       			$this->db->query("UPDATE " . DB_PREFIX . "customer SET cart = '" . $this->db->escape(isset($this->session->data['cart']) ? serialize($this->session->data['cart']) : '') . "', wishlist = '" . $this->db->escape(isset($this->session->data['wishlist']) ? serialize($this->session->data['wishlist']) : '') . "', ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
 			
@@ -49,6 +50,18 @@ class Customer {
 			}
   		}
 	}
+
+    public function getCustomerIdByToken($uploadToken) {
+      $pieces = explode(".", $uploadToken);
+      $id = $pieces[0];
+      $pass = $pieces[1];
+      $customer_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer where customer_id = '" .(int)$id. "' AND password = '".$this->db->escape($pass)."'");
+      if ($customer_query->num_rows) {
+        return $customer_query->row['customer_id'];
+      } else {
+        return 0;
+      }
+    }
 		
   	public function login($email, $password, $override = false) {
 		if ($override) {
@@ -98,6 +111,7 @@ class Customer {
 			$this->note = $customer_query->row['note'];
 			$this->transporter = $customer_query->row['transporter'];
 			$this->send_email = $customer_query->row['send_email']; 
+      $this->uploadToken = $this->customer_id. '.' . $customer_query->row['password'];
           	
 			$this->db->query("UPDATE " . DB_PREFIX . "customer SET ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
 			
@@ -121,7 +135,12 @@ class Customer {
 		$this->newsletter = '';
 		$this->customer_group_id = '';
 		$this->address_id = '';
+    $this->uploadToken = '';
   	}
+  
+    public function getSecretToken() {
+      return $this->uploadToken;
+    }
   
   	public function isLogged() {
     	return $this->customer_id;

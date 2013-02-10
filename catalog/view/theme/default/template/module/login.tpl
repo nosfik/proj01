@@ -51,7 +51,7 @@
     <div class="bigButton upl" onMouseOver="$(this).addClass('hover');" onMouseOut="$(this).removeClass('hover');"><a class="left" href="#">Загрузить фото</a>
           <div class="right"></div>
         </div>
-        <div class="bigButton upl" onMouseOver="$(this).addClass('hover');" onMouseOut="$(this).removeClass('hover');"><a class="left" href="#">Мои альбомы</a>
+        <div class="bigButton upl" onMouseOver="$(this).addClass('hover');" onMouseOut="$(this).removeClass('hover');"><a class="left" href="<?php echo $this -> url -> link('album/upload', '', 'SSL'); ?>">Мои альбомы</a>
           <div class="right"></div>
         </div>
         <div class="clear"></div>

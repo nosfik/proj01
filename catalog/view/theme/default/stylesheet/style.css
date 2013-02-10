@@ -386,3 +386,23 @@ a:hover {color:#d33461}
 #full_cart #yellow .coll textarea {width:300px; height:140px; margin:2px 0 10px 0; padding:0}
 #green_cont2 {padding:30px 30px; background:#9ad891 url(../image/round_bg.gif); width:640px; position:relative; margin:-30px 0 0 0;}
 .product-info .header-wrapper{overflow: hidden;	padding-top: 9px;}
+
+#file_upload {
+	  margin: 0 auto;
+}
+.uploadify-button {
+       background: url("../image/btn_sprite_upload.png") no-repeat scroll 0 0 transparent !important;
+       font-family: 'Open Sans Condensed',sans-serif;
+    	font-size: 20px;
+    	color: #0587DA; 
+        border: none;
+        padding-left: 13px;
+        font-family: 'Open Sans Condensed',sans-serif;
+	    text-decoration: none;
+	    text-shadow: 1px 1px 0 #FFFFFF;
+	    transition: none 0s ease 0s;
+    }
+    .uploadify:hover .uploadify-button {
+        background: url("../image/btn_sprite_upload.png") no-repeat scroll 0 -56px transparent !important;
+    }
+
