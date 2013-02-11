@@ -29,7 +29,10 @@
           Если ваши фото расположенны в разных папках, дождитесь загрузки предыдущих файлов, и нажмите кнопку "Добавить". Фотографии будут загружены в текущий альбом.
   </div>
 </div>
-
+<div style="margin-left:440px" class="bigButton" onmouseover="$(this).addClass('hover');" onmouseout="$(this).removeClass('hover');">
+  <a class="left" href="#">Начать загрузку</a>
+  <div class="right"></div>
+</div>
 <?php echo $content_bottom; ?></div>
 <script type="text/javascript">
 $(function() {

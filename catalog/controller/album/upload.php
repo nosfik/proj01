@@ -59,9 +59,7 @@ class ControllerAlbumUpload extends Controller {
 			}
 			
 			$this->data['content_type'] = $content_type;
-			
-			header('Content-type: text/html');
-			
+			header('Content-type: '.$content_type);
 			echo ($image['photo']);
     }
   }
@@ -104,18 +102,14 @@ class ControllerAlbumUpload extends Controller {
       $fileTypes = array('jpg','jpeg','gif','png'); // File extensions
       $fileParts = pathinfo($_FILES['Filedata']['name']);
       $this->load->model('album/upload');
-      if (in_array($fileParts['extension'],$fileTypes)) {
+      if (in_array(strtolower($fileParts['extension']), $fileTypes)) {
         $tempFileSize = filesize($tempFile);
-        
-        $fp      = fopen($tempFile, 'r');
-        $content = fread($fp, $tempFileSize);
-        $content = addslashes($content);
-        fclose($fp);
+        $image = file_get_contents($tempFile); 
         $data = array(
           'customer_id' => $customer_id,
           'name' => $_FILES['Filedata']['name'],
           'size' => $tempFileSize,
-          'photo' => $content
+          'photo' => addslashes($image)
         );
         $this->model_album_upload->saveFile($data);
         unlink($tempFile);
@@ -126,6 +120,41 @@ class ControllerAlbumUpload extends Controller {
      $this->response->setOutput($msg); 
     } 
     $this->response->setOutput('hello');
+  }
+
+  public function delete() {
+    header('Content-type: application/json');
+    $return['success'] = 'false'; 
+    if ($this->customer->isLogged() && isset($this->request->post['id'])) {
+       $this->load->model('album/upload');
+       $this->model_album_upload->deleteFile($this->customer->getId(), $_POST['id']);
+       $return['success'] = 'true'; 
+    } 
+    echo json_encode($return);
+  }
+  
+  public function createAlbum() {
+    header('Content-type: application/json');
+    $return['success'] = 'false'; 
+    if ($this->customer->isLogged() && isset($this->request->post['album_id']) && isset($this->request->post['album_name'])) {
+       $this->load->model('album/upload');
+       $files = $this->model_album_upload->getFiles($this->customer->getId());
+       $album_id = (int)$this->request->post['album_id'];
+       
+       if($album_id == 0) { //CREATE ALBUM
+          $newDir = DIR_PHOTOS.'album_new';
+         file_put_contents($newDir.'/haha.txt', print_r($files, true));
+          foreach ($files as $file) {
+            // file_put_contents($newDir.'/haha.txt', $newDir.'/'.$file['name']);
+              file_put_contents($newDir.'/'.$file['name'], $file['photo']);
+          }
+          $return['success'] = 'true'; 
+       } else { // UPLOAD IN EXIST ALBUM
+         
+       }
+       
+    }
+     echo json_encode($return);
   }
   
 

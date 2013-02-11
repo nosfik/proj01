@@ -195,7 +195,7 @@ a:hover {color:#d33461}
 .order_album .blick {top:28px!important; left:39px!important;}
 .order_album.selected .blick {top:25px!important; left:36px!important;}
 
-.albumCont {width:147px; height:250px; position:relative; float: left; margin:0 73px 20px 0}
+.albumCont {width:147px; height:250px; position:relative;  margin:0 73px 20px 0}
 .albumCont .album {width:147px; height:105px; background:url(../image/sprite.png) -129px -893px;}
 .albumCont .picCont {width:136px; height:99px; margin:-105px 0 0 11px; border-radius: 0 3px 3px 0; overflow:hidden; text-align:center;}
 .albumCont .picCont img {max-width:150px; max-height:110px; min-height:99px}

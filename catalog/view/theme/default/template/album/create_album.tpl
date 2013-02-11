@@ -1,6 +1,5 @@
 <?php echo $header; ?>
 <div id="content">
-<?php print_r($images); ?>
 <?php echo $content_top; ?>
 <div id="yellow_cont">
   <div class="crumbs">
@@ -22,7 +21,7 @@
       <tr>
         <td class="pic">
           <div class="picCont">
-            <img src="<?php echo $this->url->link('album/upload/image', 'image ='.$image['id'], 'SSL');?>">
+            <img src="<?php echo $this->url->link('album/upload/image', 'image='.$image['id'], 'SSL');?>">
           </div>
           <div class="frame"></div>
         </td>
@@ -56,7 +55,7 @@
   Загружаем выбранные фото в новый альбом
         
   <div id="album">
-    <input type="text" value="Название альбома" onfocus="if (this.value=='Название альбома') this.value='';" onblur="if (this.value=='') this.value='Название альбома';" onkeypress="return pressed();">
+    <input id="newAlbumName" type="text" value="Название альбома" onfocus="if (this.value=='Название альбома') this.value='';" onblur="if (this.value=='') this.value='Название альбома';" onkeypress="return pressed();">
   </div>
   
         или в уже существующий альбом
@@ -78,9 +77,56 @@
   </div>
 </div>
 
+<div style="margin-left:440px" class="bigButton" onmouseover="$(this).addClass('hover');" onmouseout="$(this).removeClass('hover');">
+  <a class="left" onclick="uploadAlbum()">Начать загрузку</a>
+  <div class="right"></div>
+</div>
 
-
-
+<script type="text/javascript">
+  
+  function deleteImage(id) {
+    $.ajax({
+        type: "post",
+        url: "<?php echo $this->url->link('album/upload/delete', '', 'SSL');?>",
+        data: 'id=' + id,
+        dataType: "json",
+        success: function(response) {
+            if (!response.success) {
+                alert("Проблемы на стороне сервера.");
+            } else {
+              window.location.reload();
+            }
+        },
+        error: function(rs, e, a) {
+          console.log(rs + "||" + e + "||" + a);
+            alert(rs.responseText);
+        }
+    });
+  }
+  
+  
+  function uploadAlbum() {
+    $.ajax({
+        type: "post",
+        url: "<?php echo $this->url->link('album/upload/createAlbum', '', 'SSL');?>",
+        data: 'album_name=' + $('#newAlbumName').val() + '&album_id=0',
+        dataType: "json",
+        success: function(response) {
+            if (!response.success) {
+                alert("Проблемы на стороне сервера.");
+            } else {
+              console.log('hello');
+              //window.location.reload();
+            }
+        },
+        error: function(rs, e, a) {
+          console.log(rs + "||" + e + "||" + a);
+            alert(rs.responseText);
+        }
+    });
+  }
+  
+</script>
 
 
 <?php echo $content_bottom; ?></div>

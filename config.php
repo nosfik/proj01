@@ -19,6 +19,7 @@ define('DIR_IMAGE', 'Z:\home\pechatnik\www/image/');
 define('DIR_CACHE', 'Z:\home\pechatnik\www/system/cache/');
 define('DIR_DOWNLOAD', 'Z:\home\pechatnik\www/download/');
 define('DIR_LOGS', 'Z:\home\pechatnik\www/system/logs/');
+define('DIR_PHOTOS', 'Z:\home\pechatnik\www/albums/');
 
 // DB
 define('DB_DRIVER', 'mysql');
