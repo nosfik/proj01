@@ -18,10 +18,11 @@
   </div>
   <table border="0" cellspacing="0" cellpadding="5" id="order_step2_table">
     <tbody>
+    	<?php foreach($images as $image) { ?>
       <tr>
         <td class="pic">
           <div class="picCont">
-            <img src="catalog/view/theme/default/image/pic_for_test/42-20065116.jpg">
+            <img src="<?php echo $this->url->link('album/upload/image', 'image ='.$image['id'], 'SSL');?>">
           </div>
           <div class="frame"></div>
         </td>
@@ -29,139 +30,20 @@
           <table border="0" cellspacing="0" cellpadding="0" class="text">
             <tbody>
               <tr>
-                <td>Изображение_1.jpg</td>
+                <td><?php echo $image['name'];?></td>
                 <td width="20"> </td>
-                <td>3276 Kb</td>
+                <td><?php echo $image['size'];?> Kb</td>
               </tr>
             </tbody>
           </table>
         </td>
         <td class="del">
-          <a href="#">
+          <a onclick="deleteImage(<?php echo $image['id'];?>)">
             <img src="catalog/view/theme/default/image/blank.gif">
           </a>
         </td>
       </tr>
-      <tr>
-        <td class="pic">
-          <div class="picCont">
-            <img src="catalog/view/theme/default/image/pic_for_test/42-24321621.jpg">
-          </div>
-          <div class="frame"></div>
-        </td>
-        <td>
-          <table border="0" cellspacing="0" cellpadding="0" class="text">
-            <tbody>
-              <tr>
-                <td>Изображение_1.jpg</td>
-                <td width="20"> </td>
-                <td>3276 Kb</td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-        <td class="del">
-          <a href="#">
-            <img src="catalog/view/theme/default/image/blank.gif">
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td class="pic">
-          <div class="picCont">
-            <img src="catalog/view/theme/default/image/pic_for_test/Corbis-42-29243612.jpg">
-          </div>
-          <div class="frame"></div>
-        </td>
-        <td>
-          <table border="0" cellspacing="0" cellpadding="0" class="text">
-            <tbody>
-              <tr>
-                <td>Изображение_1.jpg</td>
-                <td width="20"> </td>
-                <td>3276 Kb</td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-        <td class="del">
-          <a href="#">
-            <img src="catalog/view/theme/default/image/blank.gif">
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td class="pic">
-          <div class="picCont">
-            <img src="catalog/view/theme/default/image/pic_for_test/Corbis-42-29965284.jpg">
-          </div>
-          <div class="frame"></div>
-        </td>
-        <td>
-          <table border="0" cellspacing="0" cellpadding="0" class="text">
-            <tbody>
-              <tr>
-                <td>Изображение_1.jpg</td>
-                <td width="20"> </td>
-                <td>3276 Kb</td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-        <td class="del">
-          <a href="#">
-            <img src="catalog/view/theme/default/image/blank.gif">
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td class="pic">
-          <div class="picCont">
-            <img src="catalog/view/theme/default/image/pic_for_test/Corbis-42-30541751.jpg">
-          </div>
-          <div class="frame"></div>
-        </td>
-        <td>
-          <table border="0" cellspacing="0" cellpadding="0" class="text">
-            <tbody>
-              <tr>
-                <td>Изображение_1.jpg</td>
-                <td width="20"> </td>
-                <td>3276 Kb</td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-        <td class="del">
-          <a href="#">
-            <img src="catalog/view/theme/default/image/blank.gif">
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td class="pic">
-          <div class="picCont">
-            <img src="catalog/view/theme/default/image/pic_for_test/pic1.jpg">
-          </div>
-          <div class="frame"></div>
-        </td>
-        <td>
-          <table border="0" cellspacing="0" cellpadding="0" class="text">
-            <tbody>
-              <tr>
-                <td>Изображение_1.jpg</td>
-                <td width="20"> </td>
-                <td>3276 Kb</td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-        <td class="del">
-          <a href="#">
-            <img src="catalog/view/theme/default/image/blank.gif">
-          </a>
-        </td>
-      </tr>
+      <?php } ?>
     </tbody>
   </table>
   <div class="bigButton" onmouseover="$(this).addClass('hover');" onmouseout="$(this).removeClass('hover');">

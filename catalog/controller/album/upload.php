@@ -42,28 +42,27 @@ class ControllerAlbumUpload extends Controller {
   
    public function image() {
     if ($this->customer->isLogged() && isset($this->request->get['image'])) {
-      
-      if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/album/image.tpl')) {
-        $this->template = $this->config->get('config_template') . '/template/album/image.tpl';
-      } else {
-        $this->template = 'default/template/album/image.tpl';
-      }
-      
-      $this->load->model('album/upload');
+    	
+			$this->load->model('album/upload');
       $image = $this->model_album_upload->getFile($this->customer->getId(), $this->request->get['image']);
       
       $name = $image['name'];
-      $photo = $image['photo'];
-      
-      $this->children = array(
-        'common/column_right',
-        'common/content_top',
-        'common/content_bottom',
-        'common/footer',
-        'common/header'
-      );
-      
-      $this->response->setOutput($this->render());
+			$tmp = explode('.', $name);
+			$ext = strtolower($tmp[sizeof($tmp) - 1]);
+			
+			switch ($ext) {
+				case 'png' : $content_type = 'image/png'; break;
+				case 'gif' : $content_type = 'image/gif'; break;
+				case 'jpg' : 
+				case 'jpeg' :  
+				default: $content_type = 'image/jpeg'; break;
+			}
+			
+			$this->data['content_type'] = $content_type;
+			
+			header('Content-type: text/html');
+			
+			echo ($image['photo']);
     }
   }
 
