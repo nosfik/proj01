@@ -51,32 +51,49 @@
   </div>
 </div>
 <div class="clear"></div>
-<div id="order_step2_new_album_cont">
+
+
+
+<div id="order_step2_new_album_cont" style="padding: 25px 15px 0;" class="albumCont order_album" onmouseover="$(this).addClass('hover');" onmouseout="$(this).removeClass('hover');" onclick="$('.albumCont').removeClass('selected'); $(this).addClass('selected');">
+ <input type="hidden" name="album" value="0"/>
   Загружаем выбранные фото в новый альбом
-        
-  <div id="album">
-    <input id="newAlbumName" type="text" value="Название альбома" onfocus="if (this.value=='Название альбома') this.value='';" onblur="if (this.value=='') this.value='Название альбома';" onkeypress="return pressed();">
-  </div>
-  
-        или в уже существующий альбом
-</div>
-<div class="albumCont order_album" onmouseover="$(this).addClass('hover');" onmouseout="$(this).removeClass('hover');" onclick="$('.albumCont').removeClass('selected'); $(this).addClass('selected');">
-  <div class="album"></div>
-  <div class="picCont">
-    <img src="catalog/view/theme/default/image/pic_for_test/Corbis-42-29243612.jpg">
+  <div id="album" >
+    <input id="newAlbumName" name="albumName" type="text" value="Название альбома" onfocus="if (this.value=='Название альбома') this.value='';" onblur="if (this.value=='') this.value='Название альбома';">
   </div>
   <div class="text">
-    <a>Наша семья</a>
-    <span>Описание альбома созданное пользователем</span>
-    Дата создания: 
-    <b>17.12.2012</b>
-    <br>
-    
-          Кол-во фотографий: 
-    <b>6</b>
+или в уже существующий альбом
   </div>
 </div>
 
+
+<table>
+<tr>
+<?php for ($i = 0; $i < sizeof($albums); $i++) { 
+    $album =  $albums[$i];
+    if($i >= 4  && $i % 4 == 0) { ?>
+       </tr><tr>  
+     <?php } ?>
+     <td>
+<div class="albumCont order_album" onmouseover="$(this).addClass('hover');" onmouseout="$(this).removeClass('hover');" onclick="$('.albumCont').removeClass('selected'); $(this).addClass('selected');">
+   <input type="hidden" name="album" value="<?php echo $album['id'];?>"/>
+  <div class="album"></div>
+  <div class="picCont">
+    <img src="albums/album_cus_<?php echo $customer_id;?>/cover/<?php echo $album['photo'];?>">
+  </div>
+  <div class="text">
+    <a><?php echo $album['name'];?></a>
+    <span><?php echo $album['description'];?></span>
+    Дата создания: 
+    <b><?php echo $album['date'];?></b>
+    <br>
+          Кол-во фотографий: 
+    <b><?php echo $album['size'];?></b>
+  </div>
+</div>
+</td>
+<?php } ?>
+</tr>
+</table>
 <div style="margin-left:440px" class="bigButton" onmouseover="$(this).addClass('hover');" onmouseout="$(this).removeClass('hover');">
   <a class="left" onclick="uploadAlbum()">Начать загрузку</a>
   <div class="right"></div>
@@ -106,17 +123,23 @@
   
   
   function uploadAlbum() {
+    var album_id = $('.selected input[name="album"]').val();
+    var album_name = '';
+    if(album_id == 0){
+      album_name = $('#order_step2_new_album_cont input[name="albumName"]').val();
+    }
+     
     $.ajax({
         type: "post",
         url: "<?php echo $this->url->link('album/upload/createAlbum', '', 'SSL');?>",
-        data: 'album_name=' + $('#newAlbumName').val() + '&album_id=0',
+        data: 'album_name=' + album_name + '&album_id=' + album_id,
         dataType: "json",
         success: function(response) {
             if (!response.success) {
                 alert("Проблемы на стороне сервера.");
             } else {
               console.log('hello');
-              //window.location.reload();
+              window.location = '<?php echo $this -> url -> link('album/album', '', 'SSL'); ?>';
             }
         },
         error: function(rs, e, a) {

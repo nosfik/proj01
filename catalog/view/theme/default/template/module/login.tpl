@@ -48,10 +48,10 @@
           <li><a href="<?php echo $this -> url -> link('product/special', '', 'SSL'); ?>">Мои скидки</a></li>
         </ul>
     </div>
-    <div class="bigButton upl" onMouseOver="$(this).addClass('hover');" onMouseOut="$(this).removeClass('hover');"><a class="left" href="#">Загрузить фото</a>
+    <div class="bigButton upl" onMouseOver="$(this).addClass('hover');" onMouseOut="$(this).removeClass('hover');"><a class="left" href="<?php echo $this -> url -> link('album/upload', '', 'SSL'); ?>">Загрузить фото</a>
           <div class="right"></div>
         </div>
-        <div class="bigButton upl" onMouseOver="$(this).addClass('hover');" onMouseOut="$(this).removeClass('hover');"><a class="left" href="<?php echo $this -> url -> link('album/upload', '', 'SSL'); ?>">Мои альбомы</a>
+        <div class="bigButton upl" onMouseOver="$(this).addClass('hover');" onMouseOut="$(this).removeClass('hover');"><a class="left" href="<?php echo $this -> url -> link('album/album', '', 'SSL'); ?>">Мои альбомы</a>
           <div class="right"></div>
         </div>
         <div class="clear"></div>

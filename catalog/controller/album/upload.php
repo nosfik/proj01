@@ -9,7 +9,15 @@ class ControllerAlbumUpload extends Controller {
       
       
       $this->load->model('album/upload');
+      $this->load->model('album/album');
+      $this->data['customer_id'] = $this->customer->getId();
+      
+      
       $images = $this->model_album_upload->getFilesId($this->customer->getId());
+      
+      if(sizeof($images) == 0) {
+        $this->redirect($this->url->link('album/upload', '', 'SSL')); 
+      }
       
       $this->data['images'] = array();
       
@@ -20,6 +28,21 @@ class ControllerAlbumUpload extends Controller {
           'size'  => (int)( $image['size'] / 1024 )
           );
       }
+      
+      $albums = $this->model_album_album->getAlbums($this->customer->getId());
+      $this->data['albums'] = array();
+      
+      foreach($albums as $album) {
+        $this->data['albums'][] = array (
+          'id'            => $album['album_id'],
+          'name'          => $album['name'],
+          'description'   => $album['description'],
+          'photo'         => $album['photo'],
+          'date'          => $album['date'],
+          'size'          => $album['size'] 
+         );
+      }
+      
       
       if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/album/create_album.tpl')) {
         $this->template = $this->config->get('config_template') . '/template/album/create_album.tpl';
@@ -161,11 +184,18 @@ class ControllerAlbumUpload extends Controller {
        } else { // UPLOAD IN EXIST ALBUM
        	 $AlbumDir = $customer_dir.'/'.'album_'.$album_id;
 				 if(!is_dir($AlbumDir)){
+				   $return['error'] = 'Такого альбома не Существует';
 				 	 echo json_encode($return);
 					 return; 
 				 }
+         
+         foreach ($files as $file) {
+              file_put_contents($AlbumDir.'/'.$file['name'], $file['photo']);
+              $this->model_album_album->putPhotoInAlbum($album_id, $file['name']);
+              $this->model_album_upload->deleteFile($custId, $file['customer_temp_photo_id']);
+         }
+         $return['success'] = 'true'; 
        }
-       
     }
      echo json_encode($return);
   }

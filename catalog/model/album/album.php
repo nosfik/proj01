@@ -14,6 +14,20 @@ class ModelAlbumAlbum extends Model {
       ('".$albumId."',NOW(), '".$this->db->escape($fileName)."')";
     $query = $this->db->query($sql);
 	}
+  
+  public function getSizeAlbum($albumId, $customer_id) {
+    $sql = "SELECT COUNT(*) as size FROM " . DB_PREFIX . "`album` as a JOIN album_photo as ap ON a.album_id = ap.album_id 
+    WHERE album_id =".(int)$albumId." AND customer_id=".(int)$customer_id;
+    $query = $this->db->query($sql);
+    return $query->row['size'];
+  }
+  
+  public function getAlbums($customer_id) {
+    $sql = "SELECT a.`album_id`, a.`name`, a.`description`, a.`photo`, DATE(a.creation_date) as `date`, COUNT(ap.album_photo_id) as size 
+            FROM " . DB_PREFIX . "`album` as a LEFT JOIN album_photo as ap ON a.album_id = ap.album_id WHERE a.customer_id =".$customer_id." GROUP BY a.`album_id`";
+    $query = $this->db->query($sql);
+    return $query->rows;
+  }
 	
 	
 }
