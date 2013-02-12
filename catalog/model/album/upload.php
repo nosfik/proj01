@@ -14,7 +14,7 @@ class ModelAlbumUpload extends Model {
   }
   
   public function getFiles($customer_id) {
-     $sql = "SELECT photo, name FROM " . DB_PREFIX . "`customer_temp_photo` WHERE customer_id = ".(int)$customer_id;
+     $sql = "SELECT photo, name, customer_temp_photo_id FROM " . DB_PREFIX . "`customer_temp_photo` WHERE customer_id = ".(int)$customer_id;
      $query = $this->db->query($sql);
      return $query->rows;
   }

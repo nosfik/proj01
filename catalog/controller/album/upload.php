@@ -137,20 +137,33 @@ class ControllerAlbumUpload extends Controller {
     header('Content-type: application/json');
     $return['success'] = 'false'; 
     if ($this->customer->isLogged() && isset($this->request->post['album_id']) && isset($this->request->post['album_name'])) {
+    	 $custId = $this->customer->getId();
        $this->load->model('album/upload');
-       $files = $this->model_album_upload->getFiles($this->customer->getId());
+       $files = $this->model_album_upload->getFiles($custId);
        $album_id = (int)$this->request->post['album_id'];
        
+			 $this->load->model('album/album');
+			 $customer_dir =  DIR_PHOTOS.'album_cus_'.$custId;
        if($album_id == 0) { //CREATE ALBUM
-          $newDir = DIR_PHOTOS.'album_new';
-         file_put_contents($newDir.'/haha.txt', print_r($files, true));
+       		
+					if(!is_dir($customer_dir)) {
+						mkdir($customer_dir);
+					}
+       		$newAlbumId = $this->model_album_album->createCleanAlbum($this->request->post['album_name'], $custId);
+          $newDir = $customer_dir.'/'.'album_'.$newAlbumId;
+					mkdir($newDir);
           foreach ($files as $file) {
-            // file_put_contents($newDir.'/haha.txt', $newDir.'/'.$file['name']);
               file_put_contents($newDir.'/'.$file['name'], $file['photo']);
+							$this->model_album_album->putPhotoInAlbum($newAlbumId, $file['name']);
+							$this->model_album_upload->deleteFile($custId, $file['customer_temp_photo_id']);
           }
           $return['success'] = 'true'; 
        } else { // UPLOAD IN EXIST ALBUM
-         
+       	 $AlbumDir = $customer_dir.'/'.'album_'.$album_id;
+				 if(!is_dir($AlbumDir)){
+				 	 echo json_encode($return);
+					 return; 
+				 }
        }
        
     }
