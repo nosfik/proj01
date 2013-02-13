@@ -1,14 +1,70 @@
 <?php  
 class ControllerAlbumAlbum extends Controller {
   
+  
+  
+  public function edit() {
+    
+     
+     if ($this->customer->isLogged()) {
+        $this->load->model('album/album');
+       $upload_file = $this->request->files["cover"]["error"]  == UPLOAD_ERR_OK;
+       
+      $data = array(
+        'name'        => $this->request->post['name'],
+        'description' => $this->request->post['description'],
+        'photo'       => ($upload_file) ? $this->request->files["cover"]["name"] : '',
+        'album_id'    => $this->request->post['album_id'],
+        'customer_id' => $this->customer->getId()
+      );
+      
+      
+      $oldCover = $this->model_album_album->editAlbum($data);
+      
+      
+      if ($upload_file) {
+          $tmp_name = $this->request->files["cover"]["tmp_name"];
+          $name = $this->request->files["cover"]["name"];
+          move_uploaded_file($tmp_name, DIR_PHOTOS.'album_cus_'.$this->customer->getId().'/cover/'.$name);
+          if($oldCover != '' && is_file(DIR_PHOTOS.'album_cus_'.$this->customer->getId().'/cover/'.$oldCover)) {
+            @unlink(DIR_PHOTOS.'album_cus_'.$this->customer->getId().'/cover/'.$oldCover);
+          }
+      }
+      
+      $this->redirect($this->url->link('album/album', '', 'SSL')); 
+     }
+     
+  }
+  
   public function delete() {
     if ($this->customer->isLogged()) {
-      
+      header('Content-type: application/json');
+      $return['success'] = 'false'; 
       $this->load->model('album/album');
-      $this->model_album_album->deleteAlbum($this->request->post['album_id'], $this->customer->getId());
+      $album_id = (int)$this->request->post['album_id'];
+      $cover = $this->model_album_album->deleteAlbum($album_id, $this->customer->getId());
+      $customer_dir =  DIR_PHOTOS.'album_cus_'.$this->customer->getId();
       
+      $text = "cover = ".$cover. "\n". "dir = ".$customer_dir."/cover"." isdir = ".is_dir($customer_dir.'/cover')
+      . "  file = ".$customer_dir.'/cover'.$cover. " is_file = ". is_file($customer_dir.'/cover'.$cover);
+      if($cover != '' && is_dir($customer_dir.'/cover') && is_file($customer_dir.'/cover/'.$cover)) {
+         @unlink($customer_dir.'/cover/'.$cover);
+      }
+      $albumDir = DIR_PHOTOS.'album_cus_'.$this->customer->getId().'/album_'.$album_id;
+      if (is_dir($albumDir)) {
+        $files = glob($albumDir."/*");
+        if ($files) {
+          foreach($files as $file) {
+            @unlink($file);
+          }
+        }
+         @rmdir($albumDir);
+         $return['success'] = 'true'; 
+      }
+      echo json_encode($return);
     }
   }
+
     
   public function index() {
     

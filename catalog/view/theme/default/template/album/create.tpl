@@ -3,6 +3,56 @@
 
 <?php echo $content_top; ?>
 <div id="yellow_cont">
+  <div id="help_cont">
+    <div id="help">
+      <h3>Подсказка</h3>
+      
+            Нажмите на изображение, что-бы добавить фото в заказ.
+            
+      <div class="clear"></div>
+      <div id="edit">
+        <img src="i/flag.png">
+      </div>
+      <div class="text">— редактировать</div>
+      <div id="del">
+        <img src="i/flag.png">
+      </div>
+      <div class="text">— удалить</div>
+      <div class="clear"></div>
+    </div>
+    <div id="corner"></div>
+  </div>
+  <div class="crumbs">
+    <div class="left"></div>
+    <div class="dark">
+      <a href="#">Личный кабинет</a>
+    </div>
+    <div class="darkEnd"></div>
+    <div class="light">Создание нового альбома копия</div>
+    <div class="lightEnd"></div>
+  </div>
+  
+  <form method="post" action="<?php echo $this -> url -> link('album/create/create', '', 'SSL'); ?>" enctype="multipart/form-data">
+  <table border="0" cellspacing="0" cellpadding="0" id="order_tab">
+    <tbody>
+      <tr>
+        <td> Название альбома    <br> <input class="field" type="text" name="name"/>   </td>
+        <td width="30"></td>
+        <td> Комментарий к альбому  <br> <input class="field" type="text" name="description"/> </td>
+        <td width="30"></td>
+        <td> Обложка альбома  <br> <input class="field" type="file" name="photo"/>  </td>
+      </tr>
+    </tbody>
+    <input type="submit" name="submit" id="create_submit" style="display:none"/>
+    </form>
+  </table>
+  
+  <div class="bigButton orderButton" onmouseover="$(this).addClass('hover');" onmouseout="$(this).removeClass('hover');">
+    <a class="left" onclick="$('#create_submit').click()">Создать альбом</a>
+    <div class="right"></div>
+  </div>
+</div>
+<div id="white_cont">
   <div id="dell_album_window" style="display:none">
       <input type="hidden" name="album" value=""/>  
       <div id="close">
@@ -58,34 +108,11 @@
   </div>
   
 
-  <div id="help_cont">
-    <div id="help">
-      <h3>Подсказка</h3>
-      
-            Нажмите на изображение, что-бы добавить фото в заказ.
-            
-      <div class="clear"></div>
-      <div id="edit">
-        <img src="catalog/view/theme/default/image/flag.png">
-      </div>
-      <div class="text">— редактировать</div>
-      <div id="del">
-        <img src="catalog/view/theme/default/image/flag.png">
-      </div>
-      <div class="text">— удалить</div>
-      <div class="clear"></div>
-    </div>
-    <div id="corner"></div>
-  </div>
   <div class="crumbs">
-    <div class="left"></div>
-    <div class="dark">
-      <a href="#">Личный кабинет</a>
-    </div>
-    <div class="darkEnd"></div>
-    <div class="light">Мои фотоальбомы</div>
-    <div class="lightEnd"></div>
-  </div>
+  <div class="left"></div>
+  <div class="dark">Ваши фотоальбомы</div>
+  <div class="darkEnd"></div>
+</div>
   <div id="for_albums">
     
     <table>

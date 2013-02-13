@@ -245,6 +245,16 @@ a:hover {color:#d33461}
 #dell_album_window #close {width:28px; height:28px; background:url(../image/sprite.png) -471px -998px; position:absolute; right:-14px; top:-14px}
 #dell_album_window #close a img {width:28px; height:28px; border:none; opacity:0; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);-webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease; background:url(../image/sprite.png) -471px -1047px}
 #dell_album_window #close a:hover img {opacity:1; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=100);}
+
+#edit_album_window {width:490px; background:#fff; position:absolute; left:230px; top:45px; z-index:9999;-webkit-box-shadow: 0px 5px 20px 0px #555;box-shadow: 0px 5px 20px 0px #555; text-align:center}
+#edit_album_window #corr {width:113px; height:83px; background:url(../image/sprite.png) -314px -998px; position:absolute; margin:-58px 0 0 -83px}
+#edit_album_window #mess {margin:30px 0; font-family: 'Open Sans Condensed', sans-serif; font-size:25px; color:#C00;}
+#edit_album_window #round_red {padding:20px 45px; background:#c63f97 url(../image/round_bg_red.gif)}
+#edit_album_window #close {width:28px; height:28px; background:url(../image/sprite.png) -471px -998px; position:absolute; right:-14px; top:-14px}
+#edit_album_window #close a img {width:28px; height:28px; border:none; opacity:0; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);-webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease; background:url(../image/sprite.png) -471px -1047px}
+#edit_album_window #close a:hover img {opacity:1; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=100);}
+
+
 #step3_field_cont {width:550px; margin:0 0 30px 200px}
 #step3_field_cont span {font-family: 'Cuprum', sans-serif; font-size:17px; color:#FFF; text-shadow:1px 1px 0px #063}
 #step3_field_cont .cont {width:110px; float:left; margin:10px 20px 0 0; position:relative}

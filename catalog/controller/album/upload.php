@@ -164,7 +164,6 @@ class ControllerAlbumUpload extends Controller {
        $this->load->model('album/upload');
        $files = $this->model_album_upload->getFiles($custId);
        $album_id = (int)$this->request->post['album_id'];
-       
 			 $this->load->model('album/album');
 			 $customer_dir =  DIR_PHOTOS.'album_cus_'.$custId;
        if($album_id == 0) { //CREATE ALBUM
