@@ -34,6 +34,12 @@ class ModelAlbumAlbum extends Model {
     $query = $this->db->query($sql);
     return $query->rows;
   }
+	
+	public function getAlbumName($albumId, $customer_id) {
+    $sql = "SELECT name FROM " . DB_PREFIX . "`album` WHERE album_id =".(int)$albumId." AND customer_id=".(int)$customer_id;
+    $query = $this->db->query($sql);
+    return $query->row['name'];
+  }
   
   public function deleteAlbum($album_id, $customer_id) {
       $sql = "SELECT photo FROM " . DB_PREFIX . "album WHERE customer_id =".(int)$customer_id." AND album_id =".(int)$album_id;
@@ -65,15 +71,6 @@ class ModelAlbumAlbum extends Model {
     $this->db->query($sql);
     
     return $return;
-  }
-  
-  public function getPhotosByAlbum($album_id, $customer_id) {
-        
-      $sql = "SELECT ap.* FROM album_photo as ap JOIN album as a ON a.album_id = ap.album_id 
-              WHERE a.album_id = ".(int)$album_id." AND customer_id =".(int)$customer_id;
-      $query = $this->db->query($sql);
-      return $query->rows;
-    
   }
 	
 }

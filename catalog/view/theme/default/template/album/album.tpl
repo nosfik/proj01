@@ -136,7 +136,7 @@
 </div>
 <script type="text/javascript">
   function delete_album(id, name) {
-    $('#deleteContent').html(name);
+    $('#dell_album_window #deleteContent').html(name);
     $('#dell_album_window input[name=album]').val(id);
     $('#dell_album_window').fadeIn();
   }
