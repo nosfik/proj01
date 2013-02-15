@@ -76,7 +76,7 @@
         <a href="<?php echo $this -> url -> link('album/album', '', 'SSL'); ?>">Назад к альбомам</a>
       </div>
       <div id="del">
-        <a href="#">Удалить выбранные фото</a>
+        <a onclick="deleteAllChecked()">Удалить выбранные фото</a>
       </div>
       <div class="clear"></div>
     </div>
@@ -109,7 +109,7 @@
 		      </div>
 		      <div class="clear"></div>
 		      <div class="text">
-		        <input type="checkbox">
+		        <input type="checkbox" name="<?php echo $photo['id']?>" value="<?php echo $photo['id']?>">
 		        	<?php echo $photo['name']?>
 		      </div>
 		    </div>
@@ -131,6 +131,14 @@
 	function uncheckAll(el){
 		$('.sel').removeClass('border'); $(el).addClass('border');
 		$('#photos-list input[type=checkbox]').attr("checked", false);
+	}
+	
+	function deleteAllChecked() {
+		var value = "";
+		$('#photos-list input:checked').each(function(index, el){
+				value += $(el).val() + ","
+		});
+		console.log(value.substr(0, value.length - 1))
 	}
 	
 	 function delete_photo(album_id, id, name) {
