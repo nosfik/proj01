@@ -2,7 +2,7 @@
 <div id="content">
 <?php echo $content_top; ?>
 
-
+<input type="hidden" name="album" id="this_album_id" value="<?php echo $album_id?>"/> 
 <div id="yellow_cont">
 	
 	<div id="dell_photo_window" class="del_window" style="display:none">
@@ -94,7 +94,7 @@
 		     	<div class="photoCont">
 		      <div class="picCont">
 		        <div class="buttons">
-		          <a href="#" title="Редактировать альбом" class="edit">
+		          <a href="<?php echo $this -> url -> link('album/content/edit', 'photo='.$photo['id'].'&album='.$album_id, 'SSL'); ?>" title="Редактировать альбом" class="edit">
 		            <img src="catalog/view/theme/default/image/flag.png">
 		          </a>
 		          <a onclick="delete_photo( <?php echo $album_id?> , <?php echo $photo['id']?>, '<?php echo $photo['name']?>')" title="Удалить альбом" class="del">
@@ -119,6 +119,15 @@
 </table>
 
     <div class="clear"></div>
+    
+  </div>
+  
+  
+</div>
+<div id="green_cont">
+  <div style="margin-left:280px" class="bigButton" onmouseover="$(this).addClass('hover');" onmouseout="$(this).removeClass('hover');">
+    <a class="left" onclick="makeOrder()">Добавить выбранные фото в заказ печати</a>
+    <div class="right"></div>
   </div>
 </div>
 <script type="text/javascript">
@@ -138,22 +147,47 @@
 		$('#photos-list input:checked').each(function(index, el){
 				value += $(el).val() + ","
 		});
-		console.log(value.substr(0, value.length - 1))
+		delete_photos(value.substr(0, value.length - 1));
 	}
+	
+	function makeOrder() {
+    var order_array = [];
+    $('#photos-list input:checked').each(function(index, el){
+      order_array.push($(el).val());
+    });
+    var cookie_order = ($.cookie("album_order")).split(",") ;
+    
+    if( cookie_order != null && cookie_order != '' ){
+      for(var i = 0; i < cookie_order.length; i++) {
+        if(order_array.indexOf(cookie_order[i]) == -1) {
+          order_array.push(cookie_order[i]);
+        }
+      }
+      
+      
+      
+      $.cookie("album_order", order_array.join(), { path: '/', expires: 1 });
+    } else {
+      $.cookie("album_order", photo, { path: '/', expires: 1 });
+    }
+    
+    window.location = '<?php echo $this -> url -> link('album/order', '', 'SSL'); ?>'
+    
+    
+  }
 	
 	 function delete_photo(album_id, id, name) {
     $('#dell_photo_window #deleteContent').html(name);
-    $('#dell_photo_window input[name=album]').val(album_id);
-     $('#dell_photo_window input[name=photo]').val(id);
+    $('#dell_photo_window input[name=photo]').val(id);
     $('#dell_photo_window').fadeIn();
   }
   
   function delete_album_approved() {
-     delete_photos($('#dell_photo_window input[name=photo]').val(), $('#dell_photo_window input[name=album]').val());
+     delete_photos($('#dell_photo_window input[name=photo]').val());
   }
   
-  function delete_photos(photos, album) {
-  	console.log(photos);
+  function delete_photos(photos) {
+  	var album = $('#this_album_id').val();
   	 $.ajax({
         type: "post",
         url: "<?php echo $this->url->link('album/content/delete', '', 'SSL');?>",
@@ -163,7 +197,7 @@
             if (!response.success) {
                 alert("Проблемы на стороне сервера.");
             } else {
-            	
+            	location.reload();
               //window.location = '<?php echo $this -> url -> link('album/album', '', 'SSL'); ?>';
             }
         },
