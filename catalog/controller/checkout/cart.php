@@ -172,7 +172,29 @@ class ControllerCheckoutCart extends Controller {
 			} else {
 				$this->data['weight'] = '';
 			}
-						 
+			
+      
+      
+      
+      
+      
+      $this->load->model('album/order');
+      
+      $customer_orders = $this->model_album_order->getCustomerOrder($this->customer->getId());
+      
+      $this->data['customer_orders'] = array();
+      foreach ($customer_orders as $customer_order) {
+          $this->data['customer_orders'][] = array(
+              'id'          => $customer_order['album_order_id'],
+              'album_name'  => $customer_order['name'],
+              'album_id'    => $customer_order['album_id'],
+              'size'        => $customer_order['size'],
+              'price'       => '0.0'
+          );
+      } 
+      
+      
+      			 
 			$this->load->model('tool/image');
 			
       		$this->data['products'] = array();
@@ -229,20 +251,24 @@ class ControllerCheckoutCart extends Controller {
 					$total = false;
 				}
 				
-        		$this->data['products'][] = array(
-          			'key'      => $product['key'],
-          			'thumb'    => $image,
-					'name'     => $product['name'],
-          			'model'    => $product['model'],
-          			'option'   => $option_data,
-          			'quantity' => $product['quantity'],
-          			'stock'    => $product['stock'] ? true : !(!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning')),
-					'reward'   => ($product['reward'] ? sprintf($this->language->get('text_points'), $product['reward']) : ''),
-					'price'    => $price,
-					'total'    => $total,
-					'href'     => $this->url->link('product/product', 'product_id=' . $product['product_id']),
-					'remove'   => $this->url->link('checkout/cart', 'remove=' . $product['key'])
+    		$this->data['products'][] = array(
+      			'key'      => $product['key'],
+      			'thumb'    => $image,
+			      'name'     => $product['name'],
+      			'model'    => $product['model'],
+      			'option'   => $option_data,
+      			'quantity' => $product['quantity'],
+      			'stock'    => $product['stock'] ? true : !(!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning')),
+  					'reward'   => ($product['reward'] ? sprintf($this->language->get('text_points'), $product['reward']) : ''),
+  					'price'    => $price,
+  					'total'    => $total,
+  					'href'     => $this->url->link('product/product', 'product_id=' . $product['product_id']),
+  					'remove'   => $this->url->link('checkout/cart', 'remove=' . $product['key'])
 				);
+        
+        
+        
+        
       		}
 			
 			// Gift Voucher

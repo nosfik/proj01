@@ -155,22 +155,24 @@
     $('#photos-list input:checked').each(function(index, el){
       order_array.push($(el).val());
     });
+/*
     var cookie_order = ($.cookie("album_order")).split(",") ;
     
-    if( cookie_order != null && cookie_order != '' ){
+    if( cookie_order != null && cookie_order != '' ) {
       for(var i = 0; i < cookie_order.length; i++) {
         if(order_array.indexOf(cookie_order[i]) == -1) {
           order_array.push(cookie_order[i]);
         }
       }
       
-      
-      
       $.cookie("album_order", order_array.join(), { path: '/', expires: 1 });
     } else {
       $.cookie("album_order", photo, { path: '/', expires: 1 });
-    }
+    }*/
     
+    var album = $('#this_album_id').val();
+    $.cookie("album_order", order_array.join(), { path: '/', expires: 1 });
+    $.cookie("album_order_album", album, { path: '/', expires: 1 });
     window.location = '<?php echo $this -> url -> link('album/order', '', 'SSL'); ?>'
     
     
