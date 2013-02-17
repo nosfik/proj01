@@ -27,12 +27,6 @@
       </div>
   </div>
   
-  
-  
-  
-  
-  
-  
   <div id="help_cont">
     <div id="help">
       <h3>Подсказка</h3>
@@ -125,65 +119,69 @@
   
 </div>
 <div id="green_cont">
-        <div id="step3_field_cont">
-          <input type="checkbox">
-          <span>Применить к выбранным настройки печати</span>
-          <div class="clear"></div>
-          <div class="cont">Формат печати<br>
-            <select>
-              <option>10x15</option>
-              <option>15x20</option>
-            </select>
-          </div>
-          <div class="cont">Тип бумаги<br>
-            <select>
-              <option>Глянцевая</option>
-              <option>Матовая</option>
-            </select>
-          </div>
-          <div class="cont">Режим печати<br>
-            <select>
-              <option>Без полей</option>
-              <option>Матовая</option>
-            </select>
-          </div>
-          <div class="cont">Число копий<br>
-            <input type="text" value="1" name="">
-            <div id="arrows"><a href="#"><img width="7" height="4" src="i/top_arrow.gif"></a><a href="#"><img width="7" height="4" src="i/bottom_arrow.gif"></a></div>
-          </div>
-          <div class="cont">Цветокоррекция<br>
-            <select>
-              <option>Делать</option>
-              <option>Не делать</option>
-            </select>
-          </div>
-          <div class="cont">Обрезка<br>
-            <select>
-              <option>Без эффектов</option>
-              <option>С эффектами</option>
-            </select>
-          </div>
-          <div class="cont">Белая рамка<br>
-            <select>
-              <option>Без рамки</option>
-              <option>С рамкой</option>
-            </select>
-          </div>
-          <div class="cont">Красные глаза<br>
-            <select>
-              <option>Не делать</option>
-              <option>Делать</option>
-            </select>
-          </div>
-          <div class="clear"></div>
-        </div>
-        <div onmouseout="$(this).removeClass('hover');" onmouseover="$(this).addClass('hover');" class="bigButton" style="margin-left:280px; float:left"><a href="#" class="left">Применить к копиям</a>
-          <div class="right"></div>
-        </div>
-        <div onmouseout="$(this).removeClass('hover');" onmouseover="$(this).addClass('hover');" class="bigButton"><a href="#" class="left">Применить к выбранным</a>
-          <div class="right"></div>
-        </div>
-      </div>
+  <form id="order_form">
+  <div id="step3_field_cont">
+    <div class="clear"></div>
+    <div class="cont">Формат печати<br>
+      <select name="format">
+        <?php foreach ($formats as $format) { ?>
+           <option value="<?php echo $format['id']?>"><?php echo $format['name']?></option>
+        <?php } ?>
+      </select>
+    </div>
+    <div class="cont">Тип бумаги<br>
+      <select name="paper">
+        <?php foreach ($papers as $paper) { ?>
+           <option value="<?php echo $paper['id']?>"><?php echo $paper['name']?></option>
+        <?php } ?>
+      </select>
+    </div>
+    <div class="cont">Режим печати<br>
+      <select name="print_mode">
+        <?php foreach ($print_modes as $print_mode) { ?>
+           <option value="<?php echo $print_mode['id']?>"><?php echo $print_mode['name']?></option>
+        <?php } ?>
+      </select>
+    </div>
+    <div class="cont">Число копий<br>
+      <input type="text" id="photo_count" value="1" name="count">
+      <div id="arrows"><a onclick="$('#photo_count').val(+$('#photo_count').val() + 1)"><img width="7" height="4" src="catalog/view/theme/default/image/top_arrow.gif"></a>
+        <a onclick="if($('#photo_count').val() > 1){$('#photo_count').val(+$('#photo_count').val() - 1)}"><img width="7" height="4" src="catalog/view/theme/default/image/bottom_arrow.gif"></a></div>
+    </div>
+    <div class="cont">Цветокоррекция<br>
+      <select name="color_correction">
+        <option value="1">Делать</option>
+        <option value="0">Не делать</option>
+      </select>
+    </div>
+    <div class="cont">Обрезка<br>
+      <select name="cut_photo">
+        <option value="0">Без эффектов</option>
+        <option value="1">С эффектами</option>
+      </select>
+    </div>
+    <div class="cont">Белая рамка<br>
+      <select name="white_border">
+        <option value="0">Без рамки</option>
+        <option value="1">С рамкой</option>
+      </select>
+    </div>
+    <div class="cont">Красные глаза<br>
+      <select name="red_eye">
+        <option value="0">Не делать</option>
+        <option value="1">Делать</option>
+      </select>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div onmouseout="$(this).removeClass('hover');" onmouseover="$(this).addClass('hover');" class="bigButton" style="margin-left:280px; float:left"><a onclick="aplly_photo(true)" class="left">Применить к копиям</a>
+    <div class="right"></div>
+  </div>
+  <div onmouseout="$(this).removeClass('hover');" onmouseover="$(this).addClass('hover');" class="bigButton"><a onclick="aplly_photo(false)" class="left">Применить к выбранным</a>
+    <div class="right"></div>
+  </div>
+  </form>
+</div>
 <script type="text/javascript">
   
   function checkAll(el){
@@ -197,11 +195,24 @@
   }
   
   function deleteAllChecked() {
-    var value = "";
-    $('#photos-list input:checked').each(function(index, el){
-        value += $(el).val() + ","
-    });
-    delete_photos(value.substr(0, value.length - 1));
+    var cookie_order = ($.cookie("album_order")).split(",") ;
+    var new_cookie_order = [];
+    var $selected = $('#photos-list input:checked');
+    for(var i = 0; i < cookie_order.length; i++) {
+      var photo = cookie_order[i];
+      var addPhoto = true;
+      $selected.each(function(index, el){
+        if (photo == $(el).val()) {
+          addPhoto = false;
+        } 
+      });
+      if(addPhoto){
+        new_cookie_order.push(photo);
+      }
+    }
+    
+    $.cookie("album_order", new_cookie_order.join(), { path: '/', expires: 1 });
+    
   }
   
   
@@ -212,22 +223,68 @@
   }
   
   function delete_album_approved() {
-     delete_photos($('#dell_photo_window input[name=photo]').val());
+    var cookie_order = ($.cookie("album_order")).split(",") ;
+    var new_cookie_order = [];
+    for(var i = 0; i < cookie_order.length; i++) {
+      if($('#dell_photo_window input[name=photo]').val() != cookie_order[i]) {
+        new_cookie_order.push(cookie_order[i]);
+      }
+    }
+    $.cookie("album_order", new_cookie_order.join(), { path: '/', expires: 1 });
+    window.location = '<?php echo $this -> url -> link('album/order', '', 'SSL'); ?>';
   }
   
-  function delete_photos(photos) {
-    var album = $('#this_album_id').val();
-     $.ajax({
+  
+  function getParams() {
+    
+    var paramArray = $('#order_form').serializeArray();
+    var photos = [];
+    $('#photos-list input:checked').each(function(index, el){
+      photos.push($(el).val());
+    });
+    paramArray.push({name : 'photos', value : photos.join()});
+    
+    var params = {};
+    for(var i = 0; i < paramArray.length; i++) {
+      params[paramArray[i]['name']] = paramArray[i]['value'];
+    }
+    
+    return params;
+  }
+  
+  
+  function aplly_photo($copy){
+    
+    var params = getParams();
+    params['copy'] = $copy;
+    
+    if(params['photos'] == "") {
+      
+      alert('Нужно выбрать фото');
+      
+    } else {
+      params['album'] =    $.cookie("album_order_album");
+      
+      $.ajax({
         type: "post",
-        url: "<?php echo $this->url->link('album/content/delete', '', 'SSL');?>",
-        data: 'photos=' + photos + "&album="+album,
+        url: "<?php echo $this->url->link('album/order/make', '', 'SSL');?>",
+        data: params,
         dataType: "json",
         success: function(response) {
             if (!response.success) {
                 alert("Проблемы на стороне сервера.");
             } else {
-              location.reload();
-              //window.location = '<?php echo $this -> url -> link('album/album', '', 'SSL'); ?>';
+              
+               var cookie_order =  $.cookie("album_order").split(",");
+               var deletedProduct = params['photos'].split(",");
+               var new_order = [];
+               for(var i = 0; i < cookie_order.length; i++) {
+                 if(deletedProduct.indexOf(cookie_order[i]) == -1) {
+                    new_order.push(cookie_order[i]);
+                 }
+               }
+               $.cookie("album_order", new_order.join(), { path: '/', expires: 1 });
+              window.location = '<?php echo $this -> url -> link('checkout/cart', '', 'SSL'); ?>';
             }
         },
         error: function(rs, e, a) {
@@ -235,7 +292,12 @@
             alert(rs.responseText);
         }
     });
+      
+    }   
+    
   }
+  
+
   
 </script>
 

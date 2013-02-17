@@ -45,7 +45,6 @@
                   </div>
               <?php } ?>
               
-           
             </div>
             <div style="margin-left:70px" class="left">
               <h2>Тип фотобумаги</h2>

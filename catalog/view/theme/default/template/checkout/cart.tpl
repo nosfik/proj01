@@ -7,6 +7,7 @@
   <div id="bottom"/></div>
 
 </div>
+
 <div id="center">
   <div id="full_cart">
 <?php if ($attention) { ?>
@@ -27,6 +28,37 @@
     &nbsp;(<?php echo $weight; ?>)
     <?php } ?>
   <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
+    
+    <div class="cart-info">
+      <table>
+        <thead>
+          <tr>
+              <td>Наименование</td>
+               <td align="left">Количество</td>
+              <td align="left">Итого (грн)</td>
+              <td> </td>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($customer_orders as $customer_order) { ?>
+            <tr>
+              <td>Фотопечать "Альбом <?php echo $customer_order['album_name'];?>"</td>
+              <td><?php echo $customer_order['size'];?></td>
+              <td><?php echo $customer_order['price'];?></td>
+              <td  class="del">
+                  <a href="#"> <img src="catalog/view/theme/default/image/blank.gif">   </a>
+              </td>
+            </tr>
+          <?php } ?>
+        </tbody>
+        </table>
+      
+    </div>
+    
+    
+    
+    
+    
     <div class="cart-info">
       <table>
         <thead>

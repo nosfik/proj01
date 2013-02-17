@@ -24,7 +24,6 @@ class ControllerAlbumContent extends Controller {
 					$album_dir =  DIR_PHOTOS.'album_cus_'.$this->customer->getId().'/album_'.$album_id;
 					foreach ($photos as $photo_id) {
 						$photo_name = $this->model_album_content->deletePhotoByAlbum($photo_id, $album_id, $this->customer->getId());
-						$this->data['temp'][] = $photo_id."|".$album_id."|". $this->customer->getId();
 			      if($photo_name != '' && is_dir($album_dir) && is_file($album_dir.'/'.$photo_name)) {
 			         @unlink($album_dir.'/'.$photo_name);
 			      }
@@ -40,7 +39,7 @@ class ControllerAlbumContent extends Controller {
     public function edit() {
       
       if (!$this->customer->isLogged()) {
-      if(!isset($this->request->get['album_id'])){
+      if(isset($this->request->get['album_id'])){
          $this->session->data['redirect'] = $this->url->link('album/content', 'album_id='.$this->request->get['album_id'], 'SSL');
        } 
       $this->redirect($this->url->link('account/login', '', 'SSL')); 
