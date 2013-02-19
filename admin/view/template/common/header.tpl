@@ -83,6 +83,14 @@ $(document).ready(function(){
           <li><a href="<?php echo $information; ?>"><?php echo $text_information; ?></a></li>
         </ul>
       </li>
+      
+      <li id="album"><a class="top">Печатник</a>
+        <ul>
+          <li><a href="<?php echo $format; ?>">Формат фотографий</a></li>
+          <li><a href="<?php echo $paper; ?>">Бумага</a></li>
+        </ul>
+      </li>
+      
       <li id="extension"><a class="top"><?php echo $text_extension; ?></a>
         <ul>
           <li><a href="<?php echo $module; ?>"><?php echo $text_module; ?></a></li>
