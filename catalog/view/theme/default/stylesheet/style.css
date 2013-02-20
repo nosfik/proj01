@@ -383,7 +383,7 @@ a:hover {color:#d33461}
 #shop_cont #center #price .sklad {float:left; background:#51a2d6; line-height:27px; padding:0 10px; font-size:11px; color:#FFF;}
 #full_cart {width:745px; background:#FFF; margin-bottom:30px}
 #full_cart #title {text-align:center; font-family: 'Cuprum', sans-serif; font-size:15px; color:#b94967; text-transform:uppercase; line-height:25px; padding-top:10px}
-#full_cart table {width:745px; margin-bottom:30px}
+#full_cart table { margin-bottom:30px}
 #full_cart table td {border-bottom:1px solid #deedf7; vertical-align:middle; padding:10px}
 #full_cart table .pic {width:50px}
 #full_cart table .pic img {width:50px;}

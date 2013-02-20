@@ -28,7 +28,7 @@
     &nbsp;(<?php echo $weight; ?>)
     <?php } ?>
   <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
-    
+  <?php if($isLogged) { ?>  
     <div class="cart-info">
       <table>
         <thead>
@@ -55,7 +55,7 @@
       
     </div>
     
-    
+  <?php } ?>  
     
     
     

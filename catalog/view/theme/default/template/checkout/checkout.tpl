@@ -8,6 +8,156 @@
 
 </div>
 <div id="center">
+<div id="full_cart">
+<div class="cart-info">
+      <table>
+        <thead>
+          <tr>
+              <td colspan="2">Наименование</td>
+               <td align="left">Количество</td>
+              <td align="center">Цена (грн)</td>
+             
+              <td align="right">Итого (грн)</td>
+              <td> </td>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($products as $product) { ?>
+          <tr>
+            
+              <td class="pic"><?php if ($product['thumb']) { ?>
+                <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" /></a><?php } ?>
+              </td>
+              <td class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
+              <?php if (!$product['stock']) { ?>
+              <span class="stock">***</span>
+              <?php } ?>
+              <div>
+                <?php foreach ($product['option'] as $option) { ?>
+                - <small><?php echo $option['name']; ?>: <?php echo $option['value']; ?></small><br />
+                <?php } ?>
+              </div>
+              <?php if ($product['reward']) { ?>
+              <small><?php echo $product['reward']; ?></small>
+              <?php } ?></td>
+       <td class="quantity"><input type="text" name="quantity[<?php echo $product['key']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" />
+              &nbsp;
+              <input type="image" src="catalog/view/theme/default/image/update.png" alt="<?php echo $button_update; ?>" title="<?php echo $button_update; ?>" />
+        </td>
+        <td class="price"><?php echo $product['price']; ?></td>
+        <td class="total"><?php echo $product['total'];?></td>
+        <td  class="del">
+                  <a href="#">
+            <img src="catalog/view/theme/default/image/blank.gif">
+          </a>
+        </td>
+        
+           </tr>
+          <?php } ?>
+        </tbody>
+      </table>
+    </div>
+
+
+
+
+
+
+
+<pre>
+  
+<?php print_r($addresses) ?>
+</pre>
+
+
+
+<table border="0" cellspacing="0" cellpadding="0" id="order_table">
+  <tr>
+    <td>
+      
+      <table>
+        <tr><td colspan="2" class="title">Способ доставки</td></tr>
+        <?php if ($shipping_methods) { ?>
+          <?php foreach ($shipping_methods as $shipping_method) { ?>
+              <?php if (!$shipping_method['error']) { ?>
+              <?php foreach ($shipping_method['quote'] as $quote) { ?>
+                <tr><td class="check"><input type="radio" name="shipping_method" value="<?php echo $quote['code']; ?>" id="<?php echo $quote['code']; ?>"></td> <td width="300"><?php echo $shipping_method['title'];?><span><?php echo $quote['title']; ?></span></td></tr>
+              <?php } ?>
+             <?php } else { ?>
+          <tr>
+            <td colspan="2"><div class="error"><?php echo $shipping_method['error']; ?></div></td>
+          </tr>
+          <?php } ?>
+          <?php } ?>
+       <?php } ?>
+      </table>
+      
+    </td>
+    <td>
+      
+       <table>
+        <tr><td colspan="2" class="title">Способ оплаты</td></tr>
+        <?php if ($payment_methods) { ?>
+          <?php foreach ($payment_methods as $payment_method) { ?>
+                <tr><td class="check"><input type="radio" name="payment_method" value="<?php echo $payment_method['code']; ?>" id="<?php echo $payment_method['code']; ?>"></td> <td width="300"><?php echo $payment_method['title'];?><span><?php echo $payment_method['title']; ?></span></td></tr>
+          <?php } ?>
+       <?php } ?>
+      </table>
+      
+    </td>
+    
+  </tr>
+  
+</table>
+
+
+
+
+<div id="yellow">
+  <h2>Контактные данные для оформления счета</h2>
+  <div class="coll">
+    Имя получателя:
+    <br>
+    <input type="text">
+    <br>
+    
+              Телефон:
+    <br>
+    <input type="text">
+    <br>
+    
+              E-mail: (для ослеживания состояния заказа)
+    <br>
+    <input type="text">
+    <br>
+    
+              Адрес доставки:
+    <br>
+    <input type="text">
+    <br>
+  </div>
+  <div class="coll">
+    ФИО плательщика:
+    <br>
+    <input type="text">
+    <br>
+    
+              Комментарии:
+    <br>
+    <textarea></textarea>
+  </div>
+  <div class="clear"></div>
+</div>
+
+
+
+
+
+
+
+</div>
+</div>
+<div id="center">
   <div class="forFloat">
     <?php echo $content_bottom; ?>
   <div class="checkout">
