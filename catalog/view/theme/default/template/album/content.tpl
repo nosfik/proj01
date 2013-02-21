@@ -27,12 +27,6 @@
       </div>
   </div>
 	
-	
-	
-	
-	
-	
-	
   <div id="help_cont">
     <div id="help">
       <h3>Подсказка</h3>

@@ -175,8 +175,9 @@ class ControllerCheckoutCart extends Controller {
 			
       
       
+      $this->data['isLogged'] = $this->customer->isLogged();
       
-      
+      if($this->customer->isLogged()) {
       
       $this->load->model('album/order');
       
@@ -191,8 +192,9 @@ class ControllerCheckoutCart extends Controller {
               'size'        => $customer_order['size'],
               'price'       => '0.0'
           );
-      } 
-      
+      }
+       
+      }
       
       			 
 			$this->load->model('tool/image');

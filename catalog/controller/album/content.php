@@ -52,7 +52,7 @@ class ControllerAlbumContent extends Controller {
       }
       
       $this->data['customer_id'] = $this->customer->getId();
-       $this->load->model('album/content');
+      $this->load->model('album/content');
       
       if (isset($this->request->get['album'])) {
         $album_id = $this->request->get['album'];
@@ -92,6 +92,8 @@ class ControllerAlbumContent extends Controller {
           
           $this->data['photo'] = array (
             'id'                => $photo['album_photo_id'],
+            'prev'							=> ( ($photo['prev'] == null) ? '' : $this->url->link('album/content/edit', 'album='.$album_id.'&photo='.$photo['prev'], 'SSL')),
+            'next'							=> ( ($photo['next'] == null) ? '' : $this->url->link('album/content/edit', 'album='.$album_id.'&photo='.$photo['next'], 'SSL')),
             'name'              => $photo['photo_name'],
             'format'            => $photo['album_photo_format_id'],
             'paper'             => $photo['album_photo_paper_id'],

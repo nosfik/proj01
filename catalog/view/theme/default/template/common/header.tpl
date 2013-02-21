@@ -47,6 +47,7 @@ DD_belatedPNG.fix('#logo img');
 <![endif]-->
 <?php echo $google_analytics; ?>
 </head>
+
 <body>
 <table id="container" cellspacing="0" cellpadding="0" border="0">
 	<tr>
@@ -66,7 +67,11 @@ DD_belatedPNG.fix('#logo img');
 						<div id="top_menu">
 							<div id="zigzag"></div>
 											
-							<div id="white"><a href="about_us">О компании</a> <a href="services">Услуги</a> <a href="online-print">Online-печать</a> <a href="support">Тех.поддержка</a> <a href="contacts">Контакты</a></div>
+							<div id="white">
+								<?php foreach($menuElements as $menuElement) {?>
+									<a href="<?php echo $menuElement['value'];?>"><?php echo $menuElement['name'];?></a>
+								<?php } ?>
+								</div>
 						</div>
 					</div>
 

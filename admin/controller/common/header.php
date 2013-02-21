@@ -109,8 +109,9 @@ class ControllerCommonHeader extends Controller {
 			$this->data['home'] = $this->url->link('common/login', '', 'SSL');
 		} else {
 			$this->data['logged'] = sprintf($this->language->get('text_logged'), $this->user->getUserName());
-	
 			$this->data['home'] = $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL');
+      $this->data['format'] = $this->url->link('album/format', 'token=' . $this->session->data['token'], 'SSL');
+      $this->data['paper'] = $this->url->link('album/paper', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['affiliate'] = $this->url->link('sale/affiliate', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['attribute'] = $this->url->link('catalog/attribute', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['attribute_group'] = $this->url->link('catalog/attribute_group', 'token=' . $this->session->data['token'], 'SSL');
@@ -161,7 +162,7 @@ class ControllerCommonHeader extends Controller {
 			$this->data['return_status'] = $this->url->link('localisation/return_status', 'token=' . $this->session->data['token'], 'SSL');			
 			$this->data['shipping'] = $this->url->link('extension/shipping', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['setting'] = $this->url->link('setting/store', 'token=' . $this->session->data['token'], 'SSL');
-			$this->data['store'] = HTTP_CATALOG;
+			$this->data['menu'] = $this->url->link('setting/menu', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['stock_status'] = $this->url->link('localisation/stock_status', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['tax_class'] = $this->url->link('localisation/tax_class', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['tax_rate'] = $this->url->link('localisation/tax_rate', 'token=' . $this->session->data['token'], 'SSL');

@@ -21,18 +21,17 @@
         </div>
         <div class="crumbs">
             <div class="left"></div>
-            <div class="dark"><a href="#">Личный кабинет</a></div>
+            <div class="dark"><a href="<?php echo $this->url->link('account/account', '', 'SSL');?>">Личный кабинет</a></div>
             <div class="darkEnd"></div>
-            <div class="light"><a href="#">Мои фотоальбомы</a></div>
+            <div class="light"><a href="<?php echo $this->url->link('album/album', '', 'SSL');?>">Мои фотоальбомы</a></div>
             <div class="lightEnd"></div>
-            <div class="light2"><a href="#">Наша семья</a></div>
+            <div class="light2"><a href="<?php echo $this->url->link('album/content', 'album_id='.$album_id, 'SSL');?>"> <?php echo $albumName; ?></a></div>
             <div class="light2End"></div>
             <div class="light3">Редактируем фото и отправляем на печать</div>
             <div class="light3End"></div>
         </div>
         <div id="edit_photo_cont">
             <h1>Индивидуальные настройки печати</h1>
-
             <div id="photo_cont">
                 <div id="price_cont"><span>60 коп</span>Стоимомть фотографии с выбранными параметрами</div>
                 <div id="crop-preview">
@@ -40,8 +39,8 @@
                         <img src="<?php echo $photo['path']?>">
                     </div>
                 </div>
-                <a class="left" href="#">Предыдущее фото</a>
-                <a class="right" href="#">Следующее фото</a>
+                <a class="left" <?php if ($photo['prev']!='') { ?>href="<?php echo $photo['prev']?>"<?php } ?>>Предыдущее фото</a>
+                <a class="right" <?php if ($photo['next']!='') { ?>href="<?php echo $photo['next']?>"<?php } ?>>Следующее фото</a>
             </div>
             <div id="white">
                 <div class="left">
