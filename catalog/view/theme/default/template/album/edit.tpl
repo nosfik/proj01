@@ -65,20 +65,31 @@
                 </div>
 
             </div>
-            <div id="bottom">Начальный размер: <font color="#000000">4374 х 2334рх</font><br>
-                Размер после кадрирования <font color="#a80000">3348 х 2541рх</font></div>
+            <div id="bottom" class="imgSize">
+                <p class="initialSize">Начальный размер:
+                    <span class="imgWidth">4374</span>
+                    <span> x </span>
+                    <span class="imgHeight">4374</span>px
+                </p>
+                <p class="cropSize">Размер после кадрирования:
+                    <span class="imgWidth">4374</span>
+                    <span> x </span>
+                    <span class="imgHeight">4374</span>px
+                </p>
+
+            </div>
         </div>
     </div>
 
     <div id="green_cont">
         <div style="float:right">
-            <div onmouseout="$(this).removeClass('hover');" onmouseover="$(this).addClass('hover');" class="bigButton"
+            <div id="applyToPhoto" onmouseout="$(this).removeClass('hover');" onmouseover="$(this).addClass('hover');" class="bigButton"
                  style="float:right"><a href="#" class="left">Применить к фото</a>
 
                 <div class="right"></div>
             </div>
             <div class="clear"></div>
-            <div onmouseout="$(this).removeClass('hover');" onmouseover="$(this).addClass('hover');" class="bigButton"
+            <div id="applyToCopy" onmouseout="$(this).removeClass('hover');" onmouseover="$(this).addClass('hover');" class="bigButton"
                  style="float:right"><a href="#" class="left">Применить к копии</a>
 
                 <div class="right"></div>
@@ -156,13 +167,19 @@
                 previewHeight,
                 img = new Image(),
                 windowWidth = $(window).width() - 50,
-                windowHeight = $(window).height() - 50;
+                windowHeight = $(window).height() - 50,
+                $initSizeContainer = $('#bottom.imgSize .initialSize'),
+                $cropSizeContainer = $('#bottom.imgSize .cropSize'),
+                oCropData = {};
 
             img.src = $previewImg.attr('src');
 
             img.onload = function(){
                 var realWidth = this.width + 25,
                     realHeight = this.height + 25;
+
+                updateInitialSize(this);
+                updateCropSize(this);
 
                 $cropDialog.dialog('option', 'width', realWidth > windowWidth ? windowWidth : realWidth);
 
@@ -197,6 +214,9 @@
                 });
             });
 
+            $('#applyToPhoto, #applyToCopy').on('click', function() {
+                console.log(oCropData)
+            });
 
             function updatePreview(coords) {
                 if (parseInt(coords.w) > 0) {
@@ -209,8 +229,30 @@
                         marginLeft: '-' + Math.round(rx * coords.x) + 'px',
                         marginTop: '-' + Math.round(ry * coords.y) + 'px'
                     });
+
+                    updateCropSize({
+                        width: coords.w,
+                        height: coords.h
+                    });
+
+                    oCropData = {
+                        x: coords.x,
+                        y: coords.y,
+                        width: coords.w,
+                        height: coords.h
+                    };
                 }
-            }
+            };
+
+            function updateInitialSize(img) {
+                $initSizeContainer.find('.imgWidth').html(img.width);
+                $initSizeContainer.find('.imgHeight').html(img.height);
+            };
+
+            function updateCropSize(img) {
+                $cropSizeContainer.find('.imgWidth').html(img.width);
+                $cropSizeContainer.find('.imgHeight').html(img.height);
+            };
         });
     </script>
 

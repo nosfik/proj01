@@ -429,3 +429,17 @@ a:hover {color:#d33461}
     background: url("../image/btn_sprite_upload.png") no-repeat scroll 0 -56px transparent !important;
 }
 
+#bottom.imgSize p{
+    padding: 0;
+    margin: 0;
+}
+
+#bottom.imgSize .initialSize span{
+    color:#000;
+}
+
+#bottom.imgSize .cropSize span{
+    color:#A80000;
+}
+
+
