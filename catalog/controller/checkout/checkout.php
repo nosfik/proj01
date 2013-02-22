@@ -137,7 +137,12 @@ $this->load->model('tool/image');
       $shipping_address = $this->session->data['guest']['shipping'];
     }
     
-    if (!empty($shipping_address)) {
+    if (empty($shipping_address)) {
+    		$shipping_address = array(
+				'country_id' => 220,
+				'zone_id' => 3501
+			);
+		}
     $quote_data = array();
       
       $this->load->model('setting/extension');
@@ -170,18 +175,9 @@ $this->load->model('tool/image');
       array_multisort($sort_order, SORT_ASC, $quote_data);
       
       $this->session->data['shipping_methods'] = $quote_data;
-    }
+    
 
 
-
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     if ($this->customer->isLogged() && isset($this->session->data['payment_address_id'])) {
@@ -190,7 +186,13 @@ $this->load->model('tool/image');
       $payment_address = $this->session->data['guest']['payment'];
     } 
     
-    if (!empty($payment_address)) {
+    if (empty($payment_address)) {
+    	
+			$payment_address = array(
+				'country_id' => 220,
+				'zone_id' => 3501
+			);
+		}  
       // Totals
       $total_data = array();          
       $total = 0;
@@ -244,7 +246,7 @@ $this->load->model('tool/image');
       array_multisort($sort_order, SORT_ASC, $method_data);     
       
       $this->session->data['payment_methods'] = $method_data;     
-    }   
+    
 
 
 
@@ -284,8 +286,26 @@ $this->load->model('tool/image');
     
     
     
-    $this->data['addresses'] = $this->model_account_address->getAddresses();
-
+    
+		
+		$clienForm = array(
+			'name' 		=> '',
+			'phone'		=> '',
+			'mail'		=> '',
+			'address' => '',
+			'fio'			=> ''
+		);
+		
+		if($this->customer->isLogged()){
+			$address = $this->model_account_address->getAddress($this->customer->getAddressId());
+			$clienForm['name'] = $this->customer->getFirstName();
+			$clienForm['phone'] = $this->customer->getTelephone();
+			$clienForm['mail'] = $this->customer->getEmail();
+			$clienForm['address'] = $address['address_1'];
+			$clienForm['fio'] = $this->customer->getLastName().' '.$this->customer->getFirstName();
+		}
+		
+		$this->data['customer'] = $clienForm;
     if (isset($this->session->data['shipping_postcode'])) {
       $this->data['postcode'] = $this->session->data['shipping_postcode'];    
     } else {
