@@ -102,9 +102,9 @@
         </div>
         <div id="edit_photo_buttons">
             <div class="linkCont"><a id="cropImgBtn" class="b1">Кадрировать</a></div>
-            <div class="linkCont"><a href="#" class="b2">Повернуть<br>
+            <div id="rotateRight" class="linkCont"><a class="b2">Повернуть<br>
                 по часовой</a></div>
-            <div class="linkCont"><a href="#" class="b3">Повернуть<br>против часовой</a></div>
+            <div id="rotateLeft" class="linkCont"><a class="b3">Повернуть<br>против часовой</a></div>
             <div class="linkCont"><a href="#" class="b4">Удалить</a></div>
             <div style="margin:20px 0 0 0px; width:700px" id="step3_field_cont">
                 <div class="cont">Цветокоррекция<br>
@@ -148,16 +148,18 @@
     </div>
 
     <script type="text/javascript" src="catalog/view/javascript/jquery/jcrop/js/jquery.Jcrop.min.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/jquery/jquery-rotate/jquery-rotate-min.2.2.js"></script>
     <link rel="stylesheet" href="catalog/view/javascript/jquery/jcrop/css/jquery.Jcrop.min.css"/>
     <script>
         $(function(){
-            var boundX,
+            var jcropApi,
+                boundX,
                 boundY,
 
                 $cropTarget = $('#cropImgDialog img'),
                 $cropDialog = $('#cropImgDialog'),
                 $cropButton = $('#cropImgBtn'),
-
+                oCropData = {},
                 $preview = $('#crop-preview'),
                 $previewContainer = $('#crop-preview-container'),
                 $previewImg = $('#crop-preview-container img'),
@@ -169,7 +171,10 @@
                 windowHeight = $(window).height() - 50,
                 $initSizeContainer = $('#bottom.imgSize .initialSize'),
                 $cropSizeContainer = $('#bottom.imgSize .cropSize'),
-                oCropData = {};
+
+                $rotateRightBtn = $('#rotateRight'),
+                $rotateLeftBtn = $('#rotateLeft'),
+                startAngle = 0;
 
             img.src = $previewImg.attr('src');
 
@@ -193,6 +198,10 @@
                 buttons: {
                     'Кадрировать': function(){
                         $(this).dialog('close');
+                    },
+                    'Отменить': function(){
+                        jcropApi.release();
+                        $(this).dialog('close');
                     }
                 }
             });
@@ -206,8 +215,11 @@
                 $cropTarget.Jcrop({
                     bgColor: 'white',
                     bgOpacity: 0.7,
-                    onSelect: updatePreview
+                    onSelect: updatePreview,
+                    onRelease: releaseCheck
                 }, function(){
+                    jcropApi = this;
+
                     boundX = this.getBounds()[0];
                     boundY = this.getBounds()[1];
                 });
@@ -215,6 +227,14 @@
 
             $('#applyToPhoto, #applyToCopy').on('click', function() {
                 console.log(oCropData)
+            });
+
+            $rotateRightBtn.on('click', function(){
+                rotateImg(90);
+            });
+
+            $rotateLeftBtn.on('click', function(){
+                rotateImg(-90);
             });
 
             function updatePreview(coords) {
@@ -243,6 +263,19 @@
                 }
             };
 
+            function releaseCheck() {
+                jcropApi.setOptions({ allowSelect: true });
+
+                $previewImg.css({
+                    width: $preview.width() + 'px',
+                    height: $preview.height() + 'px',
+                    marginLeft: '0px',
+                    marginTop: '0px'
+                });
+
+                oCropData = {};
+            };
+
             function updateInitialSize(img) {
                 $initSizeContainer.find('.imgWidth').html(img.width);
                 $initSizeContainer.find('.imgHeight').html(img.height);
@@ -251,6 +284,27 @@
             function updateCropSize(img) {
                 $cropSizeContainer.find('.imgWidth').html(img.width);
                 $cropSizeContainer.find('.imgHeight').html(img.height);
+            };
+
+            function rotateImg(angle){
+                startAngle += angle;
+
+                if(startAngle == Math.abs(360)){
+                    startAngle = 0;
+                }
+
+                $previewImg.rotate(startAngle);
+
+              /*  $.ajax({
+                    url: '',
+                    type: 'GET',
+                    data: {
+                        angle: startAngle
+                    },
+                    success: function(oData, sStatus,jqXHR){
+                        $cropTarget.attr('src', $cropTarget.attr('src') + '?tmp=' + new Date());
+                    }
+                });*/
             };
         });
     </script>
