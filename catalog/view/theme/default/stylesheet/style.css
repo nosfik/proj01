@@ -441,5 +441,10 @@ a:hover {color:#d33461}
 #bottom.imgSize .cropSize span{
     color:#A80000;
 }
+.apply-radio label{
+	color:white;
+	font-family: 'Cuprum',sans-serif;
+    font-size: 17px;
+}
 
 
