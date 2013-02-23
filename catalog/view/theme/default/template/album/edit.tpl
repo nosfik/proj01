@@ -47,8 +47,12 @@
                     <h2>Форматы печати</h2>
                     <?php foreach ($formats as $format) { ?>
                     <div id="imgFormat">
-                        <input type="radio" name="price" data-price="<?php echo $format['price']?>" value="<?php echo $format['id']?>">
-                        <?php echo $format['name']?> <span><?php echo $format['price']?>&nbsp;грн</span>
+                      <?php if($photo['format'] == $format['id']) { ?>
+                        <input type="radio" name="price" data-price="<?php echo $format['price']?>" value="<?php echo $format['id']?>" checked="checked"><?php echo $format['name']?> <span><?php echo $format['price']?>&nbsp;грн</span>
+                       <?php  } else {?>
+                         <input type="radio" name="price" data-price="<?php echo $format['price']?>" value="<?php echo $format['id']?>"><?php echo $format['name']?> <span><?php echo $format['price']?>&nbsp;грн</span>
+                        <?php } ?> 
+                        
                     </div>
                     <?php } ?>
 
@@ -57,7 +61,12 @@
                 <div  id="imgPaper" style="margin-left:70px" class="left">
                     <h2>Тип фотобумаги</h2>
                     <?php foreach ($papers as $paper) { ?>
-                    <div><input type="radio" name="paper" data-percent="<?php echo $paper['percent']?>" value="<?php echo $paper['id']?>"><?php echo $paper['name']?></div>
+                      <?php if($photo['paper'] == $paper['id']) { ?>
+                        <div><input type="radio" name="paper" data-percent="<?php echo $paper['percent']?>" value="<?php echo $paper['id']?>" checked="checked"><?php echo $paper['name']?></div>
+                       <?php  } else {?>
+                         <div><input type="radio" name="paper" data-percent="<?php echo $paper['percent']?>" value="<?php echo $paper['id']?>"><?php echo $paper['name']?></div>
+                        <?php } ?> 
+                    
                     <?php } ?>
 
 

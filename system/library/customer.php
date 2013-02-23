@@ -38,7 +38,7 @@ class Customer {
 				$this->send_email = $customer_query->row['send_email']; 
 				$this->uploadToken = $this->customer_id. '.' . $customer_query->row['password'];
 							
-      			$this->db->query("UPDATE " . DB_PREFIX . "customer SET cart = '" . $this->db->escape(isset($this->session->data['cart']) ? serialize($this->session->data['cart']) : '') . "', wishlist = '" . $this->db->escape(isset($this->session->data['wishlist']) ? serialize($this->session->data['wishlist']) : '') . "', ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
+      	$this->db->query("UPDATE " . DB_PREFIX . "customer SET cart_album = '". $this->db->escape(isset($this->session->data['cart_album']) ? serialize($this->session->data['cart_album']) : '') ."', cart = '" . $this->db->escape(isset($this->session->data['cart']) ? serialize($this->session->data['cart']) : '') . "', wishlist = '" . $this->db->escape(isset($this->session->data['wishlist']) ? serialize($this->session->data['wishlist']) : '') . "', ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
 			
 				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_ip WHERE customer_id = '" . (int)$this->session->data['customer_id'] . "' AND ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "'");
 				
@@ -84,6 +84,18 @@ class Customer {
 					}
 				}			
 			}
+      
+      if ($customer_query->row['cart_album'] && is_string($customer_query->row['cart_album'])) {
+        $cart = unserialize($customer_query->row['cart_album']);
+        
+        foreach ($cart as $key => $value) {
+          if (!array_key_exists($key, $this->session->data['cart'])) {
+            $this->session->data['cart_album'][$key] = $value;
+          } else {
+            $this->session->data['cart_album'][$key] += $value;
+          }
+        }     
+      }
 
 			if ($customer_query->row['wishlist'] && is_string($customer_query->row['wishlist'])) {
 				if (!isset($this->session->data['wishlist'])) {
@@ -122,7 +134,7 @@ class Customer {
   	}
   	
 	public function logout() {
-		$this->db->query("UPDATE " . DB_PREFIX . "customer SET cart = '" . $this->db->escape(isset($this->session->data['cart']) ? serialize($this->session->data['cart']) : '') . "', wishlist = '" . $this->db->escape(isset($this->session->data['wishlist']) ? serialize($this->session->data['wishlist']) : '') . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "customer SET cart_album = '". $this->db->escape(isset($this->session->data['cart_album']) ? serialize($this->session->data['cart_album']) : '') ."',cart = '" . $this->db->escape(isset($this->session->data['cart']) ? serialize($this->session->data['cart']) : '') . "', wishlist = '" . $this->db->escape(isset($this->session->data['wishlist']) ? serialize($this->session->data['wishlist']) : '') . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
 		
 		unset($this->session->data['customer_id']);
 

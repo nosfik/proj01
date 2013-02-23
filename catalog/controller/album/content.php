@@ -155,6 +155,10 @@ class ControllerAlbumContent extends Controller {
       $this->data['customer_id'] = $this->customer->getId();
       $this->load->model('album/album');
 			 $this->load->model('album/content');
+       
+      $this->data['formats'] = $this->model_album_content->getFormats();
+      $this->data['papers'] = $this->model_album_content->getPaperTypes();
+      $this->data['print_modes'] = $this->model_album_content->getPrintModes();
       
       if (isset($this->request->get['album_id'])) {
         $album_id = $this->request->get['album_id'];
@@ -200,8 +204,8 @@ class ControllerAlbumContent extends Controller {
     
     
   }
-    
-    
+
+
     
 }
 ?>

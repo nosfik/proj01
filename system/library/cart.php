@@ -3,6 +3,7 @@ class Cart {
 	private $config;
 	private $db;
 	private $data = array();
+  private $data_album = array();
 	
   	public function __construct($registry) {
 		$this->config = $registry->get('config');
@@ -14,9 +15,82 @@ class Cart {
 
 		if (!isset($this->session->data['cart']) || !is_array($this->session->data['cart'])) {
       		$this->session->data['cart'] = array();
-    	}
+    }
+    
+    if (!isset($this->session->data['cart_album']) || !is_array($this->session->data['cart_album'])) {
+             $this->session->data['cart_album'] = array();
+   }
+   
 	}
-	      
+    
+    
+    public function getAlbums() {
+      if (!$this->data_album) {
+        
+        $formats_query = $this->db->query("SELECT id, price FROM " . DB_PREFIX . "album_photo_format");
+        $formats_result = $formats_query->rows;
+        $formats = array();
+        foreach ($formats_result as $format_result) {
+            $formats[$format_result['id']] = $format_result['price'];
+        }
+        
+        
+        $papers_query = $this->db->query("SELECT id, percent FROM " . DB_PREFIX . "album_photo_paper");
+        $papers_result = $papers_query->rows;
+        $papers = array();
+        foreach ($papers_result as $paper_result) {
+            $papers[$paper_result['id']] = $paper_result['percent'];
+        }
+        
+        
+        foreach ($this->session->data['cart_album'] as $key => $quantity) {
+          $album = explode(':', $key);
+          $album_id = $album[0];
+          $photos = explode(',', $album[1]);
+          $def_prefs = explode(',', $album[3]);
+          
+          $def_price = $formats[$def_prefs[2]];
+          $def_percent = $formats[$def_prefs[3]];
+          
+          $config = array('price' => 0);
+          
+          
+         
+          foreach($photos as $photo) {
+                     
+                     $album_query = $this->db->query("SELECT a.name as album_name, p.*, f.price, pp.percent FROM " . DB_PREFIX . "album_photo p 
+                     LEFT JOIN album as a ON a.album_id = p.album_id 
+                     LEFT JOIN album_photo_format as f ON f.id = p.album_photo_format_id
+                     LEFT JOIN album_photo_paper as pp ON pp.id = p.album_photo_paper_id
+                     WHERE a.customer_id=". $this->customer->getId()." AND p.album_photo_id=".$photo);
+                     
+                     $config['album_name'] = $album_query->row['album_name'];
+                     
+                     if( ! ((int)$album_query->row['price'] && (int)$album_query->row['percent']) ) {
+                       $config['price'] +=  round($album_query->row['price'] + $album_query->row['price'] * $album_query->row['percent'] / 100, 2);
+                     } else {
+                       $config['price'] +=  round($def_price + $def_price * $def_percent / 100, 2);
+                     }
+                     
+          }
+         
+          
+          $this->customer->isLogged();
+          $this->data_album[$key] = array(
+                  'quantity'    => $quantity,
+                  'album_name'  => $config['album_name'],
+                  'price'       => $config['price']
+            );
+          
+        }
+      }
+      
+      return  $this->data_album;
+    }
+    
+    
+    
+      
   	public function getProducts() {
 		if (!$this->data) {
 			foreach ($this->session->data['cart'] as $key => $quantity) {
@@ -268,6 +342,14 @@ class Cart {
 		
 		$this->data = array();
   	}
+    
+    public function addAlbum($config, $photos,  $qty = 1) {
+      
+      $key = $config['album_id']. ':' . $photos . ':' . $config['color_correction'].','. $config['cut_photo'].','. $config['format'].','. $config['paper'].','. $config['print_mode'].','. $config['red_eye'].','. $config['white_border'];
+      
+      $this->session->data['cart_album'][$key] = (int)$qty;
+      $this->data_album = array();
+    }
 
   	public function update($key, $qty) {
     	if ((int)$qty && ((int)$qty > 0)) {
@@ -278,18 +360,38 @@ class Cart {
 		
 		$this->data = array();
   	}
+    
+    public function updateAlbum($key, $qty) {
+      if ((int)$qty && ((int)$qty > 0)) {
+          $this->session->data['cart_album'][$key] = (int)$qty;
+      } else {
+        $this->remove($key);
+    }
+    
+    $this->data_album = array();
+    }
 
   	public function remove($key) {
-		if (isset($this->session->data['cart'][$key])) {
-     		unset($this->session->data['cart'][$key]);
-  		}
-		
-		$this->data = array();
-	}
+  		if (isset($this->session->data['cart'][$key])) {
+       		unset($this->session->data['cart'][$key]);
+    	}
+  		
+  		$this->data = array();
+	 }
+    
+   public function removeAlbum($key) {
+      if (isset($this->session->data['cart_album'][$key])) {
+          unset($this->session->data['cart_album'][$key]);
+      }
+      
+      $this->data_album = array();
+   }
 	
   	public function clear() {
-		$this->session->data['cart'] = array();
-		$this->data = array();
+  		$this->session->data['cart'] = array();
+      $this->session->data['cart_album'] = array();
+  		$this->data = array();
+      $this->data_album = array();
   	}
 	
   	public function getWeight() {
@@ -345,16 +447,28 @@ class Cart {
   	}
 	  	
   	public function countProducts() {
-		$product_total = 0;
-			
-		$products = $this->getProducts();
-			
-		foreach ($products as $product) {
-			$product_total += $product['quantity'];
-		}		
-					
-		return $product_total;
-	}
+  		$product_total = 0;
+  			
+  		$products = $this->getProducts();
+  			
+  		foreach ($products as $product) {
+  			$product_total += $product['quantity'];
+  		}		
+  					
+  		return $product_total;
+	 }
+    
+    public function countAlbums() {
+      $album_total = 0;
+        
+      $albums = $this->getAlbums();
+        
+      foreach ($albums as $album) {
+        $album_total++;
+      }   
+            
+      return $album_total;
+   }
 	  
   	public function hasProducts() {
     	return count($this->session->data['cart']);

@@ -119,10 +119,75 @@
   
 </div>
 <div id="green_cont">
-  <div style="margin-left:280px" class="bigButton" onmouseover="$(this).addClass('hover');" onmouseout="$(this).removeClass('hover');">
-    <a class="left" onclick="makeOrder()">Добавить выбранные фото в заказ печати</a>
+  <form id="order_form">
+   <input type="hidden" name="album_id" value="<?php echo $album_id;?>"/>
+  <div id="step3_field_cont">
+     <div class="apply-radio">
+      <input type="radio" id="applyPhoto" name="apply" value="photo"/> 
+      <label for="applyPhoto">Применить к выбранным настройки печати</label>
+    </div>
+    <div class="apply-radio">
+      <input type="radio" id="applyCopy" name="apply" value="photo"/> 
+      <label for="applyCopy">Применить к копиям настройки печати</label>
+    </div>
+    <div class="clear"></div>
+    <div class="cont">Формат печати<br>
+      <select name="format">
+        <?php foreach ($formats as $format) { ?>
+           <option value="<?php echo $format['id']?>"><?php echo $format['name']?></option>
+        <?php } ?>
+      </select>
+    </div>
+    <div class="cont">Тип бумаги<br>
+      <select name="paper">
+        <?php foreach ($papers as $paper) { ?>
+           <option value="<?php echo $paper['id']?>"><?php echo $paper['name']?></option>
+        <?php } ?>
+      </select>
+    </div>
+    <div class="cont">Режим печати<br>
+      <select name="print_mode">
+        <?php foreach ($print_modes as $print_mode) { ?>
+           <option value="<?php echo $print_mode['id']?>"><?php echo $print_mode['name']?></option>
+        <?php } ?>
+      </select>
+    </div>
+    <div class="cont">Число копий<br>
+      <input type="text" id="photo_count" value="1" name="count">
+      <div id="arrows"><a onclick="$('#photo_count').val(+$('#photo_count').val() + 1)"><img width="7" height="4" src="catalog/view/theme/default/image/top_arrow.gif"></a>
+        <a onclick="if($('#photo_count').val() > 1){$('#photo_count').val(+$('#photo_count').val() - 1)}"><img width="7" height="4" src="catalog/view/theme/default/image/bottom_arrow.gif"></a></div>
+    </div>
+    <div class="cont">Цветокоррекция<br>
+      <select name="color_correction">
+        <option value="1">Делать</option>
+        <option value="0">Не делать</option>
+      </select>
+    </div>
+    <div class="cont">Обрезка<br>
+      <select name="cut_photo">
+        <option value="0">Без эффектов</option>
+        <option value="1">С эффектами</option>
+      </select>
+    </div>
+    <div class="cont">Белая рамка<br>
+      <select name="white_border">
+        <option value="0">Без рамки</option>
+        <option value="1">С рамкой</option>
+      </select>
+    </div>
+    <div class="cont">Красные глаза<br>
+      <select name="red_eye">
+        <option value="0">Не делать</option>
+        <option value="1">Делать</option>
+      </select>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div style="margin-left: 287px" onmouseout="$(this).removeClass('hover');" onmouseover="$(this).addClass('hover');" class="bigButton"><a onclick="aplly_photo(false)" class="left">Добавить выбранные фото в заказ печати</a>
     <div class="right"></div>
   </div>
+  </form>
 </div>
 <script type="text/javascript">
 	
@@ -144,33 +209,7 @@
 		delete_photos(value.substr(0, value.length - 1));
 	}
 	
-	function makeOrder() {
-    var order_array = [];
-    $('#photos-list input:checked').each(function(index, el){
-      order_array.push($(el).val());
-    });
-/*
-    var cookie_order = ($.cookie("album_order")).split(",") ;
-    
-    if( cookie_order != null && cookie_order != '' ) {
-      for(var i = 0; i < cookie_order.length; i++) {
-        if(order_array.indexOf(cookie_order[i]) == -1) {
-          order_array.push(cookie_order[i]);
-        }
-      }
-      
-      $.cookie("album_order", order_array.join(), { path: '/', expires: 1 });
-    } else {
-      $.cookie("album_order", photo, { path: '/', expires: 1 });
-    }*/
-    
-    var album = $('#this_album_id').val();
-    $.cookie("album_order", order_array.join(), { path: '/', expires: 1 });
-    $.cookie("album_order_album", album, { path: '/', expires: 1 });
-    window.location = '<?php echo $this -> url -> link('album/order', '', 'SSL'); ?>'
-    
-    
-  }
+	
 	
 	 function delete_photo(album_id, id, name) {
     $('#dell_photo_window #deleteContent').html(name);
@@ -181,6 +220,71 @@
   function delete_album_approved() {
      delete_photos($('#dell_photo_window input[name=photo]').val());
   }
+  
+  function getParams() {
+    
+    var paramArray = $('#order_form').serializeArray();
+    var photos = [];
+    $('#photos-list input:checked').each(function(index, el){
+      photos.push($(el).val());
+    });
+    paramArray.push({name : 'photos', value : photos.join()});
+    var apply = ($('#order_form input[type=radio]:checked').val() == undefined) ? "" : $('#order_form input[type=radio]:checked').val();
+    paramArray.push({name : 'apply', value : apply});
+    var params = {};
+    for(var i = 0; i < paramArray.length; i++) {
+      params[paramArray[i]['name']] = paramArray[i]['value'];
+    }
+    
+    return params;
+  }
+  
+  
+  
+  
+  
+  
+  
+   function aplly_photo(){
+    
+    var params = getParams();
+    
+    if(params['photos'] == "") {
+      
+      alert('Нужно выбрать фото');
+      
+    } else {
+      
+      $.ajax({
+        type: "post",
+        url: "<?php echo $this->url->link('album/order/make', 'album_id='.$album_id, 'SSL');?>",
+        data: params,
+        dataType: "json",
+        success: function(response) {
+            if (!response.success) {
+                alert("Проблемы на стороне сервера.");
+            } else {
+              alert('hello');
+               //window.location = '<?php echo $this -> url -> link('checkout/cart', '', 'SSL'); ?>';
+            }
+        },
+        error: function(rs, e, a) {
+          console.log(rs + "||" + e + "||" + a);
+            alert(rs.responseText);
+        }
+    });
+      
+    }   
+    
+  }
+  
+  
+  
+  
+  
+  
+  
+  
   
   function delete_photos(photos) {
   	var album = $('#this_album_id').val();

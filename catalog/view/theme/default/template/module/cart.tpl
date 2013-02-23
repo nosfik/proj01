@@ -14,6 +14,8 @@
 </div>
 </div>
 
+<?php print_r($albums_order); ?>
+
 <?php if ($products || $vouchers) { ?>
 <div id="cartbutton" class="smallButton" onmouseover="$(this).addClass('hover');" onmouseout="$(this).removeClass('hover');">
   <a class="left" href="<?php echo $checkout; ?>">оформить заказ</a>
