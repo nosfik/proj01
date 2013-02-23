@@ -33,7 +33,7 @@
         <div id="edit_photo_cont">
             <h1>Индивидуальные настройки печати</h1>
             <div id="photo_cont">
-                <div id="price_cont"><span>60 коп</span>Стоимомть фотографии с выбранными параметрами</div>
+                <div id="price_cont"><p><span></span><span> грн.</span></p>Стоимомть фотографии с выбранными параметрами</div>
                 <div id="crop-preview">
                     <div id="crop-preview-container">
                         <img src="<?php echo $photo['path']?>">
@@ -46,18 +46,18 @@
                 <div class="left">
                     <h2>Форматы печати</h2>
                     <?php foreach ($formats as $format) { ?>
-                    <div>
-                        <input type="checkbox" name="price" data-price="<?php echo $format['price']?>" value="<?php echo $format['id']?>">
+                    <div id="imgFormat">
+                        <input type="radio" name="price" data-price="<?php echo $format['price']?>" value="<?php echo $format['id']?>">
                         <?php echo $format['name']?> <span><?php echo $format['price']?>&nbsp;грн</span>
                     </div>
                     <?php } ?>
 
 
                 </div>
-                <div style="margin-left:70px" class="left">
+                <div  id="imgPaper" style="margin-left:70px" class="left">
                     <h2>Тип фотобумаги</h2>
                     <?php foreach ($papers as $paper) { ?>
-                    <div><input type="checkbox" name="paper" data-percent="<?php echo $paper['percent']?>" value="<?php echo $paper['id']?>"><?php echo $paper['name']?></div>
+                    <div><input type="radio" name="paper" data-percent="<?php echo $paper['percent']?>" value="<?php echo $paper['id']?>"><?php echo $paper['name']?></div>
                     <?php } ?>
 
 
@@ -102,9 +102,9 @@
         </div>
         <div id="edit_photo_buttons">
             <div class="linkCont"><a id="cropImgBtn" class="b1">Кадрировать</a></div>
-            <div class="linkCont"><a href="#" class="b2">Повернуть<br>
+            <div id="rotateRight" class="linkCont"><a class="b2">Повернуть<br>
                 по часовой</a></div>
-            <div class="linkCont"><a href="#" class="b3">Повернуть<br>против часовой</a></div>
+            <div id="rotateLeft" class="linkCont"><a class="b3">Повернуть<br>против часовой</a></div>
             <div class="linkCont"><a href="#" class="b4">Удалить</a></div>
             <div style="margin:20px 0 0 0px; width:700px" id="step3_field_cont">
                 <div class="cont">Цветокоррекция<br>
@@ -148,16 +148,18 @@
     </div>
 
     <script type="text/javascript" src="catalog/view/javascript/jquery/jcrop/js/jquery.Jcrop.min.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/jquery/jquery-rotate/jquery-rotate-min.2.2.js"></script>
     <link rel="stylesheet" href="catalog/view/javascript/jquery/jcrop/css/jquery.Jcrop.min.css"/>
     <script>
         $(function(){
-            var boundX,
+            var jcropApi,
+                boundX,
                 boundY,
 
                 $cropTarget = $('#cropImgDialog img'),
                 $cropDialog = $('#cropImgDialog'),
                 $cropButton = $('#cropImgBtn'),
-
+                oCropData = {},
                 $preview = $('#crop-preview'),
                 $previewContainer = $('#crop-preview-container'),
                 $previewImg = $('#crop-preview-container img'),
@@ -169,7 +171,11 @@
                 windowHeight = $(window).height() - 50,
                 $initSizeContainer = $('#bottom.imgSize .initialSize'),
                 $cropSizeContainer = $('#bottom.imgSize .cropSize'),
-                oCropData = {};
+
+                $rotateRightBtn = $('#rotateRight'),
+                $rotateLeftBtn = $('#rotateLeft'),
+                startAngle = 0,
+                $priceTag= $('#price_cont span:first-child');
 
             img.src = $previewImg.attr('src');
 
@@ -193,6 +199,10 @@
                 buttons: {
                     'Кадрировать': function(){
                         $(this).dialog('close');
+                    },
+                    'Отменить': function(){
+                        jcropApi.release();
+                        $(this).dialog('close');
                     }
                 }
             });
@@ -206,8 +216,11 @@
                 $cropTarget.Jcrop({
                     bgColor: 'white',
                     bgOpacity: 0.7,
-                    onSelect: updatePreview
+                    onSelect: updatePreview,
+                    onRelease: releaseCheck
                 }, function(){
+                    jcropApi = this;
+
                     boundX = this.getBounds()[0];
                     boundY = this.getBounds()[1];
                 });
@@ -215,6 +228,27 @@
 
             $('#applyToPhoto, #applyToCopy').on('click', function() {
                 console.log(oCropData)
+            });
+
+            $rotateRightBtn.on('click', function(){
+                rotateImg(90);
+            });
+
+            $rotateLeftBtn.on('click', function(){
+                rotateImg(-90);
+            });
+
+            $('#imgFormat input').first().attr('checked','checked');
+            $('#imgPaper input').first().attr('checked','checked');
+
+            calculateImgPrice();
+
+            $('#imgFormat input').on('change', function(){
+                calculateImgPrice();
+            });
+
+            $('#imgPaper input').on('change', function(){
+                calculateImgPrice()
             });
 
             function updatePreview(coords) {
@@ -243,6 +277,19 @@
                 }
             };
 
+            function releaseCheck() {
+                jcropApi.setOptions({ allowSelect: true });
+
+                $previewImg.css({
+                    width: $preview.width() + 'px',
+                    height: $preview.height() + 'px',
+                    marginLeft: '0px',
+                    marginTop: '0px'
+                });
+
+                oCropData = {};
+            };
+
             function updateInitialSize(img) {
                 $initSizeContainer.find('.imgWidth').html(img.width);
                 $initSizeContainer.find('.imgHeight').html(img.height);
@@ -251,6 +298,38 @@
             function updateCropSize(img) {
                 $cropSizeContainer.find('.imgWidth').html(img.width);
                 $cropSizeContainer.find('.imgHeight').html(img.height);
+            };
+
+            function rotateImg(angle){
+                startAngle += angle;
+
+                if(startAngle == Math.abs(360)){
+                    startAngle = 0;
+                }
+
+                $previewImg.rotate(startAngle);
+
+              /*  $.ajax({
+                    url: '',
+                    type: 'GET',
+                    data: {
+                        angle: startAngle
+                    },
+                    success: function(oData, sStatus,jqXHR){
+                        $cropTarget.attr('src', $cropTarget.attr('src') + '?tmp=' + new Date());
+                    }
+                });*/
+            };
+
+            function calculateImgPrice(){
+                var price = parseFloat($('#imgFormat input:checked').attr('data-price')),
+                    percent = parseFloat($('#imgPaper input:checked').attr('data-percent')),
+                    total;
+                console.log(price)
+                console.log(percent)
+                total = price * (1 + percent/100);
+                console.log(total)
+                $priceTag.html((Math.round(total * 100) / 100).toFixed(2));
             };
         });
     </script>
