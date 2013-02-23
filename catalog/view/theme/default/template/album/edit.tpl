@@ -47,7 +47,7 @@
                     <h2>Форматы печати</h2>
                     <?php foreach ($formats as $format) { ?>
                     <div>
-                        <input type="checkbox" value="<?php echo $format['id']?>">
+                        <input type="checkbox" name="price" data-price="<?php echo $format['price']?>" value="<?php echo $format['id']?>">
                         <?php echo $format['name']?> <span><?php echo $format['price']?>&nbsp;грн</span>
                     </div>
                     <?php } ?>
@@ -57,7 +57,7 @@
                 <div style="margin-left:70px" class="left">
                     <h2>Тип фотобумаги</h2>
                     <?php foreach ($papers as $paper) { ?>
-                    <div><input type="checkbox" value="<?php echo $paper['id']?>"><?php echo $paper['name']?></div>
+                    <div><input type="checkbox" name="paper" data-percent="<?php echo $paper['percent']?>" value="<?php echo $paper['id']?>"><?php echo $paper['name']?></div>
                     <?php } ?>
 
 
