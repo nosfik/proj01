@@ -247,9 +247,14 @@
                 rotateImg(-90);
             });
 
-            $('#imgFormat input').first().attr('checked','checked');
-            $('#imgPaper input').first().attr('checked','checked');
+            if(!$('#imgFormat input').is(':checked')){
+                $('#imgFormat input').first().attr('checked','checked');
+            }
 
+            if(!$('#imgPaper input').is(':checked')){
+                $('#imgPaper input').first().attr('checked','checked');
+            }
+            
             calculateImgPrice();
 
             $('#imgFormat input').on('change', function(){
