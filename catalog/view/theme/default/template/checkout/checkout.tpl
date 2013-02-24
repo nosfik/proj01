@@ -9,6 +9,37 @@
 </div>
 <div id="center">
 <div id="full_cart">
+  
+   <?php if($isLogged) { ?>  
+    <div class="cart-info">
+      <table>
+        <thead>
+          <tr>
+              <td>Наименование</td>
+               <td align="left">Количество</td>
+              <td align="left">Итого (грн)</td>
+              <td> </td>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($albums as $album) { ?>
+            <tr>
+              <td><a href="<?php echo $album['album_href']?>">Фотопечать "Альбом <?php echo $album['album_name'];?>"</a></td>
+              <td><?php echo $album['quantity'];?></td>
+              <td><?php echo $album['price'];?></td>
+              <td  class="del">
+                  <a href="<?php echo $this->url->link('checkout/cart', 'removeAlbum='.$album['key']);?> "> <img src="catalog/view/theme/default/image/blank.gif">   </a>
+              </td>
+            </tr>
+          <?php } ?>
+        </tbody>
+        </table>
+      
+    </div>
+    
+  <?php } ?>  
+    
+  
 <div class="cart-info">
       <table>
         <thead>
@@ -74,11 +105,12 @@
       
       <table>
         <tr><td id="shipping_method_header" colspan="2" class="title">Способ доставки</td></tr>
+        <input type="hidden" name="shipping_name" value=""/>
         <?php if ($shipping_methods) { ?>
           <?php foreach ($shipping_methods as $shipping_method) { ?>
               <?php if (!$shipping_method['error']) { ?>
               <?php foreach ($shipping_method['quote'] as $quote) { ?>
-                <tr><td class="check"><input type="radio" name="shipping_method" value="<?php echo $quote['code']; ?>" id="<?php echo $quote['code']; ?>"></td> <td width="300"><?php echo $shipping_method['title'];?><span><?php echo $quote['title']; ?></span></td></tr>
+                <tr><td class="check"><input type="radio" data-name="<?php echo $shipping_method['title']; ?>" name="shipping_method" value="<?php echo $quote['code']; ?>" id="<?php echo $quote['code']; ?>"></td> <td width="300"><?php echo $shipping_method['title'];?><span><?php echo $quote['title']; ?></span></td></tr>
               <?php } ?>
              <?php } else { ?>
           <tr>
@@ -94,9 +126,11 @@
       
        <table>
         <tr><td id="payment_method_header" colspan="2" class="title">Способ оплаты</td></tr>
+        <input type="hidden" name="payment_name" value=""/>
         <?php if ($payment_methods) { ?>
           <?php foreach ($payment_methods as $payment_method) { ?>
-                <tr><td class="check"><input type="radio" name="payment_method" value="<?php echo $payment_method['code']; ?>" id="<?php echo $payment_method['code']; ?>"></td> <td width="300"><?php echo $payment_method['title'];?><span><?php echo $payment_method['title']; ?></span></td></tr>
+                <tr>  <td class="check"><input type="radio" data-name="<?php echo $payment_method['title']; ?>" name="payment_method" value="<?php echo $payment_method['code']; ?>" id="<?php echo $payment_method['code']; ?>"></td> 
+                      <td width="300"><?php echo $payment_method['title'];?><span><?php echo $payment_method['title']; ?></span></td></tr>
           <?php } ?>
        <?php } ?>
       </table>
@@ -112,6 +146,7 @@
 
 <div id="yellow">
   <h2>Контактные данные для оформления счета</h2>
+  
   <div class="coll">
     Имя получателя:
     <br>
@@ -140,17 +175,25 @@
     
               Комментарии:
     <br>
-    <textarea></textarea>
+    <textarea name="comment"></textarea>
   </div>
-  <div class="clear"></div>
+    <div class="clear"></div>
+</div>
   
+  
+
+  <div> 
   <a style="margin:0 0 30px 20px" class="button" href="#">На главную</a>
   <a style="margin:0 0 30px 120px" class="button" onclick="$('#cart_form_submit').click()">Оформить заказ и получить счет </a>
   <input id="cart_form_submit" type="submit"  style="display:none"/>
-  <div id="total">
-  Итого: 
-  <b>157.95 грн</b>
-</div>
+   <div class="cart-total">
+      <?php foreach ($totals as $total) { ?>
+        <div><b><?php echo $total['title']; ?> : <?php echo $total['text']; ?></b></div>
+      <?php } ?>
+  </div>
+  
+   <div class="clear"></div>
+  </div>
 </div>
 
 </form>
@@ -161,68 +204,87 @@
 
 </div>
 </div>
-<!--
-<div id="center">
-  <div class="forFloat">
-    <?php echo $content_bottom; ?>
-  <div class="checkout">
-    <div id="checkout">
-      <div class="checkout-heading"><?php echo $text_checkout_option; ?></div>
-      <div class="checkout-content"></div>
-    </div>
-    <?php if (!$logged) { ?>
-    <div id="payment-address">
-      <div class="checkout-heading"><span><?php echo $text_checkout_account; ?></span></div>
-      <div class="checkout-content"></div>
-    </div>
-    <?php } else { ?>
-    <div id="payment-address">
-      <div class="checkout-heading"><span><?php echo $text_checkout_payment_address; ?></span></div>
-      <div class="checkout-content"></div>
-    </div>
-    <?php } ?>
-    <?php if ($shipping_required) { ?>
-    <div id="shipping-address">
-      <div class="checkout-heading"><?php echo $text_checkout_shipping_address; ?></div>
-      <div class="checkout-content"></div>
-    </div>
-    <div id="shipping-method">
-      <div class="checkout-heading"><?php echo $text_checkout_shipping_method; ?></div>
-      <div class="checkout-content"></div>
-    </div>
-    <?php } ?>
-    <div id="payment-method">
-      <div class="checkout-heading"><?php echo $text_checkout_payment_method; ?></div>
-      <div class="checkout-content"></div>
-    </div>
-    <div id="confirm">
-      <div class="checkout-heading"><?php echo $text_checkout_confirm; ?></div>
-      <div class="checkout-content"></div>
-    </div>
-  </div>
-  <?php echo $content_bottom; ?></div>  </div>-->
+
 
 </div>
 </div>
 <script type="text/javascript"><!--
 function makeSubmit() {
+  
+  var re = /\S+@\S+\.\S+/;
+  
+  var success = true;
+  
 	if(!$('input[name=shipping_method]:checked').length) {
 		$('#shipping_method_header').css('background-color', 'red');
+		success = false;
 	} else {
 		$('#shipping_method_header').css('background-color', 'white');
 	}
 	
 	if(!$('input[name=payment_method]:checked').length) {
 		$('#payment_method_header').css('background-color', 'red');
+		success = false;
 	} else {
 		$('#payment_method_header').css('background-color', 'white');
 	}
 	
 	
+	if($('input[name=name]').val() == '') {
+	  $('input[name=name]').css('border', '2px solid red');
+	  success = false;
+	} else {
+	  $('input[name=name]').css('border', '');
+	}
+	
+	if($('input[name=telephone]').val() == '') {
+    $('input[name=telephone]').css('border', '2px solid red');
+    success = false;
+  } else {
+    $('input[name=telephone]').css('border', '');
+  }
+  
+  
+  if(!re.test($('input[name=email]').val())) {
+    $('input[name=email]').css('border', '2px solid red');
+    success = false;
+  } else {
+    $('input[name=email]').css('border', '');
+  }
+  
+  
+  if($('input[name=address]').val() == '') {
+    $('input[name=address]').css('border', '2px solid red');
+    success = false;
+  } else {
+    $('input[name=address]').css('border', '');
+  }
+  
+  if($('input[name=fio]').val() == '') {
+    $('input[name=fio]').css('border', '2px solid red');
+    success = false;
+  } else {
+    $('input[name=fio]').css('border', '');
+  }
+  
+	
+	
 	
 		
-		return false;
+		return success;
 }
+
+$(function(){
+  
+  $('input[name=shipping_method]').change(function(el, e){
+    $('input[name=shipping_name]').val($(this).attr('data-name'))
+  })
+  
+  $('input[name=payment_method]').change(function(el, e){
+    $('input[name=payment_name]').val($(this).attr('data-name'))
+  })
+  
+});
 
 
 //--></script> 

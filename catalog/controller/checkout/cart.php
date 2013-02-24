@@ -40,6 +40,12 @@ class ControllerCheckoutCart extends Controller {
 								
 			$this->redirect($this->url->link('checkout/cart'));
 		}
+    
+    if (isset($this->request->get['removeAlbum'])) {
+      $this->cart->removeAlbum($this->request->get['removeAlbum']);
+      $this->session->data['success'] = $this->language->get('text_remove');
+      $this->redirect($this->url->link('checkout/cart'));
+    }
 			
 		// Coupon    
 		if (isset($this->request->post['coupon']) && $this->validateCoupon()) { 
@@ -179,20 +185,20 @@ class ControllerCheckoutCart extends Controller {
       
       if($this->customer->isLogged()) {
       
-      $this->load->model('album/order');
-      
-      $customer_orders = $this->model_album_order->getCustomerOrder($this->customer->getId());
-      
-      $this->data['customer_orders'] = array();
-      foreach ($customer_orders as $customer_order) {
-          $this->data['customer_orders'][] = array(
-              'id'          => $customer_order['album_order_id'],
-              'album_name'  => $customer_order['name'],
-              'album_id'    => $customer_order['album_id'],
-              'size'        => $customer_order['size'],
-              'price'       => '0.0'
-          );
-      }
+        $albums = $this->cart->getAlbums();      
+        $this->data['albums'] = array();
+        $totalAlbum = 0;
+        foreach ($albums as $album) {
+            $this->data['albums'][] = array(
+                'key'         => $album['key'],
+                'album_name'  => $album['album_name'],
+                'album_id'    => $album['album_id'],
+                'quantity'    => $album['quantity'],
+                'album_href'  => $this->url->link('album/content', 'album_id='.$album['album_id'], 'SSL'),
+                'price'       => $this->currency->format($album['price'])
+            );
+            $totalAlbum += $album['price'];
+        }
        
       }
       
@@ -364,8 +370,14 @@ class ControllerCheckoutCart extends Controller {
 			// Totals
 			$this->load->model('setting/extension');
 			
-			$total_data = array();					
-			$total = 0;
+			$total_data = array();		
+      
+      if( $this->customer->isLogged() ) {
+         $total = $totalAlbum;
+      }	  else  {
+        $total = 0;
+      }		
+			
 			$taxes = $this->cart->getTaxes();
 			
 			// Display prices
@@ -381,7 +393,7 @@ class ControllerCheckoutCart extends Controller {
 				array_multisort($sort_order, SORT_ASC, $results);
 				
 				foreach ($results as $result) {
-					if ($this->config->get($result['code'] . '_status')) {
+					if ($this->config->get($result['code'] . '_status') || ($this->customer->isLogged() && $result['code'] == 'album')) {
 						$this->load->model('total/' . $result['code']);
 			
 						$this->{'model_total_' . $result['code']}->getTotal($total_data, $total, $taxes);
@@ -389,10 +401,10 @@ class ControllerCheckoutCart extends Controller {
 					
 					$sort_order = array(); 
 				  
+          
 					foreach ($total_data as $key => $value) {
 						$sort_order[$key] = $value['sort_order'];
 					}
-		
 					array_multisort($sort_order, SORT_ASC, $total_data);			
 				}
 			}

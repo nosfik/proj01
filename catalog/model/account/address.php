@@ -77,6 +77,59 @@ class ModelAccountAddress extends Model {
 			return false;	
 		}
 	}
+
+
+  public function getFirstAddressByCustomer(){
+    $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "address WHERE customer_id = '" . (int)$this->customer->getId() . "' LIMIT 1");
+    $result = $query->row;
+    $country_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "country` WHERE country_id = '" . (int)$result['country_id'] . "'");
+      
+      if ($country_query->num_rows) {
+        $country = $country_query->row['name'];
+        $iso_code_2 = $country_query->row['iso_code_2'];
+        $iso_code_3 = $country_query->row['iso_code_3'];
+        $address_format = $country_query->row['address_format'];
+      } else {
+        $country = '';
+        $iso_code_2 = '';
+        $iso_code_3 = ''; 
+        $address_format = '';
+      }
+      
+      $zone_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "zone` WHERE zone_id = '" . (int)$result['zone_id'] . "'");
+      
+      if ($zone_query->num_rows) {
+        $zone = $zone_query->row['name'];
+        $zone_code = $zone_query->row['code'];
+      } else {
+        $zone = '';
+        $zone_code = '';
+      }   
+    
+      $address_data = array(
+        'address_id'     => $result['address_id'],
+        'firstname'      => $result['firstname'],
+        'lastname'       => $result['lastname'],
+        'company'        => $result['company'],
+        'company_id'     => $result['company_id'],
+        'tax_id'         => $result['tax_id'],        
+        'address_1'      => $result['address_1'],
+        'address_2'      => $result['address_2'],
+        'postcode'       => $result['postcode'],
+        'city'           => $result['city'],
+        'zone_id'        => $result['zone_id'],
+        'zone'           => $zone,
+        'zone_code'      => $zone_code,
+        'country_id'     => $result['country_id'],
+        'country'        => $country, 
+        'iso_code_2'     => $iso_code_2,
+        'iso_code_3'     => $iso_code_3,
+        'address_format' => $address_format
+      );
+      
+      return $address_data;
+      
+  }
 	
 	public function getAddresses() {
 		$address_data = array();

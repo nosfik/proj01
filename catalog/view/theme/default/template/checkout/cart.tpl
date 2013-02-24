@@ -7,7 +7,6 @@
   <div id="bottom"/></div>
 
 </div>
-
 <div id="center">
   <div id="full_cart">
 <?php if ($attention) { ?>
@@ -40,13 +39,13 @@
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($customer_orders as $customer_order) { ?>
+          <?php foreach ($albums as $album) { ?>
             <tr>
-              <td>Фотопечать "Альбом <?php echo $customer_order['album_name'];?>"</td>
-              <td><?php echo $customer_order['size'];?></td>
-              <td><?php echo $customer_order['price'];?></td>
+              <td><a href="<?php echo $album['album_href']?>">Фотопечать "Альбом <?php echo $album['album_name'];?>"</a></td>
+              <td><?php echo $album['quantity'];?></td>
+              <td><?php echo $album['price'];?></td>
               <td  class="del">
-                  <a href="#"> <img src="catalog/view/theme/default/image/blank.gif">   </a>
+                  <a href="<?php echo $this->url->link('checkout/cart', 'removeAlbum='.$album['key']);?> "> <img src="catalog/view/theme/default/image/blank.gif">   </a>
               </td>
             </tr>
           <?php } ?>
@@ -97,7 +96,7 @@
         <td class="price"><?php echo $product['price']; ?></td>
         <td class="total"><?php echo $product['total'];?></td>
         <td  class="del">
-                  <a href="#">
+                  <a href="<?php echo $this->url->link('checkout/cart', 'remove='.$product['key']);?> ">
             <img src="catalog/view/theme/default/image/blank.gif">
           </a>
         </td>

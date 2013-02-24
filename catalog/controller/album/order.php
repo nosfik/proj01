@@ -109,7 +109,12 @@ class ControllerAlbumOrder extends Controller {
                  }
              }
                 $return['success'] = 'true'; 
-                $this->cart->addAlbum($config, implode(",", $photos_order), sizeof($photos_order) - 1);
+                if($config['apply'] != 'photo' && $config['apply'] != 'copy') {
+                  $this->cart->addAlbum($config,  $photos_order, sizeof($photos_order) - 1, 1);
+                } else {
+                  $this->cart->addAlbum($config,  $photos_order, sizeof($photos_order) - 1, 0);
+                }
+                
           } 
       }
       echo json_encode($return);
