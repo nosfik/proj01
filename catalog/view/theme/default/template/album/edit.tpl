@@ -315,24 +315,44 @@
             };
 
             function rotateImg(angle){
-                startAngle += angle;
-
-                if(startAngle == Math.abs(360)){
-                    startAngle = 0;
-                }
+                
 
                 $previewImg.rotate(startAngle);
 
-              /*  $.ajax({
-                    url: '',
-                    type: 'GET',
+                $.ajax({
+                    url: '<?php echo $this->url->link('album/content/rotate', '', 'SSL');?>',
+                    type: 'post',
                     data: {
-                        angle: startAngle
+                    		album_id : <?php echo $album_id;?>,
+                    		photo_id : <?php echo $photo_id;?>,
+                        angle		 : angle
                     },
                     success: function(oData, sStatus,jqXHR){
-                        $cropTarget.attr('src', $cropTarget.attr('src') + '?tmp=' + new Date());
+                    	if(oData.success) {
+                    		window.location.reload();
+                    	}
                     }
-                });*/
+                });
+            };
+            
+            function deleteImg(angle){
+                
+
+                $previewImg.rotate(startAngle);
+
+                $.ajax({
+                    url: '<?php echo $this->url->link('album/content/delete', '', 'SSL');?>',
+                    type: 'post',
+                    data: {
+                    		album_id : <?php echo $album_id;?>,
+                    		photo_id : <?php echo $photo_id;?>
+                    },
+                    success: function(oData, sStatus,jqXHR){
+                    	if(oData.success) {
+                    		window.location = '<?php echo $this->url->link('album/content', 'album_id='.$album_id, 'SSL');?>'
+                    	}
+                    }
+                });
             };
 
             function calculateImgPrice(){

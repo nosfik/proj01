@@ -35,6 +35,68 @@ class ControllerAlbumContent extends Controller {
 		    }
 		}
 
+		public function rotate() {
+			
+		 if ($this->customer->isLogged()) {
+		 	$return['success'] = 'false'; 
+	      header('Content-type: application/json');
+			 $this->load->model('album/content');
+			 
+				if (isset($this->request->post['photo_id'])) {
+					$photo_id = $this->request->post['photo_id'];
+				} else {
+					$photo_id = 0;
+				}
+				
+				if (isset($this->request->post['angle'])) {
+					$angle = $this->request->post['angle'];
+				} else {
+					$angle = 0;
+				}
+				
+				if (isset($this->request->post['album_id'])) {
+					$album_id = $this->request->post['album_id'];
+				} else {
+					$album_id = 0;
+				}
+				
+				$photo = $this->model_album_content->getPhotoByAlbum($photo_id, $album_id, $this->customer->getId());
+				
+				$name = $photo['photo_name'];
+				$pathImage =  DIR_PHOTOS.'album_cus_'.$this->customer->getId().'/album_'.$album_id.'/'.$name;
+				
+				$tmp = explode('.', $name);
+				$ext = strtolower($tmp[sizeof($tmp) - 1]);
+				
+				
+				switch ($ext) {
+					case 'png' : $image = imagecreatefrompng($pathImage); break;
+					case 'gif' : $image = imagecreatefromgif($pathImage); break;
+					case 'jpg' : 
+					case 'jpeg' :  
+					default: $image = imagecreatefromjpeg($pathImage); break;
+				}
+				
+				$rotate = imagerotate($image, $angle, 0);
+				
+				
+				switch ($ext) {
+					case 'png' : imagepng($rotate, $pathImage); break;
+					case 'gif' : imagegif($rotate, $pathImage); break;
+					case 'jpg' : 
+					case 'jpeg' :  
+					default: imagejpeg($rotate, $pathImage); break;
+				}
+
+				imagedestroy($rotate);
+				$return['success'] = 'true'; 
+				
+				echo json_encode($return);
+			
+		 }
+			
+		}
+
 
     public function edit() {
       
@@ -77,6 +139,7 @@ class ControllerAlbumContent extends Controller {
         $this->data['papers'] = $this->model_album_content->getPaperTypes();
         
         $this->data['album_id'] = $album_id;
+				$this->data['photo_id'] = $photo_id;
         
         
       
