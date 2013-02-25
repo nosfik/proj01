@@ -128,6 +128,12 @@ class ControllerCommonHeader extends Controller {
 			$this->data['error_log'] = $this->url->link('tool/error_log', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['feed'] = $this->url->link('extension/feed', 'token=' . $this->session->data['token'], 'SSL');			
 
+				$this->data['newsshare'] = $this->url->link('extension/newsshare', 'token=' . $this->session->data['token'], 'SSL');	
+			
+
+				$this->data['newsarticle'] = $this->url->link('extension/newsarticle', 'token=' . $this->session->data['token'], 'SSL');	
+			
+
 				$this->data['news'] = $this->url->link('extension/news', 'token=' . $this->session->data['token'], 'SSL');	
 			
 			$this->data['geo_zone'] = $this->url->link('localisation/geo_zone', 'token=' . $this->session->data['token'], 'SSL');

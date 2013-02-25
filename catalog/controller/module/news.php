@@ -6,7 +6,7 @@ class ControllerModuleNews extends Controller {
 		
 		$data = array(
 			'page' => 1,
-			'limit' => 5,
+			'limit' => 2,
 			'start' => 0,
 		);
 	 
@@ -19,9 +19,9 @@ class ControllerModuleNews extends Controller {
 		foreach ($all_news as $news) {
 			$this->data['all_news'][] = array (
 				'title' => $news['title'],
-				'description' => (strlen(strip_tags(html_entity_decode($news['description']))) > 50 ? substr(strip_tags(html_entity_decode($news['description'])), 0, 50) . '...' : strip_tags(html_entity_decode($news['description']))),
+				'description' => (strlen(strip_tags(html_entity_decode($news['description']))) > 170 ? substr(strip_tags(html_entity_decode($news['description'])), 0, 170) . '...' : strip_tags(html_entity_decode($news['description']))),
 				'view' => $this->url->link('information/news/news', 'news_id=' . $news['news_id']),
-				'date_added' => date('d M Y', strtotime($news['date_added']))
+				'date_added' => date('d.m.Y', strtotime($news['date_added']))
 			);
 		}
 	 

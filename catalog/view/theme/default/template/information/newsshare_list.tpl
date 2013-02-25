@@ -1,4 +1,4 @@
-<?php echo $header; ?>
+<?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
 <div id="content">
    <?php echo $content_top; ?>
     
@@ -17,12 +17,12 @@
 			<td style="width:20%; padding:10px 0px 10px 10px; background:#eeeeee; text-align:left;"><?php echo $text_date; ?></td>
             <td style="width:10%; padding:10px 10px 10px 10px; background:#eeeeee; text-align:right;"></td>
          </tr>
-         <?php foreach ($all_news as $news) { ?>
+         <?php foreach ($all_newsshare as $newsshare) { ?>
             <tr>
-               <td style="padding:10px 0px 10px 10px; text-align:left; border-bottom: 1px solid #eeeeee;"><?php echo $news['title']; ?></td>
-               <td style="padding:10px 0px 10px 10px; text-align:left; border-bottom: 1px solid #eeeeee; border-left: 1px solid #eeeeee;"><?php echo $news['description']; ?></td>
-			   <td style="padding:10px 0px 10px 10px; text-align:left; border-bottom: 1px solid #eeeeee; border-left: 1px solid #eeeeee;"><?php echo $news['date_added']; ?></td>
-               <td style="padding:10px 10px 10px 10px; text-align:right; border-bottom: 1px solid #eeeeee; border-left: 1px solid #eeeeee;"><a href="<?php echo $news['view']; ?>"><?php echo $text_view; ?></a></td>
+               <td style="padding:10px 0px 10px 10px; text-align:left; border-bottom: 1px solid #eeeeee;"><?php echo $newsshare['title']; ?></td>
+               <td style="padding:10px 0px 10px 10px; text-align:left; border-bottom: 1px solid #eeeeee; border-left: 1px solid #eeeeee;"><?php echo $newsshare['description']; ?></td>
+			   <td style="padding:10px 0px 10px 10px; text-align:left; border-bottom: 1px solid #eeeeee; border-left: 1px solid #eeeeee;"><?php echo $newsshare['date_added']; ?></td>
+               <td style="padding:10px 10px 10px 10px; text-align:right; border-bottom: 1px solid #eeeeee; border-left: 1px solid #eeeeee;"><a href="<?php echo $newsshare['view']; ?>"><?php echo $text_view; ?></a></td>
             </tr>
          <?php } ?>
       </table>

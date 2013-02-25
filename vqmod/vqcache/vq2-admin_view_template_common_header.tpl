@@ -99,6 +99,12 @@ $(document).ready(function(){
           <li><a href="<?php echo $total; ?>"><?php echo $text_total; ?></a></li>
           <li><a href="<?php echo $feed; ?>"><?php echo $text_feed; ?></a></li>
 
+				<li><a href="<?php echo $newsshare; ?>">News Share</a></li>
+			
+
+				<li><a href="<?php echo $newsarticle; ?>">News Article</a></li>
+			
+
 				<li><a href="<?php echo $news; ?>">News</a></li>
 			
         </ul>

@@ -1,5 +1,5 @@
 <modification>
-	<id>News</id>
+	<id>News Article</id>
 	<version>For OpenCart 1.5.x</version>
 	<vqmver>1.2.3</vqmver>
 	<author>MarketInSG</author>
@@ -9,7 +9,7 @@
 				<li><a href="<?php echo $feed; ?>"><?php echo $text_feed; ?></a></li>
 			]]></search>
 			<add><![CDATA[
-				<li><a href="<?php echo $news; ?>">News</a></li>
+				<li><a href="<?php echo $newsarticle; ?>">News Article</a></li>
 			]]></add>
 		</operation>
 	</file>
@@ -19,17 +19,7 @@
 				$this->data['feed'] = $this->url->link('extension/feed', 'token=' . $this->session->data['token'], 'SSL');	
 			]]></search>
 			<add><![CDATA[
-				$this->data['news'] = $this->url->link('extension/news', 'token=' . $this->session->data['token'], 'SSL');	
-			]]></add>
-		</operation>
-	</file>
-	<file name="catalog/view/theme/*/template/common/footer.tpl">
-		<operation>
-			<search position="before"><![CDATA[
-				<li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
-			]]></search>
-			<add><![CDATA[
-				<li><a href="index.php?route=information/news">Our News</a></li>
+				$this->data['newsarticle'] = $this->url->link('extension/newsarticle', 'token=' . $this->session->data['token'], 'SSL');	
 			]]></add>
 		</operation>
 	</file>
@@ -39,8 +29,8 @@
 				if ($url[0] == 'information_id') {
 			]]></search>
 			<add><![CDATA[
-				if ($url[0] == 'news_id') {
-					$this->request->get['news_id'] = $url[1];
+				if ($url[0] == 'newsarticle_id') {
+					$this->request->get['newsarticle_id'] = $url[1];
 				}	
 			]]></add>
 		</operation>
@@ -49,8 +39,8 @@
 				} elseif (isset($this->request->get['information_id'])) {
 			]]></search>
 			<add><![CDATA[
-				} elseif (isset($this->request->get['news_id'])) {
-					$this->request->get['route'] = 'information/news/news';
+				} elseif (isset($this->request->get['newsarticle_id'])) {
+					$this->request->get['route'] = 'information/newsarticle/newsarticle';
 			]]></add>
 		</operation>
 		<operation error="skip">
@@ -58,7 +48,7 @@
 				if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
 			]]></search>
 			<add><![CDATA[
-				if (($data['route'] == 'information/news/news' && $key == 'news_id') || ($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
+				if (($data['route'] == 'information/newsarticle/newsarticle' && $key == 'newsarticle_id') || ($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
 			]]></add>
 		</operation>
 		<operation error="skip">
@@ -66,7 +56,7 @@
 				if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/product' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
 			]]></search>
 			<add><![CDATA[
-				if (($data['route'] == 'information/news/news' && $key == 'news_id') || ($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/product' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
+				if (($data['route'] == 'information/newsarticle/newsarticle' && $key == 'newsarticle_id') || ($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/product' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
 			]]></add>
 		</operation>
 	</file>

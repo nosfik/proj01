@@ -1,11 +1,17 @@
-<div class="box">
-  <div class="box-heading"><?php echo $heading_title; ?></div>
-  <div class="box-content">
-      <?php foreach ($all_news as $news) { ?>
-	    <div style="margin-bottom:10px; padding-bottom: 5px; border-bottom:1px solid #eee;">
-		  <a href="<?php echo $news['view']; ?>"><?php echo $news['title']; ?></a><span style="float:right;"><?php echo $news['date_added']; ?></span><br />
-		  <?php echo $news['description']; ?>
-		</div>
-	  <?php } ?>
-  </div>
+<div id="news_block">
+	<div class="block">
+	  <div class="title news"></div>
+	  <div class="text">
+	  	<?php foreach ($all_news as $news) { ?>
+	  		<h3><a href="<?php echo $news['view']; ?>"><?php echo $news['title']; ?></a></h3>
+	  		<?php echo $news['description']; ?><br/>
+	  		<span><?php echo $news['date_added']; ?></span>
+	  	<?php } ?>
+	    <div class="clear"></div>
+	    <div class="smallButton" onmouseover="$(this).addClass('hover');" onmouseout="$(this).removeClass('hover');">
+	      <a class="left" href="<?php echo $this -> url -> link('information/news', '', 'SSL'); ?>">все новости</a>
+	      <div class="right"></div>
+	    </div>
+	  </div>
+	</div>
 </div>

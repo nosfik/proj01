@@ -37,3 +37,773 @@ SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php ech
 ----------------------------------------------------------------------
 
 
+---------- Date: 2013-02-25 16:54:53 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 16:54:55 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=common/login
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 16:54:55 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=common/home&amp;token=68014d82a42d7874bac83ada96ffafd7
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 16:54:55 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=common/home/chart&amp;token=68014d82a42d7874bac83ada96ffafd7&amp;range=day
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 16:55:19 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=extension/module&amp;token=68014d82a42d7874bac83ada96ffafd7
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 16:57:29 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=extension/module&amp;token=68014d82a42d7874bac83ada96ffafd7
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 16:58:04 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=extension/module/install&amp;token=68014d82a42d7874bac83ada96ffafd7&amp;extension=newsarticle
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 16:58:04 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=extension/module&amp;token=68014d82a42d7874bac83ada96ffafd7
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 16:58:17 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=module/newsarticle&amp;token=68014d82a42d7874bac83ada96ffafd7
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 16:58:37 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=extension/news&amp;token=68014d82a42d7874bac83ada96ffafd7
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 16:58:39 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=extension/module&amp;token=68014d82a42d7874bac83ada96ffafd7
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 16:58:46 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=extension/module/uninstall&amp;token=68014d82a42d7874bac83ada96ffafd7&amp;extension=newsarticle
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 16:58:46 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=extension/module&amp;token=68014d82a42d7874bac83ada96ffafd7
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 17:17:53 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 17:17:55 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=common/login
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 17:17:56 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=common/home&amp;token=ca917a232983dec3a012ecf8507551a7
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 17:17:56 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=common/home/chart&amp;token=ca917a232983dec3a012ecf8507551a7&amp;range=day
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 17:18:04 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=extension/module&amp;token=ca917a232983dec3a012ecf8507551a7
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 17:18:10 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=extension/module/install&amp;token=ca917a232983dec3a012ecf8507551a7&amp;extension=newsarticle
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 17:18:10 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=extension/module&amp;token=ca917a232983dec3a012ecf8507551a7
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 17:18:38 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=extension/module&amp;token=ca917a232983dec3a012ecf8507551a7
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 17:18:41 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /admin/index.php?route=extension/module&amp;token=ca917a232983dec3a012ecf8507551a7
+DOM UNABLE TO LOAD: Z:\home\pechatnik\www\vqmod\xml\newsarticle.xml
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 17:49:38 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 17:58:56 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 17:59:14 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:18:54 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:20:01 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:20:43 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:23:28 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=information/newsarticle/newsarticle&amp;newsarticle_id=3
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:24:38 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=information/newsarticle&amp;newsarticle_id=3
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:24:50 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=information/newsarticle
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:25:03 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=information/newsarticle/newsarticle&amp;newsarticle_id=4
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:25:10 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=information/newsarticle
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:25:13 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=information/newsarticle/newsarticle&amp;newsarticle_id=1
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:27:20 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=information/newsarticle/newsarticle&amp;newsarticle_id=1
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:27:40 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:30:16 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:32:44 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:32:49 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=information/news/news&amp;news_id=1
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:32:54 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:43:40 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=information/news/news&amp;news_id=1
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:43:46 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=information/news/news
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:43:55 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=information/news
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:45:17 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=information/news
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:45:20 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:45:32 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=information/news
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:45:36 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:45:42 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=information/news/news&amp;news_id=1
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:45:45 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:46:02 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:46:34 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:46:41 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=information/news
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:46:43 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:52:38 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:52:57 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:55:07 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:55:25 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:55:28 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:55:43 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:55:44 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:55:58 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:56:00 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:56:12 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:56:35 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:57:19 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:57:32 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:57:51 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 18:58:28 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 19:00:41 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=account/register
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 19:00:43 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=account/login
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2013-02-25 19:24:24 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /index.php?route=common/home
+MOD DETAILS:
+   modFile   : Z:\home\pechatnik\www\vqmod\xml\news.xml
+   id        : News
+   version   : For OpenCart 1.5.x
+   vqmver    : 1.2.3
+   author    : MarketInSG
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
+
+----------------------------------------------------------------------
+
+
