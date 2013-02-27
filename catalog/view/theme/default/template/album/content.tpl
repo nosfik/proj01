@@ -159,26 +159,26 @@
     </div>
     <div class="cont">Цветокоррекция<br>
       <select name="color_correction">
-        <option value="1">Делать</option>
-        <option value="0">Не делать</option>
+        <option value="1">Не делать</option>
+        <option value="2">Делать</option>
       </select>
     </div>
     <div class="cont">Обрезка<br>
       <select name="cut_photo">
-        <option value="0">Без эффектов</option>
-        <option value="1">С эффектами</option>
+        <option value="1">Без эффектов</option>
+        <option value="2">С эффектами</option>
       </select>
     </div>
     <div class="cont">Белая рамка<br>
       <select name="white_border">
-        <option value="0">Без рамки</option>
-        <option value="1">С рамкой</option>
+        <option value="1">Без рамки</option>
+        <option value="2">С рамкой</option>
       </select>
     </div>
     <div class="cont">Красные глаза<br>
       <select name="red_eye">
-        <option value="0">Не делать</option>
-        <option value="1">Делать</option>
+        <option value="1">Не делать</option>
+        <option value="2">Делать</option>
       </select>
     </div>
     <div class="clear"></div>

@@ -25,6 +25,18 @@ class ModelExtensionNewsshare extends Model {
 		return $query->rows;
 	}
 	
+	public function getNewsshareDescriptionImage($id) {
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "newsshare_description WHERE newsshare_id = '" . (int)$id . "' LIMIT 1"); 
+		
+		$newsshare_description_image = array(
+			'image'       => $query->row['image'],
+			'image_name' => $query->row['image_name']
+		);
+		
+		return $newsshare_description_image;
+	}
+	
+	
 	public function countNewsshare() {
 		$count = $this->db->query("SELECT * FROM " . DB_PREFIX . "newsshare");
 	

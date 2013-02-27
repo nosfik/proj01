@@ -1,6 +1,3 @@
-
-
-
 <div id="news_block">
 <div class="block">
   <div class="title articles"></div>

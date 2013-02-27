@@ -6,7 +6,7 @@ class ControllerModuleNewsshare extends Controller {
 		
 		$data = array(
 			'page' => 1,
-			'limit' => 5,
+			'limit' => 1,
 			'start' => 0,
 		);
 	 
@@ -19,9 +19,10 @@ class ControllerModuleNewsshare extends Controller {
 		foreach ($all_newsshare as $newsshare) {
 			$this->data['all_newsshare'][] = array (
 				'title' => $newsshare['title'],
-				'description' => (strlen(strip_tags(html_entity_decode($newsshare['description']))) > 50 ? substr(strip_tags(html_entity_decode($newsshare['description'])), 0, 50) . '...' : strip_tags(html_entity_decode($newsshare['description']))),
+				'image_src' => $this->url->link('information/newsshare/image', 'newsshare_id=' . $newsshare['newsshare_id']),
+				'description' => (strlen(strip_tags(html_entity_decode($newsshare['description']))) > 200 ? substr(strip_tags(html_entity_decode($newsshare['description'])), 0, 200) . '...' : strip_tags(html_entity_decode($newsshare['description']))),
 				'view' => $this->url->link('information/newsshare/newsshare', 'newsshare_id=' . $newsshare['newsshare_id']),
-				'date_added' => date('d M Y', strtotime($newsshare['date_added']))
+				'date_added' => date('d.m.Y', strtotime($newsshare['date_added']))
 			);
 		}
 	 

@@ -81,6 +81,36 @@ class ControllerInformationNewsshare extends Controller {
 	 
 		$this->response->setOutput($this->render());
 	}
+
+	public function image() {
+			if (isset($this->request->get['newsshare_id'])) {
+				$this->load->model('extension/newsshare');
+				$newsshare = $this->model_extension_newsshare->getNewsshareDescriptionImage($this->request->get['newsshare_id']);
+			} else {
+				$newsshare = array();
+			}
+    	
+			if(!empty($newsshare)){
+				
+				$name = $newsshare['image_name'];
+				$tmp = explode('.', $name);
+				$ext = strtolower($tmp[sizeof($tmp) - 1]);
+				
+				switch ($ext) {
+					case 'png' : $content_type = 'image/png'; break;
+					case 'gif' : $content_type = 'image/gif'; break;
+					case 'jpg' : 
+					case 'jpeg' :  
+					default: $content_type = 'image/jpeg'; break;
+				}
+				
+				$this->data['content_type'] = $content_type;
+				header('Content-type: '.$content_type);
+				echo ($newsshare['image']);
+
+			}
+  }
+
  
    public function newsshare() {
       $this->load->model('extension/newsshare');

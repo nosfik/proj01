@@ -103,7 +103,45 @@ class ControllerAlbumOrder extends Controller {
                     if($config['apply'] == 'photo') {
                       $this->model_album_content->savePhotoPreference($config);
                     } elseif($config['apply'] == 'copy') {
-                      $config['photo_id'] = $this->model_album_content->savePhotoCopyPreference($config);
+                    	
+											$tmp = explode('.', $photo_name);
+											$arr_size = sizeof($tmp);
+											$name = '';
+											$ext = strtolower($tmp[$arr_size - 1]);
+											for ($i = 0; $i < ($arr_size - 1) ; $i++) {
+												$name .= $tmp[$i];
+											}
+											$pattern = '/(?<name>.+)(?<copy>_copy[0-9]+)$/';
+											preg_match($pattern, $name, $matches);
+											$searchName = (!empty($matches)) ? $matches['name'] : $name;
+											$similar_photo_name = $this->model_album_content->getSimilarPhotoName($album_id, $this->customer->getId(), $searchName);
+											if(!empty($similar_photo_name)) {
+												
+												$tmp = explode('.', $similar_photo_name);
+												$arr_size = sizeof($tmp);
+												$name = '';
+												//print_r($tmp);
+												$ext = strtolower($tmp[$arr_size - 1]);
+												for ($i = 0; $i < ($arr_size - 1) ; $i++) {
+													$name .= $tmp[$i];
+												}
+											}
+											
+											preg_match($pattern, $name, $matches);
+											if(!empty($matches)){
+											  $oldName = $matches['name'];
+											  $copy = $matches['copy'];
+											  $count = str_replace('_copy', '', $copy);
+											  $count++; 
+											  $name = $oldName . '_copy' . $count. '.' . $ext;
+											} else {
+											  $name .= '_copy1'. '.' .$ext;
+											}
+											
+											$new_photo_path = $albumDir.'/'.$name;
+										  copy($photo_src, $new_photo_path);
+											$config['photo_name'] = $name;
+											$config['photo_id'] = $this->model_album_content->savePhotoCopyPreference($config);
                     }
                     $photos_order[] = $config['photo_id']; 
                  }

@@ -106,17 +106,81 @@ class ControllerAlbumContent extends Controller {
        } 
       $this->redirect($this->url->link('account/login', '', 'SSL')); 
     } else {
-      
-      if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/album/edit.tpl')) {
-        $this->template = $this->config->get('config_template') . '/template/album/edit.tpl';
-      } else {
-        $this->template = 'default/template/album/edit.tpl';
-      }
-      
-      $this->data['customer_id'] = $this->customer->getId();
-      $this->load->model('album/content');
-      
-      if (isset($this->request->get['album'])) {
+    	
+			
+			if (isset($this->request->post['color_correction'])) {
+        $color_correction = $this->request->post['color_correction'];
+      } else { 
+        $color_correction = 0;
+      } 
+			
+			if (isset($this->request->post['cut'])) {
+        $cut = $this->request->post['cut'];
+      } else { 
+        $cut = 0;
+      } 
+			
+			if (isset($this->request->post['format'])) {
+        $format = $this->request->post['format'];
+      } else { 
+        $format = 0;
+      } 
+			
+			if (isset($this->request->post['x'])) {
+        $img_x = $this->request->post['x'];
+      } else { 
+        $img_x = 0;
+      } 
+			
+			if (isset($this->request->post['y'])) {
+        $img_y = $this->request->post['y'];
+      } else { 
+        $img_y = 0;
+      } 
+			
+			if (isset($this->request->post['width'])) {
+        $width = $this->request->post['width'];
+      } else { 
+        $width = 0;
+      } 
+			
+			if (isset($this->request->post['height'])) {
+        $height = $this->request->post['height'];
+      } else { 
+        $height = 0;
+      } 
+			
+			if (isset($this->request->post['copy'])) {
+        $copy = $this->request->post['copy'];
+      } else { 
+        $copy = 0;
+      } 
+			
+			if (isset($this->request->post['white_border'])) {
+        $white_border = $this->request->post['white_border'];
+      } else { 
+        $white_border = 0;
+      } 
+			
+			if (isset($this->request->post['red_eye'])) {
+        $red_eye = $this->request->post['red_eye'];
+      } else { 
+        $red_eye = 0;
+      } 
+			
+			if (isset($this->request->post['paper'])) {
+        $paper = $this->request->post['paper'];
+      } else { 
+        $paper = 0;
+      } 
+			
+			if (isset($this->request->post['printmode'])) {
+        $printmode = $this->request->post['printmode'];
+      } else { 
+        $printmode = 0;
+      } 
+			
+			if (isset($this->request->get['album'])) {
         $album_id = $this->request->get['album'];
       } else { 
         $album_id = 0;
@@ -127,6 +191,142 @@ class ControllerAlbumContent extends Controller {
       } else { 
         $photo_id = 0;
       } 
+			
+			if (isset($this->request->get['update'])) {
+        $this->data['update'] = $this->request->get['update'];
+      } else { 
+        $this->data['update'] = 0;
+      } 
+			
+			if($printmode && $paper && $red_eye && $white_border && $format && $cut && $color_correction) {
+				header('Content-type: application/json');
+				$return['success'] = 'false'; 
+				$this->load->model('album/content');
+				$albumDir = DIR_PHOTOS.'album_cus_'.$this->customer->getId().'/album_'.$album_id;
+				$photoName = $this->model_album_content->getPhotoNameById($photo_id, $this->customer->getId());
+				$photo_src = $albumDir. '/' . $photoName;
+				
+				
+				$config = array(
+          'album_id'           => $album_id,
+          'color_correction'   => $color_correction,
+          'cut_photo'          => $cut,
+          'format'             => $format,
+          'paper'              => $paper,
+          'photo_id'           => $photo_id,
+          'print_mode'         => $printmode,
+          'red_eye'            => $red_eye,
+          'white_border'       => $white_border,
+          'customer_id'        => $this->customer->getId()
+          );
+					
+				if($copy) {
+					
+					//echo $photoName;/
+					$tmp = explode('.', $photoName);
+					$arr_size = sizeof($tmp);
+					$name = '';
+					//print_r($tmp);
+					$ext = strtolower($tmp[$arr_size - 1]);
+					for ($i = 0; $i < ($arr_size - 1) ; $i++) {
+						$name .= $tmp[$i];
+					}
+					$pattern = '/(?<name>.+)(?<copy>_copy[0-9]+)$/';
+					preg_match($pattern, $name, $matches);
+					$searchName = (!empty($matches)) ? $matches['name'] : $name;
+					$similar_photo_name = $this->model_album_content->getSimilarPhotoName($album_id, $this->customer->getId(), $searchName);
+					if(!empty($similar_photo_name)) {
+						
+						$tmp = explode('.', $similar_photo_name);
+						$arr_size = sizeof($tmp);
+						$name = '';
+						//print_r($tmp);
+						$ext = strtolower($tmp[$arr_size - 1]);
+						for ($i = 0; $i < ($arr_size - 1) ; $i++) {
+							$name .= $tmp[$i];
+						}
+					}
+					
+					preg_match($pattern, $name, $matches);
+					//print_r($matches);
+					if(!empty($matches)){
+					  $oldName = $matches['name'];
+					  $copy = $matches['copy'];
+					  $count = str_replace('_copy', '', $copy);
+					  $count++; 
+					  $name = $oldName . '_copy' . $count. '.' . $ext;
+					} else {
+					  $name .= '_copy1'. '.' .$ext;
+					}
+					
+					$new_photo_path = $albumDir.'/'.$name;
+				  copy($photo_src, $new_photo_path);
+					$config['photo_name'] = $name;
+					$return['photo'] = $this->model_album_content->savePhotoCopyPreference($config);
+					
+				} else {
+					$this->model_album_content->savePhotoPreference($config);
+				}
+				
+				
+				
+					if($width && $height) {
+						$return['frame'] = 'start'; 
+						$tmp = explode('.', $photoName);
+						$ext = strtolower($tmp[sizeof($tmp) - 1]);
+						
+						switch ($ext) {
+							case 'png' : $img_r = imagecreatefrompng($photo_src); break;
+							case 'gif' : $img_r = imagecreatefromgif($photo_src); break;
+							case 'jpg' : 
+							case 'jpeg' :  
+							default: $img_r = imagecreatefromjpeg($photo_src); break;
+						}	
+						
+						$targ_w = $width;
+						$targ_h = $height;
+						//list($targ_w, $targ_h) = getimagesize($photo_src);
+						
+						$dst_r = ImageCreateTrueColor( $targ_w, $targ_h );
+					
+						imagecopyresampled($dst_r,$img_r,0,0,$img_x,$img_y,$targ_w,$targ_h,$width,$height);
+						
+						if(isset($new_photo_path)){
+							$photo_new_src = $new_photo_path;
+						} else {
+							$photo_new_src = $photo_src;
+						}
+						switch ($ext) {
+							case 'png' : imagepng($dst_r, $photo_new_src); break;
+							case 'gif' : imagegif($dst_r, $photo_new_src); break;
+							case 'jpg' : 
+							case 'jpeg' :  
+							default: imagejpeg($dst_r, $photo_new_src); break;
+						}	
+					
+						imagedestroy($dst_r);
+						imagedestroy($img_r);
+					} else {
+						if(isset($new_photo_path)){
+							copy($photo_src, $new_photo_path);
+						}
+					}
+				
+				
+				$return['success'] = 'true';
+				echo json_encode($return);
+				
+			} else {
+				
+				if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/album/edit.tpl')) {
+        $this->template = $this->config->get('config_template') . '/template/album/edit.tpl';
+      } else {
+        $this->template = 'default/template/album/edit.tpl';
+      }
+      
+      $this->data['customer_id'] = $this->customer->getId();
+      $this->load->model('album/content');
+      
       
       if(!$album_id ||  !$photo_id){
         $this->redirect($this->url->link('album/album', '', 'SSL')); 
@@ -137,6 +337,8 @@ class ControllerAlbumContent extends Controller {
         $this->data['album_id'] = $album_id;
         $this->data['formats'] = $this->model_album_content->getFormats();
         $this->data['papers'] = $this->model_album_content->getPaperTypes();
+				$this->data['printmodes'] = $this->model_album_content->getPrintModes();
+				
         
         $this->data['album_id'] = $album_id;
 				$this->data['photo_id'] = $photo_id;
@@ -144,10 +346,6 @@ class ControllerAlbumContent extends Controller {
         
       
         $albumDir = 'albums/album_cus_'.$this->customer->getId().'/album_'.$album_id;
-        
-        
-        
-        
         
         
         if(is_dir($albumDir)){
@@ -160,10 +358,10 @@ class ControllerAlbumContent extends Controller {
             'name'              => $photo['photo_name'],
             'format'            => $photo['album_photo_format_id'],
             'paper'             => $photo['album_photo_paper_id'],
-            'printMode'         => $photo['album_photo_printmode_id'],
+            'printmode'         => $photo['album_photo_printmode_id'],
             'color_correction'  => $photo['color_correction'],
             'cut'               => $photo['cut_photo'],
-            'border'            => $photo['white_border'],
+            'white_border'      => $photo['white_border'],
             'red_eye'           => $photo['red_eye'],
             'path'              => $albumDir.'/'.$photo['photo_name']
           );
@@ -179,6 +377,17 @@ class ControllerAlbumContent extends Controller {
       );
       
       $this->response->setOutput($this->render());
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+      
+      
         
       }
       
