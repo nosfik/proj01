@@ -119,68 +119,7 @@
   
 </div>
 <div id="green_cont">
-  <form id="order_form">
-  <div id="step3_field_cont">
-    <div class="clear"></div>
-    <div class="cont">Формат печати<br>
-      <select name="format">
-        <?php foreach ($formats as $format) { ?>
-           <option value="<?php echo $format['id']?>"><?php echo $format['name']?></option>
-        <?php } ?>
-      </select>
-    </div>
-    <div class="cont">Тип бумаги<br>
-      <select name="paper">
-        <?php foreach ($papers as $paper) { ?>
-           <option value="<?php echo $paper['id']?>"><?php echo $paper['name']?></option>
-        <?php } ?>
-      </select>
-    </div>
-    <div class="cont">Режим печати<br>
-      <select name="print_mode">
-        <?php foreach ($print_modes as $print_mode) { ?>
-           <option value="<?php echo $print_mode['id']?>"><?php echo $print_mode['name']?></option>
-        <?php } ?>
-      </select>
-    </div>
-    <div class="cont">Число копий<br>
-      <input type="text" id="photo_count" value="1" name="count">
-      <div id="arrows"><a onclick="$('#photo_count').val(+$('#photo_count').val() + 1)"><img width="7" height="4" src="catalog/view/theme/default/image/top_arrow.gif"></a>
-        <a onclick="if($('#photo_count').val() > 1){$('#photo_count').val(+$('#photo_count').val() - 1)}"><img width="7" height="4" src="catalog/view/theme/default/image/bottom_arrow.gif"></a></div>
-    </div>
-    <div class="cont">Цветокоррекция<br>
-      <select name="color_correction">
-        <option value="1">Делать</option>
-        <option value="0">Не делать</option>
-      </select>
-    </div>
-    <div class="cont">Обрезка<br>
-      <select name="cut_photo">
-        <option value="0">Без эффектов</option>
-        <option value="1">С эффектами</option>
-      </select>
-    </div>
-    <div class="cont">Белая рамка<br>
-      <select name="white_border">
-        <option value="0">Без рамки</option>
-        <option value="1">С рамкой</option>
-      </select>
-    </div>
-    <div class="cont">Красные глаза<br>
-      <select name="red_eye">
-        <option value="0">Не делать</option>
-        <option value="1">Делать</option>
-      </select>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div onmouseout="$(this).removeClass('hover');" onmouseover="$(this).addClass('hover');" class="bigButton" style="margin-left:280px; float:left"><a onclick="aplly_photo(true)" class="left">Применить к копиям</a>
-    <div class="right"></div>
-  </div>
-  <div onmouseout="$(this).removeClass('hover');" onmouseover="$(this).addClass('hover');" class="bigButton"><a onclick="aplly_photo(false)" class="left">Применить к выбранным</a>
-    <div class="right"></div>
-  </div>
-  </form>
+<pre><?php print_r($data);?></pre>
 </div>
 <script type="text/javascript">
   

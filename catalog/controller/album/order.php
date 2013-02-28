@@ -1,5 +1,135 @@
 <?php  
 class ControllerAlbumOrder extends Controller {
+	
+	
+	 public function delete() {
+	 	
+		
+		if (!$this->customer->isLogged() || !$this->cart->hasAlbums()) {
+      //$this->session->data['redirect'] = $this->url->link('album/album', '', 'SSL');
+      $this->redirect($this->url->link('common/home', '', 'SSL')); 
+    } else {
+    	header('Content-type: application/json');
+      $return['success'] = 'false'; 
+			
+			if (isset($this->request->get['key'])) {
+				$key = $this->request->get['key'];
+			} else {
+				$key = '';
+			}
+			
+			if (isset($this->request->get['photo'])) {
+				$photo_id = $this->request->get['photo'];
+			} else {
+				$photo_id = 0;
+			}
+			
+			if($photo_id && !empty($key)){
+				
+				$orders = $this->cart->getAlbums();
+				$currOrder = $orders[$key];
+				if(!empty($currOrder)) {
+					
+					
+					
+					
+					
+				}
+				
+			}
+			
+			
+		}
+		
+		
+		
+    if ($this->customer->isLogged()) {
+      header('Content-type: application/json');
+      $return['success'] = 'false'; 
+      $this->load->model('album/album');
+      $album_id = (int)$this->request->post['album_id'];
+      $cover = $this->model_album_album->deleteAlbum($album_id, $this->customer->getId());
+      $customer_dir =  DIR_PHOTOS.'album_cus_'.$this->customer->getId();
+      
+      $text = "cover = ".$cover. "\n". "dir = ".$customer_dir."/cover"." isdir = ".is_dir($customer_dir.'/cover')
+      . "  file = ".$customer_dir.'/cover'.$cover. " is_file = ". is_file($customer_dir.'/cover'.$cover);
+      if($cover != '' && is_dir($customer_dir.'/cover') && is_file($customer_dir.'/cover/'.$cover)) {
+         @unlink($customer_dir.'/cover/'.$cover);
+      }
+      $albumDir = DIR_PHOTOS.'album_cus_'.$this->customer->getId().'/album_'.$album_id;
+      if (is_dir($albumDir)) {
+        $files = glob($albumDir."/*");
+        if ($files) {
+          foreach($files as $file) {
+            @unlink($file);
+          }
+        }
+         @rmdir($albumDir);
+         $return['success'] = 'true'; 
+      }
+      echo json_encode($return);
+    }
+  }
+
+	
+	
+	public function index() {
+		
+		
+		if (!$this->customer->isLogged() || !$this->cart->hasAlbums()) {
+      //$this->session->data['redirect'] = $this->url->link('album/album', '', 'SSL');
+      $this->redirect($this->url->link('common/home', '', 'SSL')); 
+    } else {
+      
+      
+      $this->data['customer_id'] = $this->customer->getId();
+      $this->load->model('album/album');
+			$this->load->model('album/content');
+			
+			if (isset($this->request->get['key'])) {
+				$key = $this->request->get['key'];
+			} else {
+				$key = '';
+			}
+				
+			
+			$orderAlbums = $this->cart->getAlbums();
+			
+			$currOrder = $orderAlbums[$key];
+			
+			$this->data['photos'] = array();
+			foreach ($currOrder['photos'] as $photo_id) {
+				$this->data['photos'][] = array(
+					'id' 		=> $photo_id,
+					'path' 	=> 'albums/album_cus_'.$this->customer->getId().'/album_'.$currOrder['album_id'].'/'.$currOrder['photos_name_map'][$photo_id],
+					'name' 	=> $currOrder['photos_name_map'][$photo_id]
+				
+				);
+				
+				
+			}
+			
+      if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/album/order.tpl')) {
+        $this->template = $this->config->get('config_template') . '/template/album/order.tpl';
+      } else {
+        $this->template = 'default/template/album/order.tpl';
+      }
+      
+      $this->children = array(
+        'common/column_right',
+        'common/content_top',
+        'common/content_bottom',
+        'common/footer',
+        'common/header'
+      );
+      
+      $this->response->setOutput($this->render());
+    }
+    
+    
+		
+		
+	}
   
   
   public function make() {

@@ -94,8 +94,8 @@ class Cart {
                   'photos'          => $photos,
                   'quantity'        => $quantity,
                   'album_name'      => $config['album_name'],
-                  'album_id'        => $album_id,
-                  'price'           => $config['price'],
+                  'album_id'        => $album,
+                  'price'           => $price,
                   'photos_name_map' => $photos_name_map,
                   'preferences_map' => $preferences,
                   'preferences_str' => $value

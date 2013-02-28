@@ -101,7 +101,7 @@ class ControllerCheckoutCart extends Controller {
         	'separator' => $this->language->get('text_separator')
       	);
 			
-    	if ($this->cart->hasProducts() || !empty($this->session->data['vouchers'])) {
+    	if ($this->cart->hasProducts() || $this->cart->hasAlbums() || !empty($this->session->data['vouchers'])) {
 			$points = $this->customer->getRewardPoints();
 			
 			$points_total = 0;
@@ -194,7 +194,7 @@ class ControllerCheckoutCart extends Controller {
                 'album_name'  => $album['album_name'],
                 'album_id'    => $album['album_id'],
                 'quantity'    => $album['quantity'],
-                'album_href'  => $this->url->link('album/content', 'album_id='.$album['album_id'], 'SSL'),
+                'album_href'  => $this->url->link('album/order', 'key='.$album['key'], 'SSL'),
                 'price'       => $this->currency->format($album['price'])
             );
             $totalAlbum += $album['price'];
