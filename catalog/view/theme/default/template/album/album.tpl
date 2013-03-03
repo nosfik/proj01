@@ -99,9 +99,7 @@
             <div class="albumCont" id="album_<?php echo $album["id"]?>">
               <div class="album"></div>
               <div class="picCont">
-                <?php if($album['photo'] != '') { ?>
-                <img id="album_cover" src="albums/album_cus_<?php echo $customer_id;?>/cover/<?php echo $album['photo'];?>"/>
-                <?php } ?>
+                <img id="album_cover" src="<?php echo $album['cover'];?>"/>
               </div>
               <div class="blick"></div>
               <div class="buttons">

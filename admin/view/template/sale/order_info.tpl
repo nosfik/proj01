@@ -11,7 +11,10 @@
       <div class="buttons"><a onclick="window.open('<?php echo $invoice; ?>');" class="button"><?php echo $button_invoice; ?></a><a onclick="location = '<?php echo $cancel; ?>';" class="button"><?php echo $button_cancel; ?></a></div>
     </div>
     <div class="content">
-      <div class="vtabs"><a href="#tab-order"><?php echo $tab_order; ?></a><a href="#tab-payment"><?php echo $tab_payment; ?></a>
+      <div class="vtabs">
+        
+        <!-- <a href="#tab-payment"><?php echo $tab_payment; ?></a>-->
+        <a href="#tab-order"><?php echo $tab_order; ?></a>
         <?php if ($shipping_method) { ?>
         <a href="#tab-shipping"><?php echo $tab_shipping; ?></a>
         <?php } ?>
@@ -156,7 +159,7 @@
           </tr>
         </table>
       </div>
-      <div id="tab-payment" class="vtabs-content">
+      <!--<div id="tab-payment" class="vtabs-content">
         <table class="form">
           <tr>
             <td><?php echo $text_firstname; ?></td>
@@ -223,7 +226,7 @@
             <td><?php echo $payment_method; ?></td>
           </tr>
         </table>
-      </div>
+      </div> -->
       <?php if ($shipping_method) { ?>
       <div id="tab-shipping" class="vtabs-content">
         <table class="form">

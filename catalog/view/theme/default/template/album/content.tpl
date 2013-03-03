@@ -264,8 +264,7 @@
             if (!response.success) {
                 alert("Проблемы на стороне сервера.");
             } else {
-              alert('hello');
-               //window.location = '<?php echo $this -> url -> link('checkout/cart', '', 'SSL'); ?>';
+               window.location = '<?php echo $this -> url -> link('checkout/cart', '', 'SSL'); ?>';
             }
         },
         error: function(rs, e, a) {
@@ -297,7 +296,24 @@
             if (!response.success) {
                 alert("Проблемы на стороне сервера.");
             } else {
-            	location.reload();
+              if(response.order) {
+                var msg = '';
+                for(var i = 0; i < response.order.length; i++) {
+                  msg += response.order[i] + ',';
+                }
+                msg = msg.substring(0, (msg.length - 1));
+                
+                if(response.order.length == 1) {
+                  alert('Фотографию :' + msg + ' нельзя удалить, так как она находится в корзине');
+                } else {
+                  alert('Фотографии :' + msg + ' нельзя удалить, так как они находятся в корзине');
+                }
+                
+              } else {
+                location.reload();
+              }
+              
+            	//location.reload();
               //window.location = '<?php echo $this -> url -> link('album/album', '', 'SSL'); ?>';
             }
         },

@@ -117,9 +117,13 @@ class ModelAccountOrder extends Model {
 	
 	public function getOrderProducts($order_id) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_product WHERE order_id = '" . (int)$order_id . "'");
-	
 		return $query->rows;
 	}
+
+  public function getOrderAlbums($order_id) {
+      $query = $this->db->query( "SELECT o.*, COUNT(*) as count, SUM(price) as tprice, a.name FROM order_album as o JOIN album as a ON a.album_id = o.album_id WHERE order_id =".(int)$order_id." GROUP BY order_id");
+    return $query->rows;
+  }
 	
 	public function getOrderOptions($order_id, $order_product_id) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_option WHERE order_id = '" . (int)$order_id . "' AND order_product_id = '" . (int)$order_product_id . "'");
@@ -153,14 +157,15 @@ class ModelAccountOrder extends Model {
 
 	public function getTotalOrders() {
       	$query = $this->db->query("SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "order` WHERE customer_id = '" . (int)$this->customer->getId() . "' AND order_status_id > '0'");
+      	
 		
 		return $query->row['total'];
 	}
 		
 	public function getTotalOrderProductsByOrderId($order_id) {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "order_product WHERE order_id = '" . (int)$order_id . "'");
-		
-		return $query->row['total'];
+		$query1 = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "order_album WHERE order_id = '" . (int)$order_id . "'");
+		return ($query->row['total'] + $query1->row['total']);
 	}
 	
 	public function getTotalOrderVouchersByOrderId($order_id) {

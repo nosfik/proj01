@@ -49,7 +49,7 @@ class ControllerModuleCart extends Controller {
 		$this->data['totals'] = $total_data;
     
     foreach($this->cart->getAlbums() as $album) {
-      $total_album += $album['price'];
+      $total_album += ($album['price'] * $album['quantity']);
     }
     
 		

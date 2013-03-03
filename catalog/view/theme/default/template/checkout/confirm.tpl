@@ -14,16 +14,20 @@
       <thead>
         <tr>
           <td class="name">Альбом</td>
-          <td class="quantity"><?php echo $column_quantity; ?></td>
-          <td class="price"><?php echo $column_price; ?></td>
+          <td align="left">Фотографии</td>
+              <td align="left">Копии</td>
+              <td align="left">Сумма</td>
+              <td align="left">Итого</td>
         </tr>
       </thead>
       <tbody>
         <?php foreach ($albums as $album) { ?>
         <tr>
           <td class="name"><a href="<?php echo $album['href']; ?>"><?php echo $album['album_name']; ?></a></td>
-          <td class="quantity"><?php echo $album['quantity']; ?></td>
-          <td class="price"><?php echo $album['price']; ?></td>
+          <td><?php echo $album['count'];?></td>
+              <td><?php echo $album['quantity'];?></td>
+              <td><?php echo $album['price'];?></td>
+              <td><?php echo $album['total'];?></td>
         </tr>
         <?php } ?>
     </table>

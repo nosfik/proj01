@@ -19,11 +19,13 @@ class ControllerCheckoutCheckout extends Controller {
                 'key'         => $album['key'],
                 'album_name'  => $album['album_name'],
                 'album_id'    => $album['album_id'],
+                'count'       => count($album['photos']),
                 'quantity'    => $album['quantity'],
                 'album_href'  => $this->url->link('album/content', 'album_id='.$album['album_id'], 'SSL'),
-                'price'       => $this->currency->format($album['price'])
+                'price'       => $this->currency->format($album['price']),
+                'total'       => $this->currency->format($album['price'] * $album['quantity'])
             );
-            $totalAlbum += $album['price'];
+            $totalAlbum += ($album['price'] * $album['quantity']);
         }
        
       }
@@ -121,7 +123,7 @@ $this->load->model('tool/image');
         
         
         
-          }
+   }
     
     
     
@@ -223,12 +225,13 @@ $this->load->model('tool/image');
       
       $results = $this->model_setting_extension->getExtensions('shipping');
       
+     
       foreach ($results as $result) {
+       
         if ($this->config->get($result['code'] . '_status')) {
           $this->load->model('shipping/' . $result['code']);
           
           $quote = $this->{'model_shipping_' . $result['code']}->getQuote($shipping_address); 
-    
           if ($quote) {
             $quote_data[$result['code']] = array( 
               'title'      => $quote['title'],
@@ -239,18 +242,18 @@ $this->load->model('tool/image');
           }
         }
       }
-  
+      //$this->data['haha'] = $quote_data;
       $sort_order = array();
       
       foreach ($quote_data as $key => $value) {
         $sort_order[$key] = $value['sort_order'];
       }
-  
+      
       array_multisort($sort_order, SORT_ASC, $quote_data);
       
       $this->session->data['shipping_methods'] = $quote_data;
     
-
+     
 
     
     
@@ -303,7 +306,7 @@ $this->load->model('tool/image');
         if ($this->config->get($result['code'] . '_status')) {
           $this->load->model('payment/' . $result['code']);
           
-          $method = $this->{'model_payment_' . $result['code']}->getMethod($payment_address, $total); 
+          $method = $this->{'model_payment_' . $result['code']}->getMethod($payment_address, ($total + $this->cart->getSubTotalAlbum())); 
           
           if ($method) {
             $method_data[$result['code']] = $method;
@@ -413,6 +416,7 @@ $this->load->model('tool/image');
   
     $this->data['button_continue'] = $this->language->get('button_continue');
     
+    
     if (empty($this->session->data['shipping_methods'])) {
       $this->data['error_warning'] = sprintf($this->language->get('error_no_shipping'), $this->url->link('information/contact'));
     } else {
@@ -438,6 +442,7 @@ $this->load->model('tool/image');
     }
     
     
+   
     
     
     

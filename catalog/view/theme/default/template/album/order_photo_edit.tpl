@@ -4,9 +4,8 @@
 <div id="content">
     <?php echo $content_top; ?>
 
-	
   
-  	<input type="hidden" name="copy" id="photo_copy" value=""/>
+    <input type="hidden" name="copy" id="photo_copy" value=""/>
     <div id="yellow_cont">
         <div id="help_cont">
             <div id="help">
@@ -27,47 +26,47 @@
             <div class="darkEnd"></div>
             <div class="light"><a href="<?php echo $this -> url -> link('album/album', '', 'SSL'); ?>">Мои фотоальбомы</a></div>
             <div class="lightEnd"></div>
-            <div class="light2"><a href="<?php echo $this -> url -> link('album/content', 'album_id=' . $album_id, 'SSL'); ?>"> <?php echo $albumName; ?></a></div>
+            <div class="light2"><a href="<?php echo $this -> url -> link('album/order', 'key=' . $key, 'SSL'); ?>"> Ваш заказ</a></div>
             <div class="light2End"></div>
             <div class="light3">Редактируем фото и отправляем на печать</div>
             <div class="light3End"></div>
         </div>
         <div id="edit_photo_cont">
-        		
-        		
-        		<div id="dell_photo_window" class="del_window" style="display:none">
-				      <input type="hidden" name="photo" value=""/>  
-				      <input type="hidden" name="album" value=""/>  
-				      <div id="close">
-				        <a onclick="$('#dell_photo_window').fadeOut()">
-				          <img src="catalog/view/theme/default/image/blank.gif">
-				        </a>
-				      </div>
-				      <div id="mess">Удалить Фотографию "<span id="deleteContent"></span>"?</div>
-				      <div id="round_red">
-				        <div style="margin-left:80px; float:left" class="bigButton" onmouseover="$(this).addClass('hover');" onmouseout="$(this).removeClass('hover');">
-				          <a class="left" onclick="delete_album_approved()">Да, подтверждаю</a>
-				          <div class="right"></div>
-				        </div>
-				        <div style="margin-left:20px; float:left" class="bigButton" onmouseover="$(this).addClass('hover');" onmouseout="$(this).removeClass('hover');">
-				          <a class="left" onclick="$('#dell_photo_window').fadeOut()">Отменить удаление</a>
-				          <div class="right"></div>
-				        </div>
-				        <div class="clear"></div>
-				      </div>
-				  </div>
-     <form method="post" id="photo_edit_form" >   		
-        		
+            
+            
+            <div id="dell_photo_window" class="del_window" style="display:none">
+              <input type="hidden" name="photo" value=""/>  
+              <input type="hidden" name="album" value=""/>  
+              <div id="close">
+                <a onclick="$('#dell_photo_window').fadeOut()">
+                  <img src="catalog/view/theme/default/image/blank.gif">
+                </a>
+              </div>
+              <div id="mess">Удалить Фотографию "<span id="deleteContent"></span>"?</div>
+              <div id="round_red">
+                <div style="margin-left:80px; float:left" class="bigButton" onmouseover="$(this).addClass('hover');" onmouseout="$(this).removeClass('hover');">
+                  <a class="left" onclick="delete_album_approved()">Да, подтверждаю</a>
+                  <div class="right"></div>
+                </div>
+                <div style="margin-left:20px; float:left" class="bigButton" onmouseover="$(this).addClass('hover');" onmouseout="$(this).removeClass('hover');">
+                  <a class="left" onclick="$('#dell_photo_window').fadeOut()">Отменить удаление</a>
+                  <div class="right"></div>
+                </div>
+                <div class="clear"></div>
+              </div>
+          </div>
+     <form method="post" id="photo_edit_form" >       
+            
             <h1>Индивидуальные настройки печати</h1>
             <div id="photo_cont">
                 <div id="price_cont"><p><span></span><span> грн.</span></p>Стоимомть фотографии с выбранными параметрами</div>
                 <div id="crop-preview">
                     <div id="crop-preview-container">
-                    	<?php if($update) { ?>
-                    		<img src="<?php echo $photo['path']?>?<?php echo date()?>">
-                    	<?php } else { ?>
-                    		<img src="<?php echo $photo['path']?>">
-                    	<?php } ?>
+                      <?php if($update) { ?>
+                        <img src="<?php echo $photo['path']?>?<?php echo date()?>">
+                      <?php } else { ?>
+                        <img src="<?php echo $photo['path']?>">
+                      <?php } ?>
                     </div>
                 </div>
                 <a class="left" <?php if ($photo['prev']!='') { ?>href="<?php echo $photo['prev']?>"<?php } ?>>Предыдущее фото</a>
@@ -119,7 +118,7 @@
             </div>
         </div>
     </div>
-
+ 
     <div id="green_cont">
         <div style="float:right">
             <div id="applyToPhoto" onmouseout="$(this).removeClass('hover');" onmouseover="$(this).addClass('hover');" class="bigButton"
@@ -128,14 +127,9 @@
                 <div class="right"></div>
             </div>
             <div class="clear"></div>
-            <div id="applyToCopy" onmouseout="$(this).removeClass('hover');" onmouseover="$(this).addClass('hover');" class="bigButton"
-                 style="float:right"><a class="left">Применить к копии</a>
-
-                <div class="right"></div>
-            </div>
             <div class="clear"></div>
             <div onmouseout="$(this).removeClass('hover');" onmouseover="$(this).addClass('hover');" class="bigButton"
-                 style="float:right"><a href="<?php echo $this -> url -> link('album/content', 'album_id='.$album_id, 'SSL'); ?>" class="left">Вернуться к заказу</a>
+                 style="float:right"><a href="<?php echo $this -> url -> link('album/order', 'key='.$key, 'SSL'); ?>" class="left">Вернуться к заказу</a>
 
                 <div class="right"></div>
             </div>
@@ -149,7 +143,7 @@
             <div style="margin:20px 0 0 0px; width:700px" id="step3_field_cont">
                 <div class="cont">Цветокоррекция<br>
                     <select name="color_correction">
-                    		<option value="1" <?php if($photo['color_correction'] == 1){ echo 'selected="selected"';}?>>Не делать</option>
+                        <option value="1" <?php if($photo['color_correction'] == 1){ echo 'selected="selected"';}?>>Не делать</option>
                         <option value="2" <?php if($photo['color_correction'] == 2){ echo 'selected="selected"';}?>>Делать</option>
                     </select>
                 </div>
@@ -174,20 +168,19 @@
                 <div class="cont">Эффект<br>
                     <select name="printmode">
                      <?php foreach($printmodes as $printmode) { ?>
-                     		<?php if($printmode['id'] == $photo['printmode']) { ?>
-                     			<option value="<?php echo $printmode['id']?>" selected="selected"><?php echo $printmode['name']?></option>
-                     		<?php } else {?>
-                     			<option value="<?php echo $printmode['id']?>"><?php echo $printmode['name']?></option>
-                     		<?php } ?>
-                     	<?php } ?>
+                        <?php if($printmode['id'] == $photo['printmode']) { ?>
+                          <option value="<?php echo $printmode['id']?>" selected="selected"><?php echo $printmode['name']?></option>
+                        <?php } else {?>
+                          <option value="<?php echo $printmode['id']?>"><?php echo $printmode['name']?></option>
+                        <?php } ?>
+                      <?php } ?>
                     </select>
                 </div>
                 <div class="clear"></div>
             </div>
         </div>
         <div class="clear"></div>
-
-    </div>
+         </div>
     
     <input type="submit" id="submit_photo" style="display:none"/>
     
@@ -211,41 +204,26 @@
   }
   
    function delete_photos(photos) {
-  	 $.ajax({
+     $.ajax({
         type: "post",
-        url: "<?php echo $this->url->link('album/content/delete', '', 'SSL');?>",
-        data: 'photos=' + photos + "&album="+<?php echo $album_id; ?>,
+        url: "<?php echo $this->url->link('album/order/delete', '', 'SSL');?>",
+        data: 'key=' + encodeURIComponent('<?php echo $key; ?>') + "&photo="+<?php echo $photo_id; ?>,
         dataType: "json",
-          success: function(response) {
+        success: function(response) {
             if (!response.success) {
                 alert("Проблемы на стороне сервера.");
             } else {
-              if(response.order) {
-                var msg = '';
-                for(var i = 0; i < response.order.length; i++) {
-                  msg += response.order[i] + ',';
-                }
-                msg = msg.substring(0, (msg.length - 1));
-                
-                if(response.order.length == 1) {
-                  alert('Фотографию :' + msg + ' нельзя удалить, так как она находится в корзине');
-                } else {
-                  alert('Фотографии :' + msg + ' нельзя удалить, так как они находятся в корзине');
-                }
-                
-              } else {
-                window.location = 'index.php?route=album/content&album_id=<?php echo $album_id;?>';
-              }
+              window.location = 'index.php?route=album/order&key=' +encodeURIComponent(response.key);
             }
-            },
-            error: function(rs, e, a) {
-              console.log(rs + "||" + e + "||" + a);
-                alert(rs.responseText);
-            }
+        },
+        error: function(rs, e, a) {
+          console.log(rs + "||" + e + "||" + a);
+            alert(rs.responseText);
+        }
     });
   }
   
-        		$(function(){
+            $(function(){
             var jcropApi,
                 boundX,
                 boundY,
@@ -330,32 +308,27 @@
             
             
             
-            function applyPhoto(copy) {
-            	
-            	var params = $('#photo_edit_form').serialize();
-            	params += '&copy=' + copy;
-            	if(oCropData.width) {
-            		params += '&width=' + oCropData.width + '&height=' + oCropData.height + '&x=' + oCropData.x + '&y=' + oCropData.y;
-            	}
+            function applyPhoto() {
+              
+              var params = $('#photo_edit_form').serialize();
+              if(oCropData.width) {
+                params += '&width=' + oCropData.width + '&height=' + oCropData.height + '&x=' + oCropData.x + '&y=' + oCropData.y;
+              }
             
-            	$.ajax({
-                    url: 'index.php?route=album/content/edit&album=<?php echo $album_id;?>&photo=<?php echo $photo_id;?>',
-										type: 'post',
-										data: params,
+              $.ajax({
+                    url: 'index.php?route=album/order/edit&key=<?php echo $key;?>&photo=<?php echo $photo_id;?>',
+                    type: 'post',
+                    data: params,
                     success: function(oData, sStatus,jqXHR){
-                    	if(oData.success) {
-                    		if(oData.photo) {
-                    			window.location = 'index.php?route=album/content/edit&update=1&album=<?php echo $album_id;?>&photo=' + oData.photo
-                    		} else {
-                    			window.location = 'index.php?route=album/content/edit&album=<?php echo $album_id;?>&photo=<?php echo $photo_id;?>';
-                    		}
-                    	}
+                      if(oData.success) {
+                         window.location.reload();
+                      }
                     }
                 });
-            	
-            	
+              
+              
 
-            	
+              
             }
             
             
@@ -442,32 +415,56 @@
 
                 $.ajax({
                     url: '<?php echo $this -> url -> link('album/content/rotate', '', 'SSL'); ?>',
-										type: 'post',
-										data: {
-													album_id : <?php echo $album_id; ?>,
-													photo_id : <?php echo $photo_id; ?>,
-                        	angle		 : angle
+                    type: 'post',
+                    data: {
+                          album_id : <?php echo $album_id; ?>,
+                          photo_id : <?php echo $photo_id; ?>,
+                          angle    : angle
                     },
                     success: function(oData, sStatus,jqXHR){
-                    	if(oData.success) {
-                    		window.location.reload();
-                    	}
+                      if(oData.success) {
+                        window.location.reload();
+                      }
                     }
                 });
             };
             
+            function deleteImg(angle){
+                
 
-							function calculateImgPrice(){
-							var price = parseFloat($('#imgFormat input:checked').attr('data-price')),
-							percent = parseFloat($('#imgPaper input:checked').attr('data-percent')),
-							total;
-							console.log(price)
-							console.log(percent)
-							total = price * (1 + percent/100);
-							console.log(total)
-							$priceTag.html((Math.round(total * 100) / 100).toFixed(2));
-							};
-							});
+                $previewImg.rotate(startAngle);
+
+                $.ajax({
+                    url: '<?php echo $this -> url -> link('album/content/delete', '', 'SSL'); ?>
+          ',
+          type: 'post',
+          data: {
+          album_id : 
+ <?php echo $album_id; ?>
+            ,
+            photo_id : 
+ <?php echo $photo_id; ?>
+                                    },
+                    success: function(oData, sStatus,jqXHR){
+                      if(oData.success) {
+                        window.location = '<?php echo $this -> url -> link('album/content', 'album_id=' . $album_id, 'SSL'); ?>
+              '
+              }
+              }
+              });
+              };
+
+              function calculateImgPrice(){
+              var price = parseFloat($('#imgFormat input:checked').attr('data-price')),
+              percent = parseFloat($('#imgPaper input:checked').attr('data-percent')),
+              total;
+              console.log(price)
+              console.log(percent)
+              total = price * (1 + percent/100);
+              console.log(total)
+              $priceTag.html((Math.round(total * 100) / 100).toFixed(2));
+              };
+              });
     </script>
 
     <?php echo $content_bottom; ?>

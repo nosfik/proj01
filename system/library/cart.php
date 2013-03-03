@@ -81,11 +81,7 @@ class Cart {
                      $photo_percent  = $papers[$preferences[$photo]['album_photo_paper_id']];
                      
                      $price += round($photo_price + $photo_price * $photo_percent / 100, 2);
-                    // $text = "";
-                     
-                    //   $text .= "NOT DEFAULT - PRICE -".$album_query->row['price']. " PERCENT -".$album_query->row['percent']. " PHOTO -".$photo. "SUM -".round($album_query->row['price'] + $album_query->row['price'] * $album_query->row['percent'] / 100, 2)."\n";
-                    //   $text .= "DEFAULT - PRICE -".$def_price. " PERCENT -".$def_percent. " PHOTO -".$photo. "SUM -".round($def_price + $def_price * $def_percent / 100, 2)."\n";
-                    // $this->db->query("INSERT INTO `test` (text) VALUES('".$this->db->escape($text)."')");
+
           }
          
           $this->customer->isLogged();
@@ -105,6 +101,31 @@ class Cart {
       }
       
       return  $this->data_album;
+    }
+
+    public function getPhotosOrder() {
+      
+      $photos_res = array();
+      $photos_name_map = array();
+      $orders = $this->getAlbums();
+      foreach ($orders as $order) {
+        
+        foreach ($order['photos'] as $photo) {
+            $photos_res[]  = $photo;
+        }
+        foreach ($order['photos_name_map'] as $photo => $photo_name) {
+            $photos_name_map[$photo]  =  $photo_name;
+        }
+      }
+      
+      $result = array();
+      
+      foreach ($photos_res as $photo) {
+         $result[$photo] = $photos_name_map[$photo];
+      }
+      
+      return $result;
+      
     }
     
     
@@ -375,9 +396,9 @@ class Cart {
          $result = $photo_query->row;
          $result['color_correction'] = ($result['color_correction'] == 0) ? $config['color_correction'] : $result['color_correction'];
          $result['cut_photo'] = ($result['cut_photo'] == 0) ? $config['cut_photo'] : $result['cut_photo'];
-         $result['album_photo_format_id'] = ($result['album_photo_format_id'] == 0) ? $config['album_photo_format_id'] : $result['album_photo_format_id'];
-         $result['album_photo_paper_id'] = ($result['album_photo_paper_id'] == 0) ? $config['album_photo_paper_id'] : $result['album_photo_paper_id'];
-         $result['album_photo_printmode_id'] = ($result['album_photo_printmode_id'] == 0) ? $config['album_photo_printmode_id'] : $result['album_photo_printmode_id'];
+         $result['album_photo_format_id'] = ($result['album_photo_format_id'] == 0) ? $config['format'] : $result['album_photo_format_id'];
+         $result['album_photo_paper_id'] = ($result['album_photo_paper_id'] == 0) ? $config['paper'] : $result['album_photo_paper_id'];
+         $result['album_photo_printmode_id'] = ($result['album_photo_printmode_id'] == 0) ? $config['print_mode'] : $result['album_photo_printmode_id'];
          $result['red_eye'] = ($result['red_eye'] == 0) ? $config['red_eye'] : $result['red_eye'];
          $result['white_border'] = ($result['white_border'] == 0) ? $config['white_border'] : $result['white_border'];
          
@@ -392,6 +413,72 @@ class Cart {
       $this->session->data['cart_album'][$key] = $value;
       $this->data_album = array();
     }
+
+    public function updatePhotoPreference($key, $photo_id, $data) {
+      if (isset($this->session->data['cart_album'][$key])) {
+        $albums = $this->getAlbums();
+        $currOrder = $albums[$key];
+        $value = '';  
+        foreach ($currOrder['photos'] as $photo) {
+          $value .= $photo. '|';
+          if($photo_id == $photo) {
+            $value .= $data['color_correction'].','.$data['cut_photo'].','. $data['album_photo_format_id'].','. $data['album_photo_paper_id'].','. $data['album_photo_printmode_id'].','
+            .$data['red_eye'].','. $data['white_border'].':';
+          } else {
+            $value .= $currOrder['preferences_map'][$photo]['color_correction'].','.$currOrder['preferences_map'][$photo]['cut_photo'].','. $currOrder['preferences_map'][$photo]['album_photo_format_id'].','
+            . $currOrder['preferences_map'][$photo]['album_photo_paper_id'].','. $currOrder['preferences_map'][$photo]['album_photo_printmode_id'].','. $currOrder['preferences_map'][$photo]['red_eye'].','
+            . $currOrder['preferences_map'][$photo]['white_border'].':';
+          }
+          
+         }
+        $value = substr($value, 0, strlen($value) - 1);
+        $this->session->data['cart_album'][$key] = $value;
+      }
+      $this->data_album = array();
+    }
+
+    public function removePhotoInAlbum($key, $photo_id) {
+      if (isset($this->session->data['cart_album'][$key])) {
+        
+        $albums = $this->getAlbums();
+        $currOrder = $albums[$key];
+        $config['album_id'] = $currOrder['album_id'];
+        $config['count'] = $currOrder['quantity'];
+        $photos = array();
+        foreach ($currOrder['photos'] as $photo) {
+          if($photo_id != $photo) {
+            $photos[] = $photo;
+          }
+        }
+        
+        if(!empty($photos)) {
+          
+          $newKey = $config['album_id']. ':' . implode(",", $photos) . ':' . $config['count'];
+          $value = '';  
+          
+          foreach ($photos as $photo) {
+            $value .= $photo. '|';
+              $value .= $currOrder['preferences_map'][$photo]['color_correction'].','.$currOrder['preferences_map'][$photo]['cut_photo'].','. $currOrder['preferences_map'][$photo]['album_photo_format_id'].','
+              . $currOrder['preferences_map'][$photo]['album_photo_paper_id'].','. $currOrder['preferences_map'][$photo]['album_photo_printmode_id'].','. $currOrder['preferences_map'][$photo]['red_eye'].','
+              . $currOrder['preferences_map'][$photo]['white_border'].':';
+           }
+          
+           $value = substr($value, 0, strlen($value) - 1);
+           $this->session->data['cart_album'][$newKey] = $value;
+           $this->data_album = array();
+          }
+
+          $this->removeAlbum($key);
+        
+          return $newKey;
+
+        } else {
+          return '';
+        }
+        
+        
+      
+   }
 
   	public function update($key, $qty) {
     	if ((int)$qty && ((int)$qty > 0)) {
@@ -428,6 +515,8 @@ class Cart {
       
       $this->data_album = array();
    }
+   
+   
 	
   	public function clear() {
   		$this->session->data['cart'] = array();
@@ -454,9 +543,17 @@ class Cart {
 		foreach ($this->getProducts() as $product) {
 			$total += $product['total'];
 		}
-
+    
 		return $total;
   	}
+    
+    public function getSubTotalAlbum() {
+      $total = 0;
+      foreach ($this->getAlbums() as $album) {
+        $total += $album['price'];
+      }
+return $total;
+    }
 	
 	public function getTaxes() {
 		$tax_data = array();

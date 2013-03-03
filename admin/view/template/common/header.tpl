@@ -88,6 +88,7 @@ $(document).ready(function(){
         <ul>
           <li><a href="<?php echo $format; ?>">Формат фотографий</a></li>
           <li><a href="<?php echo $paper; ?>">Бумага</a></li>
+          <li><a href="<?php echo $album_config; ?>">Настройки</a></li>
         </ul>
       </li>
       

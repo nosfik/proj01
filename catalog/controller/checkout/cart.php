@@ -194,10 +194,12 @@ class ControllerCheckoutCart extends Controller {
                 'album_name'  => $album['album_name'],
                 'album_id'    => $album['album_id'],
                 'quantity'    => $album['quantity'],
+                'count'       => count($album['photos']),
                 'album_href'  => $this->url->link('album/order', 'key='.$album['key'], 'SSL'),
-                'price'       => $this->currency->format($album['price'])
+                'price'       => $this->currency->format($album['price']),
+                'total'       => $this->currency->format($album['price'] * $album['quantity'])
             );
-            $totalAlbum += $album['price'];
+            $totalAlbum += ($album['price'] * $album['quantity']);
         }
        
       }

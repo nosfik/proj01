@@ -3,7 +3,7 @@ class ModelShippingFree extends Model {
 	function getQuote($address) {
 		$this->load->language('shipping/free');
 		
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone_to_geo_zone WHERE geo_zone_id = '" . (int)$this->config->get('free_geo_zone_id') . "' AND country_id = '" . (int)$address['country_id'] . "' AND (zone_id = '" . (int)$address['zone_id'] . "' OR zone_id = '0')");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone_to_geo_zone WHERE country_id = '" . (int)$address['country_id'] . "'");
 	
 		if (!$this->config->get('free_geo_zone_id')) {
 			$status = true;
@@ -12,8 +12,8 @@ class ModelShippingFree extends Model {
 		} else {
 			$status = false;
 		}
-
-		if ($this->cart->getSubTotal() < $this->config->get('free_total')) {
+    
+		if (($this->cart->getSubTotal() + $this->cart->getSubTotalAlbum()) < $this->config->get('free_total')) {
 			$status = false;
 		}
 		
@@ -38,7 +38,7 @@ class ModelShippingFree extends Model {
         		'error'      => false
       		);
 		}
-	
+	// print_r($method_data);
 		return $method_data;
 	}
 }

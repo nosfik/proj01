@@ -33,8 +33,10 @@
         <thead>
           <tr>
               <td>Наименование</td>
-               <td align="left">Количество</td>
-              <td align="left">Итого (грн)</td>
+              <td align="left">Фотографии</td>
+              <td align="left">Копии</td>
+              <td align="left">Сумма</td>
+              <td align="left">Итого</td>
               <td> </td>
           </tr>
         </thead>
@@ -42,8 +44,10 @@
           <?php foreach ($albums as $album) { ?>
             <tr>
               <td><a href="<?php echo $album['album_href']?>">Фотопечать "Альбом <?php echo $album['album_name'];?>"</a></td>
+              <td><?php echo $album['count'];?></td>
               <td><?php echo $album['quantity'];?></td>
               <td><?php echo $album['price'];?></td>
+              <td><?php echo $album['total'];?></td>
               <td  class="del">
                   <a href="<?php echo $this->url->link('checkout/cart', 'removeAlbum='.$album['key']);?> "> <img src="catalog/view/theme/default/image/blank.gif">   </a>
               </td>
@@ -118,6 +122,7 @@
   </div>
   <div class="clear"></div>
 </div>
+<!--
   <?php if ($coupon_status || $voucher_status || $reward_status || $shipping_status) { ?>
   <h2><?php echo $text_next; ?></h2>
   <div class="content">
@@ -223,7 +228,7 @@
     </div>
   </div>
   <?php } ?>
-
+-->
  </div></div>
 <script type="text/javascript"><!--
 $('input[name=\'next\']').bind('change', function() {

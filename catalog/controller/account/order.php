@@ -306,6 +306,29 @@ class ControllerAccountOrder extends Controller {
 			$this->data['shipping_method'] = $order_info['shipping_method'];
 			
 			$this->data['products'] = array();
+      $this->data['albums'] = array();
+      
+      
+      
+      
+      
+      
+      $albums = $this->model_account_order->getOrderAlbums($this->request->get['order_id']);
+     // print_r($albums);
+      foreach ($albums as $album) {
+        $this->data['albums'][] = array(
+          'name'      => $album['name'],
+          'price'     => $this->currency->format($album['tprice']),
+          'quantity'  => $album['quantity'],
+          'count'     => $album['count'],
+          'total'     => $this->currency->format($album['tprice'] * $album['quantity'])
+        );
+      }
+      
+      
+      
+      
+      
 			
 			$products = $this->model_account_order->getOrderProducts($this->request->get['order_id']);
 

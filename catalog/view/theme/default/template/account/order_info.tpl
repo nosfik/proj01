@@ -31,21 +31,52 @@
   <table class="list">
     <thead>
       <tr>
-        <td class="left"><?php echo $text_payment_address; ?></td>
-        <?php if ($shipping_address) { ?>
         <td class="left"><?php echo $text_shipping_address; ?></td>
-        <?php } ?>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td class="left"><?php echo $payment_address; ?></td>
-        <?php if ($shipping_address) { ?>
         <td class="left"><?php echo $shipping_address; ?></td>
-        <?php } ?>
       </tr>
     </tbody>
   </table>
+    <table class="list">
+    <thead>
+      <tr>
+          <td>Наименование</td>
+          <td class="left">Фотографии</td>
+          <td class="left">Копии</td>
+          <td class="right">Сумма</td>
+          <td class="right">Итого</td>
+      </tr>
+    </thead>
+      <tbody>
+          <?php foreach ($albums as $album) { ?>
+            <tr>
+              <td>Фотопечать "Альбом <?php echo $album['name'];?>"</td>
+              <td class="right"><?php echo $album['count'];?></td>
+              <td class="right"><?php echo $album['quantity'];?></td>
+              <td class="right"><?php echo $album['price'];?></td>
+              <td class="right"><?php echo $album['total'];?></td>
+              <td  class="del">
+                  <a href="<?php echo $this->url->link('checkout/cart', 'removeAlbum='.$album['key']);?> "> <img src="catalog/view/theme/default/image/blank.gif">   </a>
+              </td>
+            </tr>
+          <?php } ?>
+        </tbody>
+
+  </table>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <table class="list">
     <thead>
       <tr>
@@ -71,7 +102,6 @@
         <td class="right"><?php echo $product['quantity']; ?></td>
         <td class="right"><?php echo $product['price']; ?></td>
         <td class="right"><?php echo $product['total']; ?></td>
-        <td class="right"><a href="<?php echo $product['return']; ?>"><img src="catalog/view/theme/default/image/return.png" alt="<?php echo $button_return; ?>" title="<?php echo $button_return; ?>" /></a></td>
       </tr>
       <?php } ?>
       <?php foreach ($vouchers as $voucher) { ?>

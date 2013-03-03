@@ -77,7 +77,7 @@ class ControllerCheckoutConfirm extends Controller {
             $albums = $this->cart->getAlbums();
             $totalAlbum = 0;
             foreach ($albums as $album) {
-              $totalAlbum += $album['price'];
+              $totalAlbum += ($album['price'] * $album['quantity']);
             }
           }
       
@@ -209,26 +209,29 @@ class ControllerCheckoutConfirm extends Controller {
           $album_data = array();
           
           if($this->customer->isLogged()) {
+              $this -> load -> model('album/order');
+              $orderTimeMinutes = $this -> model_album_order -> getTimeOrder();
+              $orderDate = strtotime("+" . $orderTimeMinutes . " minutes");
+              $data['end_date'] = date("Y-m-d", $orderDate);
+              $data['end_time'] = date("H:i:s", $orderDate);
             
             foreach ($this->cart->getAlbums() as $album) {
-              
+            
               $album_data[] = array(
                  'photos'           => implode(",", $album['photos']),
                  'photos_arr'       => $album['photos'],
                  'quantity'         => $album['quantity'],
                  'album_id'         => $album['album_id'],
-                 'price'            => $album['price'],
-                 'format_id'        => $album['format_id'],
-                 'paper_id'         => $album['paper_id'],
-                 'printmode_id'     => $album['printmode_id'],
-                 'color_correction' => $album['color_correction'],
-                 'cut_photo'        => $album['cut_photo'],
-                 'white_border'     => $album['white_border'],
-                 'red_eye'          => $album['red_eye'],
+                 'preferences_map'  => $album['preferences_map'],
                  'photos_name_map'  => $album['photos_name_map']
-              );
+               );
             }  
+          } else {
+            $data['end_date'] = '0000-00-00';
+            $data['end_time'] = '00:00:00';
           }
+          
+          
           
           $data['albums'] = $album_data;      
           $product_data = array();
@@ -353,10 +356,12 @@ class ControllerCheckoutConfirm extends Controller {
           
           foreach ($this->cart->getAlbums() as $album) {
             $this->data['albums'][] = array(
+              'count'       => count($album['photos']),
               'quantity'    => $album['quantity'],
               'album_name'  => $album['album_name'],
               'href'        => $this->url->link('album/content', 'album_id=' . $album['album_id']),
-              'price'       => $album['price']
+              'price'       => $album['price'],
+              'total'       => $this->currency->format($album['price'] * $album['quantity'])
             );
           }
           

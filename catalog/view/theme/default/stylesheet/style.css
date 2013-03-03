@@ -36,6 +36,22 @@ a:hover {color:#d33461}
 #tizers .t3 {margin-left:70px}
 #tizers .t4 {margin-left:60px; width:150px}
 #right_cont #cont {max-width:250px; padding:10px}
+
+
+
+#right_cont #album_online .title {width:166px; height:24px; text-align:center; background:url(../image/sprite.png) no-repeat -116px -213px; font-family: 'Cuprum', sans-serif; color:#6b1b3b; text-transform:uppercase; font-size:17px; padding-top:4px; margin: 10px auto 15px auto}
+#right_cont #album_online .inCont {width:167px; height:26px; background:url(../image/sprite.png) -295px -215px; margin:10px auto 0 auto}
+#right_cont #album_online .inCont input {border:none; outline-style:none; width:145px; background-color:#FFFFFF; margin:3px 0 0 10px;}
+#right_cont #album_online #reg_cont {width:167px; margin:10px auto}
+#right_cont #album_online .log_cont {width:155px; margin:10px auto 0 auto; text-shadow:1px 1px 0px #7f5d6c; color:#fff; line-height:16px}
+#right_cont #album_online .log_cont ul li a {color:#fffbd7}
+#right_cont #album_online .log_cont a {color: #FFFBD7}
+#right_cont #album_online .log_cont a:hover {color:#ffcccc}
+#right_cont #album_online .log_cont span {color:#fffea4}
+#right_cont #album_online .log_cont span {color:#fffea4}
+
+
+
 #right_cont #login-module .title {width:166px; height:24px; text-align:center; background:url(../image/sprite.png) no-repeat -116px -213px; font-family: 'Cuprum', sans-serif; color:#6b1b3b; text-transform:uppercase; font-size:17px; padding-top:4px; margin: 10px auto 15px auto}
 #right_cont #login-module .inCont {width:167px; height:26px; background:url(../image/sprite.png) -295px -215px; margin:10px auto 0 auto}
 #right_cont #login-module .inCont input {border:none; outline-style:none; width:145px; background-color:#FFFFFF; margin:3px 0 0 10px;}

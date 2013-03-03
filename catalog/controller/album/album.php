@@ -80,19 +80,30 @@ class ControllerAlbumAlbum extends Controller {
       }
       
       $this->data['customer_id'] = $this->customer->getId();
+      $this->data['album_cover'] = 'haha.jph';
+     
       $this->load->model('album/album');
       
       $albums = $this->model_album_album->getAlbums($this->customer->getId());
       $this->data['albums'] = array();
       
       foreach($albums as $album) {
+        
+        
+        $cover = ($album['photo'] == '') ? '' : 'albums/album_cus_'.$this->customer->getId().'/cover/'.$album['photo'];
+        if(!is_file($cover)){
+          $this->load->model('album/content');
+          $photo_name =  $this->model_album_content->getPhotosByAlbumForCover($album['album_id'], $this->customer->getId());
+          $cover = ($photo_name != '') ? 'albums/album_cus_'.$this->customer->getId().'/album_'.$album['album_id'].'/'.$photo_name : '';
+        }
         $this->data['albums'][] = array (
           'id'            => $album['album_id'],
           'name'          => $album['name'],
           'description'   => $album['description'],
           'photo'         => $album['photo'],
           'date'          => $album['date'],
-          'size'          => $album['size'] 
+          'size'          => $album['size'],
+          'cover'         => $cover
          );
       }
       

@@ -88,7 +88,7 @@
           <div class="photoCont">
           <div class="picCont">
             <div class="buttons">
-              <a href="#" title="Редактировать альбом" class="edit">
+              <a href="<?php echo $this -> url -> link('album/order/edit', 'key='.$key.'&photo='.$photo['id'], 'SSL'); ?>" title="Редактировать альбом" class="edit">
                 <img src="catalog/view/theme/default/image/flag.png">
               </a>
               <a onclick="delete_photo( <?php echo $photo['id']?>, '<?php echo $photo['name']?>')" title="Удалить фото" class="del">
@@ -113,14 +113,12 @@
 </table>
 
     <div class="clear"></div>
-    
+ 
   </div>
   
   
 </div>
-<div id="green_cont">
-<pre><?php print_r($data);?></pre>
-</div>
+
 <script type="text/javascript">
   
   function checkAll(el){
@@ -133,27 +131,7 @@
     $('#photos-list input[type=checkbox]').attr("checked", false);
   }
   
-  function deleteAllChecked() {
-    var cookie_order = ($.cookie("album_order")).split(",") ;
-    var new_cookie_order = [];
-    var $selected = $('#photos-list input:checked');
-    for(var i = 0; i < cookie_order.length; i++) {
-      var photo = cookie_order[i];
-      var addPhoto = true;
-      $selected.each(function(index, el){
-        if (photo == $(el).val()) {
-          addPhoto = false;
-        } 
-      });
-      if(addPhoto){
-        new_cookie_order.push(photo);
-      }
-    }
-    
-    $.cookie("album_order", new_cookie_order.join(), { path: '/', expires: 1 });
-    
-  }
-  
+ 
   
    function delete_photo(id, name) {
     $('#dell_photo_window #deleteContent').html(name);
@@ -162,15 +140,24 @@
   }
   
   function delete_album_approved() {
-    var cookie_order = ($.cookie("album_order")).split(",") ;
-    var new_cookie_order = [];
-    for(var i = 0; i < cookie_order.length; i++) {
-      if($('#dell_photo_window input[name=photo]').val() != cookie_order[i]) {
-        new_cookie_order.push(cookie_order[i]);
-      }
-    }
-    $.cookie("album_order", new_cookie_order.join(), { path: '/', expires: 1 });
-    window.location = '<?php echo $this -> url -> link('album/order', '', 'SSL'); ?>';
+     var photo = $('#dell_photo_window input[name=photo]').val();
+     $.ajax({
+        type: "post",
+        url: "<?php echo $this->url->link('album/order/delete', '', 'SSL');?>",
+        data: 'photo=' + photo + "&key=" + encodeURIComponent('<?php echo $key; ?>') ,
+        dataType: "json",
+        success: function(response) {
+            if (!response.success) {
+                alert("Проблемы на стороне сервера.");
+            } else {
+              window.location = 'index.php?route=album/order&key=' + response.key;
+            }
+        },
+        error: function(rs, e, a) {
+          console.log(rs + "||" + e + "||" + a);
+            alert(rs.responseText);
+        }
+    });
   }
   
   

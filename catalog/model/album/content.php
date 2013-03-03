@@ -10,6 +10,20 @@ class ModelAlbumContent extends Model {
       return $query->rows;
     
   }
+  
+  public function getPhotosByAlbumForCover($album_id, $customer_id) {
+        
+      $sql = "SELECT ap.photo_name FROM album_photo as ap JOIN album as a ON a.album_id = ap.album_id 
+              WHERE a.album_id = ".(int)$album_id." AND customer_id =".(int)$customer_id." LIMIT 1";
+      $query = $this->db->query($sql);
+      $rows = $query->rows;
+      if(!empty($rows)) {
+        return $rows[0]['photo_name'];
+      } else {
+        return '';
+      }
+    
+  }
 	
 	public function getSimilarPhotoName($album_id, $customer_id, $photo_name){
 		$sql = "SELECT photo_name FROM album_photo as p JOIN album as a ON a.album_id = p.album_id WHERE photo_name LIKE '".$this->db->escape($photo_name)."_copy%' AND a.album_id = ".(int)$album_id."	AND a.customer_id = ".(int)$customer_id." ORDER by p.album_photo_id DESC LIMIT 1;";

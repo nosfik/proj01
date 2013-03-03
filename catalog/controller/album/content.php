@@ -19,17 +19,33 @@ class ControllerAlbumContent extends Controller {
 						$album_id = 0;
 					}
 					
-					$this->data['temp'] = array();
+          
+          $photos_in_order = $this->cart->getPhotosOrder();
+          $return['temp'] = $photos_in_order; 
+          $return['order'] = array(); 
 					
 					$album_dir =  DIR_PHOTOS.'album_cus_'.$this->customer->getId().'/album_'.$album_id;
-					foreach ($photos as $photo_id) {
-						$photo_name = $this->model_album_content->deletePhotoByAlbum($photo_id, $album_id, $this->customer->getId());
-			      if($photo_name != '' && is_dir($album_dir) && is_file($album_dir.'/'.$photo_name)) {
-			         @unlink($album_dir.'/'.$photo_name);
-			      }
-						$return['success'] = 'true'; 
-						$return['name'] = $this->data['temp'];
+				
+        	foreach ($photos as $photo_id) {
+					  
+            $photoInOrder = false;
+            
+            foreach ($photos_in_order as $photo_in_order => $photo_name) {
+              if($photo_in_order == $photo_id) {
+                $photoInOrder = true;
+                $return['order'][] = $photo_name;
+              } 
+            }
+            
+            if(!$photoInOrder) {
+                $photo_name = $this->model_album_content->deletePhotoByAlbum($photo_id, $album_id, $this->customer->getId());
+              if($photo_name != '' && is_dir($album_dir) && is_file($album_dir.'/'.$photo_name)) {
+                 @unlink($album_dir.'/'.$photo_name);
+              }
+            }
+            
 					}
+          $return['success'] = 'true'; 
 					
 		      echo json_encode($return);
 		    }
