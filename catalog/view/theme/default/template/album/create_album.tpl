@@ -78,7 +78,7 @@
    <input type="hidden" name="album" value="<?php echo $album['id'];?>"/>
   <div class="album"></div>
   <div class="picCont">
-    <img src="albums/album_cus_<?php echo $customer_id;?>/cover/<?php echo $album['photo'];?>">
+    <img src="<?php echo $album['cover'];?>" />
   </div>
   <div class="text">
     <a><?php echo $album['name'];?></a>

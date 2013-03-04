@@ -21,7 +21,6 @@ class ControllerAlbumContent extends Controller {
 					
           
           $photos_in_order = $this->cart->getPhotosOrder();
-          $return['temp'] = $photos_in_order; 
           $return['order'] = array(); 
 					
 					$album_dir =  DIR_PHOTOS.'album_cus_'.$this->customer->getId().'/album_'.$album_id;
@@ -41,6 +40,7 @@ class ControllerAlbumContent extends Controller {
                 $photo_name = $this->model_album_content->deletePhotoByAlbum($photo_id, $album_id, $this->customer->getId());
               if($photo_name != '' && is_dir($album_dir) && is_file($album_dir.'/'.$photo_name)) {
                  @unlink($album_dir.'/'.$photo_name);
+                 @unlink($album_dir.'/small_'.$photo_name);
               }
             }
             
@@ -221,7 +221,7 @@ class ControllerAlbumContent extends Controller {
 				$albumDir = DIR_PHOTOS.'album_cus_'.$this->customer->getId().'/album_'.$album_id;
 				$photoName = $this->model_album_content->getPhotoNameById($photo_id, $this->customer->getId());
 				$photo_src = $albumDir. '/' . $photoName;
-				
+				$photo_small_src = $albumDir. '/small_' . $photoName;
 				
 				$config = array(
           'album_id'           => $album_id,
@@ -276,7 +276,9 @@ class ControllerAlbumContent extends Controller {
 					}
 					
 					$new_photo_path = $albumDir.'/'.$name;
+          $new_small_photo_path = $albumDir.'/small_'.$name;
 				  copy($photo_src, $new_photo_path);
+          copy($photo_small_src, $new_small_photo_path);
 					$config['photo_name'] = $name;
 					$return['photo'] = $this->model_album_content->savePhotoCopyPreference($config);
 					
@@ -469,7 +471,7 @@ class ControllerAlbumContent extends Controller {
       	foreach($photos as $photo) {
 	        	$this->data['photos'][] = array (
 		          'id'            => $photo['album_photo_id'],
-		          'path'          => $albumDir .'/'.$photo['photo_name'],
+		          'path'          => $albumDir .'/small_'.$photo['photo_name'],
 		          'name'					=> $photo['photo_name']
 	      	);
       	}

@@ -28,7 +28,12 @@ class ModelAlbumContent extends Model {
 	public function getSimilarPhotoName($album_id, $customer_id, $photo_name){
 		$sql = "SELECT photo_name FROM album_photo as p JOIN album as a ON a.album_id = p.album_id WHERE photo_name LIKE '".$this->db->escape($photo_name)."_copy%' AND a.album_id = ".(int)$album_id."	AND a.customer_id = ".(int)$customer_id." ORDER by p.album_photo_id DESC LIMIT 1;";
 		$query = $this->db->query($sql);
-		return $query->row['photo_name'];
+    if($query->num_rows) {
+      return $query->row['photo_name'];
+    } else {
+      return '';
+    }
+		
 	}
 	
 	public function getPhotoNameById($photo_id, $customer_id) {

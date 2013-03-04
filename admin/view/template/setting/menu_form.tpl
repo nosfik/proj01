@@ -10,7 +10,7 @@
   <?php } ?>
   <div class="box">
     <div class="heading">
-      <h1><img src="view/image/shipping.png" alt="" /> <?php echo $heading_title; ?></h1>
+      <h1><img src="view/image/shipping.png" alt="" /> Главное меню</h1>
       <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a onclick="location = '<?php echo $cancel; ?>';" class="button"><?php echo $button_cancel; ?></a></div>
     </div>
     <div class="content">
@@ -19,14 +19,14 @@
         <div id="tab-general">
           <table class="form">
             <tr>
-              <td><span class="required">*</span> <?php echo $entry_name; ?></td>
+              <td><span class="required">*</span> Имя пункта меню</td>
               <td><input type="text" name="name" value="<?php echo $name; ?>" maxlength="255" size="100" />
                 <?php if ($error_name) { ?>
                 <span class="error"><?php echo $error_name; ?></span>
                 <?php } ?></td>
             </tr>
             <tr>
-              <td><span class="required">*</span> <?php echo $entry_value; ?></td>
+              <td><span class="required">*</span> Страница</td>
               <td><input type="text" name="value" value="<?php echo $value; ?>" maxlength="255" size="100" />
                 <?php if ($error_value) { ?>
                 <span class="error"><?php echo $error_value; ?></span>
@@ -34,7 +34,7 @@
             </tr>
 
             <tr>
-              <td><?php echo $entry_sort_order; ?></td>
+              <td>Порядок сортировки</td>
               <td><input type="text" name="sort_order" value="<?php echo $sort_order; ?>" size="1" /></td>
             </tr>
           </table>

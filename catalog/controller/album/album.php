@@ -25,10 +25,17 @@ class ControllerAlbumAlbum extends Controller {
       if ($upload_file) {
           $tmp_name = $this->request->files["cover"]["tmp_name"];
           $name = $this->request->files["cover"]["name"];
-          move_uploaded_file($tmp_name, DIR_PHOTOS.'album_cus_'.$this->customer->getId().'/cover/'.$name);
-          if($oldCover != '' && is_file(DIR_PHOTOS.'album_cus_'.$this->customer->getId().'/cover/'.$oldCover)) {
-            @unlink(DIR_PHOTOS.'album_cus_'.$this->customer->getId().'/cover/'.$oldCover);
+          
+          $coverDir = DIR_PHOTOS.'album_cus_'.$this->customer->getId().'/cover/';
+          if(!is_dir($coverDir)){
+            mkdir($coverDir);
           }
+          move_uploaded_file($tmp_name, $coverDir.$name);
+          
+          if($oldCover != '' && $oldCover != $name && is_file($coverDir.$oldCover)) {
+             @unlink($coverDir.$oldCover);
+          }
+          
       }
       
       $this->redirect($this->url->link('album/album', '', 'SSL')); 
@@ -94,7 +101,7 @@ class ControllerAlbumAlbum extends Controller {
         if(!is_file($cover)){
           $this->load->model('album/content');
           $photo_name =  $this->model_album_content->getPhotosByAlbumForCover($album['album_id'], $this->customer->getId());
-          $cover = ($photo_name != '') ? 'albums/album_cus_'.$this->customer->getId().'/album_'.$album['album_id'].'/'.$photo_name : '';
+          $cover = ($photo_name != '') ? 'albums/album_cus_'.$this->customer->getId().'/album_'.$album['album_id'].'/small_'.$photo_name : '';
         }
         $this->data['albums'][] = array (
           'id'            => $album['album_id'],

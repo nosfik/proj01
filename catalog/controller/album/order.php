@@ -302,7 +302,7 @@ class ControllerAlbumOrder extends Controller {
 
       $this -> data['photos'] = array();
       foreach ($currOrder['photos'] as $photo_id) {
-        $this -> data['photos'][] = array('id' => $photo_id, 'path' => 'albums/album_cus_' . $this -> customer -> getId() . '/album_' . $currOrder['album_id'] . '/' . $currOrder['photos_name_map'][$photo_id], 'name' => $currOrder['photos_name_map'][$photo_id]);
+        $this -> data['photos'][] = array('id' => $photo_id, 'path' => 'albums/album_cus_' . $this -> customer -> getId() . '/album_' . $currOrder['album_id'] . '/small_' . $currOrder['photos_name_map'][$photo_id], 'name' => $currOrder['photos_name_map'][$photo_id]);
 
       }
 
@@ -411,19 +411,27 @@ class ControllerAlbumOrder extends Controller {
         $photos_order = array();
         for ($i = 0; $i < sizeof($photos_array); $i++) {
           $config['photo_id'] = $photos_array[$i];
+          
           $photo_name = $this -> model_album_order -> isPhotoBelongToCustomer($config);
           $config['photo_name'] = $photo_name;
           if ($photo_name != '') {
             if ($config['apply'] == 'photo') {
               $this -> model_album_content -> savePhotoPreference($config);
             } elseif ($config['apply'] == 'copy') {
-
+              
+              $albumDir = DIR_PHOTOS.'album_cus_'.$this->customer->getId().'/album_'.$config['album_id'].'/';
+             
+              $photo_src = $albumDir.$photo_name;
+              $photo_small_src = $albumDir.'small_'.$photo_name;
+              
+              
+              
               $tmp = explode('.', $photo_name);
               $arr_size = sizeof($tmp);
               $name = '';
               $ext = strtolower($tmp[$arr_size - 1]);
-              for ($i = 0; $i < ($arr_size - 1); $i++) {
-                $name .= $tmp[$i];
+              for ($j = 0; $j < ($arr_size - 1); $j++) {
+                $name .= $tmp[$j];
               }
               $pattern = '/(?<name>.+)(?<copy>_copy[0-9]+)$/';
               preg_match($pattern, $name, $matches);
@@ -436,8 +444,8 @@ class ControllerAlbumOrder extends Controller {
                 $name = '';
                 //print_r($tmp);
                 $ext = strtolower($tmp[$arr_size - 1]);
-                for ($i = 0; $i < ($arr_size - 1); $i++) {
-                  $name .= $tmp[$i];
+                for ($j = 0; $j < ($arr_size - 1); $j++) {
+                  $name .= $tmp[$j];
                 }
               }
 
@@ -451,9 +459,13 @@ class ControllerAlbumOrder extends Controller {
               } else {
                 $name .= '_copy1' . '.' . $ext;
               }
+              
+              
 
-              $new_photo_path = $albumDir . '/' . $name;
+              $new_photo_path = $albumDir . $name;
+              $new_small_photo_path = $albumDir . 'small_' . $name;
               copy($photo_src, $new_photo_path);
+              copy($photo_small_src, $new_small_photo_path);
               $config['photo_name'] = $name;
               $config['photo_id'] = $this -> model_album_content -> savePhotoCopyPreference($config);
             }

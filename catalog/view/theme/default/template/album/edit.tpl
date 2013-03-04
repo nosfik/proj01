@@ -220,7 +220,7 @@
             if (!response.success) {
                 alert("Проблемы на стороне сервера.");
             } else {
-              if(response.order) {
+              if(response.order.length) {
                 var msg = '';
                 for(var i = 0; i < response.order.length; i++) {
                   msg += response.order[i] + ',';

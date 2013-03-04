@@ -7,7 +7,6 @@
   </div>
   <h1><?php echo $heading_title; ?></h1>
   <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
-    <h2><?php echo $text_edit_address; ?></h2>
     <div class="content">
       <table class="form">
         <tr>
@@ -95,7 +94,7 @@
             <span class="error"><?php echo $error_zone; ?></span>
             <?php } ?></td>
         </tr>
-        <tr>
+        <!--<tr>
           <td><?php echo $entry_default; ?></td>
           <td><?php if ($default) { ?>
             <input type="radio" name="default" value="1" checked="checked" />
@@ -108,7 +107,7 @@
             <input type="radio" name="default" value="0" checked="checked" />
             <?php echo $text_no; ?>
             <?php } ?></td>
-        </tr>
+        </tr>-->
       </table>
     </div>
     <div class="buttons">

@@ -42,8 +42,12 @@
             <?php } ?></td>
         </tr>
         <tr>
-          <td><?php echo $entry_fax; ?></td>
-          <td><input type="text" name="fax" value="<?php echo $fax; ?>" /></td>
+          <td>skype</td>
+          <td><input type="text" name="skype" value="<?php echo $skype; ?>" /></td>
+        </tr>
+        <tr>
+          <td>Коментарии</td>
+          <td><textarea name="note"><?php echo $note;?></textarea></td>
         </tr>
       </table>
     </div>

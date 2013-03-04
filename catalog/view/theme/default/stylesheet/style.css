@@ -315,7 +315,7 @@ a:hover {color:#d33461}
 #edit_photo_buttons .linkCont .b2 {background:url(../image/b2.png) no-repeat 13px 13px; padding-left:50px; padding-top:10px; height:45px}
 #edit_photo_buttons .linkCont .b3 {background:url(../image/b3.png) no-repeat 11px 13px; padding-left:50px; padding-top:10px; height:45px}
 #edit_photo_buttons .linkCont .b4 {background:url(../image/b4.png) no-repeat 13px 13px; padding-left:48px; padding-top:17px; height:38px}
-#order_step2_table {float:left; margin:0 80px 0 300px}
+#order_step2_table {float:left; margin:0 80px 0 275px}
 #order_step2_table td {vertical-align:middle}
 #order_step2_table .pic {height:40px; width:35px}
 #order_step2_table .pic .picCont {height:32px; width:27px; overflow:hidden; text-align:center; margin:3px 0 0 3px}
@@ -466,4 +466,8 @@ a:hover {color:#d33461}
 	font-size: 13px;
 }
 
-
+.uploadify-queue {
+	     margin-left: auto;
+    margin-right: auto;
+    width: 390px;
+}

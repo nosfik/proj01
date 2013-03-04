@@ -17,7 +17,7 @@
       <div id="vtabs" class="vtabs"><a href="#tab-customer"><?php echo $tab_customer; ?></a>
       	<a href="#tab-shipping"><?php echo $tab_shipping; ?></a><a href="#tab-product"><?php echo $tab_product; ?></a>
       	<!--<a href="#tab-voucher"><?php echo $tab_voucher; ?></a>-->
-      	
+      	<a href="#tab-album-pref">Печатник Онлайн</a>
       	<a href="#tab-total"><?php echo $tab_total; ?></a></div>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
         <div id="tab-customer" class="vtabs-content">
@@ -416,6 +416,15 @@
             </tfoot>
           </table>
         </div>-->
+        <div id="tab-album-pref" class="vtabs-content">
+          
+          <table>
+            <tr><td>Дата</td><td><input type="text" name="date_album" value="<?php echo $album_pref['date']?>"/></td></tr>
+            <tr><td>Время</td><td><input type="text" name="time_album" value="<?php echo $album_pref['time']?>"/></td></tr>
+            
+          </table>
+      
+      </div>
         <div id="tab-total" class="vtabs-content">
         	
         		<table class="list">

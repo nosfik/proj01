@@ -23,17 +23,17 @@
             <tr>
               <td width="1" style="text-align: center;"><input type="checkbox" onclick="$('input[name*=\'selected\']').attr('checked', this.checked);" /></td>
               <td class="left"><?php if ($sort == 'name') { ?>
-                <a href="<?php echo $sort_name; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_name; ?></a>
+                <a href="<?php echo $sort_name; ?>" class="<?php echo strtolower($order); ?>">Имя пункта меню</a>
                 <?php } else { ?>
-                <a href="<?php echo $sort_name; ?>"><?php echo $column_name; ?></a>
+                <a href="<?php echo $sort_name; ?>">Имя пункта меню</a>
                 <?php } ?></td>
-               <td class="left"><?php echo $column_value; ?></td>
+               <td class="left">Страница</td>
               <td class="right"><?php if ($sort == 'sort_order') { ?>
-                <a href="<?php echo $sort_sort_order; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_sort_order; ?></a>
+                <a href="<?php echo $sort_sort_order; ?>" class="<?php echo strtolower($order); ?>">Порядок сортировки</a>
                 <?php } else { ?>
-                <a href="<?php echo $sort_sort_order; ?>"><?php echo $column_sort_order; ?></a>
+                <a href="<?php echo $sort_sort_order; ?>">Порядок сортировки</a>
                 <?php } ?></td>
-              <td class="right"><?php echo $column_action; ?></td>
+              <td class="right">Действие</td>
             </tr>
           </thead>
           <tbody>

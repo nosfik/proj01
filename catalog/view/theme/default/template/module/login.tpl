@@ -46,6 +46,7 @@
           <li><a href="<?php echo $this -> url -> link('account/address', '', 'SSL'); ?>">Адрес для доставки</a></li>
           <li><a href="<?php echo $this -> url -> link('account/order', '', 'SSL'); ?>">История заказов</a></li>
           <li><a href="<?php echo $this -> url -> link('product/special', '', 'SSL'); ?>">Мои скидки</a></li>
+          <li><a href="<?php echo $this -> url -> link('account/logout', '', 'SSL'); ?>">Выйти</a></li>
         </ul>
     </div>
     <div class="bigButton upl" onMouseOver="$(this).addClass('hover');" onMouseOut="$(this).removeClass('hover');"><a class="left" href="<?php echo $this -> url -> link('album/upload', '', 'SSL'); ?>">Загрузить фото</a>

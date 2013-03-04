@@ -1136,7 +1136,11 @@ class ControllerSaleOrder extends Controller {
 				);
 			}		
 		
-		
+		$albumPref = $this->model_sale_order->getOrderAlbumTime($this->request->get['order_id']);
+      $this->data['album_pref'] = array(
+        'date'=> (($albumPref['album_end_date'] == '0000-00-00') ? '' : date('d.m.Y' ,strtotime($albumPref['album_end_date']))), 
+        'time'=> (($albumPref['album_end_time'] == '00:00:00') ? '' : ($albumPref['album_end_time'] ))
+      );
 		$this->data['order_products'] = array();		
 		
 		foreach ($order_products as $order_product) {

@@ -1,10 +1,5 @@
 <?php echo $header; ?>
 <div id="content"><?php echo $content_top; ?>
-  <div class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
-    <?php } ?>
-  </div>
   <h1 style="padding-left:20px"><?php echo $heading_title; ?></h1>
   <div style="padding: 0px 20px;"><?php echo $description; ?></div>
   <div class="buttons">

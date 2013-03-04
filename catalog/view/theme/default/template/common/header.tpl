@@ -61,7 +61,7 @@ DD_belatedPNG.fix('#logo img');
 							<div id="title"><a href="/"><img src="catalog/view/theme/default/image/title.png" width="263" height="86" /></a></div>
 							<div id="text">Печать фотографий онлайн</div>
 							<div id="hand">
-								<div>тел.: 067 487-12-70</div>
+								<div>тел.: <?php echo $phone ?></div>
 							</div>
 						</div>
 						<div id="top_menu">

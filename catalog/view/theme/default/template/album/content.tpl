@@ -127,7 +127,7 @@
       <label for="applyPhoto">Применить к выбранным настройки печати</label>
     </div>
     <div class="apply-radio">
-      <input type="radio" id="applyCopy" name="apply" value="photo"/> 
+      <input type="radio" id="applyCopy" name="apply" value="copy"/> 
       <label for="applyCopy">Применить к копиям настройки печати</label>
     </div>
     <div class="clear"></div>
@@ -296,7 +296,7 @@
             if (!response.success) {
                 alert("Проблемы на стороне сервера.");
             } else {
-              if(response.order) {
+              if(response.order.length) {
                 var msg = '';
                 for(var i = 0; i < response.order.length; i++) {
                   msg += response.order[i] + ',';

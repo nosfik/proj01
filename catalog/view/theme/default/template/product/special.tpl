@@ -1,14 +1,18 @@
+
 <?php echo $header; ?>
-<div id="content"><?php echo $content_top; ?>
-  <div class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
-    <?php } ?>
+<div id="shop_cont">
+  <?php echo $content_top; ?>
+  <div id="left_collumn">
+    <div id="top"></div>
+    <?php echo $column_left; ?>
+    <div id="bottom"/></div>
   </div>
+  <div id="center">
+  <div class="forFloat">
+
   <h1><?php echo $heading_title; ?></h1>
   <?php if ($products) { ?>
   <div class="product-filter">
-    <div class="display"><b><?php echo $text_display; ?></b> <?php echo $text_list; ?> <b>/</b> <a onclick="display('grid');"><?php echo $text_grid; ?></a></div>
     <div class="limit"><?php echo $text_limit; ?>
       <select onchange="location = this.value;">
         <?php foreach ($limits as $limits) { ?>
@@ -33,14 +37,17 @@
     </div>
   </div>
   <div class="product-compare"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div>
-  <div class="product-list">
-    <?php foreach ($products as $product) { ?>
-    <div>
+    <table><tr>
+    <?php for ($i = 0; $i < sizeof($products); $i++) { 
+    $product =  $products[$i];
+    if($i >=5  && $i % 5 == 0) { ?>
+      </tr><tr>  
+     <?php } ?>
+      <td class="item">
       <?php if ($product['thumb']) { ?>
       <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" title="<?php echo $product['name']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
       <?php } ?>
       <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
-      <div class="description"><?php echo $product['description']; ?></div>
       <?php if ($product['price']) { ?>
       <div class="price">
         <?php if (!$product['special']) { ?>
@@ -57,17 +64,18 @@
       <?php if ($product['rating']) { ?>
       <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
       <?php } ?>
-      <div class="cart"><input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" /></div>
-      <div class="wishlist"><a onclick="addToWishList('<?php echo $product['product_id']; ?>');"><?php echo $button_wishlist; ?></a></div>
+      
+
       <div class="compare"><a onclick="addToCompare('<?php echo $product['product_id']; ?>');"><?php echo $button_compare; ?></a></div>
-    </div>
+    </td>
     <?php } ?>
-  </div>
+    </tr></table>
   <div class="pagination"><?php echo $pagination; ?></div>
   <?php } else { ?>
   <div class="content"><?php echo $text_empty; ?></div>
   <?php }?>
   <?php echo $content_bottom; ?></div>
+  </div></div></div>
 <script type="text/javascript"><!--
 function display(view) {
 	if (view == 'list') {

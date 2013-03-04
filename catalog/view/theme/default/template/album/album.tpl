@@ -92,7 +92,7 @@
     <tr>
     <?php for ($i = 0; $i < sizeof($albums); $i++) { 
         $album =  $albums[$i];
-        if($i >=5  && $i % 5 == 0) { ?>
+        if($i >= 4  && $i % 4 == 0) { ?>
            </tr><tr>  
          <?php } ?>
          <td>

@@ -41,17 +41,17 @@
 							<div id="tail"></div>
 						</div>
 					</div>
-					<div id="link"><span id="top">Сотрудничество</span><br />
-						<span id="bott">c фотографами</span></div>
+					<div id="link"><a href="cooperation"><span id="top">Сотрудничество</span><br />
+						<span id="bott">c фотографами</span></a></div>
 				</div>
 				<div id="fotobook">
 					<div id="book">
 						<div id="bottom"></div>
 						<div id="top"></div>
 					</div>
-					<div id="link"><a onMouseOver="$('#book').addClass('hover');" onMouseOut="$('#book').removeClass('hover');" href="#"><span>Фотогниги</span> на долгую память</a></div>
+					<div id="link"><a onMouseOver="$('#book').addClass('hover');" onMouseOut="$('#book').removeClass('hover');" href="photo_book"><span>Фотогниги</span> на долгую память</a></div>
 				</div>
-				<div id="bottom_menu"><a href="#">Оборудование</a> <a href="#">Реквизиты</a> <a href="#">Наши партнёры</a> <a href="#">Печать фотографий</a> <a href="#">Доставка</a> <a href="#">Система скидок</a> <a href="#">Калибровка мониторов</a> <a href="#">Фотокниги</a></div>
+				<div id="bottom_menu"><a href="equipment">Оборудование</a> <a href="details">Реквизиты</a> <a href="partners">Наши партнёры</a> <a href="print_photos">Печать фотографий</a> <a href="shipping">Доставка</a> <a href="specials_system">Система скидок</a> <a href="monitor_calibration">Калибровка мониторов</a> <a href="photo_book">Фотокниги</a></div>
 				<div id="sm">
 			<div id="logo">
 				<div></div>

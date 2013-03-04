@@ -33,13 +33,23 @@ class ControllerAlbumUpload extends Controller {
       $this->data['albums'] = array();
       
       foreach($albums as $album) {
+        
+        
+        $cover = ($album['photo'] == '') ? '' : 'albums/album_cus_'.$this->customer->getId().'/cover/'.$album['photo'];
+        if(!is_file($cover)){
+          $this->load->model('album/content');
+          $photo_name =  $this->model_album_content->getPhotosByAlbumForCover($album['album_id'], $this->customer->getId());
+          $cover = ($photo_name != '') ? 'albums/album_cus_'.$this->customer->getId().'/album_'.$album['album_id'].'/'.$photo_name : '';
+        }
+        
         $this->data['albums'][] = array (
           'id'            => $album['album_id'],
           'name'          => $album['name'],
           'description'   => $album['description'],
           'photo'         => $album['photo'],
           'date'          => $album['date'],
-          'size'          => $album['size'] 
+          'size'          => $album['size'],
+          'cover'         => $cover
          );
       }
       
@@ -116,7 +126,7 @@ class ControllerAlbumUpload extends Controller {
   }
 
   public function add() {
-    
+      
     if ( (!empty($_FILES)) && $_POST['token']) {
       $customer_id = $this->customer->getCustomerIdByToken($_POST['token']);
       $msg = '';
@@ -156,8 +166,73 @@ class ControllerAlbumUpload extends Controller {
     echo json_encode($return);
   }
   
+  private function makeSmallCopy($newDir, $fileName) {
+        $height_default = 110;
+        $photo_file = $newDir.'/'.$fileName;
+        $tmp = explode('.', $fileName);
+        $ext = strtolower($tmp[sizeof($tmp) - 1]);
+        
+        switch ($ext) {
+          case 'png' : $src = imagecreatefrompng($photo_file); break;
+          case 'gif' : $src = imagecreatefromgif($photo_file); break;
+          case 'jpg' : 
+          case 'jpeg' :  
+          default: $src = imagecreatefromjpeg($photo_file); break;
+        }
+        
+        $size = getimagesize($photo_file);
+        $photo_width = $size[0];
+        $photo_height = $size[1];
+        $koef = $photo_height/$height_default;
+        $new_width = ceil ($photo_width / $koef);
+        
+        $dst = ImageCreateTrueColor ($new_width, $height_default);
+        ImageCopyResampled ($dst, $src, 0, 0, 0, 0, $new_width, $height_default, $photo_width, $photo_height);
+        switch ($ext) {
+          case 'png' : imagepng($dst,  $newDir.'/small_'.$fileName); break;
+          case 'gif' : imagegif($dst,  $newDir.'/small_'.$fileName); break;
+          case 'jpg' : 
+          case 'jpeg' :  
+          default: imagejpeg($dst,  $newDir.'/small_'.$fileName); break;
+        }
+        
+        imagedestroy($src);
+  }
+
+  private function translit($string) {
+    
+    $converter = array(
+        'а' => 'a',   'б' => 'b',   'в' => 'v',
+        'г' => 'g',   'д' => 'd',   'е' => 'e',
+        'ё' => 'e',   'ж' => 'zh',  'з' => 'z',
+        'и' => 'i',   'й' => 'y',   'к' => 'k',
+        'л' => 'l',   'м' => 'm',   'н' => 'n',
+        'о' => 'o',   'п' => 'p',   'р' => 'r',
+        'с' => 's',   'т' => 't',   'у' => 'u',
+        'ф' => 'f',   'х' => 'h',   'ц' => 'c',
+        'ч' => 'ch',  'ш' => 'sh',  'щ' => 'sch',
+        'ь' => "'",  'ы' => 'y',   'ъ' => "'",
+        'э' => 'e',   'ю' => 'yu',  'я' => 'ya',
+ 
+        'А' => 'A',   'Б' => 'B',   'В' => 'V',
+        'Г' => 'G',   'Д' => 'D',   'Е' => 'E',
+        'Ё' => 'E',   'Ж' => 'Zh',  'З' => 'Z',
+        'И' => 'I',   'Й' => 'Y',   'К' => 'K',
+        'Л' => 'L',   'М' => 'M',   'Н' => 'N',
+        'О' => 'O',   'П' => 'P',   'Р' => 'R',
+        'С' => 'S',   'Т' => 'T',   'У' => 'U',
+        'Ф' => 'F',   'Х' => 'H',   'Ц' => 'C',
+        'Ч' => 'Ch',  'Ш' => 'Sh',  'Щ' => 'Sch',
+        'Ь' => "'",  'Ы' => 'Y',   'Ъ' => "'",
+        'Э' => 'E',   'Ю' => 'Yu',  'Я' => 'Ya',
+    );
+    
+    return strtr($string, $converter);
+    
+  }
+  
   public function createAlbum() {
-    header('Content-type: application/json');
+    header('Content-type: application/json; charset=utf-8');
     $return['success'] = 'false'; 
     if ($this->customer->isLogged() && isset($this->request->post['album_id']) && isset($this->request->post['album_name'])) {
     	 $custId = $this->customer->getId();
@@ -175,7 +250,12 @@ class ControllerAlbumUpload extends Controller {
           $newDir = $customer_dir.'/'.'album_'.$newAlbumId;
 					mkdir($newDir);
           foreach ($files as $file) {
+              $file['name'] = $this->translit($file['name']);
+              $photo_file = $newDir.'/'.$file['name'];
               file_put_contents($newDir.'/'.$file['name'], $file['photo']);
+              
+              $this->makeSmallCopy($newDir, $file['name']);
+            
 							$this->model_album_album->putPhotoInAlbum($newAlbumId, $file['name']);
 							$this->model_album_upload->deleteFile($custId, $file['customer_temp_photo_id']);
           }
@@ -189,7 +269,9 @@ class ControllerAlbumUpload extends Controller {
 				 }
          
          foreach ($files as $file) {
+              $file['name'] = $this->translit($file['name']);
               file_put_contents($AlbumDir.'/'.$file['name'], $file['photo']);
+              $this->makeSmallCopy($AlbumDir, $file['name']);
               $this->model_album_album->putPhotoInAlbum($album_id, $file['name']);
               $this->model_album_upload->deleteFile($custId, $file['customer_temp_photo_id']);
          }

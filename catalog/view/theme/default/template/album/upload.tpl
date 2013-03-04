@@ -34,8 +34,10 @@
 $(function() {
   $('#file_upload').uploadify({
     'swf'      : '/system/library/uploadify.swf',
+    'fileSizeLimit' : '15MB',
     'uploader' : 'index.php?route=album/upload/add',
     'buttonText' : 'Выбрать фотографии для загрузки',
+    'progressData' : 'speed',
     'width'    : 257,
     'height'   : 45,
     'onQueueComplete' : function(file) {

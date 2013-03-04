@@ -20,10 +20,12 @@ class ControllerCommonHeader extends Controller {
 		
 		// Main menu
 		$this->load->model('setting/menu');
+    $this->load->model('setting/setting');
+    
 		$this->data['menuElements'] = $this->model_setting_menu->getMenuElements();
-		
-	
-		
+    $config = $this->model_setting_setting->getSetting('config');
+    
+    $this->data['phone'] = $config['config_telephone'];		
 
 		// Whos Online
 		if ($this->config->get('config_customer_online')) {
