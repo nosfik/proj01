@@ -838,12 +838,12 @@ class ControllerSaleOrder extends Controller {
       		$this->data['telephone'] = '';
     	}
 		
-    	if (isset($this->request->post['fax'])) {
-      		$this->data['fax'] = $this->request->post['fax'];
+    	if (isset($this->request->post['skype'])) {
+      		$this->data['skype'] = $this->request->post['skype'];
     	} elseif (!empty($order_info)) { 
-			$this->data['fax'] = $order_info['fax'];
+			$this->data['skype'] = $order_info['skype'];
 		} else {
-      		$this->data['fax'] = '';
+      		$this->data['skype'] = '';
     	}	
 		
 		if (isset($this->request->post['affiliate_id'])) {
@@ -1100,6 +1100,43 @@ class ControllerSaleOrder extends Controller {
 		
 		$this->document->addScript('view/javascript/jquery/ajaxupload.js');
 		
+		
+		$this->data['albums'] = array();
+		
+		
+		$this->data['formats'] = $this->model_sale_order->getFormats();
+		$this->data['papers'] = $this->model_sale_order->getPaperTypes();
+		$this->data['print_modes'] = $this->model_sale_order->getPrintModes();
+		
+		$albums = $this->model_sale_order->getOrderAlbums($this->request->get['order_id']);
+			
+			foreach ($albums as $album) {
+				$this->data['albums'][] = array(
+				
+					'id' => $album['order_album_id'],
+					'album_id' => $album['album_id'],
+					'color_correction' => $album['color_correction'],
+					'cut_photo' => $album['cut_photo'],
+					'white_border' => $album['white_border'],
+					'red_eye' => $album['red_eye'],
+					'photo_id' => $album['photo'],
+					'quantity' => $album['quantity'],
+					'format' => $album['album_photo_format_id'],
+					'paper' => $album['album_photo_paper_id'],
+					'format_name' => $album['format'],
+					'paper_name' => $album['paper'],
+					'print_mode_name' => $album['printmode'],
+					'album_name' => $album['album_name'],
+					'print_mode' => $album['album_photo_printmode_id'],
+					'photo_name' => $album['photo_name'],
+					'price'			=> $this->currency->format($album['price']),
+					'total'			=> $this->currency->format($album['price'] * $album['quantity']),
+					'src' => 'albums/order_'.$this->request->get['order_id'].'/'.$album['photo_name']
+				
+				);
+			}		
+		
+		
 		$this->data['order_products'] = array();		
 		
 		foreach ($order_products as $order_product) {
@@ -1184,57 +1221,13 @@ class ControllerSaleOrder extends Controller {
       		$this->error['telephone'] = $this->language->get('error_telephone');
     	}
 		
-    	if ((utf8_strlen($this->request->post['payment_firstname']) < 1) || (utf8_strlen($this->request->post['payment_firstname']) > 32)) {
-      		$this->error['payment_firstname'] = $this->language->get('error_firstname');
-    	}
-
-    	if ((utf8_strlen($this->request->post['payment_lastname']) < 1) || (utf8_strlen($this->request->post['payment_lastname']) > 32)) {
-      		$this->error['payment_lastname'] = $this->language->get('error_lastname');
-    	}
-
-    	if ((utf8_strlen($this->request->post['payment_address_1']) < 3) || (utf8_strlen($this->request->post['payment_address_1']) > 128)) {
-      		$this->error['payment_address_1'] = $this->language->get('error_address_1');
-    	}
-
-    	if ((utf8_strlen($this->request->post['payment_city']) < 3) || (utf8_strlen($this->request->post['payment_city']) > 128)) {
-      		$this->error['payment_city'] = $this->language->get('error_city');
-    	}
 		
 		$this->load->model('localisation/country');
 		
-		$country_info = $this->model_localisation_country->getCountry($this->request->post['payment_country_id']);
 		
-		if ($country_info) {
-			if ($country_info['postcode_required'] && (utf8_strlen($this->request->post['payment_postcode']) < 2) || (utf8_strlen($this->request->post['payment_postcode']) > 10)) {
-				$this->error['payment_postcode'] = $this->language->get('error_postcode');
-			}
-			
-			// VAT Validation
-			$this->load->helper('vat');
-			
-			if ($this->config->get('config_vat') && $this->request->post['payment_tax_id'] && (vat_validation($country_info['iso_code_2'], $this->request->post['payment_tax_id']) != 'invalid')) {
-				$this->error['payment_tax_id'] = $this->language->get('error_vat');
-			}				
-		}
-
-    	if ($this->request->post['payment_country_id'] == '') {
-      		$this->error['payment_country'] = $this->language->get('error_country');
-    	}
-		
-    	if ($this->request->post['payment_zone_id'] == '') {
-      		$this->error['payment_zone'] = $this->language->get('error_zone');
-    	}	
-		
-    	if ($this->request->post['payment_method'] == '') {
-      		$this->error['payment_zone'] = $this->language->get('error_zone');
-    	}			
-		
-		if (!$this->request->post['payment_method']) {
-			$this->error['payment_method'] = $this->language->get('error_payment');
-		}	
 					
 		// Check if any products require shipping
-		$shipping = false;
+		$shipping = true;
 		
 		if (isset($this->request->post['order_product'])) {
 			$this->load->model('catalog/product');
@@ -1560,7 +1553,7 @@ class ControllerSaleOrder extends Controller {
 
 			$this->data['email'] = $order_info['email'];
 			$this->data['telephone'] = $order_info['telephone'];
-			$this->data['fax'] = $order_info['fax'];
+			$this->data['skype'] = $order_info['skype'];
 			$this->data['comment'] = nl2br($order_info['comment']);
 			$this->data['shipping_method'] = $order_info['shipping_method'];
 			$this->data['payment_method'] = $order_info['payment_method'];
@@ -1634,7 +1627,39 @@ class ControllerSaleOrder extends Controller {
 			$this->data['shipping_zone_code'] = $order_info['shipping_zone_code'];
 			$this->data['shipping_country'] = $order_info['shipping_country'];
 
+			
+			
+			$albumPref = $this->model_sale_order->getOrderAlbumTime($this->request->get['order_id']);
+			$this->data['album_pref'] = array(
+				'date'=> (($albumPref['album_end_date'] == '0000-00-00') ? '' : date('d.m.Y' ,strtotime($albumPref['album_end_date']))), 
+				'time'=> (($albumPref['album_end_time'] == '00:00:00') ? '' : ($albumPref['album_end_time'] ))
+			);
 			$this->data['products'] = array();
+			$this->data['albums'] = array();
+			$albums = $this->model_sale_order->getOrderAlbums($this->request->get['order_id']);
+			
+			foreach ($albums as $album) {
+				$this->data['albums'][] = array(
+				
+					'id' => $album['order_album_id'],
+					'album_id' => $album['album_id'],
+					'color_correction' => $album['color_correction'],
+					'cut_photo' => $album['cut_photo'],
+					'white_border' => $album['white_border'],
+					'red_eye' => $album['red_eye'],
+					'quantity' => $album['quantity'],
+					'format' => $album['format'],
+					'paper' => $album['paper'],
+					'album_name' => $album['album_name'],
+					'print_mode' => $album['printmode'],
+					'photo_name' => $album['photo_name'],
+					'src' => 'albums/order_'.$this->request->get['order_id'].'/'.$album['photo_name']
+				
+				);
+			}
+			
+			
+			
 
 			$products = $this->model_sale_order->getOrderProducts($this->request->get['order_id']);
 
@@ -2464,7 +2489,35 @@ class ControllerSaleOrder extends Controller {
 				);
 
 				$payment_address = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))));
-
+				
+				
+				
+				$album_data  = array();
+				
+				$albums = $this->model_sale_order->getOrderAlbums($this->request->get['order_id']);
+				
+				foreach ($albums as $album) {
+					$album_data[] = array(
+					
+						'id' => $album['order_album_id'],
+						'album_id' => $album['album_id'],
+						'color_correction' => $album['color_correction'],
+						'cut_photo' => $album['cut_photo'],
+						'white_border' => $album['white_border'],
+						'red_eye' => $album['red_eye'],
+						'quantity' => $album['quantity'],
+						'price'		=> $album['price'],
+						'format' => $album['format'],
+						'paper' => $album['paper'],
+						'album_name' => $album['album_name'],
+						'print_mode' => $album['printmode'],
+						'photo_name' => $album['photo_name'],
+						'src' => 'albums/order_'.$this->request->get['order_id'].'/'.$album['photo_name']
+					
+					);
+				}
+				
+				
 				$product_data = array();
 
 				$products = $this->model_sale_order->getOrderProducts($order_id);
@@ -2529,6 +2582,7 @@ class ControllerSaleOrder extends Controller {
 					'payment_tax_id'     => $order_info['payment_tax_id'],
 					'payment_method'     => $order_info['payment_method'],
 					'product'            => $product_data,
+					'album'							 => $album_data,
 					'voucher'            => $voucher_data,
 					'total'              => $total_data,
 					'comment'            => nl2br($order_info['comment'])

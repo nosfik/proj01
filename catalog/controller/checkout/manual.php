@@ -116,7 +116,7 @@ class ControllerCheckoutManual extends Controller {
 				$this->tax->setShippingAddress($this->config->get('config_country_id'), $this->config->get('config_zone_id'));
 			}
 			
-			$this->tax->setPaymentAddress($this->request->post['payment_country_id'], $this->request->post['payment_zone_id']);				
+			//$this->tax->setPaymentAddress($this->request->post['payment_country_id'], $this->request->post['payment_zone_id']);				
 			$this->tax->setStoreAddress($this->config->get('config_country_id'), $this->config->get('config_zone_id'));	
 			
 			// Products
@@ -451,7 +451,7 @@ class ControllerCheckoutManual extends Controller {
 			array_multisort($sort_order, SORT_ASC, $results);
 			
 			foreach ($results as $result) {
-				if ($this->config->get($result['code'] . '_status')) {
+				if ($this->config->get($result['code'] . '_status') || ($result['code'] == 'album')) {
 					$this->load->model('total/' . $result['code']);
 		
 					$this->{'model_total_' . $result['code']}->getTotal($json['order_total'], $total, $taxes);
@@ -467,18 +467,20 @@ class ControllerCheckoutManual extends Controller {
 			}
 		
 			// Payment
+			/*
 			if ($this->request->post['payment_country_id'] == '') {
-				$json['error']['payment']['country'] = $this->language->get('error_country');
-			}
+							$json['error']['payment']['country'] = $this->language->get('error_country');
+						}
+						
+						if ($this->request->post['payment_zone_id'] == '') {
+							$json['error']['payment']['zone'] = $this->language->get('error_zone');
+						}	*/
+				
 			
-			if ($this->request->post['payment_zone_id'] == '') {
-				$json['error']['payment']['zone'] = $this->language->get('error_zone');
-			}		
-			
-			if (!isset($json['error']['payment'])) {
+			if (1) {
 				$json['payment_methods'] = array();
 				
-				$country_info = $this->model_localisation_country->getCountry($this->request->post['payment_country_id']);
+				$country_info = $this->model_localisation_country->getCountry($this->request->post['shipping_country_id']);
 				
 				if ($country_info) {
 					$country = $country_info['name'];
@@ -492,7 +494,7 @@ class ControllerCheckoutManual extends Controller {
 					$address_format = '';
 				}
 				
-				$zone_info = $this->model_localisation_zone->getZone($this->request->post['payment_zone_id']);
+				$zone_info = $this->model_localisation_zone->getZone($this->request->post['shipping_zone_id']);
 				
 				if ($zone_info) {
 					$zone = $zone_info['name'];
@@ -503,17 +505,17 @@ class ControllerCheckoutManual extends Controller {
 				}					
 				
 				$address_data = array(
-					'firstname'      => $this->request->post['payment_firstname'],
-					'lastname'       => $this->request->post['payment_lastname'],
-					'company'        => $this->request->post['payment_company'],
-					'address_1'      => $this->request->post['payment_address_1'],
-					'address_2'      => $this->request->post['payment_address_2'],
-					'postcode'       => $this->request->post['payment_postcode'],
-					'city'           => $this->request->post['payment_city'],
-					'zone_id'        => $this->request->post['payment_zone_id'],
+					'firstname'      => $this->request->post['shipping_firstname'],
+					'lastname'       => $this->request->post['shipping_lastname'],
+					'company'        => '',
+					'address_1'      => $this->request->post['shipping_address_1'],
+					'address_2'      => '',
+					'postcode'       => '',
+					'city'           => $this->request->post['shipping_city'],
+					'zone_id'        => $this->request->post['shipping_zone_id'],
 					'zone'           => $zone,
 					'zone_code'      => $zone_code,
-					'country_id'     => $this->request->post['payment_country_id'],
+					'country_id'     => $this->request->post['shipping_country_id'],
 					'country'        => $country,	
 					'iso_code_2'     => $iso_code_2,
 					'iso_code_3'     => $iso_code_3,
@@ -523,7 +525,6 @@ class ControllerCheckoutManual extends Controller {
 				$json['payment_method'] = array();
 								
 				$results = $this->model_setting_extension->getExtensions('payment');
-		
 				foreach ($results as $result) {
 					if ($this->config->get($result['code'] . '_status')) {
 						$this->load->model('payment/' . $result['code']);

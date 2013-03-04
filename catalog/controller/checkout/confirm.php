@@ -37,6 +37,7 @@ class ControllerCheckoutConfirm extends Controller {
        $allGood = false;
     } else {
       $shipping_method = $this->request->post['shipping_method'];
+			
     }
     if( !(isset($this->request->post['telephone']) && $this->request->post['telephone'] != '') ){
        $allGood = false;
@@ -83,11 +84,9 @@ class ControllerCheckoutConfirm extends Controller {
       
         if (!$redirect) {
           $total_data = array();
-           if( $this->customer->isLogged() ) {
-               $total = $totalAlbum;
-            }   else  {
+          
               $total = 0;
-            }   
+             
       
           $taxes = $this->cart->getTaxes();
            
@@ -102,9 +101,11 @@ class ControllerCheckoutConfirm extends Controller {
           }
           
           array_multisort($sort_order, SORT_ASC, $results);
-          
-          foreach ($results as $result) {
-            if ($this->config->get($result['code'] . '_status') || ($this->customer->isLogged() && $result['code'] == 'album')) {
+         
+				 
+				  foreach ($results as $result) {
+          	
+            if ($this->config->get($result['code'] . '_status')) {
               $this->load->model('total/' . $result['code']);
         
               $this->{'model_total_' . $result['code']}->getTotal($total_data, $total, $taxes);
@@ -153,18 +154,34 @@ class ControllerCheckoutConfirm extends Controller {
           
           
           
-       
-          
-          $data['payment_method'] = $payment_name;
-          $data['payment_code'] = $payment_method;
-          
-          //echo "sess = ". print_r($this->session, true);
-          
-          if ($this->customer->isLogged()) {
+        if ($this->customer->isLogged()) {
              $this->load->model('account/address');
              $customer_address = $this->model_account_address->getFirstAddressByCustomer(); 
           }            
-             
+            
+          
+          $data['payment_method'] = $payment_name;
+          $data['payment_code'] = $payment_method;
+					
+					
+					$shipping_method = explode('.', $shipping_method);
+					$shipping_method = $shipping_method[0];
+					$this->load->model('shipping/'.$shipping_method);
+					
+					$data['shipping_country_id'] = ($this->customer->isLogged()) ? $customer_address['country_id'] : 220;
+					$data['shipping_zone_id'] = ($this->customer->isLogged()) ? $customer_address['zone_id'] : 3501;
+					
+					$my_address = array('country_id' => $data['shipping_country_id'], 'zone_id' => $data['shipping_zone_id']);
+					
+		     	$quote = $this->{'model_shipping_' . $shipping_method}->getQuote($my_address);
+					
+					$this->session->data['shipping_method'] = $quote['quote'][$shipping_method];
+					//print_r(	$this->session->data['shipping_method']);
+					
+          
+          //echo "sess = ". print_r($this->session, true);
+          
+          
           
             $data['shipping_firstname'] = $firstName;
             $data['shipping_lastname'] = ($this->customer->isLogged()) ? $this->customer->getLastName() : '';
@@ -175,9 +192,9 @@ class ControllerCheckoutConfirm extends Controller {
             $data['shipping_city'] = ($this->customer->isLogged()) ? $customer_address['city'] : '';
             $data['shipping_postcode'] = ($this->customer->isLogged()) ? $customer_address['postcode'] : '';
             $data['shipping_zone'] = ($this->customer->isLogged()) ? $customer_address['zone'] : '';
-            $data['shipping_zone_id'] = ($this->customer->isLogged()) ? $customer_address['zone_id'] : '';
+            $data['shipping_zone_id'] = ($this->customer->isLogged()) ? $customer_address['zone_id'] : 3501;
             $data['shipping_country'] = ($this->customer->isLogged()) ? $customer_address['country'] : '';
-            $data['shipping_country_id'] = ($this->customer->isLogged()) ? $customer_address['country_id'] : '';
+            $data['shipping_country_id'] = ($this->customer->isLogged()) ? $customer_address['country_id'] : 220;
             $data['shipping_address_format'] = ($this->customer->isLogged()) ? $customer_address['address_format'] : '';
             
             $data['shipping_method'] = $shipping_name;

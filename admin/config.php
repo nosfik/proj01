@@ -21,6 +21,7 @@ define('DIR_CACHE', 'Z:\home\pechatnik\www/system/cache/');
 define('DIR_DOWNLOAD', 'Z:\home\pechatnik\www/download/');
 define('DIR_LOGS', 'Z:\home\pechatnik\www/system/logs/');
 define('DIR_CATALOG', 'Z:\home\pechatnik\www/catalog/');
+define('DIR_ORDER_PHOTOS', 'Z:\home\pechatnik\www/admin/albums/');
 
 // DB
 define('DB_DRIVER', 'mysql');

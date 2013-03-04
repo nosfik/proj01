@@ -146,11 +146,8 @@ $this->load->model('tool/image');
       
       $total_data = array();    
       
-      if( $this->customer->isLogged() ) {
-         $total = $totalAlbum;
-      }   else  {
+      
         $total = 0;
-      }   
       
       $taxes = $this->cart->getTaxes();
       
@@ -253,7 +250,6 @@ $this->load->model('tool/image');
       
       $this->session->data['shipping_methods'] = $quote_data;
     
-     
 
     
     
@@ -443,30 +439,6 @@ $this->load->model('tool/image');
     
     
    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
 				

@@ -161,26 +161,11 @@ class ModelSaleOrder extends Model {
 		} else {
 			$shipping_zone = '';			
 		}	
+		
+		
 					
-		$country_info = $this->model_localisation_country->getCountry($data['payment_country_id']);
 		
-		if ($country_info) {
-			$payment_country = $country_info['name'];
-			$payment_address_format = $country_info['address_format'];			
-		} else {
-			$payment_country = '';	
-			$payment_address_format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}';					
-		}
-	
-		$zone_info = $this->model_localisation_zone->getZone($data['payment_zone_id']);
-		
-		if ($zone_info) {
-			$payment_zone = $zone_info['name'];
-		} else {
-			$payment_zone = '';			
-		}			
-		
-      	$this->db->query("UPDATE `" . DB_PREFIX . "order` SET firstname = '" . $this->db->escape($data['firstname']) . "', lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "', telephone = '" . $this->db->escape($data['telephone']) . "', fax = '" . $this->db->escape($data['fax']) . "', payment_firstname = '" . $this->db->escape($data['payment_firstname']) . "', payment_lastname = '" . $this->db->escape($data['payment_lastname']) . "', payment_company = '" . $this->db->escape($data['payment_company']) . "', payment_company_id = '" . $this->db->escape($data['payment_company_id']) . "', payment_tax_id = '" . $this->db->escape($data['payment_tax_id']) . "', payment_address_1 = '" . $this->db->escape($data['payment_address_1']) . "', payment_address_2 = '" . $this->db->escape($data['payment_address_2']) . "', payment_city = '" . $this->db->escape($data['payment_city']) . "', payment_postcode = '" . $this->db->escape($data['payment_postcode']) . "', payment_country = '" . $this->db->escape($payment_country) . "', payment_country_id = '" . (int)$data['payment_country_id'] . "', payment_zone = '" . $this->db->escape($payment_zone) . "', payment_zone_id = '" . (int)$data['payment_zone_id'] . "', payment_address_format = '" . $this->db->escape($payment_address_format) . "', payment_method = '" . $this->db->escape($data['payment_method']) . "', payment_code = '" . $this->db->escape($data['payment_code']) . "', shipping_firstname = '" . $this->db->escape($data['shipping_firstname']) . "', shipping_lastname = '" . $this->db->escape($data['shipping_lastname']) . "',  shipping_company = '" . $this->db->escape($data['shipping_company']) . "', shipping_address_1 = '" . $this->db->escape($data['shipping_address_1']) . "', shipping_address_2 = '" . $this->db->escape($data['shipping_address_2']) . "', shipping_city = '" . $this->db->escape($data['shipping_city']) . "', shipping_postcode = '" . $this->db->escape($data['shipping_postcode']) . "', shipping_country = '" . $this->db->escape($shipping_country) . "', shipping_country_id = '" . (int)$data['shipping_country_id'] . "', shipping_zone = '" . $this->db->escape($shipping_zone) . "', shipping_zone_id = '" . (int)$data['shipping_zone_id'] . "', shipping_address_format = '" . $this->db->escape($shipping_address_format) . "', shipping_method = '" . $this->db->escape($data['shipping_method']) . "', shipping_code = '" . $this->db->escape($data['shipping_code']) . "', comment = '" . $this->db->escape($data['comment']) . "', order_status_id = '" . (int)$data['order_status_id'] . "', affiliate_id  = '" . (int)$data['affiliate_id'] . "', date_modified = NOW() WHERE order_id = '" . (int)$order_id . "'");
+     $this->db->query("UPDATE `" . DB_PREFIX . "order` SET firstname = '" . $this->db->escape($data['firstname']) . "', lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "', telephone = '" . $this->db->escape($data['telephone']) . "', skype = '" . $this->db->escape($data['skype']) . "',  payment_method = '" . $this->db->escape($data['payment_method']) . "', payment_code = '" . $this->db->escape($data['payment_code']) . "', shipping_firstname = '" . $this->db->escape($data['shipping_firstname']) . "', shipping_lastname = '" . $this->db->escape($data['shipping_lastname']) . "',  shipping_company = '" . $this->db->escape($data['shipping_company']) . "', shipping_address_1 = '" . $this->db->escape($data['shipping_address_1']) . "', shipping_address_2 = '" . $this->db->escape($data['shipping_address_2']) . "', shipping_city = '" . $this->db->escape($data['shipping_city']) . "', shipping_postcode = '" . $this->db->escape($data['shipping_postcode']) . "', shipping_country = '" . $this->db->escape($shipping_country) . "', shipping_country_id = '" . (int)$data['shipping_country_id'] . "', shipping_zone = '" . $this->db->escape($shipping_zone) . "', shipping_zone_id = '" . (int)$data['shipping_zone_id'] . "', shipping_address_format = '" . $this->db->escape($shipping_address_format) . "', shipping_method = '" . $this->db->escape($data['shipping_method']) . "', shipping_code = '" . $this->db->escape($data['shipping_code']) . "', comment = '" . $this->db->escape($data['comment']) . "', order_status_id = '" . (int)$data['order_status_id'] . "', affiliate_id  = '" . (int)$data['affiliate_id'] . "', date_modified = NOW() WHERE order_id = '" . (int)$order_id . "'");
 		
 		$this->db->query("DELETE FROM " . DB_PREFIX . "order_product WHERE order_id = '" . (int)$order_id . "'"); 
        	$this->db->query("DELETE FROM " . DB_PREFIX . "order_option WHERE order_id = '" . (int)$order_id . "'");
@@ -243,9 +228,93 @@ class ModelSaleOrder extends Model {
 				$commission = ($total / 100) * $affiliate_info['commission']; 
 			}
 		}
-				 
+		
+		if(isset($data['photos']) && isset($data['photos']) != '') {
+				
+				$album_query = $this->db->query("SELECT  SUM(price) as sum FROM " . DB_PREFIX . "order_album WHERE order_id = ".(int)$order_id);	
+				$total_album = $album_query->row['sum'];
+				
+				$photos_id = explode(",", $data['photos']);
+				$photos = array();
+				foreach ($photos_id as $id) {
+					$photos[] = array(
+						'id'					 			=> $id,
+						'format' 						=> $data['format_'.$id],
+						'paper'							=> $data['paper_'.$id],
+						'print_mode'				=> $data['print_mode_'.$id],
+						'color_correction'	=> isset($data['color_correction_'.$id]) ? 2 : 1,
+						'cut_photo'					=> isset($data['cut_photo_'.$id]) ? 2 : 1,
+						'white_border'			=> isset($data['white_border_'.$id]) ? 2 : 1,
+						'red_eye'						=> isset($data['red_eye_'.$id]) ? 2 : 1,
+						'quantity'					=> $data['quantity_'.$id]
+					);
+				}
+
+				
+				$formats_query = $this->db->query("SELECT id, price FROM " . DB_PREFIX . "album_photo_format");
+        $formats_result = $formats_query->rows;
+        $formats = array();
+        foreach ($formats_result as $format_result) {
+            $formats[$format_result['id']] = $format_result['price'];
+        }
+        
+        
+        $papers_query = $this->db->query("SELECT id, percent FROM " . DB_PREFIX . "album_photo_paper");
+        $papers_result = $papers_query->rows;
+        $papers = array();
+        foreach ($papers_result as $paper_result) {
+            $papers[$paper_result['id']] = $paper_result['percent'];
+        }
+				
+				$newTotalAlbumPrice = 0;
+				foreach ($photos as $photo) {
+					
+					$photo_price   = $formats[$photo['format']];
+          $photo_percent  = $papers[$photo['paper']];
+					$price = round($photo_price + $photo_price * $photo_percent / 100, 2);
+					$newTotalAlbumPrice += $price;
+					
+					
+					$this->db->query("UPDATE `" . DB_PREFIX . "order_album` SET `album_photo_format_id`=".(int)$photo['format'].", `album_photo_paper_id`=".(int)$photo['paper'].", `album_photo_printmode_id`=".(int)$photo['print_mode'].", 
+					`color_correction`=".(int)$photo['color_correction'].", `cut_photo`=".(int)$photo['cut_photo'].", `white_border`=".(int)$photo['white_border'].", `red_eye`=".(int)$photo['red_eye'].", `price` = ".(float)$price." ,`quantity`=".(int)$photo['quantity']." WHERE `order_album_id`=".(int)$photo['id']);
+
+					
+				}
+				if($newTotalAlbumPrice != $total_album) {
+						
+						
+						$this->db->query("UPDATE `" . DB_PREFIX . "order_total` SET `value` = '".(float)$newTotalAlbumPrice. "', text = '".$this->currency->format($newTotalAlbumPrice)."' WHERE order_id = ".$order_id. " AND title='Печатник'");
+						
+						$total_query = $this->db->query("SELECT SUM(value) as total FROM order_total WHERE order_id =".(int)$order_id." AND title <> 'Итого'");	
+						$total = $total_query->row['total'];
+						$this->db->query("UPDATE `" . DB_PREFIX . "order_total` SET `value` = '".(float)$total. "', text = '".$this->currency->format($total)."' WHERE order_id = ".$order_id. " AND title='Итого'");
+						
+						
+						//$this->db->query("UPDATE `" . DB_PREFIX . "order` SET `total` = '".(float)$newTotalPrice. "' WHERE order_id = ".$order_id);
+				} 
+	
+		}	
+		
 		$this->db->query("UPDATE `" . DB_PREFIX . "order` SET total = '" . (float)$total . "', affiliate_id = '" . (int)$affiliate_id . "', commission = '" . (float)$commission . "' WHERE order_id = '" . (int)$order_id . "'"); 
-	}
+	
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+				 
+		
+		
+
+}
 	
 	public function deleteOrder($order_id) {
 		$order_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "order` WHERE order_status_id > '0' AND order_id = '" . (int)$order_id . "'");
@@ -370,7 +439,7 @@ class ModelSaleOrder extends Model {
 				'firstname'               => $order_query->row['firstname'],
 				'lastname'                => $order_query->row['lastname'],
 				'telephone'               => $order_query->row['telephone'],
-				'fax'                     => $order_query->row['fax'],
+				'skype'                   => $order_query->row['skype'],
 				'email'                   => $order_query->row['email'],
 				'payment_firstname'       => $order_query->row['payment_firstname'],
 				'payment_lastname'        => $order_query->row['payment_lastname'],
@@ -497,11 +566,43 @@ class ModelSaleOrder extends Model {
 
 		return $query->rows;
 	}
-	
+
 	public function getOrderProducts($order_id) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_product WHERE order_id = '" . (int)$order_id . "'");
 		
 		return $query->rows;
+	}
+	
+	public function getFormats() {
+    $sql = "SELECT * FROM " . DB_PREFIX . "album_photo_format";
+    $query = $this->db->query($sql);
+    return $query->rows;
+  }
+  
+  public function getPaperTypes() {
+     $sql = "SELECT * FROM " . DB_PREFIX . "album_photo_paper";
+    $query = $this->db->query($sql);
+    return $query->rows;
+  }
+  
+   public function getPrintModes() {
+    $sql = "SELECT * FROM " . DB_PREFIX . "album_photo_printmode";
+    $query = $this->db->query($sql);
+    return $query->rows;
+  }
+	
+	public function getOrderAlbums($order_id) {
+		$query = $this->db->query("SELECT oa.*, apf.name as format, app.name as paper, app.percent, a.name as album_name, ap.photo_name, appr.name as printmode, ap.album_photo_id
+		FROM " . DB_PREFIX . "order_album as oa JOIN album as a ON oa.album_id = a. album_id JOIN album_photo as ap ON oa.photo = ap.album_photo_id 
+		JOIN album_photo_format as apf ON apf.id = oa.album_photo_format_id JOIN album_photo_paper as app ON app.id = oa.album_photo_paper_id
+		JOIN album_photo_printmode as appr ON appr.id = oa.album_photo_printmode_id WHERE order_id = '" . (int)$order_id . "' GROUP BY order_album_id");
+		
+		return $query->rows;
+	}
+	
+	public function getOrderAlbumTime($order_id) {
+		$query = $this->db->query("SELECT album_end_date, album_end_time FROM `" . DB_PREFIX . "order` WHERE order_id = ".(int)$order_id);
+		return $query->row;
 	}
 	
 	public function getOrderOption($order_id, $order_option_id) {

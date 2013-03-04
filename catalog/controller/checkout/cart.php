@@ -374,11 +374,8 @@ class ControllerCheckoutCart extends Controller {
 			
 			$total_data = array();		
       
-      if( $this->customer->isLogged() ) {
-         $total = $totalAlbum;
-      }	  else  {
+      
         $total = 0;
-      }		
 			
 			$taxes = $this->cart->getTaxes();
 			
@@ -395,7 +392,7 @@ class ControllerCheckoutCart extends Controller {
 				array_multisort($sort_order, SORT_ASC, $results);
 				
 				foreach ($results as $result) {
-					if ($this->config->get($result['code'] . '_status') || ($this->customer->isLogged() && $result['code'] == 'album')) {
+					if ($this->config->get($result['code'] . '_status')) {
 						$this->load->model('total/' . $result['code']);
 			
 						$this->{'model_total_' . $result['code']}->getTotal($total_data, $total, $taxes);

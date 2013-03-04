@@ -552,7 +552,7 @@ class Cart {
       foreach ($this->getAlbums() as $album) {
         $total += $album['price'];
       }
-return $total;
+		return $total;
     }
 	
 	public function getTaxes() {
@@ -639,6 +639,7 @@ return $total;
 				break;
 	  		}		
 		}
+		
 		
 		return $shipping;
 	}

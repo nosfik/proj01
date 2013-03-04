@@ -19,6 +19,8 @@
         <a href="#tab-shipping"><?php echo $tab_shipping; ?></a>
         <?php } ?>
         <a href="#tab-product"><?php echo $tab_product; ?></a><a href="#tab-history"><?php echo $tab_order_history; ?></a>
+        
+        <a href="#tab-album-pref">Печатник Онлайн</a>
         <?php if ($maxmind_id) { ?>
         <a href="#tab-fraud"><?php echo $tab_fraud; ?></a>
         <?php } ?>
@@ -287,7 +289,57 @@
         </table>
       </div>
       <?php } ?>
+      
+      
+      <div id="tab-album-pref" class="vtabs-content">
+      	
+      	 Дата : <?php echo $album_pref['date']?><br>
+      	 Время : <?php echo $album_pref['time']?><br>
+      
+      </div>
+      
+      
+      
       <div id="tab-product" class="vtabs-content">
+      	
+      	<table class="list">
+          <thead>
+            <tr>
+              <td class="left">Альбом</td>
+              <td class="left">Фото</td>
+              <td class="left">Копии</td>
+              <td class="left">Формат</td>
+              <td class="right">Тип фотобумаги</td>
+              <td class="right">Эффект</td>
+              <td class="right">Цветокоррекция</td>
+              <td class="right">Обрезка</td>
+              <td class="right">Белая рамка</td>
+              <td class="right">Красные глаза</td>
+            </tr>
+          </thead>
+          <tbody>
+          	<?php
+		          	$success = '<img src="view/image/success.png" />';
+		          	$no = '<img src="view/image/error.png" />';
+          	?>
+            <?php foreach ($albums as $album) { ?>
+            <tr>
+            	<td class="left"><?php echo $album['album_name']; ?></td>
+              <td class="left"><a href="<?php echo $album['src']; ?>"><?php echo $album['photo_name']; ?></a></td>
+              <td class="left"><?php echo $album['quantity']; ?></td>
+              <td class="left"><?php echo $album['format']; ?></td>
+              <td class="right"><?php echo $album['paper']; ?></td>
+              <td class="right"><?php echo $album['print_mode']; ?></td>
+              
+              <td class="right"><?php if ($album['color_correction'] == 2) {echo $success;} else {echo $no;} ?></td>
+              <td class="right"><?php if ($album['cut_photo'] == 2) {echo $success;} else {echo $no;} ?></td>
+              <td class="right"><?php if ($album['white_border'] == 2) {echo $success;} else {echo $no;} ?></td>
+              <td class="right"><?php if ($album['red_eye'] == 2) {echo $success;} else {echo $no;} ?></td>
+            </tr>
+            <?php } ?>
+          </tbody>
+        </table>
+      	
         <table class="list">
           <thead>
             <tr>

@@ -50,24 +50,50 @@
   </table>
   <table class="address">
     <tr class="heading">
-      <td width="50%"><b><?php echo $text_to; ?></b></td>
-      <td width="50%"><b><?php echo $text_ship_to; ?></b></td>
+      <td width="100%"><b><?php echo $text_ship_to; ?></b></td>
     </tr>
     <tr>
-      <td><?php echo $order['payment_address']; ?><br/>
-        <?php echo $order['email']; ?><br/>
-        <?php echo $order['telephone']; ?>
-        <?php if ($order['payment_company_id']) { ?>
-        <br/>
-        <br/>
-        <?php echo $text_company_id; ?> <?php echo $order['payment_company_id']; ?>
-        <?php } ?>
-        <?php if ($order['payment_tax_id']) { ?>
-        <br/>
-        <?php echo $text_tax_id; ?> <?php echo $order['payment_tax_id']; ?>
-        <?php } ?></td>
+  
       <td><?php echo $order['shipping_address']; ?></td>
     </tr>
+  </table>
+  <table class="product">
+    <tr class="heading">
+    	<td><b>Альбом</b></td>
+      <td><b>Фото</b></td>
+      <td><b>Копии</b></td>
+      <td><b>Формат</b></td>
+      <td><b>Тип фотобумаги</b></td>
+      <td><b>Эффект</b></td>
+      <td><b>Цветокоррекция</b></td>
+      <td><b>Обрезка</b></td>
+      <td><b>Белая рамка</b></td>
+      <td><b>Красные глаза</b></td>
+      <td><b>Цена</b></td>
+              
+    </tr>
+    	<?php
+		          	$success = '+';
+		          	$no = '-';
+          	?>
+    <?php foreach ($order['album'] as $album) { ?>
+    <tr>
+      				<td ><?php echo $album['album_name']; ?></td>
+              <td ><?php echo $album['photo_name']; ?></td>
+              <td ><?php echo $album['quantity']; ?></td>
+              <td ><?php echo $album['format']; ?></td>
+              <td ><?php echo $album['paper']; ?></td>
+              <td ><?php echo $album['print_mode']; ?></td>
+              
+              <td ><?php if ($album['color_correction'] == 2) {echo $success;} else {echo $no;} ?></td>
+              <td ><?php if ($album['cut_photo'] == 2) {echo $success;} else {echo $no;} ?></td>
+              <td ><?php if ($album['white_border'] == 2) {echo $success;} else {echo $no;} ?></td>
+              <td ><?php if ($album['red_eye'] == 2) {echo $success;} else {echo $no;} ?></td>
+              <td ><?php echo $album['price']; ?></td>
+    </tr>
+    <?php } ?>
+   
+   
   </table>
   <table class="product">
     <tr class="heading">

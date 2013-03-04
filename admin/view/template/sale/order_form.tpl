@@ -14,7 +14,11 @@
       <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a onclick="location = '<?php echo $cancel; ?>';" class="button"><?php echo $button_cancel; ?></a></div>
     </div>
     <div class="content">
-      <div id="vtabs" class="vtabs"><a href="#tab-customer"><?php echo $tab_customer; ?></a><a href="#tab-payment"><?php echo $tab_payment; ?></a><a href="#tab-shipping"><?php echo $tab_shipping; ?></a><a href="#tab-product"><?php echo $tab_product; ?></a><a href="#tab-voucher"><?php echo $tab_voucher; ?></a><a href="#tab-total"><?php echo $tab_total; ?></a></div>
+      <div id="vtabs" class="vtabs"><a href="#tab-customer"><?php echo $tab_customer; ?></a>
+      	<a href="#tab-shipping"><?php echo $tab_shipping; ?></a><a href="#tab-product"><?php echo $tab_product; ?></a>
+      	<!--<a href="#tab-voucher"><?php echo $tab_voucher; ?></a>-->
+      	
+      	<a href="#tab-total"><?php echo $tab_total; ?></a></div>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
         <div id="tab-customer" class="vtabs-content">
           <table class="form">
@@ -78,99 +82,8 @@
                 <?php } ?></td>
             </tr>
             <tr>
-              <td><?php echo $entry_fax; ?></td>
-              <td><input type="text" name="fax" value="<?php echo $fax; ?>" /></td>
-            </tr>
-          </table>
-        </div>
-        <div id="tab-payment" class="vtabs-content">
-          <table class="form">
-            <tr>
-              <td><?php echo $entry_address; ?></td>
-              <td><select name="payment_address">
-                  <option value="0" selected="selected"><?php echo $text_none; ?></option>
-                  <?php foreach ($addresses as $address) { ?>
-                  <option value="<?php echo $address['address_id']; ?>"><?php echo $address['firstname'] . ' ' . $address['lastname'] . ', ' . $address['address_1'] . ', ' . $address['city'] . ', ' . $address['country']; ?></option>
-                  <?php } ?>
-                </select></td>
-            </tr>
-            <tr>
-              <td><span class="required">*</span> <?php echo $entry_firstname; ?></td>
-              <td><input type="text" name="payment_firstname" value="<?php echo $payment_firstname; ?>" />
-                <?php if ($error_payment_firstname) { ?>
-                <span class="error"><?php echo $error_payment_firstname; ?></span>
-                <?php } ?></td>
-            </tr>
-            <tr>
-              <td><span class="required">*</span> <?php echo $entry_lastname; ?></td>
-              <td><input type="text" name="payment_lastname" value="<?php echo $payment_lastname; ?>" />
-                <?php if ($error_payment_lastname) { ?>
-                <span class="error"><?php echo $error_payment_lastname; ?></span>
-                <?php } ?></td>
-            </tr>
-            <tr>
-              <td><?php echo $entry_company; ?></td>
-              <td><input type="text" name="payment_company" value="<?php echo $payment_company; ?>" /></td>
-            </tr>
-            <tr id="company-id-display">
-              <td><span id="company-id-required" class="required">*</span> <?php echo $entry_company_id; ?></td>
-              <td><input type="text" name="payment_company_id" value="<?php echo $payment_company_id; ?>" /></td>
-            </tr>
-            <tr id="tax-id-display">
-              <td><span id="tax-id-required" class="required">*</span> <?php echo $entry_tax_id; ?></td>
-              <td><input type="text" name="payment_tax_id" value="<?php echo $payment_tax_id; ?>" />
-                <?php if ($error_payment_tax_id) { ?>
-                <span class="error"><?php echo $error_payment_tax_id; ?></span>
-                <?php } ?></td>
-            </tr>
-            <tr>
-              <td><span class="required">*</span> <?php echo $entry_address_1; ?></td>
-              <td><input type="text" name="payment_address_1" value="<?php echo $payment_address_1; ?>" />
-                <?php if ($error_payment_address_1) { ?>
-                <span class="error"><?php echo $error_payment_address_1; ?></span>
-                <?php } ?></td>
-            </tr>
-            <tr>
-              <td><?php echo $entry_address_2; ?></td>
-              <td><input type="text" name="payment_address_2" value="<?php echo $payment_address_2; ?>" /></td>
-            </tr>
-            <tr>
-              <td><span class="required">*</span> <?php echo $entry_city; ?></td>
-              <td><input type="text" name="payment_city" value="<?php echo $payment_city; ?>" />
-                <?php if ($error_payment_city) { ?>
-                <span class="error"><?php echo $error_payment_city; ?></span>
-                <?php } ?></td>
-            </tr>
-            <tr>
-              <td><span id="payment-postcode-required" class="required">*</span> <?php echo $entry_postcode; ?></td>
-              <td><input type="text" name="payment_postcode" value="<?php echo $payment_postcode; ?>" />
-                <?php if ($error_payment_postcode) { ?>
-                <span class="error"><?php echo $error_payment_postcode; ?></span>
-                <?php } ?></td>
-            </tr>
-            <tr>
-              <td><span class="required">*</span> <?php echo $entry_country; ?></td>
-              <td><select name="payment_country_id">
-                  <option value=""><?php echo $text_select; ?></option>
-                  <?php foreach ($countries as $country) { ?>
-                  <?php if ($country['country_id'] == $payment_country_id) { ?>
-                  <option value="<?php echo $country['country_id']; ?>" selected="selected"><?php echo $country['name']; ?></option>
-                  <?php } else { ?>
-                  <option value="<?php echo $country['country_id']; ?>"><?php echo $country['name']; ?></option>
-                  <?php } ?>
-                  <?php } ?>
-                </select>
-                <?php if ($error_payment_country) { ?>
-                <span class="error"><?php echo $error_payment_country; ?></span>
-                <?php } ?></td>
-            </tr>
-            <tr>
-              <td><span class="required">*</span> <?php echo $entry_zone; ?></td>
-              <td><select name="payment_zone_id">
-                </select>
-                <?php if ($error_payment_zone) { ?>
-                <span class="error"><?php echo $error_payment_zone; ?></span>
-                <?php } ?></td>
+              <td>Skype</td>
+              <td><input type="text" name="skype" value="<?php echo $skype; ?>" /></td>
             </tr>
           </table>
         </div>
@@ -252,10 +165,82 @@
           </table>
         </div>
         <div id="tab-product" class="vtabs-content">
+        	<table class="list">
+          <thead>
+            <tr>
+              <td class="left">Альбом</td>
+              <td class="left">Фото</td>
+              <td class="left">Копии</td>
+              <td class="left">Формат</td>
+              <td class="right">Тип фотобумаги</td>
+              <td class="right">Эффект</td>
+              <td class="right">Цветокоррекция</td>
+              <td class="right">Обрезка</td>
+              <td class="right">Белая рамка</td>
+              <td class="right">Красные глаза</td>
+              <td class="right">Итого</td>
+            </tr>
+          </thead>
+          <tbody>
+          	<?php
+								$photos = '';
+          	?>
+            <?php foreach ($albums as $album) { ?>
+            <tr>
+            	<td class="left"><?php echo $album['album_name']; ?></td>
+              <td class="left"><a href="<?php echo $album['src']; ?>"><?php echo $album['photo_name']; ?></a></td>
+              <td class="left"><input type="quantity" name="quantity_<?php echo $album['id']?>" value="<?php echo $album['quantity']; ?>"/></td>
+              <td class="left">
+              	<select name="format_<?php echo $album['id']?>">
+              		<?php foreach ($formats as $format) { ?>
+              			<?php if( $album['format'] == $format['id']) {?>
+              					<option value="<?php echo $format['id'];?>" selected="selected"><?php echo $format['name'];?></option>
+              			<?php } else { ?>
+              					<option value="<?php echo $format['id'];?>"><?php echo $format['name'];?></option>
+              			<?php } ?>
+					  			<?php } ?>
+              	</select>
+              </td>
+              <td class="right">
+									<select name="paper_<?php echo $album['id']?>">
+              		<?php foreach ($papers as $paper) { ?>
+              			<?php if( $album['paper'] == $paper['id']) {?>
+              					<option value="<?php echo $paper['id'];?>" selected="selected"><?php echo $paper['name'];?></option>
+              			<?php } else { ?>
+              					<option value="<?php echo $paper['id'];?>"><?php echo $paper['name'];?></option>
+              			<?php } ?>
+					  			<?php } ?>
+              	</select>
+							</td>
+              <td class="right">
+              	
+              	<select name="print_mode_<?php echo $album['id']?>">
+              		<?php foreach ($print_modes as $print_mode) { ?>
+              			<?php if( $album['print_mode'] == $print_mode['id']) {?>
+              					<option value="<?php echo $print_mode['id'];?>" selected="selected"><?php echo $print_mode['name'];?></option>
+              			<?php } else { ?>
+              					<option value="<?php echo $print_mode['id'];?>"><?php echo $print_mode['name'];?></option>
+              			<?php } ?>
+					  			<?php } ?>
+              	</select>
+              	
+              	</td>
+              
+              <td class="right"><?php if ($album['color_correction'] == 2)  {echo '<input type="checkbox" name="color_correction_'.$album['id'].'" value="2" checked="checked"/>';} else {echo '<input type="checkbox" name="color_correction_'.$album['id'].'" value="2"/>';} ?></td>
+              <td class="right"><?php if ($album['cut_photo'] == 2) {echo '<input type="checkbox" name="cut_photo_'.$album['id'].'" value="2" checked="checked"/>';} else {echo '<input type="checkbox" name="cut_photo_'.$album['id'].'" value="2"/>';} ?></td>
+              <td class="right"><?php if ($album['white_border'] == 2) {echo '<input type="checkbox" name="white_border_'.$album['id'].'" value="2" checked="checked"/>';} else {echo '<input type="checkbox" name="white_border_'.$album['id'].'" value="2"/>';} ?></td>
+              <td class="right"><?php if ($album['red_eye'] == 2) {echo '<input type="checkbox" name="red_eye_'.$album['id'].'" value="2" checked="checked"/>';} else {echo '<input type="checkbox" name="red_eye_'.$album['id'].'" value="2"/>';} ?></td>
+           		<td class="left"><?php echo $album['total']; ?></td>
+            </tr>
+            <?php $photos .= $album['id'] . ','; ?>
+            <?php } ?>
+            <input type="hidden" name="photos" value="<?php echo substr($photos, 0, (strlen($photos) - 1));?>"/>
+          </tbody>
+        </table>
           <table class="list">
             <thead>
               <tr>
-                <td></td>
+              <!--  <td></td> -->
                 <td class="left"><?php echo $column_product; ?></td>
                 <td class="left"><?php echo $column_model; ?></td>
                 <td class="right"><?php echo $column_quantity; ?></td>
@@ -270,7 +255,7 @@
               <?php if ($order_products) { ?>
               <?php foreach ($order_products as $order_product) { ?>
               <tr id="product-row<?php echo $product_row; ?>">
-                <td class="center" style="width: 3px;"><img src="view/image/delete.png" title="<?php echo $button_remove; ?>" alt="<?php echo $button_remove; ?>" style="cursor: pointer;" onclick="$('#product-row<?php echo $product_row; ?>').remove(); $('#button-update').trigger('click');" /></td>
+              <!--  <td class="center" style="width: 3px;"><img src="view/image/delete.png" title="<?php echo $button_remove; ?>" alt="<?php echo $button_remove; ?>" style="cursor: pointer;" onclick="$('#product-row<?php echo $product_row; ?>').remove(); $('#button-update').trigger('click');" /></td>-->
                 <td class="left"><?php echo $order_product['name']; ?><br />
                   <input type="hidden" name="order_product[<?php echo $product_row; ?>][order_product_id]" value="<?php echo $order_product['order_product_id']; ?>" />
                   <input type="hidden" name="order_product[<?php echo $product_row; ?>][product_id]" value="<?php echo $order_product['product_id']; ?>" />
@@ -313,7 +298,7 @@
               <?php } ?>
             </tbody>
           </table>
-          <table class="list">
+         <!-- <table class="list">
             <thead>
               <tr>
                 <td colspan="2" class="left"><?php echo $text_product; ?></td>
@@ -337,9 +322,9 @@
                 <td class="left"><a id="button-product" class="button"><?php echo $button_add_product; ?></a></td>
               </tr>
             </tfoot>
-          </table>
+          </table>-->
         </div>
-        <div id="tab-voucher" class="vtabs-content">
+        <!--<div id="tab-voucher" class="vtabs-content">
           <table class="list">
             <thead>
               <tr>
@@ -430,8 +415,51 @@
               </tr>
             </tfoot>
           </table>
-        </div>
+        </div>-->
         <div id="tab-total" class="vtabs-content">
+        	
+        		<table class="list">
+          <thead>
+            <tr>
+              <td class="left">Альбом</td>
+              <td class="left">Фото</td>
+              <td class="left">Копии</td>
+              <td class="left">Формат</td>
+              <td class="right">Тип фотобумаги</td>
+              <td class="right">Эффект</td>
+              <td class="right">Цветокоррекция</td>
+              <td class="right">Обрезка</td>
+              <td class="right">Белая рамка</td>
+              <td class="right">Красные глаза</td>
+            </tr>
+          </thead>
+          <tbody>
+          	<?php
+		          	$success = '<img src="view/image/success.png" />';
+		          	$no = '<img src="view/image/error.png" />';
+          	?>
+            <?php foreach ($albums as $album) { ?>
+            <tr>
+            	<td class="left"><?php echo $album['album_name']; ?></td>
+              <td class="left"><a href="<?php echo $album['src']; ?>"><?php echo $album['photo_name']; ?></a></td>
+              <td class="left"><?php echo $album['quantity']; ?></td>
+              <td class="left"><?php echo $album['format_name']; ?></td>
+              <td class="right"><?php echo $album['paper_name']; ?></td>
+              <td class="right"><?php echo $album['print_mode_name']; ?></td>
+              
+              <td class="right"><?php if ($album['color_correction'] == 2) {echo $success;} else {echo $no;} ?></td>
+              <td class="right"><?php if ($album['cut_photo'] == 2) {echo $success;} else {echo $no;} ?></td>
+              <td class="right"><?php if ($album['white_border'] == 2) {echo $success;} else {echo $no;} ?></td>
+              <td class="right"><?php if ($album['red_eye'] == 2) {echo $success;} else {echo $no;} ?></td>
+            </tr>
+            <?php } ?>
+          </tbody>
+        </table>
+        	
+        	
+        	
+        	
+        	
           <table class="list">
             <thead>
               <tr>
@@ -521,7 +549,7 @@
                   <span class="error"><?php echo $error_payment_method; ?></span>
                   <?php } ?></td>
               </tr>
-              <tr>
+              <!--<tr>
                 <td class="left"><?php echo $entry_coupon; ?></td>
                 <td class="left"><input type="text" name="coupon" value="" /></td>
               </tr>
@@ -532,7 +560,7 @@
               <tr>
                 <td class="left"><?php echo $entry_reward; ?></td>
                 <td class="left"><input type="text" name="reward" value="" /></td>
-              </tr>
+              </tr>-->
               <tr>
                 <td class="left"><?php echo $entry_order_status; ?></td>
                 <td class="left"><select name="order_status_id">
@@ -549,11 +577,11 @@
                 <td class="left"><?php echo $entry_comment; ?></td>
                 <td class="left"><textarea name="comment" cols="40" rows="5"><?php echo $comment; ?></textarea></td>
               </tr>
-              <tr>
+              <!--<tr>
                 <td class="left"><?php echo $entry_affiliate; ?></td>
                 <td class="left"><input type="text" name="affiliate" value="<?php echo $affiliate; ?>" />
                   <input type="hidden" name="affiliate_id" value="<?php echo $affiliate_id; ?>" /></td>
-              </tr>
+              </tr>-->
             </tbody>
             <tfoot>
               <tr>
@@ -601,7 +629,7 @@ $('input[name=\'customer\']').catcomplete({
 						lastname: item['lastname'],
 						email: item['email'],
 						telephone: item['telephone'],
-						fax: item['fax'],
+						skype: item['skype'],
 						address: item['address']
 					}
 				}));
@@ -615,7 +643,7 @@ $('input[name=\'customer\']').catcomplete({
 		$('input[name=\'lastname\']').attr('value', ui.item['lastname']);
 		$('input[name=\'email\']').attr('value', ui.item['email']);
 		$('input[name=\'telephone\']').attr('value', ui.item['telephone']);
-		$('input[name=\'fax\']').attr('value', ui.item['fax']);
+		$('input[name=\'skype\']').attr('value', ui.item['skype']);
 			
 		html = '<option value="0"><?php echo $text_none; ?></option>'; 
 			
