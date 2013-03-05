@@ -91,7 +91,7 @@
   <div class="clear"></div>
 </div>
   <?php if ($products) { ?>
-  <div class="product-compare"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div>
+  <!--<div class="product-compare"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div>-->
   <div class="product-list">
     <table><tr>
     <?php for ($i = 0; $i < sizeof($products); $i++) { 
@@ -122,7 +122,7 @@
       <?php } ?>
       
 
-      <div class="compare"><a onclick="addToCompare('<?php echo $product['product_id']; ?>');"><?php echo $button_compare; ?></a></div>
+     <!--<div class="compare"><a onclick="addToCompare('<?php echo $product['product_id']; ?>');"><?php echo $button_compare; ?></a></div>-->
     </td>
     <?php } ?>
     </tr></table>

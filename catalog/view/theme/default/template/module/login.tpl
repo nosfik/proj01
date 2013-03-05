@@ -6,10 +6,10 @@
 	
 	<form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="module_login"> 
 	<div class="inCont">
-        <input  class="log" type="text" name="email"/>
+        <input  class="log" type="text"  value="Почта" onblur="if(this.value=='') this.value='Почта';" onfocus="if(this.value=='Почта') this.value='';" name="email"/>
     </div>
     <div class="inCont">
-        <input class="reg" type="password" name="password"/>
+        <input class="reg" type="password" value="********" onblur="if(this.value=='') this.value='********';" onfocus="if(this.value=='********') this.value='';" name="password"/>
     </div>
     
     <div id="reg_cont">

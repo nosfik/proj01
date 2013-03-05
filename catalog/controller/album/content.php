@@ -287,7 +287,6 @@ class ControllerAlbumContent extends Controller {
 				}
 				
 				
-				
 					if($width && $height) {
 						$return['frame'] = 'start'; 
 						$tmp = explode('.', $photoName);
@@ -324,6 +323,9 @@ class ControllerAlbumContent extends Controller {
 					
 						imagedestroy($dst_r);
 						imagedestroy($img_r);
+						$photo_path_arr = explode("/", $photo_new_src);
+						$this->makeSmallCopy($albumDir, $photo_path_arr[count($photo_path_arr) - 1]);
+						
 					} else {
 						if(isset($new_photo_path)){
 							copy($photo_src, $new_photo_path);
@@ -426,6 +428,40 @@ class ControllerAlbumContent extends Controller {
     }
       
     }
+
+
+private function makeSmallCopy($newDir, $fileName) {
+        $height_default = 110;
+        $photo_file = $newDir.'/'.$fileName;
+        $tmp = explode('.', $fileName);
+        $ext = strtolower($tmp[sizeof($tmp) - 1]);
+        
+        switch ($ext) {
+          case 'png' : $src = imagecreatefrompng($photo_file); break;
+          case 'gif' : $src = imagecreatefromgif($photo_file); break;
+          case 'jpg' : 
+          case 'jpeg' :  
+          default: $src = imagecreatefromjpeg($photo_file); break;
+        }
+        
+        $size = getimagesize($photo_file);
+        $photo_width = $size[0];
+        $photo_height = $size[1];
+        $koef = $photo_height/$height_default;
+        $new_width = ceil ($photo_width / $koef);
+        
+        $dst = ImageCreateTrueColor ($new_width, $height_default);
+        ImageCopyResampled ($dst, $src, 0, 0, 0, 0, $new_width, $height_default, $photo_width, $photo_height);
+        switch ($ext) {
+          case 'png' : imagepng($dst,  $newDir.'/small_'.$fileName); break;
+          case 'gif' : imagegif($dst,  $newDir.'/small_'.$fileName); break;
+          case 'jpg' : 
+          case 'jpeg' :  
+          default: imagejpeg($dst,  $newDir.'/small_'.$fileName); break;
+        }
+        
+        imagedestroy($src);
+  }
     
      public function index() {
     

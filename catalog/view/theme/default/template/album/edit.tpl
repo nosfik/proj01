@@ -12,7 +12,7 @@
             <div id="help">
                 <h3>Подсказка</h3>
                 Нажмите на изображение, что-бы добавить фото в заказ.
-                <div class="clear"></div>при
+                <div class="clear"></div>
                 <div id="edit"><img src="catalog/view/theme/default/image/flag.png"></div>
                 <div class="text">&mdash; редактировать</div>
                 <div id="del"><img src="catalog/view/theme/default/image/flag.png"></div>
@@ -64,7 +64,7 @@
                 <div id="crop-preview">
                     <div id="crop-preview-container">
                     	<?php if($update) { ?>
-                    		<img src="<?php echo $photo['path']?>?<?php echo date()?>">
+                    		<img src="<?php echo $photo['path']?>?<?php echo strtotime("now")?>">
                     	<?php } else { ?>
                     		<img src="<?php echo $photo['path']?>">
                     	<?php } ?>
@@ -106,14 +106,14 @@
             </div>
             <div id="bottom" class="imgSize">
                 <p class="initialSize">Начальный размер:
-                    <span class="imgWidth">4374</span>
+                    <span class="imgWidth">0</span>
                     <span> x </span>
-                    <span class="imgHeight">4374</span>px
+                    <span class="imgHeight">0</span>px
                 </p>
                 <p class="cropSize">Размер после кадрирования:
-                    <span class="imgWidth">4374</span>
+                    <span class="imgWidth">0</span>
                     <span> x </span>
-                    <span class="imgHeight">4374</span>px
+                    <span class="imgHeight">0</span>px
                 </p>
 
             </div>
@@ -347,7 +347,7 @@
                     		if(oData.photo) {
                     			window.location = 'index.php?route=album/content/edit&update=1&album=<?php echo $album_id;?>&photo=' + oData.photo
                     		} else {
-                    			window.location = 'index.php?route=album/content/edit&album=<?php echo $album_id;?>&photo=<?php echo $photo_id;?>';
+                    			window.location = 'index.php?route=album/content/edit&update=1&album=<?php echo $album_id;?>&photo=<?php echo $photo_id;?>';
                     		}
                     	}
                     }
@@ -450,7 +450,7 @@
                     },
                     success: function(oData, sStatus,jqXHR){
                     	if(oData.success) {
-                    		window.location.reload();
+                    		window.location = 'index.php?route=album/content/edit&update=1&album=<?php echo $album_id;?>&photo=<?php echo $photo_id;?>'
                     	}
                     }
                 });

@@ -187,13 +187,16 @@ class ControllerProductProduct extends Controller {
 			$this->data['reward'] = $product_info['reward'];
 			$this->data['points'] = $product_info['points'];
 			
-			if ($product_info['quantity'] <= 0) {
+			//print_r ($product_info);
+			/*if ($product_info['quantity'] <= 0) {
 				$this->data['stock'] = $product_info['stock_status'];
 			} elseif ($this->config->get('config_stock_display')) {
 				$this->data['stock'] = $product_info['quantity'];
 			} else {
 				$this->data['stock'] = $this->language->get('text_instock');
-			}
+			}*/
+			$this->data['stock'] = $product_info['stock_status'];
+			$this->data['show_cart'] = ($product_info['stock_status_id'] == 5) ? 0 : 1;
 			
 			$this->load->model('tool/image');
 

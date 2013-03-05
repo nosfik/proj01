@@ -28,11 +28,13 @@
     <div class="right" style="padding-left:20px">
       <div class="header-wrapper">
         <h1><?php echo $heading_title; ?></h1>
+        <?php if($show_cart) { ?>
         <div id="button-cart">
           <a>
             <img src="catalog/view/theme/default/image/blank.gif">
           </a>
         </div>
+        <?php } ?>
       </div>
       <div class="description">
         <?php if ($manufacturer) { ?>

@@ -92,6 +92,7 @@ class Cart {
                   'album_name'      => $config['album_name'],
                   'album_id'        => $album,
                   'price'           => $price,
+                  'total'           => $quantity * $price,
                   'photos_name_map' => $photos_name_map,
                   'preferences_map' => $preferences,
                   'preferences_str' => $value
@@ -550,7 +551,7 @@ class Cart {
     public function getSubTotalAlbum() {
       $total = 0;
       foreach ($this->getAlbums() as $album) {
-        $total += $album['price'];
+        $total += $album['total'];
       }
 		return $total;
     }
