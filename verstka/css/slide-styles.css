@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#slideshow {
+    background-color: #FFF;
+    height: 100%;
+    width: 100%;
+    -moz-box-shadow: 0 0 22px #111;
+    -webkit-box-shadow: 0 0 22px #111;
+    box-shadow: 0 0 22px #111;
+}
+
+#slideshow ul {
+    height: 100%;
+    list-style: none outside none;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+}
+
+#slideshow li {
+    position: absolute;
+    display: none;
+    z-index: 10;
+}
+
+#slideshow li:first-child {
+    display: block;
+    z-index: 1000;
+}
+
+#slideshow .slideActive {
+    z-index: 1000;
+}
+
+#slideshow canvas {
+    display: none;
+    position: absolute;
+    z-index: 100;
+}
+
+/* The following styles are only used for the styling of the demo page */
+
+p.tzine {
+    text-align: center;
+    font-size: 12px;
+    margin: 50px;
+}
+
+p.credit {
+    text-align: center;
+    font-size: 10px;
+}
+
+p.credit a,
+p.credit a:visited {
+}
+
+p.credit a:hover {
+}
+
+a, a:visited {
+    text-decoration: none;
+    outline: none;
+}
+
+.clear {
+    clear: both;
+}
