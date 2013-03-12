@@ -39,7 +39,7 @@ class ControllerAlbumUpload extends Controller {
         if(!is_file($cover)){
           $this->load->model('album/content');
           $photo_name =  $this->model_album_content->getPhotosByAlbumForCover($album['album_id'], $this->customer->getId());
-          $cover = ($photo_name != '') ? 'albums/album_cus_'.$this->customer->getId().'/album_'.$album['album_id'].'/'.$photo_name : '';
+          $cover = ($photo_name != '') ? 'albums/album_cus_'.$this->customer->getId().'/album_'.$album['album_id'].'/small_'.$photo_name : '';
         }
         
         $this->data['albums'][] = array (
@@ -77,7 +77,7 @@ class ControllerAlbumUpload extends Controller {
     if ($this->customer->isLogged() && isset($this->request->get['image'])) {
     	
 			$this->load->model('album/upload');
-      $image = $this->model_album_upload->getFile($this->customer->getId(), $this->request->get['image']);
+      $image = $this->model_album_upload->getFileSmall($this->customer->getId(), $this->request->get['image']);
       
       $name = $image['name'];
 			$tmp = explode('.', $name);
@@ -92,7 +92,7 @@ class ControllerAlbumUpload extends Controller {
 			}
 			
 			$this->data['content_type'] = $content_type;
-			header('Content-type: '.$content_type);
+			//header('Content-type: '.$content_type);
 			echo ($image['photo']);
     }
   }
@@ -138,11 +138,51 @@ class ControllerAlbumUpload extends Controller {
       if (in_array(strtolower($fileParts['extension']), $fileTypes)) {
         $tempFileSize = filesize($tempFile);
         $image = file_get_contents($tempFile); 
+        
+        $big_photo = addslashes($image);
+        
+      $name = $_FILES['Filedata']['name'];
+      $tmp = explode('.', $name);
+      $ext = strtolower($tmp[sizeof($tmp) - 1]);
+      
+      switch ($ext) {
+            case 'png' : $image_small = imagecreatefrompng($tempFile); break;
+            case 'gif' : $image_small = imagecreatefromgif($tempFile); break;
+            case 'jpg' : 
+            case 'jpeg' :  
+            default: $image_small = imagecreatefromjpeg($tempFile); break;
+        }
+        
+        
+        $size = getimagesize($tempFile);
+        $photo_width = $size[0];
+        $photo_height = $size[1];
+        
+        $koef = $photo_height/40;
+        $new_width = ceil ($photo_width / $koef);
+        
+        $dst = ImageCreateTrueColor ($new_width, 40);
+        
+        ImageCopyResampled ($dst, $image_small, 0, 0, 0, 0, $new_width, 40, $photo_width, $photo_height);
+        ob_start();
+        switch ($ext) {
+            case 'png' : imagepng($dst); break;
+            case 'gif' : imagegif($dst); break;
+            case 'jpg' : 
+            case 'jpeg' :  
+            default: imagejpeg($dst); break;
+        }
+        $small_photo =  ob_get_contents();
+        ob_end_clean();
+        imagedestroy($image_small);
+        imagedestroy($dst);
+      
         $data = array(
           'customer_id' => $customer_id,
           'name' => $_FILES['Filedata']['name'],
           'size' => $tempFileSize,
-          'photo' => addslashes($image)
+          'photo' => $big_photo,
+          'photo_small' => addslashes($small_photo),
         );
         $this->model_album_upload->saveFile($data);
         unlink($tempFile);
@@ -237,7 +277,7 @@ class ControllerAlbumUpload extends Controller {
     if ($this->customer->isLogged() && isset($this->request->post['album_id']) && isset($this->request->post['album_name'])) {
     	 $custId = $this->customer->getId();
        $this->load->model('album/upload');
-       $files = $this->model_album_upload->getFiles($custId);
+       $files = $this->model_album_upload->getFilesId($custId);
        $album_id = (int)$this->request->post['album_id'];
 			 $this->load->model('album/album');
 			 $customer_dir =  DIR_PHOTOS.'album_cus_'.$custId;
@@ -248,11 +288,14 @@ class ControllerAlbumUpload extends Controller {
 					}
        		$newAlbumId = $this->model_album_album->createCleanAlbum($this->request->post['album_name'], $custId);
           $newDir = $customer_dir.'/'.'album_'.$newAlbumId;
-					mkdir($newDir);
+					if(!is_dir($newDir)) {
+					  mkdir($newDir);
+          }
           foreach ($files as $file) {
               $file['name'] = $this->translit($file['name']);
               $photo_file = $newDir.'/'.$file['name'];
-              file_put_contents($newDir.'/'.$file['name'], $file['photo']);
+              $file_a = $this->model_album_upload->getFile($custId, $file['customer_temp_photo_id']);
+              file_put_contents($newDir.'/'.$file['name'], $file_a['photo']);
               
               $this->makeSmallCopy($newDir, $file['name']);
             
