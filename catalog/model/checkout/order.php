@@ -461,7 +461,7 @@ class ModelCheckoutOrder extends Model {
 					'cut_photo'			=> ($album['cut_photo'] == 1) ? '-' : '+',
 					'white_border'		=> ($album['white_border'] == 1) ? '-' : '+',
 					'red_eye'			=> ($album['red_eye'] == 1) ? '-' : '+',
-					'quantity' 			=> ($album['quantity'] == 1) ? '-' : '+',
+					'quantity' 			=> $album['quantity'],
 					'price'    			=> $this->currency->format($album['price']),
 					'total'    			=> $this->currency->format($album['price'] * $album['quantity'])
 				);
