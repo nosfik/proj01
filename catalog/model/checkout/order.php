@@ -248,6 +248,8 @@ class ModelCheckoutOrder extends Model {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "order_history SET order_id = '" . (int)$order_id . "', order_status_id = '" . (int)$order_status_id . "', notify = '1', comment = '" . $this->db->escape(($comment && $notify) ? $comment : '') . "', date_added = NOW()");
 
 			$order_product_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_product WHERE order_id = '" . (int)$order_id . "'");
+			$order_album_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_album as o join album as a on a.album_id = o.album_id WHERE order_id = '" . (int)$order_id . "'");
+			
 			
 			foreach ($order_product_query->rows as $order_product) {
 				$this->db->query("UPDATE " . DB_PREFIX . "product SET quantity = (quantity - " . (int)$order_product['quantity'] . ") WHERE product_id = '" . (int)$order_product['product_id'] . "' AND subtract = '1'");
@@ -426,6 +428,49 @@ class ModelCheckoutOrder extends Model {
 			);
 		
 			$template->data['shipping_address'] = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))));
+			
+			$template->data['products'] = array();
+			
+			$formats_map = array();
+			$papers_map = array();
+			$print_modes_map = array();
+			
+    		$formats = $this->db->query("SELECT * FROM " . DB_PREFIX . "album_photo_format");
+			$papers = $this->db->query("SELECT * FROM " . DB_PREFIX . "album_photo_paper");
+			$print_modes = $this->db->query("SELECT * FROM " . DB_PREFIX . "album_photo_printmode");
+			
+			foreach ($formats as $format) {
+				$formats_map[$format['id']] = $format['name'];
+			}
+			foreach ($papers as $paper) {
+				$papers_map[$paper['id']] = $paper['name'];
+			}
+			foreach ($print_modes as $print_mode) {
+				$print_modes_map[$print_mode['id']] = $print_mode['name'];
+			}
+    		
+			
+			foreach ($order_album_query->rows as $album) {
+				$template->data['albums'][] = array(
+					'name'     			=> $album['name'],
+					'photo'    			=> $album['photo'],
+					'format'   			=> $album['album_photo_format_id'],
+					'paper'				=> $album['album_photo_paper_id'],
+					'print_mode'		=> $album['album_photo_printmode_id'],
+					'color_correction'	=> ($album['color_correction'] == 1) ? '-' : '+',
+					'cut_photo'			=> ($album['cut_photo'] == 1) ? '-' : '+',
+					'white_border'		=> ($album['white_border'] == 1) ? '-' : '+',
+					'red_eye'			=> ($album['red_eye'] == 1) ? '-' : '+',
+					'quantity' 			=> ($album['quantity'] == 1) ? '-' : '+',
+					'price'    			=> $this->currency->format($album['price']),
+					'total'    			=> $this->currency->format($album['price'] * $album['quantity'])
+				);
+			}
+			
+			
+			
+			
+			
 			
 			// Products
 			$template->data['products'] = array();
