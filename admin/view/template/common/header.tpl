@@ -113,6 +113,8 @@ $(document).ready(function(){
       </li>
       <li id="system"><a class="top"><?php echo $text_system; ?></a>
         <ul>
+            <li><a href="<?php echo $menu_info; ?>"><?php echo $text_menu_info; ?></a></li>
+             <li><a href="<?php echo $slide; ?>"><?php echo $text_slide; ?></a></li>
           <li><a href="<?php echo $setting; ?>"><?php echo $text_setting; ?></a></li>
           <li><a class="parent"><?php echo $text_design; ?></a>
             <ul>

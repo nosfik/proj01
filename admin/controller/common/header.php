@@ -85,6 +85,8 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_support'] = $this->language->get('text_support'); 
 		$this->data['text_shipping'] = $this->language->get('text_shipping');		
 		$this->data['text_setting'] = $this->language->get('text_setting');
+        $this->data['text_menu_info'] = $this->language->get('text_menu_info');
+        $this->data['text_slide'] = $this->language->get('text_slide');
 		$this->data['text_stock_status'] = $this->language->get('text_stock_status');
 		$this->data['text_system'] = $this->language->get('text_system');
 		$this->data['text_tax'] = $this->language->get('text_tax');
@@ -154,6 +156,8 @@ class ControllerCommonHeader extends Controller {
 			$this->data['return_reason'] = $this->url->link('localisation/return_reason', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['return_status'] = $this->url->link('localisation/return_status', 'token=' . $this->session->data['token'], 'SSL');			
 			$this->data['shipping'] = $this->url->link('extension/shipping', 'token=' . $this->session->data['token'], 'SSL');
+            $this->data['menu_info'] = $this->url->link('setting/menu_info', 'token=' . $this->session->data['token'], 'SSL');
+            $this->data['slide'] = $this->url->link('setting/slide', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['setting'] = $this->url->link('setting/store', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['store'] = HTTP_CATALOG;
 			$this->data['stock_status'] = $this->url->link('localisation/stock_status', 'token=' . $this->session->data['token'], 'SSL');

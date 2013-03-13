@@ -1,7 +1,7 @@
 <?php echo $header; ?>
 
 <div class="content-wrapper">
-<div id="slider">
+<!--<div id="slider">
     <div id="slideshow">
         <ul class="slides">
             <li><img src="catalog/view/theme/default/slide/photos/1.jpg" width="1200" height="527" alt="Marsa Alam underawter close up"/></li>
@@ -13,7 +13,63 @@
         <span class="arrow next"></span>
     </div>
     <div class="slider-shadow"></div>
+</div>-->
+
+
+
+
+
+
+
+
+<div id="slider">
+    <div id="slideshow">
+   <span class="arrow previous jFlowPrev"></span>
+        <span class="arrow next jFlowNext"></span>
+       
+ <div id="mySlides">
+     
+     
+        <?php for($i = 0; $i < count($slide_items); $i++) { 
+            $slide_item = $slide_items[$i];
+            
+            ?>
+            
+         <div class="bigslide">
+          <a href="<?php echo $slide_item['url'];?> "><img src="<?php echo $slide_item['picture'];?>" width="1200px" height="527px" /></a>
+          <span><?php echo $slide_item['text'];?> </span>
+        </div>
+            
+       <?php } ?>
+
+      </div>
+      <div id="myController">
+           <?php for($i = 0; $i < count($slide_items); $i++) {  ?>
+               <span class="jFlowControl"></span>
+               <?php } ?>
+      </div>
+
+
 </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="content">
     <?php echo $content_top; ?>
 <div class="right">
@@ -345,30 +401,17 @@
     </div>
     <div style="clear:both;"></div>
     <ul id="mycarousel" class="jcarousel-skin-realty">
-        <li>
-            <div class="j-item"><p>Отзывы</p>
-
-                <div class="frame"><img src="catalog/view/theme/default/image/pic1.png" width="218px" height="131px" alt=""/></div>
-            </div>
-        </li>
-        <li>
-            <div class="j-item"><p>Мебель</p>
-
-                <div class="frame"><img src="catalog/view/theme/default/image/pic2.png" width="218px" height="131px" alt=""/></div>
-            </div>
-        </li>
-        <li>
-            <div class="j-item"><p>Дизайн</p>
-
-                <div class="frame"><img src="catalog/view/theme/default/image/pic3.png" width="218px" height="131px" alt=""/></div>
-            </div>
-        </li>
-        <li>
-            <div class="j-item"><p>Статьи</p>
-
-                <div class="frame"><img src="catalog/view/theme/default/image/pic4.png" width="218px" height="131px" alt=""/></div>
-            </div>
-        </li>
+        
+        <?php foreach ($menu_items as $menu_item) { ?>
+            
+            <li>
+                <div onclick="location.href = '<?php echo $menu_item['url'];?>'" class="j-item"><p><?php echo $menu_item['name'];?></p>
+                    <div class="frame"><img src="<?php echo $menu_item['picture'];?>" width="218px" height="131px" alt=""/></div>
+                </div>
+            </li>
+            
+        <?php } ?>
+        
     </ul>
 </div>
 </div>
@@ -384,6 +427,23 @@
             visRows: 6,
             scrollArrows: true
         });
+        
+        
+            $(document).ready(function(){
+        $("#myController").jFlow({
+            controller: ".jFlowControl", // must be class, use . sign
+            slideWrapper : "#jFlowSlider", // must be id, use # sign
+            slides: "#mySlides",  // the div where all your sliding divs are nested in
+            selectedWrapper: "jFlowSelected",  // just pure text, no sign
+            width: "1200px",  // this is the width for the content-slider
+            height: "527px",  // this is the height for the content-slider
+            duration: 400,  // time in miliseconds to transition one slide
+            prev: ".jFlowPrev", // must be class, use . sign
+            next: ".jFlowNext", // must be class, use . sign
+            auto: false  
+    });
+});
+        
 
         jQuery('#mycarousel').jcarousel({
             wrap: 'circular',

@@ -314,16 +314,12 @@ DROP TABLE IF EXISTS `category`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `category` (
   `category_id` int(11) NOT NULL AUTO_INCREMENT,
-  `image` varchar(255) DEFAULT NULL,
+  `name` varchar(45) NOT NULL,
+  `sort_order` int(2) NOT NULL DEFAULT '0',
+  `status` tinyint(1) NOT NULL DEFAULT '1',
   `parent_id` int(11) NOT NULL DEFAULT '0',
-  `top` tinyint(1) NOT NULL,
-  `column` int(3) NOT NULL,
-  `sort_order` int(3) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL,
-  `date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `date_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`category_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -332,7 +328,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (25,'',0,1,1,3,1,'2009-01-31 01:04:25','2011-05-30 12:14:55'),(27,'',20,0,0,2,1,'2009-01-31 01:55:34','2010-08-22 06:32:15'),(20,'data/demo/compaq_presario.jpg',0,1,1,1,1,'2009-01-05 21:49:43','2011-07-16 02:14:42'),(24,'',0,1,1,5,1,'2009-01-20 02:36:26','2011-05-30 12:15:18'),(18,'data/demo/hp_2.jpg',0,1,0,2,1,'2009-01-05 21:49:15','2011-05-30 12:13:55'),(17,'',0,1,1,4,1,'2009-01-03 21:08:57','2011-05-30 12:15:11'),(28,'',25,0,0,1,1,'2009-02-02 13:11:12','2010-08-22 06:32:46'),(26,'',20,0,0,1,1,'2009-01-31 01:55:14','2010-08-22 06:31:45'),(29,'',25,0,0,1,1,'2009-02-02 13:11:37','2010-08-22 06:32:39'),(30,'',25,0,0,1,1,'2009-02-02 13:11:59','2010-08-22 06:33:00'),(31,'',25,0,0,1,1,'2009-02-03 14:17:24','2010-08-22 06:33:06'),(32,'',25,0,0,1,1,'2009-02-03 14:17:34','2010-08-22 06:33:12'),(33,'',0,1,1,6,1,'2009-02-03 14:17:55','2011-05-30 12:15:25'),(34,'data/demo/ipod_touch_4.jpg',0,1,4,7,1,'2009-02-03 14:18:11','2011-05-30 12:15:31'),(35,'',28,0,0,0,1,'2010-09-17 10:06:48','2010-09-18 14:02:42'),(36,'',28,0,0,0,1,'2010-09-17 10:07:13','2010-09-18 14:02:55'),(37,'',34,0,0,0,1,'2010-09-18 14:03:39','2011-04-22 01:55:08'),(38,'',34,0,0,0,1,'2010-09-18 14:03:51','2010-09-18 14:03:51'),(39,'',34,0,0,0,1,'2010-09-18 14:04:17','2011-04-22 01:55:20'),(40,'',34,0,0,0,1,'2010-09-18 14:05:36','2010-09-18 14:05:36'),(41,'',34,0,0,0,1,'2010-09-18 14:05:49','2011-04-22 01:55:30'),(42,'',34,0,0,0,1,'2010-09-18 14:06:34','2010-11-07 20:31:04'),(43,'',34,0,0,0,1,'2010-09-18 14:06:49','2011-04-22 01:55:40'),(44,'',34,0,0,0,1,'2010-09-21 15:39:21','2010-11-07 20:30:55'),(45,'',18,0,0,0,1,'2010-09-24 18:29:16','2011-04-26 08:52:11'),(46,'',18,0,0,0,1,'2010-09-24 18:29:31','2011-04-26 08:52:23'),(47,'',34,0,0,0,1,'2010-11-07 11:13:16','2010-11-07 11:13:16'),(48,'',34,0,0,0,1,'2010-11-07 11:13:33','2010-11-07 11:13:33'),(49,'',34,0,0,0,1,'2010-11-07 11:14:04','2010-11-07 11:14:04'),(50,'',34,0,0,0,1,'2010-11-07 11:14:23','2011-04-22 01:16:01'),(51,'',34,0,0,0,1,'2010-11-07 11:14:38','2011-04-22 01:16:13'),(52,'',34,0,0,0,1,'2010-11-07 11:16:09','2011-04-22 01:54:57'),(53,'',34,0,0,0,1,'2010-11-07 11:28:53','2011-04-22 01:14:36'),(54,'',34,0,0,0,1,'2010-11-07 11:29:16','2011-04-22 01:16:50'),(55,'',34,0,0,0,1,'2010-11-08 10:31:32','2010-11-08 10:31:32'),(56,'',34,0,0,0,1,'2010-11-08 10:31:50','2011-04-22 01:16:37'),(57,'',0,1,1,3,1,'2011-04-26 08:53:16','2011-05-30 12:15:05'),(58,'',52,0,0,0,1,'2011-05-08 13:44:16','2011-05-08 13:44:16');
+INSERT INTO `category` VALUES (1,'Продажи',0,1,0),(2,'Строительство',1,1,0),(3,'Апартаменты',1,1,1),(4,'Виллы',2,1,1),(5,'Таунхаузы',3,1,1),(6,'Земельные участки',4,1,1),(7,'Коммерческие продажи',5,1,1),(8,'Виллы',1,1,2),(9,'Земельные участки',2,1,2);
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -363,8 +359,39 @@ CREATE TABLE `category_description` (
 
 LOCK TABLES `category_description` WRITE;
 /*!40000 ALTER TABLE `category_description` DISABLE KEYS */;
-INSERT INTO `category_description` VALUES (28,1,'Мониторы','','','','',''),(33,1,'Камеры','','','','',''),(32,1,'Веб-камеры','','','','',''),(31,1,'Сканеры','','','','',''),(30,1,'Принтеры','','','','',''),(29,1,'Мышки','','','','',''),(27,1,'Mac','','','','',''),(26,1,'PC','','','','',''),(17,1,'Програмное обеспечение','','','','',''),(25,1,'Компоненты','','','','',''),(24,1,'Телефоны и PDA','','','','',''),(20,1,'Компьютеры','&lt;p&gt;\r\n	Пример текста в описания категории&lt;/p&gt;\r\n','Пример описания категории','','',''),(35,1,'test 1','','','','',''),(36,1,'test 2','','','','',''),(37,1,'test 5','','','','',''),(38,1,'test 4','','','','',''),(39,1,'test 6','','','','',''),(40,1,'test 7','','','','',''),(41,1,'test 8','','','','',''),(42,1,'test 9','','','','',''),(43,1,'test 11','','','','',''),(34,1,'MP3 Плееры','&lt;p&gt;\r\n	Shop Laptop feature only the best laptop deals on the market. By comparing laptop deals from the likes of PC World, Comet, Dixons, The Link and Carphone Warehouse, Shop Laptop has the most comprehensive selection of laptops on the internet. At Shop Laptop, we pride ourselves on offering customers the very best laptop deals. From refurbished laptops to netbooks, Shop Laptop ensures that every laptop - in every colour, style, size and technical spec - is featured on the site at the lowest possible price.&lt;/p&gt;\r\n','','','',''),(18,1,'Ноутбуки','&lt;p&gt;\r\n	Shop Laptop feature only the best laptop deals on the market. By comparing laptop deals from the likes of PC World, Comet, Dixons, The Link and Carphone Warehouse, Shop Laptop has the most comprehensive selection of laptops on the internet. At Shop Laptop, we pride ourselves on offering customers the very best laptop deals. From refurbished laptops to netbooks, Shop Laptop ensures that every laptop - in every colour, style, size and technical spec - is featured on the site at the lowest possible price.&lt;/p&gt;\r\n','','','',''),(44,1,'test 12','','','','',''),(45,1,'Windows','','','','',''),(46,1,'Macs','','','','',''),(47,1,'test 15','','','','',''),(48,1,'test 16','','','','',''),(49,1,'test 17','','','','',''),(50,1,'test 18','','','','',''),(51,1,'test 19','','','','',''),(52,1,'test 20','','','','',''),(53,1,'test 21','','','','',''),(54,1,'test 22','','','','',''),(55,1,'test 23','','','','',''),(56,1,'test 24','','','','',''),(57,1,'Планшеты','','','','',''),(58,1,'test 25','','','','',''),(28,2,'Monitors','','','','',''),(33,2,'Cameras','','','','',''),(32,2,'Web Cameras','','','','',''),(31,2,'Scanners','','','','',''),(30,2,'Printers','','','','',''),(29,2,'Mice and Trackballs','','','','',''),(27,2,'Mac','','','','',''),(26,2,'PC','','','','',''),(17,2,'Software','','','','',''),(25,2,'Components','','','','',''),(24,2,'Phones &amp; PDAs','','','','',''),(20,2,'Desktops','&lt;p&gt;\r\n	Example of category description text&lt;/p&gt;\r\n','Example of category description','','',''),(35,2,'test 1','','','','',''),(36,2,'test 2','','','','',''),(37,2,'test 5','','','','',''),(38,2,'test 4','','','','',''),(39,2,'test 6','','','','',''),(40,2,'test 7','','','','',''),(41,2,'test 8','','','','',''),(42,2,'test 9','','','','',''),(43,2,'test 11','','','','',''),(34,2,'MP3 Players','&lt;p&gt;\r\n	Shop Laptop feature only the best laptop deals on the market. By comparing laptop deals from the likes of PC World, Comet, Dixons, The Link and Carphone Warehouse, Shop Laptop has the most comprehensive selection of laptops on the internet. At Shop Laptop, we pride ourselves on offering customers the very best laptop deals. From refurbished laptops to netbooks, Shop Laptop ensures that every laptop - in every colour, style, size and technical spec - is featured on the site at the lowest possible price.&lt;/p&gt;\r\n','','','',''),(18,2,'Laptops &amp; Notebooks','&lt;p&gt;\r\n	Shop Laptop feature only the best laptop deals on the market. By comparing laptop deals from the likes of PC World, Comet, Dixons, The Link and Carphone Warehouse, Shop Laptop has the most comprehensive selection of laptops on the internet. At Shop Laptop, we pride ourselves on offering customers the very best laptop deals. From refurbished laptops to netbooks, Shop Laptop ensures that every laptop - in every colour, style, size and technical spec - is featured on the site at the lowest possible price.&lt;/p&gt;\r\n','','','',''),(44,2,'test 12','','','','',''),(45,2,'Windows','','','','',''),(46,2,'Macs','','','','',''),(47,2,'test 15','','','','',''),(48,2,'test 16','','','','',''),(49,2,'test 17','','','','',''),(50,2,'test 18','','','','',''),(51,2,'test 19','','','','',''),(52,2,'test 20','','','','',''),(53,2,'test 21','','','','',''),(54,2,'test 22','','','','',''),(55,2,'test 23','','','','',''),(56,2,'test 24','','','','',''),(57,2,'Tablets','','','','',''),(58,2,'test 25','','','','','');
+INSERT INTO `category_description` VALUES (1,1,'Продажи','1',' ',' ',' ',' '),(1,2,'Sales','1',' ',' ',' ',' '),(2,1,'Строительство','1',' ',' ',' ',' '),(2,2,'Construction','1',' ',' ',' ',' '),(3,2,'Apartments','&lt;p&gt;\r\n	rty&lt;/p&gt;\r\n',' y',' y',' y',' y'),(4,1,'Виллы','4',' ',' ',' ',' '),(4,2,'Villas','d',' ',' ',' ',' '),(5,1,'Таунхаузы','f',' ',' ',' ',' '),(5,2,'Townhouses','s',' ',' ',' ',' '),(6,1,'Земельные участки','g',' ',' ',' ',' '),(6,2,'Plots','d',' ',' ',' ',' '),(7,1,'Коммерческие продажи','e',' ',' ',' ',' '),(7,2,'Commercial Sales','r',' ',' ',' ',' '),(8,1,'Виллы','g',' ',' ',' ',' '),(8,2,'Villas','h',' ',' ',' ',' '),(9,1,'Земельные участки','j',' ',' ','  ',' '),(9,2,'Plots','j',' ',' ',' ',' '),(3,1,'Апартаменты','&lt;p&gt;\r\n	2dfg&lt;/p&gt;\r\n',' 1',' 1',' 1',' 1');
 /*!40000 ALTER TABLE `category_description` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `category_old`
+--
+
+DROP TABLE IF EXISTS `category_old`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `category_old` (
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
+  `image` varchar(255) DEFAULT NULL,
+  `parent_id` int(11) NOT NULL DEFAULT '0',
+  `top` tinyint(1) NOT NULL,
+  `column` int(3) NOT NULL,
+  `sort_order` int(3) NOT NULL DEFAULT '0',
+  `status` tinyint(1) NOT NULL,
+  `date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `date_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`category_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `category_old`
+--
+
+LOCK TABLES `category_old` WRITE;
+/*!40000 ALTER TABLE `category_old` DISABLE KEYS */;
+INSERT INTO `category_old` VALUES (25,'',0,1,1,3,1,'2009-01-31 01:04:25','2011-05-30 12:14:55'),(27,'',20,0,0,2,1,'2009-01-31 01:55:34','2010-08-22 06:32:15'),(20,'data/demo/compaq_presario.jpg',0,1,1,1,1,'2009-01-05 21:49:43','2011-07-16 02:14:42'),(24,'',0,1,1,5,1,'2009-01-20 02:36:26','2011-05-30 12:15:18'),(18,'data/demo/hp_2.jpg',0,1,0,2,1,'2009-01-05 21:49:15','2011-05-30 12:13:55'),(17,'',0,1,1,4,1,'2009-01-03 21:08:57','2011-05-30 12:15:11'),(28,'',25,0,0,1,1,'2009-02-02 13:11:12','2010-08-22 06:32:46'),(26,'',20,0,0,1,1,'2009-01-31 01:55:14','2010-08-22 06:31:45'),(29,'',25,0,0,1,1,'2009-02-02 13:11:37','2010-08-22 06:32:39'),(30,'',25,0,0,1,1,'2009-02-02 13:11:59','2010-08-22 06:33:00'),(31,'',25,0,0,1,1,'2009-02-03 14:17:24','2010-08-22 06:33:06'),(32,'',25,0,0,1,1,'2009-02-03 14:17:34','2010-08-22 06:33:12'),(33,'',0,1,1,6,1,'2009-02-03 14:17:55','2011-05-30 12:15:25'),(34,'data/demo/ipod_touch_4.jpg',0,1,4,7,1,'2009-02-03 14:18:11','2011-05-30 12:15:31'),(35,'',28,0,0,0,1,'2010-09-17 10:06:48','2010-09-18 14:02:42'),(36,'',28,0,0,0,1,'2010-09-17 10:07:13','2010-09-18 14:02:55'),(37,'',34,0,0,0,1,'2010-09-18 14:03:39','2011-04-22 01:55:08'),(38,'',34,0,0,0,1,'2010-09-18 14:03:51','2010-09-18 14:03:51'),(39,'',34,0,0,0,1,'2010-09-18 14:04:17','2011-04-22 01:55:20'),(40,'',34,0,0,0,1,'2010-09-18 14:05:36','2010-09-18 14:05:36'),(41,'',34,0,0,0,1,'2010-09-18 14:05:49','2011-04-22 01:55:30'),(42,'',34,0,0,0,1,'2010-09-18 14:06:34','2010-11-07 20:31:04'),(43,'',34,0,0,0,1,'2010-09-18 14:06:49','2011-04-22 01:55:40'),(44,'',34,0,0,0,1,'2010-09-21 15:39:21','2010-11-07 20:30:55'),(45,'',18,0,0,0,1,'2010-09-24 18:29:16','2011-04-26 08:52:11'),(46,'',18,0,0,0,1,'2010-09-24 18:29:31','2011-04-26 08:52:23'),(47,'',34,0,0,0,1,'2010-11-07 11:13:16','2010-11-07 11:13:16'),(48,'',34,0,0,0,1,'2010-11-07 11:13:33','2010-11-07 11:13:33'),(49,'',34,0,0,0,1,'2010-11-07 11:14:04','2010-11-07 11:14:04'),(50,'',34,0,0,0,1,'2010-11-07 11:14:23','2011-04-22 01:16:01'),(51,'',34,0,0,0,1,'2010-11-07 11:14:38','2011-04-22 01:16:13'),(52,'',34,0,0,0,1,'2010-11-07 11:16:09','2011-04-22 01:54:57'),(53,'',34,0,0,0,1,'2010-11-07 11:28:53','2011-04-22 01:14:36'),(54,'',34,0,0,0,1,'2010-11-07 11:29:16','2011-04-22 01:16:50'),(55,'',34,0,0,0,1,'2010-11-08 10:31:32','2010-11-08 10:31:32'),(56,'',34,0,0,0,1,'2010-11-08 10:31:50','2011-04-22 01:16:37'),(57,'',0,1,1,3,1,'2011-04-26 08:53:16','2011-05-30 12:15:05'),(58,'',52,0,0,0,1,'2011-05-08 13:44:16','2011-05-08 13:44:16');
+/*!40000 ALTER TABLE `category_old` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -558,7 +585,7 @@ CREATE TABLE `currency` (
 
 LOCK TABLES `currency` WRITE;
 /*!40000 ALTER TABLE `currency` DISABLE KEYS */;
-INSERT INTO `currency` VALUES (1,'Рубль','RUB','',' р.','2',30.79899979,1,'2013-03-10 22:03:14'),(2,'US Dollar','USD','$','','2',1.00000000,1,'2013-03-10 22:03:14'),(3,'Euro','EUR','','€','2',0.76929998,1,'2013-03-10 22:03:14');
+INSERT INTO `currency` VALUES (1,'Рубль','RUB','',' р.','2',30.68899918,1,'2013-03-12 01:08:35'),(2,'US Dollar','USD','$','','2',1.00000000,1,'2013-03-12 15:47:32'),(3,'Euro','EUR','','€','2',0.76650000,1,'2013-03-12 01:08:35');
 /*!40000 ALTER TABLE `currency` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1202,6 +1229,58 @@ LOCK TABLES `manufacturer_to_store` WRITE;
 /*!40000 ALTER TABLE `manufacturer_to_store` DISABLE KEYS */;
 INSERT INTO `manufacturer_to_store` VALUES (5,0),(6,0),(7,0),(8,0),(9,0),(10,0);
 /*!40000 ALTER TABLE `manufacturer_to_store` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `menu_info`
+--
+
+DROP TABLE IF EXISTS `menu_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `menu_info` (
+  `menu_info_id` int(11) NOT NULL AUTO_INCREMENT,
+  `picture` varchar(100) NOT NULL,
+  `url` varchar(100) NOT NULL,
+  `order` int(2) NOT NULL DEFAULT '0',
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY (`menu_info_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `menu_info`
+--
+
+LOCK TABLES `menu_info` WRITE;
+/*!40000 ALTER TABLE `menu_info` DISABLE KEYS */;
+INSERT INTO `menu_info` VALUES (1,'data/menu_info/pic1.png',' a',0,'Отзывы'),(2,'data/menu_info/pic2.png','v',1,'Статьи'),(3,'data/menu_info/pic2.png','q',3,'Мебель1'),(4,'data/menu_info/pic4.png','e',3,'Дизайн'),(8,'data/menu_info/fon.jpg','wer',2,'sdfsdf');
+/*!40000 ALTER TABLE `menu_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `menu_info_description`
+--
+
+DROP TABLE IF EXISTS `menu_info_description`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `menu_info_description` (
+  `menu_info_id` int(11) NOT NULL,
+  `language_id` varchar(45) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`menu_info_id`,`language_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `menu_info_description`
+--
+
+LOCK TABLES `menu_info_description` WRITE;
+/*!40000 ALTER TABLE `menu_info_description` DISABLE KEYS */;
+INSERT INTO `menu_info_description` VALUES (1,'1','Отзывы'),(1,'2','Сomment'),(2,'1','Статьи'),(2,'2','Articles'),(3,'1','Мебель'),(3,'2','Furniture'),(4,'1','Дизайн'),(4,'2','Design'),(8,'1','qw'),(8,'2','asd');
+/*!40000 ALTER TABLE `menu_info_description` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -2271,6 +2350,58 @@ INSERT INTO `setting` VALUES (1,0,'shipping','shipping_sort_order','3',0),(2,0,'
 UNLOCK TABLES;
 
 --
+-- Table structure for table `slide`
+--
+
+DROP TABLE IF EXISTS `slide`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `slide` (
+  `slide_id` int(11) NOT NULL AUTO_INCREMENT,
+  `picture` varchar(255) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `order` int(2) NOT NULL DEFAULT '0',
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY (`slide_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `slide`
+--
+
+LOCK TABLES `slide` WRITE;
+/*!40000 ALTER TABLE `slide` DISABLE KEYS */;
+INSERT INTO `slide` VALUES (1,'data/slider/1.jpg','gsd2',3,'werh1'),(2,'data/slider/2.jpg','234',3,'sdfsdf');
+/*!40000 ALTER TABLE `slide` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `slide_description`
+--
+
+DROP TABLE IF EXISTS `slide_description`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `slide_description` (
+  `slide_id` int(11) NOT NULL,
+  `language_id` int(11) NOT NULL,
+  `text` text,
+  PRIMARY KEY (`slide_id`,`language_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `slide_description`
+--
+
+LOCK TABLES `slide_description` WRITE;
+/*!40000 ALTER TABLE `slide_description` DISABLE KEYS */;
+INSERT INTO `slide_description` VALUES (0,1,'&lt;p&gt;\r\n	Приветт&lt;/p&gt;\r\n'),(0,2,'&lt;p&gt;\r\n	Hello&lt;/p&gt;\r\n'),(1,1,'&lt;p&gt;\r\n	ПРИВЕТ ДОРОГИЕ ДРУЗЬЯ&lt;/p&gt;\r\n'),(1,2,'&lt;p&gt;\r\n	sdf&lt;/p&gt;\r\n'),(2,1,'&lt;p&gt;\r\n	&lt;span style=&quot;font-size:36px;&quot;&gt;&lt;span style=&quot;font-family: comic sans ms,cursive;&quot;&gt;&lt;span style=&quot;background-color:#ffffff;&quot;&gt;dfgdfgdfg&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;\r\n'),(2,2,'');
+/*!40000 ALTER TABLE `slide_description` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `stock_status`
 --
 
@@ -2439,7 +2570,7 @@ CREATE TABLE `url_alias` (
   `query` varchar(255) NOT NULL,
   `keyword` varchar(255) NOT NULL,
   PRIMARY KEY (`url_alias_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=774 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=775 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2448,7 +2579,7 @@ CREATE TABLE `url_alias` (
 
 LOCK TABLES `url_alias` WRITE;
 /*!40000 ALTER TABLE `url_alias` DISABLE KEYS */;
-INSERT INTO `url_alias` VALUES (704,'product_id=48','ipod_classic'),(773,'category_id=20','desktops'),(503,'category_id=26','pc'),(505,'category_id=27','mac'),(730,'manufacturer_id=8','apple'),(772,'information_id=4','about_us'),(768,'product_id=42','test'),(767,'category_id=34','mp3-players'),(536,'category_id=36','Normal');
+INSERT INTO `url_alias` VALUES (704,'product_id=48','ipod_classic'),(773,'category_id=20','desktops'),(503,'category_id=26','pc'),(505,'category_id=27','mac'),(730,'manufacturer_id=8','apple'),(772,'information_id=4','about_us'),(768,'product_id=42','test'),(767,'category_id=34','mp3-players'),(536,'category_id=36','Normal'),(774,'category_id=3','ert');
 /*!40000 ALTER TABLE `url_alias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2507,7 +2638,7 @@ CREATE TABLE `user_group` (
 
 LOCK TABLES `user_group` WRITE;
 /*!40000 ALTER TABLE `user_group` DISABLE KEYS */;
-INSERT INTO `user_group` VALUES (1,'Главный администратор','a:2:{s:6:\"access\";a:119:{i:0;s:17:\"catalog/attribute\";i:1;s:23:\"catalog/attribute_group\";i:2;s:16:\"catalog/category\";i:3;s:16:\"catalog/download\";i:4;s:19:\"catalog/information\";i:5;s:20:\"catalog/manufacturer\";i:6;s:14:\"catalog/option\";i:7;s:15:\"catalog/product\";i:8;s:14:\"catalog/review\";i:9;s:18:\"common/filemanager\";i:10;s:13:\"design/banner\";i:11;s:13:\"design/layout\";i:12;s:14:\"extension/feed\";i:13;s:16:\"extension/module\";i:14;s:17:\"extension/payment\";i:15;s:18:\"extension/shipping\";i:16;s:15:\"extension/total\";i:17;s:16:\"feed/google_base\";i:18;s:19:\"feed/google_sitemap\";i:19;s:20:\"localisation/country\";i:20;s:21:\"localisation/currency\";i:21;s:21:\"localisation/geo_zone\";i:22;s:21:\"localisation/language\";i:23;s:25:\"localisation/length_class\";i:24;s:25:\"localisation/order_status\";i:25;s:26:\"localisation/return_action\";i:26;s:26:\"localisation/return_reason\";i:27;s:26:\"localisation/return_status\";i:28;s:25:\"localisation/stock_status\";i:29;s:22:\"localisation/tax_class\";i:30;s:21:\"localisation/tax_rate\";i:31;s:25:\"localisation/weight_class\";i:32;s:17:\"localisation/zone\";i:33;s:14:\"module/account\";i:34;s:16:\"module/affiliate\";i:35;s:13:\"module/banner\";i:36;s:17:\"module/bestseller\";i:37;s:15:\"module/carousel\";i:38;s:15:\"module/category\";i:39;s:15:\"module/featured\";i:40;s:18:\"module/google_talk\";i:41;s:18:\"module/information\";i:42;s:13:\"module/latest\";i:43;s:16:\"module/slideshow\";i:44;s:14:\"module/special\";i:45;s:12:\"module/store\";i:46;s:14:\"module/welcome\";i:47;s:24:\"payment/authorizenet_aim\";i:48;s:21:\"payment/bank_transfer\";i:49;s:14:\"payment/cheque\";i:50;s:11:\"payment/cod\";i:51;s:21:\"payment/free_checkout\";i:52;s:14:\"payment/liqpay\";i:53;s:20:\"payment/moneybookers\";i:54;s:14:\"payment/nochex\";i:55;s:15:\"payment/paymate\";i:56;s:16:\"payment/paypoint\";i:57;s:13:\"payment/payza\";i:58;s:26:\"payment/perpetual_payments\";i:59;s:14:\"payment/pp_pro\";i:60;s:17:\"payment/pp_pro_uk\";i:61;s:19:\"payment/pp_standard\";i:62;s:15:\"payment/sagepay\";i:63;s:22:\"payment/sagepay_direct\";i:64;s:18:\"payment/sagepay_us\";i:65;s:19:\"payment/twocheckout\";i:66;s:28:\"payment/web_payment_software\";i:67;s:16:\"payment/worldpay\";i:68;s:27:\"report/affiliate_commission\";i:69;s:22:\"report/customer_credit\";i:70;s:22:\"report/customer_online\";i:71;s:21:\"report/customer_order\";i:72;s:22:\"report/customer_reward\";i:73;s:24:\"report/product_purchased\";i:74;s:21:\"report/product_viewed\";i:75;s:18:\"report/sale_coupon\";i:76;s:17:\"report/sale_order\";i:77;s:18:\"report/sale_return\";i:78;s:20:\"report/sale_shipping\";i:79;s:15:\"report/sale_tax\";i:80;s:14:\"sale/affiliate\";i:81;s:12:\"sale/contact\";i:82;s:11:\"sale/coupon\";i:83;s:13:\"sale/customer\";i:84;s:23:\"sale/customer_blacklist\";i:85;s:19:\"sale/customer_group\";i:86;s:10:\"sale/order\";i:87;s:11:\"sale/return\";i:88;s:12:\"sale/voucher\";i:89;s:18:\"sale/voucher_theme\";i:90;s:15:\"setting/setting\";i:91;s:13:\"setting/store\";i:92;s:16:\"shipping/auspost\";i:93;s:17:\"shipping/citylink\";i:94;s:14:\"shipping/fedex\";i:95;s:13:\"shipping/flat\";i:96;s:13:\"shipping/free\";i:97;s:13:\"shipping/item\";i:98;s:23:\"shipping/parcelforce_48\";i:99;s:15:\"shipping/pickup\";i:100;s:19:\"shipping/royal_mail\";i:101;s:12:\"shipping/ups\";i:102;s:13:\"shipping/usps\";i:103;s:15:\"shipping/weight\";i:104;s:11:\"tool/backup\";i:105;s:14:\"tool/error_log\";i:106;s:12:\"total/coupon\";i:107;s:12:\"total/credit\";i:108;s:14:\"total/handling\";i:109;s:16:\"total/klarna_fee\";i:110;s:19:\"total/low_order_fee\";i:111;s:12:\"total/reward\";i:112;s:14:\"total/shipping\";i:113;s:15:\"total/sub_total\";i:114;s:9:\"total/tax\";i:115;s:11:\"total/total\";i:116;s:13:\"total/voucher\";i:117;s:9:\"user/user\";i:118;s:20:\"user/user_permission\";}s:6:\"modify\";a:119:{i:0;s:17:\"catalog/attribute\";i:1;s:23:\"catalog/attribute_group\";i:2;s:16:\"catalog/category\";i:3;s:16:\"catalog/download\";i:4;s:19:\"catalog/information\";i:5;s:20:\"catalog/manufacturer\";i:6;s:14:\"catalog/option\";i:7;s:15:\"catalog/product\";i:8;s:14:\"catalog/review\";i:9;s:18:\"common/filemanager\";i:10;s:13:\"design/banner\";i:11;s:13:\"design/layout\";i:12;s:14:\"extension/feed\";i:13;s:16:\"extension/module\";i:14;s:17:\"extension/payment\";i:15;s:18:\"extension/shipping\";i:16;s:15:\"extension/total\";i:17;s:16:\"feed/google_base\";i:18;s:19:\"feed/google_sitemap\";i:19;s:20:\"localisation/country\";i:20;s:21:\"localisation/currency\";i:21;s:21:\"localisation/geo_zone\";i:22;s:21:\"localisation/language\";i:23;s:25:\"localisation/length_class\";i:24;s:25:\"localisation/order_status\";i:25;s:26:\"localisation/return_action\";i:26;s:26:\"localisation/return_reason\";i:27;s:26:\"localisation/return_status\";i:28;s:25:\"localisation/stock_status\";i:29;s:22:\"localisation/tax_class\";i:30;s:21:\"localisation/tax_rate\";i:31;s:25:\"localisation/weight_class\";i:32;s:17:\"localisation/zone\";i:33;s:14:\"module/account\";i:34;s:16:\"module/affiliate\";i:35;s:13:\"module/banner\";i:36;s:17:\"module/bestseller\";i:37;s:15:\"module/carousel\";i:38;s:15:\"module/category\";i:39;s:15:\"module/featured\";i:40;s:18:\"module/google_talk\";i:41;s:18:\"module/information\";i:42;s:13:\"module/latest\";i:43;s:16:\"module/slideshow\";i:44;s:14:\"module/special\";i:45;s:12:\"module/store\";i:46;s:14:\"module/welcome\";i:47;s:24:\"payment/authorizenet_aim\";i:48;s:21:\"payment/bank_transfer\";i:49;s:14:\"payment/cheque\";i:50;s:11:\"payment/cod\";i:51;s:21:\"payment/free_checkout\";i:52;s:14:\"payment/liqpay\";i:53;s:20:\"payment/moneybookers\";i:54;s:14:\"payment/nochex\";i:55;s:15:\"payment/paymate\";i:56;s:16:\"payment/paypoint\";i:57;s:13:\"payment/payza\";i:58;s:26:\"payment/perpetual_payments\";i:59;s:14:\"payment/pp_pro\";i:60;s:17:\"payment/pp_pro_uk\";i:61;s:19:\"payment/pp_standard\";i:62;s:15:\"payment/sagepay\";i:63;s:22:\"payment/sagepay_direct\";i:64;s:18:\"payment/sagepay_us\";i:65;s:19:\"payment/twocheckout\";i:66;s:28:\"payment/web_payment_software\";i:67;s:16:\"payment/worldpay\";i:68;s:27:\"report/affiliate_commission\";i:69;s:22:\"report/customer_credit\";i:70;s:22:\"report/customer_online\";i:71;s:21:\"report/customer_order\";i:72;s:22:\"report/customer_reward\";i:73;s:24:\"report/product_purchased\";i:74;s:21:\"report/product_viewed\";i:75;s:18:\"report/sale_coupon\";i:76;s:17:\"report/sale_order\";i:77;s:18:\"report/sale_return\";i:78;s:20:\"report/sale_shipping\";i:79;s:15:\"report/sale_tax\";i:80;s:14:\"sale/affiliate\";i:81;s:12:\"sale/contact\";i:82;s:11:\"sale/coupon\";i:83;s:13:\"sale/customer\";i:84;s:23:\"sale/customer_blacklist\";i:85;s:19:\"sale/customer_group\";i:86;s:10:\"sale/order\";i:87;s:11:\"sale/return\";i:88;s:12:\"sale/voucher\";i:89;s:18:\"sale/voucher_theme\";i:90;s:15:\"setting/setting\";i:91;s:13:\"setting/store\";i:92;s:16:\"shipping/auspost\";i:93;s:17:\"shipping/citylink\";i:94;s:14:\"shipping/fedex\";i:95;s:13:\"shipping/flat\";i:96;s:13:\"shipping/free\";i:97;s:13:\"shipping/item\";i:98;s:23:\"shipping/parcelforce_48\";i:99;s:15:\"shipping/pickup\";i:100;s:19:\"shipping/royal_mail\";i:101;s:12:\"shipping/ups\";i:102;s:13:\"shipping/usps\";i:103;s:15:\"shipping/weight\";i:104;s:11:\"tool/backup\";i:105;s:14:\"tool/error_log\";i:106;s:12:\"total/coupon\";i:107;s:12:\"total/credit\";i:108;s:14:\"total/handling\";i:109;s:16:\"total/klarna_fee\";i:110;s:19:\"total/low_order_fee\";i:111;s:12:\"total/reward\";i:112;s:14:\"total/shipping\";i:113;s:15:\"total/sub_total\";i:114;s:9:\"total/tax\";i:115;s:11:\"total/total\";i:116;s:13:\"total/voucher\";i:117;s:9:\"user/user\";i:118;s:20:\"user/user_permission\";}}'),(10,'Демонстрация','');
+INSERT INTO `user_group` VALUES (1,'Главный администратор','a:2:{s:6:\"access\";a:121:{i:0;s:17:\"catalog/attribute\";i:1;s:23:\"catalog/attribute_group\";i:2;s:16:\"catalog/category\";i:3;s:16:\"catalog/download\";i:4;s:19:\"catalog/information\";i:5;s:20:\"catalog/manufacturer\";i:6;s:14:\"catalog/option\";i:7;s:15:\"catalog/product\";i:8;s:14:\"catalog/review\";i:9;s:18:\"common/filemanager\";i:10;s:13:\"design/banner\";i:11;s:13:\"design/layout\";i:12;s:14:\"extension/feed\";i:13;s:16:\"extension/module\";i:14;s:17:\"extension/payment\";i:15;s:18:\"extension/shipping\";i:16;s:15:\"extension/total\";i:17;s:16:\"feed/google_base\";i:18;s:19:\"feed/google_sitemap\";i:19;s:20:\"localisation/country\";i:20;s:21:\"localisation/currency\";i:21;s:21:\"localisation/geo_zone\";i:22;s:21:\"localisation/language\";i:23;s:25:\"localisation/length_class\";i:24;s:25:\"localisation/order_status\";i:25;s:26:\"localisation/return_action\";i:26;s:26:\"localisation/return_reason\";i:27;s:26:\"localisation/return_status\";i:28;s:25:\"localisation/stock_status\";i:29;s:22:\"localisation/tax_class\";i:30;s:21:\"localisation/tax_rate\";i:31;s:25:\"localisation/weight_class\";i:32;s:17:\"localisation/zone\";i:33;s:14:\"module/account\";i:34;s:16:\"module/affiliate\";i:35;s:13:\"module/banner\";i:36;s:17:\"module/bestseller\";i:37;s:15:\"module/carousel\";i:38;s:15:\"module/category\";i:39;s:15:\"module/featured\";i:40;s:18:\"module/google_talk\";i:41;s:18:\"module/information\";i:42;s:13:\"module/latest\";i:43;s:16:\"module/slideshow\";i:44;s:14:\"module/special\";i:45;s:12:\"module/store\";i:46;s:14:\"module/welcome\";i:47;s:24:\"payment/authorizenet_aim\";i:48;s:21:\"payment/bank_transfer\";i:49;s:14:\"payment/cheque\";i:50;s:11:\"payment/cod\";i:51;s:21:\"payment/free_checkout\";i:52;s:14:\"payment/liqpay\";i:53;s:20:\"payment/moneybookers\";i:54;s:14:\"payment/nochex\";i:55;s:15:\"payment/paymate\";i:56;s:16:\"payment/paypoint\";i:57;s:13:\"payment/payza\";i:58;s:26:\"payment/perpetual_payments\";i:59;s:14:\"payment/pp_pro\";i:60;s:17:\"payment/pp_pro_uk\";i:61;s:19:\"payment/pp_standard\";i:62;s:15:\"payment/sagepay\";i:63;s:22:\"payment/sagepay_direct\";i:64;s:18:\"payment/sagepay_us\";i:65;s:19:\"payment/twocheckout\";i:66;s:28:\"payment/web_payment_software\";i:67;s:16:\"payment/worldpay\";i:68;s:27:\"report/affiliate_commission\";i:69;s:22:\"report/customer_credit\";i:70;s:22:\"report/customer_online\";i:71;s:21:\"report/customer_order\";i:72;s:22:\"report/customer_reward\";i:73;s:24:\"report/product_purchased\";i:74;s:21:\"report/product_viewed\";i:75;s:18:\"report/sale_coupon\";i:76;s:17:\"report/sale_order\";i:77;s:18:\"report/sale_return\";i:78;s:20:\"report/sale_shipping\";i:79;s:15:\"report/sale_tax\";i:80;s:14:\"sale/affiliate\";i:81;s:12:\"sale/contact\";i:82;s:11:\"sale/coupon\";i:83;s:13:\"sale/customer\";i:84;s:23:\"sale/customer_blacklist\";i:85;s:19:\"sale/customer_group\";i:86;s:10:\"sale/order\";i:87;s:11:\"sale/return\";i:88;s:12:\"sale/voucher\";i:89;s:18:\"sale/voucher_theme\";i:90;s:17:\"setting/menu_info\";i:91;s:15:\"setting/setting\";i:92;s:13:\"setting/slide\";i:93;s:13:\"setting/store\";i:94;s:16:\"shipping/auspost\";i:95;s:17:\"shipping/citylink\";i:96;s:14:\"shipping/fedex\";i:97;s:13:\"shipping/flat\";i:98;s:13:\"shipping/free\";i:99;s:13:\"shipping/item\";i:100;s:23:\"shipping/parcelforce_48\";i:101;s:15:\"shipping/pickup\";i:102;s:19:\"shipping/royal_mail\";i:103;s:12:\"shipping/ups\";i:104;s:13:\"shipping/usps\";i:105;s:15:\"shipping/weight\";i:106;s:11:\"tool/backup\";i:107;s:14:\"tool/error_log\";i:108;s:12:\"total/coupon\";i:109;s:12:\"total/credit\";i:110;s:14:\"total/handling\";i:111;s:16:\"total/klarna_fee\";i:112;s:19:\"total/low_order_fee\";i:113;s:12:\"total/reward\";i:114;s:14:\"total/shipping\";i:115;s:15:\"total/sub_total\";i:116;s:9:\"total/tax\";i:117;s:11:\"total/total\";i:118;s:13:\"total/voucher\";i:119;s:9:\"user/user\";i:120;s:20:\"user/user_permission\";}s:6:\"modify\";a:121:{i:0;s:17:\"catalog/attribute\";i:1;s:23:\"catalog/attribute_group\";i:2;s:16:\"catalog/category\";i:3;s:16:\"catalog/download\";i:4;s:19:\"catalog/information\";i:5;s:20:\"catalog/manufacturer\";i:6;s:14:\"catalog/option\";i:7;s:15:\"catalog/product\";i:8;s:14:\"catalog/review\";i:9;s:18:\"common/filemanager\";i:10;s:13:\"design/banner\";i:11;s:13:\"design/layout\";i:12;s:14:\"extension/feed\";i:13;s:16:\"extension/module\";i:14;s:17:\"extension/payment\";i:15;s:18:\"extension/shipping\";i:16;s:15:\"extension/total\";i:17;s:16:\"feed/google_base\";i:18;s:19:\"feed/google_sitemap\";i:19;s:20:\"localisation/country\";i:20;s:21:\"localisation/currency\";i:21;s:21:\"localisation/geo_zone\";i:22;s:21:\"localisation/language\";i:23;s:25:\"localisation/length_class\";i:24;s:25:\"localisation/order_status\";i:25;s:26:\"localisation/return_action\";i:26;s:26:\"localisation/return_reason\";i:27;s:26:\"localisation/return_status\";i:28;s:25:\"localisation/stock_status\";i:29;s:22:\"localisation/tax_class\";i:30;s:21:\"localisation/tax_rate\";i:31;s:25:\"localisation/weight_class\";i:32;s:17:\"localisation/zone\";i:33;s:14:\"module/account\";i:34;s:16:\"module/affiliate\";i:35;s:13:\"module/banner\";i:36;s:17:\"module/bestseller\";i:37;s:15:\"module/carousel\";i:38;s:15:\"module/category\";i:39;s:15:\"module/featured\";i:40;s:18:\"module/google_talk\";i:41;s:18:\"module/information\";i:42;s:13:\"module/latest\";i:43;s:16:\"module/slideshow\";i:44;s:14:\"module/special\";i:45;s:12:\"module/store\";i:46;s:14:\"module/welcome\";i:47;s:24:\"payment/authorizenet_aim\";i:48;s:21:\"payment/bank_transfer\";i:49;s:14:\"payment/cheque\";i:50;s:11:\"payment/cod\";i:51;s:21:\"payment/free_checkout\";i:52;s:14:\"payment/liqpay\";i:53;s:20:\"payment/moneybookers\";i:54;s:14:\"payment/nochex\";i:55;s:15:\"payment/paymate\";i:56;s:16:\"payment/paypoint\";i:57;s:13:\"payment/payza\";i:58;s:26:\"payment/perpetual_payments\";i:59;s:14:\"payment/pp_pro\";i:60;s:17:\"payment/pp_pro_uk\";i:61;s:19:\"payment/pp_standard\";i:62;s:15:\"payment/sagepay\";i:63;s:22:\"payment/sagepay_direct\";i:64;s:18:\"payment/sagepay_us\";i:65;s:19:\"payment/twocheckout\";i:66;s:28:\"payment/web_payment_software\";i:67;s:16:\"payment/worldpay\";i:68;s:27:\"report/affiliate_commission\";i:69;s:22:\"report/customer_credit\";i:70;s:22:\"report/customer_online\";i:71;s:21:\"report/customer_order\";i:72;s:22:\"report/customer_reward\";i:73;s:24:\"report/product_purchased\";i:74;s:21:\"report/product_viewed\";i:75;s:18:\"report/sale_coupon\";i:76;s:17:\"report/sale_order\";i:77;s:18:\"report/sale_return\";i:78;s:20:\"report/sale_shipping\";i:79;s:15:\"report/sale_tax\";i:80;s:14:\"sale/affiliate\";i:81;s:12:\"sale/contact\";i:82;s:11:\"sale/coupon\";i:83;s:13:\"sale/customer\";i:84;s:23:\"sale/customer_blacklist\";i:85;s:19:\"sale/customer_group\";i:86;s:10:\"sale/order\";i:87;s:11:\"sale/return\";i:88;s:12:\"sale/voucher\";i:89;s:18:\"sale/voucher_theme\";i:90;s:17:\"setting/menu_info\";i:91;s:15:\"setting/setting\";i:92;s:13:\"setting/slide\";i:93;s:13:\"setting/store\";i:94;s:16:\"shipping/auspost\";i:95;s:17:\"shipping/citylink\";i:96;s:14:\"shipping/fedex\";i:97;s:13:\"shipping/flat\";i:98;s:13:\"shipping/free\";i:99;s:13:\"shipping/item\";i:100;s:23:\"shipping/parcelforce_48\";i:101;s:15:\"shipping/pickup\";i:102;s:19:\"shipping/royal_mail\";i:103;s:12:\"shipping/ups\";i:104;s:13:\"shipping/usps\";i:105;s:15:\"shipping/weight\";i:106;s:11:\"tool/backup\";i:107;s:14:\"tool/error_log\";i:108;s:12:\"total/coupon\";i:109;s:12:\"total/credit\";i:110;s:14:\"total/handling\";i:111;s:16:\"total/klarna_fee\";i:112;s:19:\"total/low_order_fee\";i:113;s:12:\"total/reward\";i:114;s:14:\"total/shipping\";i:115;s:15:\"total/sub_total\";i:116;s:9:\"total/tax\";i:117;s:11:\"total/total\";i:118;s:13:\"total/voucher\";i:119;s:9:\"user/user\";i:120;s:20:\"user/user_permission\";}}'),(10,'Демонстрация','');
 /*!40000 ALTER TABLE `user_group` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2733,4 +2864,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-11 20:40:51
+-- Dump completed on 2013-03-13 11:02:09
