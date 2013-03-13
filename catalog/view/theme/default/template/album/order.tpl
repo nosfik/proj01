@@ -31,7 +31,7 @@
     <div id="help">
       <h3>Подсказка</h3>
       
-            Нажмите на изображение, что-бы добавить фото в заказ.
+            Нажмите на изображение, чтобы добавить фото в заказ.
             
       <div class="clear"></div>
       <div id="edit">
@@ -88,7 +88,7 @@
           <div class="photoCont">
           <div class="picCont">
             <div class="buttons">
-              <a href="<?php echo $this -> url -> link('album/order/edit', 'key='.$key.'&photo='.$photo['id'], 'SSL'); ?>" title="Редактировать альбом" class="edit">
+              <a href="<?php echo $this -> url -> link('album/order/edit', 'key='.$key.'&photo='.$photo['id'], 'SSL'); ?>" title="Редактировать фото" class="edit">
                 <img src="catalog/view/theme/default/image/flag.png">
               </a>
               <a onclick="delete_photo( <?php echo $photo['id']?>, '<?php echo $photo['name']?>')" title="Удалить фото" class="del">

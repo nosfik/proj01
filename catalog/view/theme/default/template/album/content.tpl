@@ -31,7 +31,7 @@
     <div id="help">
       <h3>Подсказка</h3>
       
-						Нажмите на изображение, что-бы добавить фото в заказ.
+						Нажмите на изображение, чтобы добавить фото в заказ.
 						
       <div class="clear"></div>
       <div id="edit">
@@ -88,10 +88,10 @@
 		     	<div class="photoCont">
 		      <div class="picCont">
 		        <div class="buttons">
-		          <a href="<?php echo $this -> url -> link('album/content/edit', 'photo='.$photo['id'].'&album='.$album_id, 'SSL'); ?>" title="Редактировать альбом" class="edit">
+		          <a href="<?php echo $this -> url -> link('album/content/edit', 'photo='.$photo['id'].'&album='.$album_id, 'SSL'); ?>" title="Редактировать фото" class="edit">
 		            <img src="catalog/view/theme/default/image/flag.png">
 		          </a>
-		          <a onclick="delete_photo( <?php echo $album_id?> , <?php echo $photo['id']?>, '<?php echo $photo['name']?>')" title="Удалить альбом" class="del">
+		          <a onclick="delete_photo( <?php echo $album_id?> , <?php echo $photo['id']?>, '<?php echo $photo['name']?>')" title="Удалить фото" class="del">
 		            <img src="catalog/view/theme/default/image/flag.png">
 		          </a>
 		        </div>
@@ -313,8 +313,6 @@
                 location.reload();
               }
               
-            	//location.reload();
-              //window.location = '<?php echo $this -> url -> link('album/album', '', 'SSL'); ?>';
             }
         },
         error: function(rs, e, a) {

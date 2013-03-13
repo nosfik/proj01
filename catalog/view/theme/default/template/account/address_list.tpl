@@ -9,7 +9,7 @@
   
   <h1>Мой Адресс</h1>
   <?php foreach ($addresses as $result) { ?>
-  <div class="content" style="margin-top:30px">
+  <div class="content">
     <table style="width: 100%;">
       <tr>
         <td><?php echo $result['address']; ?></td>

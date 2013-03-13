@@ -52,21 +52,40 @@
   <table style="border-collapse: collapse; width: 100%; border-top: 1px solid #DDDDDD; border-left: 1px solid #DDDDDD; margin-bottom: 20px;">
     <thead>
       <tr>
-        <td style="font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; background-color: #EFEFEF; font-weight: bold; text-align: left; padding: 7px; color: #222222;"><?php echo $text_payment_address; ?></td>
-        <?php if ($shipping_address) { ?>
         <td style="font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; background-color: #EFEFEF; font-weight: bold; text-align: left; padding: 7px; color: #222222;"><?php echo $text_shipping_address; ?></td>
-        <?php } ?>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td style="font-size: 12px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: left; padding: 7px;"><?php echo $payment_address; ?></td>
-        <?php if ($shipping_address) { ?>
         <td style="font-size: 12px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: left; padding: 7px;"><?php echo $shipping_address; ?></td>
-        <?php } ?>
       </tr>
     </tbody>
   </table>
+  
+  
+    <table>
+      <thead>
+        <tr>
+          <td class="name">Альбом</td>
+          <td align="left">Фотографии</td>
+              <td align="left">Копии</td>
+              <td align="left">Сумма</td>
+              <td align="left">Итого</td>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($albums as $album) { ?>
+        <tr>
+          <td class="name"><p><?php echo $album['album_name']; ?></p></td>
+          <td><?php echo $album['count'];?></td>
+              <td><?php echo $album['quantity'];?></td>
+              <td><?php echo $album['price'];?></td>
+              <td><?php echo $album['total'];?></td>
+        </tr>
+        <?php } ?>
+    </table>
+  
+  
   <table style="border-collapse: collapse; width: 100%; border-top: 1px solid #DDDDDD; border-left: 1px solid #DDDDDD; margin-bottom: 20px;">
     <thead>
       <tr>
@@ -111,7 +130,6 @@
     </tfoot>
   </table>
   <p style="margin-top: 0px; margin-bottom: 20px;"><?php echo $text_footer; ?></p>
-  <p style="margin-top: 0px; margin-bottom: 20px;"><?php echo $text_powered; ?></p>
 </div>
 </body>
 </html>

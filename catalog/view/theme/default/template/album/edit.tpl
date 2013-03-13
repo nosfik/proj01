@@ -11,7 +11,7 @@
         <div id="help_cont">
             <div id="help">
                 <h3>Подсказка</h3>
-                Нажмите на изображение, что-бы добавить фото в заказ.
+                Нажмите на изображение, чтобы добавить фото в заказ.
                 <div class="clear"></div>
                 <div id="edit"><img src="catalog/view/theme/default/image/flag.png"></div>
                 <div class="text">&mdash; редактировать</div>

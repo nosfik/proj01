@@ -14,7 +14,7 @@ body {
 	font-size: 12px;
 }*/
 h1, .welcome {
-	color: #636E75;
+	color: #fffbc7;;
 	font-family: Verdana;
 	margin-top: 0px;
 	margin-bottom: 20px;
@@ -81,6 +81,8 @@ label {
 #content {
 	min-height: 400px;
 	margin-bottom: 25px;
+    padding-left: 10px;
+    padding-top: 30px;
 }
 #column-left + #column-right + #content, #column-left + #content {
 	margin-left: 195px;
@@ -406,7 +408,7 @@ label {
 }
 .success, .warning, .attention, .information {
 	padding: 10px 10px 10px 33px;
-	margin-bottom: 15px;
+	margin-top: 30px;
 	color: #555555;
 	-webkit-border-radius: 5px 5px 5px 5px;
 	-moz-border-radius: 5px 5px 5px 5px;
@@ -566,32 +568,33 @@ table.radio tr.highlight:hover td {
 a.button, input.button {
 	cursor: pointer;
 	color: #FFFFFF;
-	line-height: 12px;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	font-weight: bold;
-	background: url('../image/button.png') top left repeat-x;
-	-webkit-border-radius: 7px 7px 7px 7px;
-	-moz-border-radius: 7px 7px 7px 7px;
-	-khtml-border-radius: 7px 7px 7px 7px;
-	border-radius: 7px 7px 7px 7px;
-	-webkit-box-shadow: 0px 2px 2px #DDDDDD;
-	-moz-box-shadow: 0px 2px 2px #DDDDDD;
-	box-shadow: 0px 2px 2px #DDDDDD;
+	background: url("../image/sprite.png") 0px -1126px;
+	
+	border-radius: 25px;
+	box-shadow: 0px 1px 3px 0px #407DC2;
+	color: #FFFFFF;
+	display: block;
+	font-family: "Cuprum", sans-serif;
+	font-size: 14px;
+	line-height: 26px;
+	padding: 2px 15px 0px;
+	text-decoration: none;
+	text-shadow: -1px -1px 0px #0564AA;
+	text-transform: uppercase;
 }
 a.button {
 	display: inline-block;
 	text-decoration: none;
-	padding: 6px 12px 6px 12px;
+    text-align: center;
 }
 input.button {
 	margin: 0;
 	border: 0;
-	height: 24px;
-	padding: 0px 12px 0px 12px;
+	height: 26px;
 }
 a.button:hover, input.button:hover {
-	background: url('../image/button-active.png') repeat-x;
+	
+    opacity: 0.7;
 }
 .buttons {
 	overflow: auto;
@@ -768,7 +771,6 @@ a.button:hover, input.button:hover {
 	padding: 10px;
 	overflow: auto;
 	margin-bottom: 20px;
-	border: 1px solid #EEEEEE;
 }
 #content .content .left {
 	float: left;

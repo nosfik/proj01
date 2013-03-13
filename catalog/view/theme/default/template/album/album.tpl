@@ -62,7 +62,7 @@
     <div id="help">
       <h3>Подсказка</h3>
       
-            Нажмите на изображение, что-бы добавить фото в заказ.
+            Нажмите на изображение, чтобы добавить фото в заказ.
             
       <div class="clear"></div>
       <div id="edit">
@@ -164,7 +164,26 @@
             if (!response.success) {
                 alert("Проблемы на стороне сервера.");
             } else {
-              window.location = '<?php echo $this -> url -> link('album/album', '', 'SSL'); ?>';
+            	
+            	
+            	
+            	if(response.order.length) {
+                var msg = '';
+                for(var i = 0; i < response.order.length; i++) {
+                  msg += response.order[i] + ',';
+                }
+                msg = msg.substring(0, (msg.length - 1));
+                
+                if(response.order.length == 1) {
+                  alert('Фотографию :' + msg + ' с даного альбома нельзя удалить, так как она находится в корзине');
+                } else {
+                  alert('Фотографии :' + msg + ' с даного альбома нельзя удалить, так как они находятся в корзине');
+                }
+                
+              } else {
+                window.location = '<?php echo $this -> url -> link('album/album', '', 'SSL'); ?>';
+              }
+            	
             }
         },
         error: function(rs, e, a) {

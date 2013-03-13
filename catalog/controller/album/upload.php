@@ -275,25 +275,24 @@ class ControllerAlbumUpload extends Controller {
     header('Content-type: application/json; charset=utf-8');
     $return['success'] = 'false'; 
     if ($this->customer->isLogged() && isset($this->request->post['album_id']) && isset($this->request->post['album_name'])) {
-    	 $custId = $this->customer->getId();
+       $custId = $this->customer->getId();
        $this->load->model('album/upload');
+	   $this->load->model('album/album');
        $files = $this->model_album_upload->getFilesId($custId);
        $album_id = (int)$this->request->post['album_id'];
-			 $this->load->model('album/album');
+			 
 			 $customer_dir =  DIR_PHOTOS.'album_cus_'.$custId;
        if($album_id == 0) { //CREATE ALBUM
-       		
-					if(!is_dir($customer_dir)) {
-						mkdir($customer_dir);
-					}
+			if(!is_dir($customer_dir)) {
+				mkdir($customer_dir);
+			}
        		$newAlbumId = $this->model_album_album->createCleanAlbum($this->request->post['album_name'], $custId);
-          $newDir = $customer_dir.'/'.'album_'.$newAlbumId;
-					if(!is_dir($newDir)) {
-					  mkdir($newDir);
-          }
+          	$newDir = $customer_dir.'/'.'album_'.$newAlbumId;
+			if(!is_dir($newDir)) {
+			  mkdir($newDir);
+          	}
           foreach ($files as $file) {
               $file['name'] = $this->translit($file['name']);
-              $photo_file = $newDir.'/'.$file['name'];
               $file_a = $this->model_album_upload->getFile($custId, $file['customer_temp_photo_id']);
               file_put_contents($newDir.'/'.$file['name'], $file_a['photo']);
               
@@ -313,7 +312,8 @@ class ControllerAlbumUpload extends Controller {
          
          foreach ($files as $file) {
               $file['name'] = $this->translit($file['name']);
-              file_put_contents($AlbumDir.'/'.$file['name'], $file['photo']);
+			  $file_a = $this->model_album_upload->getFile($custId, $file['customer_temp_photo_id']);
+              file_put_contents($AlbumDir.'/'.$file['name'], $file_a['photo']);
               $this->makeSmallCopy($AlbumDir, $file['name']);
               $this->model_album_album->putPhotoInAlbum($album_id, $file['name']);
               $this->model_album_upload->deleteFile($custId, $file['customer_temp_photo_id']);

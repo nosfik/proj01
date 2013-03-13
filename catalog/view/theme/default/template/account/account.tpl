@@ -7,7 +7,7 @@
 
   <h1>Мои настройки</h1>
   
-  <div class="content" style="margin-top:30px">
+  <div class="content">
     <ul>
       <li><a style="font-size:15px" href="<?php echo $edit; ?>"><?php echo $text_edit; ?></a></li>
       <li><a style="font-size:15px" href="<?php echo $password; ?>"><?php echo $text_password; ?></a></li>

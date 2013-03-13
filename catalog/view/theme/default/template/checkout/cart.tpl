@@ -33,10 +33,10 @@
         <thead>
           <tr>
               <td>Наименование</td>
-              <td align="left">Фотографии</td>
-              <td align="left">Копии</td>
-              <td align="left">Сумма</td>
-              <td align="left">Итого</td>
+              <td align="center">Фотографии</td>
+              <td align="center">Копии</td>
+              <td align="center">Сумма</td>
+              <td align="center">Итого (грн)</td>
               <td> </td>
           </tr>
         </thead>
@@ -44,11 +44,11 @@
           <?php foreach ($albums as $album) { ?>
             <tr>
               <td><a href="<?php echo $album['album_href']?>">Фотопечать "Альбом <?php echo $album['album_name'];?>"</a></td>
-              <td><?php echo $album['count'];?></td>
-              <td><?php echo $album['quantity'];?></td>
-              <td><?php echo $album['price'];?></td>
-              <td><?php echo $album['total'];?></td>
-              <td  class="del">
+              <td align="center"><?php echo $album['count'];?></td>
+              <td align="center"><?php echo $album['quantity'];?></td>
+              <td align="center"><?php echo $album['price'];?></td>
+              <td align="center"><?php echo $album['total'];?></td>
+              <td align="center" class="del">
                   <a href="<?php echo $this->url->link('checkout/cart', 'removeAlbum='.$album['key']);?> "> <img src="catalog/view/theme/default/image/blank.gif">   </a>
               </td>
             </tr>
@@ -67,7 +67,7 @@
         <thead>
           <tr>
               <td colspan="2">Наименование</td>
-               <td align="left">Количество</td>
+               <td align="center">Количество</td>
               <td align="center">Цена (грн)</td>
              
               <td align="right">Итого (грн)</td>
@@ -93,13 +93,13 @@
               <?php if ($product['reward']) { ?>
               <small><?php echo $product['reward']; ?></small>
               <?php } ?></td>
-       <td class="quantity"><input type="text" name="quantity[<?php echo $product['key']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" />
+       <td style="text-align: center" class="quantity"><input type="text" name="quantity[<?php echo $product['key']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" />
               &nbsp;
               <input type="image" src="catalog/view/theme/default/image/update.png" alt="<?php echo $button_update; ?>" title="<?php echo $button_update; ?>" />
         </td>
         <td class="price"><?php echo $product['price']; ?></td>
-        <td class="total"><?php echo $product['total'];?></td>
-        <td  class="del">
+        <td style="padding-right: 25px;" class="total"><?php echo $product['total'];?></td>
+        <td  align="center" class="del">
                   <a href="<?php echo $this->url->link('checkout/cart', 'remove='.$product['key']);?> ">
             <img src="catalog/view/theme/default/image/blank.gif">
           </a>
@@ -114,7 +114,7 @@
   
   
   <a style="margin:0 0 30px 20px" class="button" href="<?php echo $continue; ?>"><?php echo $button_shopping; ?></a>
-  <a style="margin:0 0 30px 160px" class="button" href="<?php echo $checkout; ?>"><?php echo $button_checkout; ?> </a>
+  <a style="margin:0 0 30px 140px" class="button" href="<?php echo $checkout; ?>"><?php echo $button_checkout; ?> </a>
  <div class="cart-total">
       <?php foreach ($totals as $total) { ?>
         <div><b><?php echo $total['title']; ?> : <?php echo $total['text']; ?></b></div>

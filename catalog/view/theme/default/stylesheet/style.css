@@ -4,7 +4,7 @@ body, html { background:#fbdca0 url(../image/body_bg.png) repeat-x top; padding:
 .clear {clear:both; font-size:0}
 h1, h2, h3, h4 {font-weight:normal; margin:0}
 a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease;}
-a:hover {color:#d33461}
+
 #container td {vertical-align:top}
 #left_cont {width:1020px; padding-bottom:230px;}
 #right_cont {width:28%; background:url(../image/right_bg.png) repeat-y top left; padding-bottom:230px}
@@ -39,7 +39,6 @@ a:hover {color:#d33461}
 
 
 
-#right_cont #album_online .title {width:166px; height:24px; text-align:center; background:url(../image/sprite.png) no-repeat -116px -213px; font-family: 'Cuprum', sans-serif; color:#6b1b3b; text-transform:uppercase; font-size:17px; padding-top:4px; margin: 10px auto 15px auto}
 #right_cont #album_online .inCont {width:167px; height:26px; background:url(../image/sprite.png) -295px -215px; margin:10px auto 0 auto}
 #right_cont #album_online .inCont input {border:none; outline-style:none; width:145px; background-color:#FFFFFF; margin:3px 0 0 10px;}
 #right_cont #album_online #reg_cont {width:167px; margin:10px auto}
@@ -52,7 +51,7 @@ a:hover {color:#d33461}
 
 
 
-#right_cont #login-module .title {width:166px; height:24px; text-align:center; background:url(../image/sprite.png) no-repeat -116px -213px; font-family: 'Cuprum', sans-serif; color:#6b1b3b; text-transform:uppercase; font-size:17px; padding-top:4px; margin: 10px auto 15px auto}
+#right_cont .title {width:166px; height:24px; text-align:center; background:url(../image/sprite.png) no-repeat -116px -213px; font-family: 'Cuprum', sans-serif; color:#6b1b3b; text-transform:uppercase; font-size:17px; padding-top:4px; margin: 10px auto 15px auto}
 #right_cont #login-module .inCont {width:167px; height:26px; background:url(../image/sprite.png) -295px -215px; margin:10px auto 0 auto}
 #right_cont #login-module .inCont input {border:none; outline-style:none; width:145px; background-color:#FFFFFF; margin:3px 0 0 10px;}
 #right_cont #login-module #reg_cont {width:167px; margin:10px auto}
@@ -73,7 +72,7 @@ a:hover {color:#d33461}
 #right_cont #login-module #reg_cont .forgotPass:hover {color:#000}
 #right_cont .sep {width:167px; height:5px; background:url(../image/sprite.png) -116px -202px; margin:20px auto}
 .bigButton {height:48px}
-#right_cont .registration {width:170px; margin:0 auto}
+#right_cont .registration {width:155px; margin:0 auto;height:44px;}
 #right_cont .registration .left {padding:9px 12px 0 35px !important;}
 #right_cont .upl {width:139px; margin:0 auto;}
 #right_cont .upl .left {width:90px; margin:0 auto; font-size:18px!important; padding:9px 0px 0 23px !important}
@@ -216,7 +215,7 @@ a:hover {color:#d33461}
 .albumCont .picCont {width:136px; height:99px; margin:-105px 0 0 11px; border-radius: 0 3px 3px 0; overflow:hidden; text-align:center;}
 .albumCont .picCont img {max-width:150px; max-height:110px; min-height:99px}
 .albumCont .blick {width:136px; height:99px; background:url(../image/sprite.png) -140px -1003px; position:absolute; z-index:2; top:0px; left:11px}
-.albumCont .buttons {width:36px; height:49px; position:absolute; top:9px; left:147px}
+.albumCont .buttons {width:36px; height:49px; position:absolute; top:9px; left:141px}
 .albumCont .buttons .edit {width:36px; height:22px; display:block; background:url(../image/sprite.png) -9px -910px; margin-bottom:5px}
 .albumCont .buttons .edit:hover {background:url(../image/sprite.png) 0px -910px}
 .albumCont .buttons .del {width:36px; height:22px; display:block; background:url(../image/sprite.png) -9px -937px}
@@ -240,7 +239,7 @@ a:hover {color:#d33461}
 .photoCont .cor2 {width:15px; height:15px; position:absolute; z-index:2; background:url(../image/sprite.png) -106px -910px; top:-2px; right:-2px}
 .photoCont .cor3 {width:15px; height:15px; position:absolute; z-index:2; background:url(../image/sprite.png) -89px -927px; bottom:-2px; left:-2px}
 .photoCont .cor4 {width:15px; height:15px; position:absolute; z-index:2; background:url(../image/sprite.png) -106px -927px; bottom:-2px; right:-2px}
-.photoCont .buttons {width:36px; height:49px; position:absolute; top:15px; right:-36px}
+.photoCont .buttons {width:36px; height:49px; position:absolute; top:15px; right:-43px}
 .photoCont .buttons .edit {width:36px; height:22px; display:block; background:url(../image/sprite.png) -9px -910px; margin-bottom:5px}
 .photoCont .buttons .edit:hover {background:url(../image/sprite.png) 0px -910px}
 .photoCont .buttons .del {width:36px; height:22px; display:block; background:url(../image/sprite.png) -9px -937px}
@@ -367,7 +366,7 @@ a:hover {color:#d33461}
 #shop_cont #center #button-cart a:hover img {opacity:1; progid:DXImageTransform.Microsoft.Alpha(opacity=100);}
 #shop_cont #center #sort {padding:20px 20px 10px 20px; background:url(../image/text_bg.gif); margin-bottom:20px}
 #shop_cont #center #sort .left {width:110px; float:left}
-#shop_cont #center #sort .right {width:550px; float:left;}
+#shop_cont #center #sort .right {width:460px; padding-left:75px; float:left;}
 #shop_cont #center #sort .right select {margin:0 0 10px 10px; font-family:Tahoma, Geneva, sans-serif; font-size:11px}
 #shop_cont #center .titleTable {width:700px}
 #shop_cont #center .titleTable h2 {font-family: 'Cuprum', sans-serif; font-size:14px; text-transform:uppercase; white-space:nowrap; padding:0 10px; line-height:12px}

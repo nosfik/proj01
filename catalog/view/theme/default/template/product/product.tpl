@@ -333,7 +333,7 @@
   <?php } ?>
   
   <?php if ($tags) { ?>
-  <div class="tags"><b><?php echo $text_tags; ?></b>
+ <!-- <div class="tags"><b><?php echo $text_tags; ?></b>
     <?php for ($i = 0; $i < count($tags); $i++) { ?>
     <?php if ($i < (count($tags) - 1)) { ?>
     <a href="<?php echo $tags[$i]['href']; ?>"><?php echo $tags[$i]['tag']; ?></a>,
@@ -341,7 +341,7 @@
     <a href="<?php echo $tags[$i]['href']; ?>"><?php echo $tags[$i]['tag']; ?></a>
     <?php } ?>
     <?php } ?>
-  </div>
+  </div>-->
   <?php } ?>
   <?php echo $content_bottom; ?></div>
 <script type="text/javascript"><!--
