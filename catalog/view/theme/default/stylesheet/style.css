@@ -12,9 +12,9 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 #logo {float:left;margin:31px 0 0 30px; cursor:pointer}
 #logo #logotype {width:150px; height:163px; background:url(../image/sprite.png); float:left}
 #logo #logotype div {width:76px; height:88px; background:url(../image/sprite.png) 0 -183px; margin:42px 0 0 37px; opacity:0; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);-webkit-transition: all 0.2s ease;-o-transition: all 0.2s ease;-moz-transition: all 0.2s ease;transition: all 0.2s ease;}
-#logo.hover #logotype div {opacity:1}
+#logo.hover #logotype div {opacity:1; filter: 0;}
 #logo #title img {opacity:0; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);-webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease;}
-#logo.hover #title img {opacity:1; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=100);}
+#logo.hover #title img {opacity:1; filter: 0;}
 #logo #title {width:263px; height:86px; float:left; background:url(../image/sprite.png) -161px 0; margin:0px 0 0 0}
 #logo #text {position:absolute; color:#FFF; margin:60px 0 0 170px; font-size:12px}
 #logo #hand {width:252px; height:84px; background:url(../image/sprite.png) -183px -112px; position:absolute; margin:80px 0 0 170px}
