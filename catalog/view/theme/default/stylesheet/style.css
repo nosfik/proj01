@@ -86,7 +86,7 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 #right_cont #shop #title_right {float:left; width:28px; height:40px; background:url(../image/sprite.png) -433px -285px}
 #right_cont #shop #pic {width:180px; height:170px; background:url(../image/sprite.png) 0 -339px; margin:10px 0 0 5px}
 #right_cont #shop #pic img {width:180px; height:170px; background:url(../image/sprite.png) -213px -339px; border:none; opacity:0; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0); -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease}
-#right_cont #shop.hover #pic img {opacity:1}
+#right_cont #shop.hover #pic img {opacity:1;filter:1}
 #right_cont #cart {width:105px; margin:0 auto}
 #right_cont #cart #title_left {float:left; text-align:center; font-family: 'Cuprum', sans-serif; text-transform:uppercase; font-size:14px; padding-left:28px; display:block; color:#FFF; text-shadow:1px 1px 0px #7f5d6c; line-height:18px; background: url(../image/sprite.png) no-repeat -474px -291px}
 #right_cont #cart #title_right {margin-left: 80px;width:28px; height:25px; background:url(../image/sprite.png) -433px -291px}
@@ -137,17 +137,17 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 #footer #partnership #robot {float:left; position:relative; margin:10px 0 0 0}
 #footer #partnership #robot #body {width:75px; height:81px; background:url(../image/sprite.png) -223px -644px; position:absolute; z-index:3; margin-top:0px; -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease}
 #footer #partnership #robot #body #hand {width:41px; height:83px; position:absolute; margin:0 0 0 -41px}
-#footer #partnership #robot #body #hand #down {width:20px; height:68px; background:url(../image/sprite.png) -203px -657px; position:absolute; z-index:4; margin:13px 0 0 21px; opacity:1; -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease}
-#footer #partnership #robot #body #hand #up {width:41px; height:44px; background:url(../image/sprite.png) -318px -553px; position:absolute; z-index:5; margin:-2px 0 0 0; opacity:0; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0); -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease}
+#footer #partnership #robot #body #hand #down {width:20px; height:68px; background:url(../image/sprite.png) -203px -657px; position:absolute; z-index:4; margin:13px 0 0 21px; opacity:1;filter:0; -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease}
+#footer #partnership #robot #body #hand #up {width:41px; height:44px; background:url(../image/sprite.png) -318px -553px; position:absolute; z-index:5; margin:-2px 0 0 0; opacity:0; filter: alpha(opacity = 0); -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease}
 #footer #partnership #robot #leg {width:19px; height:73px; background:url(../image/sprite.png) -328px -648px; position:absolute; z-index:2; margin:35px 0 0 6px}
 #footer #partnership #robot #leg2 {width:19px; height:73px; background:url(../image/sprite.png) -328px -648px; position:absolute; z-index:2; margin:35px 0 0 30px}
 #footer #partnership #robot #shadow {width:92px; height:12px; background:url(../image/sprite.png) -13px -547px; position:absolute; z-index:1; margin:100px 0 0 -18px; -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease; opacity:1}
 #footer #partnership.hover #robot #body {width:75px; height:81px; background:url(../image/sprite.png) -223px -644px; position:absolute; z-index:3; margin-top:-20px}
-#footer #partnership.hover #robot #body #hand #down {opacity:0}
-#footer #partnership.hover #robot #body #hand #up {opacity:1}
+#footer #partnership.hover #robot #body #hand #down {opacity:0;filter: alpha(opacity = 0);}
+#footer #partnership.hover #robot #body #hand #up {opacity:1; filter:0}
 #footer #partnership.hover #robot #shadow {opacity:0.6}
-#footer #partnership #robot #cloud {position:absolute; z-index:7; background:#FFF; border-radius:15px; padding:15px; margin:-40px 0 0 70px; -webkit-box-shadow: 1px 1px 0px 0px #e0d090;-moz-box-shadow: 1px 1px 0px 0px #e0d090;box-shadow: 1px 1px 0px 0px #e0d090; white-space:nowrap; opacity:0; progid:DXImageTransform.Microsoft.Alpha(opacity=0); -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease;}
-#footer #partnership.hover #robot #cloud {margin:-115px 0 0 70px; opacity:1; progid:DXImageTransform.Microsoft.Alpha(opacity=100)}
+#footer #partnership #robot #cloud {position:absolute; z-index:7; background:#FFF; border-radius:15px; padding:15px; margin:-40px 0 0 70px; -webkit-box-shadow: 1px 1px 0px 0px #e0d090;-moz-box-shadow: 1px 1px 0px 0px #e0d090;box-shadow: 1px 1px 0px 0px #e0d090; white-space:nowrap; opacity:0; filter: alpha(opacity = 0); -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease;}
+#footer #partnership.hover #robot #cloud {margin:-115px 0 0 70px; opacity:1; filter:0;}
 #footer #partnership #robot #cloud #tail {width:37px; height:17px; background:url(../image/sprite.png) -146px -542px; position:absolute; margin:15px 0 0 -20px}
 #footer #partnership #robot #cloud h4 {font-family: 'Open Sans Condensed', sans-serif; font-size:19px; color:#C00; margin:-2px 0 7px 0; line-height:19px}
 #footer #partnership #link {float:left; font-family: 'Cuprum', sans-serif; color:#2a6ca9; margin:30px 0 0 90px; line-height:20px}
@@ -161,7 +161,7 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 #footer #fotobook #book #bottom {width:105px; height:89px; background:url(../image/sprite.png) 0 -808px; opacity:1;-webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease;}
 #footer #fotobook #book #top {width:105px; height:89px; background:url(../image/sprite.png) -389px -808px; position:absolute; top:0; opacity:0; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);-webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease;}
 #footer #fotobook #book.hover #bottom {opacity:0}
-#footer #fotobook #book.hover #top {opacity:1}
+#footer #fotobook #book.hover #top {opacity:1;filter:0}
 #footer #fotobook #link {font-family: 'Cuprum', sans-serif; color:#2a6ca9; line-height:20px; float:left; font-size:16px; margin:13px 0 0 -5px}
 #footer #fotobook #link span {text-transform:uppercase; font-size:19px; display:block}
 #footer #bottom_menu {float:left; font-family:Georgia, "Times New Roman", Times, serif; font-style:italic; font-size:12px; line-height:18px; margin-left:20px}
