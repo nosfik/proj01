@@ -1,5 +1,7 @@
-<?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
-<div id="content"><?php echo $content_top; ?>
+<?php echo $header; ?>
+<div class="content-wrapper">
+    <div class="content">
+    <?php echo $content_top; ?>
   <div class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
@@ -34,51 +36,35 @@
     </div>
   </div>
   
-  <div class="">
+  <div class="dream-house">
   	
-  	<table><tr>
+  	<ul class="menu-horizontal house-list">
   	<?php for ($i = 0; $i < count($products); $i++) { $product = $products[$i];	?>
   		
 	    <?php if($i >= 3 && $i % 3 == 0) {?>
-	    	</tr><tr>
+	    	</ul><ul class="menu-horizontal house-list">
 	    <?php } ?>
-	    <td>
+	    <li>
 	    	
 	    	<div class="house-item" onclick="location.href='<?php echo $product['href']; ?>'">
                     <div class="frame"></div>
-                    <img height="167" width="228" src="<?php echo $product['thumb']; ?>">
-                    <img height="68" width="68" class="house-tag" src="catalog/view/theme/default/image/new-tag.png">
+                    <div style="width:228px; height:167px"><img height="167" width="228" src="<?php echo $product['thumb']; ?>"></div>
+                    <img height="68" width="68" class="house-tag" src="<?php echo $product['tag'];?>">
 
-                    <p class="house-price">130 370 €</p>
+                    <p class="house-price"><?php echo $product['price'];?> <?php echo $product['currency'];?></p>
                     <a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
                     <ul class="house-characteristics">
                         <li class="house-number"><?php echo $product['number']; ?></li>
                         <li class="house-placement"><?php echo $product['city']; ?></li>
-                        <li class="house-bathroom"><?php echo $product['href']; ?> санузлов</li>
-                        <li class="house-area"><?php echo $product['href']; ?> м/кв</li>
-                        <li class="house-bedroom"><?php echo $product['href']; ?> спальни</li>
+                        <li class="house-bathroom"><?php echo $product['bathroom']; ?> санузлов</li>
+                        <li class="house-area"><?php echo $product['area']; ?> м/кв</li>
+                        <li class="house-bedroom"><?php echo $product['bedroom']; ?> спальни</li>
                     </ul>
                 </div>
 	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    </td>
-    <div>
-      <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" title="<?php echo $product['name']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
-      <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
-      <?php if ($product['price']) { ?>
-      <div class="price">
-        <?php echo $product['price']; ?>
-      </div>
-      <?php } ?>
-    </div>
+	    </li>
     <?php } ?>
-    </tr>
-    </table>
+    </ul>
     
   </div>
   
@@ -93,5 +79,7 @@
   </div>
   <?php } ?>
   <?php echo $content_bottom; ?></div>
+  
+  </div>
 
 <?php echo $footer; ?>

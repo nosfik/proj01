@@ -100,7 +100,7 @@ class ControllerCommonHeader extends Controller {
 		
 		$this->data['categories'] = array();
 					
-		$categories = $this->model_catalog_category->getCategories(0);
+		/*$categories = $this->model_catalog_category->getCategories(0);
 		
 		foreach ($categories as $category) {
 			if ($category['top']) {
@@ -131,7 +131,7 @@ class ControllerCommonHeader extends Controller {
 					'href'     => $this->url->link('product/category', 'path=' . $category['category_id'])
 				);
 			}
-		}
+		}*/
 		
 		$this->children = array(
 			'module/language',

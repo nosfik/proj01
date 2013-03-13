@@ -70,7 +70,6 @@ class ControllerProductCategory extends Controller {
 		}
 		
 		$category_info = $this->model_catalog_category->getCategory($category_id);
-	
 		if ($category_info) {
 			if ($category_info['seo_title']) {
 		  		$this->document->setTitle($category_info['seo_title']);
@@ -105,15 +104,7 @@ class ControllerProductCategory extends Controller {
 			$this->data['button_compare'] = $this->language->get('button_compare');
 			$this->data['button_continue'] = $this->language->get('button_continue');
 					
-			if ($category_info['image']) {
-				$this->data['thumb'] = $this->model_tool_image->resize($category_info['image'], $this->config->get('config_image_category_width'), $this->config->get('config_image_category_height'));
-			} else {
-				$this->data['thumb'] = '';
-			}
-									
-			$this->data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
-			$this->data['compare'] = $this->url->link('product/compare');
-			
+						
 			$url = '';
 			
 			if (isset($this->request->get['sort'])) {
@@ -167,29 +158,6 @@ class ControllerProductCategory extends Controller {
 					$image = false;
 				}
 				
-				if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
-					$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')));
-				} else {
-					$price = false;
-				}
-				
-				if ((float)$result['special']) {
-					$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')));
-				} else {
-					$special = false;
-				}	
-				
-				if ($this->config->get('config_tax')) {
-					$tax = $this->currency->format((float)$result['special'] ? $result['special'] : $result['price']);
-				} else {
-					$tax = false;
-				}				
-				
-				if ($this->config->get('config_review_status')) {
-					$rating = (int)$result['rating'];
-				} else {
-					$rating = false;
-				}
 								
 				$this->data['products'][] = array(
 				
@@ -197,13 +165,15 @@ class ControllerProductCategory extends Controller {
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
+					'currency'        => $result['currency'],
+					'tag'        => $result['tag'],
 					//'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 100) . '..',
-					'price'       => $price,
+					'price'       => $result['price'],
 					'city'         	   => $result['city'],
 					'number'           => $result['number'],
 					'area'        	   => $result['area'],
 					'bathroom'         => $result['bathroom'],
-					'badroom'          => $result['badroom'],
+					'bedroom'          => $result['bedroom'],
 					'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'])
 				);
 			}

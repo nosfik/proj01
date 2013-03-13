@@ -7,8 +7,10 @@ class ModelCatalogProduct extends Model {
 	public function getProduct($product_id) {
 		
 		$query = $this->db->query(
-		"SELECT DISTINCT *, pd.name AS name, p.image, z.name as city FROM " . DB_PREFIX . "product p 
+		"SELECT DISTINCT *, pd.name AS name, p.image, z.name as city, pt.image as tag, pc.value as currency FROM " . DB_PREFIX . "product p 
 		LEFT JOIN " . DB_PREFIX . "zone z ON (p.zone_id = z.zone_id) 
+		LEFT JOIN " . DB_PREFIX . "product_tag pt ON (p.product_tag_id = pt.product_tag_id) 
+		LEFT JOIN " . DB_PREFIX . "product_currency pc ON (p.product_currency_id = pc.product_currency_id) 
 		LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) 
 		WHERE p.product_id = '" . (int)$product_id . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1'");
 		
@@ -22,11 +24,12 @@ class ModelCatalogProduct extends Model {
 				'meta_description' => $query->row['meta_description'],
 				'meta_keyword'     => $query->row['meta_keyword'],
 				'city'         	   => $query->row['city'],
+				'currency'         => $query->row['currency'],
 				'number'           => $query->row['number'],
+				'tag'              => $query->row['tag'],
 				'area'        	   => $query->row['area'],
 				'bathroom'         => $query->row['bathroom'],
-				'bedroom'          => $query->row['badroom'],
-				'quantity'         => $query->row['quantity'],
+				'bedroom'          => $query->row['bedroom'],
 				'image'            => $query->row['image'],
 				'price'            => $query->row['price'],
 				'sort_order'       => $query->row['sort_order'],
@@ -175,7 +178,7 @@ class ModelCatalogProduct extends Model {
 			
 		$cache = md5(http_build_query($data));
 		
-		$product_data = $this->cache->get('product.total.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . (int)$customer_group_id . '.' . $cache);
+		$product_data = $this->cache->get('product.total.' . (int)$this->config->get('config_language_id') . '.' . $cache);
 		
 		if (!$product_data) {
 			$sql = "SELECT COUNT(DISTINCT p.product_id) AS total FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id)";
@@ -217,7 +220,7 @@ class ModelCatalogProduct extends Model {
 			
 			$product_data = $query->row['total']; 
 			
-			$this->cache->set('product.total.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . (int)$customer_group_id . '.' . $cache, $product_data);
+			$this->cache->set('product.total.' . (int)$this->config->get('config_language_id') . '.' . $cache, $product_data);
 		}
 		
 		return $product_data;
