@@ -56,37 +56,42 @@ DD_belatedPNG.fix('#logo img');
 <div class="page-wrapper">
 <div id="top" class="header-wrapper">
     <div class="header">
-        <div class="logo">
-            <img src="catalog/view/theme/default/image/logo.png"/>
-        </div>
+    	
+    	<div class="logo"><a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a></div>
+
+       
         <div class="moto">
             <p>слоган компании</p>
-            <ul class="menu-horizontal languages">
+            <?php print_r($languages);?>
+            <?php echo $language; ?>
+            <ul style="display:none" class="menu-horizontal languages">
                 <li id="langRu" class="active">ru</li>
                 <li id="langEn">en</li>
             </ul>
         </div>
         <div id="headerMainMenu" class="droplinebar">
             <ul id="headerOuterMenu">
-                <li class="main-menu-item"><a href="#">о нас</a></li>
-                <li class="main-menu-item"><a href="#">продажа</a></li>
-                <li class="main-menu-item">
-                    <a href="#">строительство</a>
-                    <ul id="headerInnerMenu">
-                        <li class="sub-main-menu-item"><a href="#">продажа - апартаменты</a></li>
-                        <li class="sub-main-menu-item"><a href="#">виллы</a></li>
-                        <li class="sub-main-menu-item"><a href="#">Таунхаузы</a></li>
-                        <li class="sub-main-menu-item"><a href="#">Земельные участки</a></li>
-                        <li class="sub-main-menu-item"><a href="#">Комерческие предложения</a></li>
-                        <li class="sub-main-menu-item"><a href="#">Строительство - Виллы</a></li>
-                        <li class="sub-main-menu-item"><a href="#">Земельные участки</a></li>
+                <li class="main-menu-item"><a href="#"><?php echo $text_about_us;?></a></li>
+                <li class="main-menu-item"><a href="#"><?php echo $text_sales;?></a>
+                	<ul id="headerInnerMenu">
+                		<?php foreach($sale_categories as $category) {?>
+                			<li class="sub-main-menu-item"><a href="<?php echo $category['url'];?>"><?php echo $category['name'];?></a></li>
+                		<?php } ?>
                     </ul>
                 </li>
-                <li class="main-menu-item"><a href="#">заявки</a></li>
-                <li class="main-menu-item"><a href="#">новости</a></li>
-                <li class="main-menu-item"><a href="#">фото</a></li>
-                <li class="main-menu-item"><a href="#">видео</a></li>
-                <li class="main-menu-item"><a href="#">контакты</a></li>
+                <li class="main-menu-item">
+                    <a href="#"><?php echo $text_building;?></a>
+                    <ul id="headerInnerMenu">
+                        <?php foreach($build_categories as $category) {?>
+                			<li class="sub-main-menu-item"><a href="<?php echo $category['url'];?>"><?php echo $category['name'];?></a></li>
+                		<?php } ?>
+                    </ul>
+                </li>
+                <li class="main-menu-item"><a href="#"><?php echo $text_request;?></a></li>
+                <li class="main-menu-item"><a href="#"><?php echo $text_news;?></a></li>
+                <li class="main-menu-item"><a href="#"><?php echo $text_photo;?></a></li>
+                <li class="main-menu-item"><a href="#"><?php echo $text_video;?></a></li>
+                <li class="main-menu-item"><a href="#"><?php echo $text_contact;?></a></li>
             </ul>
         </div>
     </div>
@@ -98,7 +103,7 @@ DD_belatedPNG.fix('#logo img');
   <?php if ($logo) { ?>
   <div id="logo"><a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a></div>
   <?php } ?>
-  <?php echo $language; ?>
+  
 
 
 </div> -->

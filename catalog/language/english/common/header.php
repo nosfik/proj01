@@ -1,5 +1,22 @@
 <?php
 // Text
+
+
+
+
+$_['text_about_us']         = 'About us';
+$_['text_sales']           = 'Sales';
+$_['text_building']         = 'Building';
+$_['text_request']          = 'Request';
+$_['text_news']           	= 'News';
+$_['text_photo']            = 'Photo';
+$_['text_video']            = 'Video';
+$_['text_contact']          = 'Contacts';
+
+
+
+
+
 $_['text_home']           = 'Home';
 $_['text_wishlist']       = 'Wish List (%s)';
 $_['text_shopping_cart']  = 'Shopping Cart';

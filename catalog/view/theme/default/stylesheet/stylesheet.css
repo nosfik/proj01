@@ -403,6 +403,7 @@ label {
 .breadcrumb {
 	color: #CCCCCC;
 	margin-bottom: 10px;
+	z-index: 10001;
 }
 .success, .warning, .attention, .information {
 	padding: 10px 10px 10px 33px;
@@ -533,7 +534,7 @@ table.radio tr.highlight:hover td {
 	cursor: pointer;
 }
 .pagination {
-	border-top: 1px solid #EEEEEE;
+	/*border-top: 1px solid #EEEEEE;*/
 	padding-top: 8px;
 	display: inline-block;
 	width: 100%;
@@ -822,7 +823,7 @@ a.button:hover, input.button:hover {
 }
 /* product */
 .product-filter {
-	border-bottom: 1px solid #EEEEEE;
+	/*border-bottom: 1px solid #EEEEEE;*/
 	padding-bottom: 5px;
 	overflow: auto;
 }

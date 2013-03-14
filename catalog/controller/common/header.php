@@ -73,7 +73,17 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_logged'] = sprintf($this->language->get('text_logged'), $this->url->link('account/account', '', 'SSL'), $this->customer->getFirstName(), $this->url->link('account/logout', '', 'SSL'));
 		$this->data['text_account'] = $this->language->get('text_account');
     	$this->data['text_checkout'] = $this->language->get('text_checkout');
-				
+		
+		
+		$this->data['text_about_us'] = $this->language->get('text_about_us');
+		$this->data['text_sales'] = $this->language->get('text_sales');
+		$this->data['text_building'] = $this->language->get('text_building');
+		$this->data['text_request'] = $this->language->get('text_request');
+		$this->data['text_news'] = $this->language->get('text_news');
+		$this->data['text_photo'] = $this->language->get('text_photo');
+		$this->data['text_video'] = $this->language->get('text_video');
+		$this->data['text_contact'] = $this->language->get('text_contact');
+		
 		$this->data['home'] = $this->url->link('common/home');
 		$this->data['wishlist'] = $this->url->link('account/wishlist', '', 'SSL');
 		$this->data['logged'] = $this->customer->isLogged();
@@ -99,6 +109,29 @@ class ControllerCommonHeader extends Controller {
 		$this->load->model('catalog/product');
 		
 		$this->data['categories'] = array();
+		
+		$sale_categ = $this->model_catalog_category->getCategoriesByArray($this->model_catalog_category->getCategoriesByParentId(1));
+		$build_categ = $this->model_catalog_category->getCategoriesByArray($this->model_catalog_category->getCategoriesByParentId(2));
+		
+		$this->data['sale_categories'] = array();
+		$this->data['build_categories'] = array();
+		
+		foreach ($sale_categ as $category) {
+			$this->data['sale_categories'][] = array(
+				'category_id' => $category['category_id'],
+				'name' => $category['name'],
+				'url' => $this->url->link('product/category', 'path=' . $category['category_id']),
+			);
+		}
+		
+		foreach ($build_categ as $category) {
+			$this->data['build_categories'][] = array(
+				'category_id' => $category['category_id'],
+				'name' => $category['name'],
+				'url' => $this->url->link('product/category', 'path=' . $category['category_id']),
+			);
+		}
+		
 					
 		/*$categories = $this->model_catalog_category->getCategories(0);
 		

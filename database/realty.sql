@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.1.48, for Win32 (ia32)
+-- MySQL dump 10.13  Distrib 5.5.20, for Win32 (x86)
 --
 -- Host: localhost    Database: realty
 -- ------------------------------------------------------
--- Server version	5.1.48-community
+-- Server version	5.5.20
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -503,7 +503,7 @@ CREATE TABLE `coupon` (
 
 LOCK TABLES `coupon` WRITE;
 /*!40000 ALTER TABLE `coupon` DISABLE KEYS */;
-INSERT INTO `coupon` VALUES (4,'-10% скидка','2222','P','10.0000',0,0,'0.0000','2011-01-01','2012-01-01',10,'10',1,'2009-01-27 13:55:03'),(5,'Бесплатная доставка','3333','P','0.0000',0,1,'100.0000','2009-03-01','2009-08-31',10,'10',1,'2009-03-14 21:13:53'),(6,'-10.00 скидка','1111','F','10.0000',0,0,'10.0000','1970-11-01','2020-11-01',100000,'10000',1,'2009-03-14 21:15:18');
+INSERT INTO `coupon` VALUES (4,'-10% скидка','2222','P',10.0000,0,0,0.0000,'2011-01-01','2012-01-01',10,'10',1,'2009-01-27 13:55:03'),(5,'Бесплатная доставка','3333','P',0.0000,0,1,100.0000,'2009-03-01','2009-08-31',10,'10',1,'2009-03-14 21:13:53'),(6,'-10.00 скидка','1111','F',10.0000,0,0,10.0000,'1970-11-01','2020-11-01',100000,'10000',1,'2009-03-14 21:15:18');
 /*!40000 ALTER TABLE `coupon` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -585,7 +585,7 @@ CREATE TABLE `currency` (
 
 LOCK TABLES `currency` WRITE;
 /*!40000 ALTER TABLE `currency` DISABLE KEYS */;
-INSERT INTO `currency` VALUES (1,'Рубль','RUB','',' р.','2',30.80500031,1,'2013-03-14 01:55:46'),(2,'US Dollar','USD','$','','2',1.00000000,1,'2013-03-14 01:55:46'),(3,'Euro','EUR','','€','2',0.77160001,1,'2013-03-14 01:55:46');
+INSERT INTO `currency` VALUES (1,'Рубль','RUB','',' р.','2',30.80500031,1,'2013-03-14 01:55:46'),(2,'US Dollar','USD','$','','2',1.00000000,1,'2013-03-14 22:16:02'),(3,'Euro','EUR','','€','2',0.77160001,1,'2013-03-14 01:55:46');
 /*!40000 ALTER TABLE `currency` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1122,7 +1122,7 @@ CREATE TABLE `length_class` (
 
 LOCK TABLES `length_class` WRITE;
 /*!40000 ALTER TABLE `length_class` DISABLE KEYS */;
-INSERT INTO `length_class` VALUES (1,'1.00000000'),(2,'10.00000000');
+INSERT INTO `length_class` VALUES (1,1.00000000),(2,10.00000000);
 /*!40000 ALTER TABLE `length_class` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1761,11 +1761,15 @@ CREATE TABLE `product` (
   `sort_order` int(2) NOT NULL DEFAULT '0',
   `viewed` int(7) NOT NULL DEFAULT '0',
   `date_modified` datetime DEFAULT '0000-00-00 00:00:00',
-  `product_currency_id` varchar(45) DEFAULT '0',
-  `product_tag_id` varchar(45) DEFAULT '0',
+  `product_currency_id` varchar(45) NOT NULL DEFAULT '0',
+  `product_tag_id` varchar(45) NOT NULL DEFAULT '0',
+  `kitchen` varchar(100) NOT NULL DEFAULT '0',
+  `garden` varchar(45) NOT NULL DEFAULT '0',
+  `pool` varchar(45) NOT NULL DEFAULT '0',
+  `air_cond` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`product_id`),
   UNIQUE KEY `number_UNIQUE` (`number`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1774,7 +1778,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,NULL,'4765','1',50,4,5,120000,'0000-00-00 00:00:00',1,0,0,'0000-00-00 00:00:00','1','0');
+INSERT INTO `product` VALUES (1,'data/logo.png','236','123',509,1,50,1200006,'0000-00-00 00:00:00',1,2,11,'2013-03-14 19:47:56','1','1','5','4','3',2),(3,'data/menu_info/pic1.png','234','207',453,234,34,345,'2013-03-14 16:34:11',1,1,10,'0000-00-00 00:00:00','1','1','0','0','0',0),(4,'','123','17',1,2,3,345,'2013-03-14 19:48:57',1,1,0,'0000-00-00 00:00:00','1','1','7','6','5',4);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1821,10 +1825,11 @@ CREATE TABLE `product_description` (
   `meta_keyword` varchar(255) NOT NULL,
   `seo_title` varchar(255) NOT NULL,
   `seo_h1` varchar(255) NOT NULL,
+  `heating` varchar(255) NOT NULL,
   PRIMARY KEY (`product_id`,`language_id`),
   KEY `name` (`name`),
   FULLTEXT KEY `description` (`description`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1833,7 +1838,7 @@ CREATE TABLE `product_description` (
 
 LOCK TABLES `product_description` WRITE;
 /*!40000 ALTER TABLE `product_description` DISABLE KEYS */;
-INSERT INTO `product_description` VALUES (1,1,'Вилла1','БОЛЬШАЯ вилла',' ',' ',' ',' '),(1,2,'Villa','big villa',' ',' ',' ',' ');
+INSERT INTO `product_description` VALUES (1,2,'Big house','&lt;p&gt;\r\n	dfg2&lt;/p&gt;\r\n','dfg2','fdg2','dfg2','fdg2','ffg'),(4,1,'dfgret','&lt;p&gt;\r\n	sdfsdf&lt;/p&gt;\r\n','','','','','rwer'),(3,1,'цук','&lt;p&gt;\r\n	укеук&lt;/p&gt;\r\n','вап','уке','авп','цуе','нету'),(3,2,'dfsd','&lt;p&gt;\r\n	sgdd&lt;/p&gt;\r\n','fdgdf','bdf','ger','wer','нету'),(1,1,'Большой дом','&lt;p&gt;\r\n	dfg0&lt;/p&gt;\r\n','dfg1','dfgdfg1','dfg1','dfg1','ыва'),(4,2,'erter','&lt;p&gt;\r\n	dfg&lt;/p&gt;\r\n','','','','','terter');
 /*!40000 ALTER TABLE `product_description` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1850,7 +1855,7 @@ CREATE TABLE `product_image` (
   `image` varchar(255) DEFAULT NULL,
   `sort_order` int(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`product_image_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1859,6 +1864,7 @@ CREATE TABLE `product_image` (
 
 LOCK TABLES `product_image` WRITE;
 /*!40000 ALTER TABLE `product_image` DISABLE KEYS */;
+INSERT INTO `product_image` VALUES (22,1,'data/menu_info/pic1.png',2),(21,1,'data/menu_info/fon.jpg',1),(5,3,'data/slider/1.jpg',1),(6,3,'data/slider/2.jpg',2);
 /*!40000 ALTER TABLE `product_image` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1911,7 +1917,7 @@ CREATE TABLE `product_old` (
 
 LOCK TABLES `product_old` WRITE;
 /*!40000 ALTER TABLE `product_old` DISABLE KEYS */;
-INSERT INTO `product_old` VALUES (28,'Товар 1','','','','','','','',939,7,'data/demo/htc_touch_hd_1.jpg',5,1,'100.0000',200,9,'2009-02-03','146.40000000',2,'0.00000000','0.00000000','0.00000000',1,1,1,0,1,'2009-02-03 16:06:50','2011-09-30 01:05:39',0),(29,'Товар 2','','','','','','','',999,6,'data/demo/palm_treo_pro_1.jpg',6,1,'279.9900',0,9,'2009-02-03','133.00000000',2,'0.00000000','0.00000000','0.00000000',3,1,1,0,1,'2009-02-03 16:42:17','2011-09-30 01:06:08',0),(30,'Товар 3','','','','','','','',7,6,'data/demo/canon_eos_5d_1.jpg',9,1,'100.0000',0,9,'2009-02-03','0.00000000',1,'0.00000000','0.00000000','0.00000000',1,1,1,0,1,'2009-02-03 16:59:00','2011-09-30 01:05:23',0),(31,'Товар 4','','','','','','','',1000,6,'data/demo/nikon_d300_1.jpg',0,1,'80.0000',0,9,'2009-02-03','0.00000000',1,'0.00000000','0.00000000','0.00000000',3,1,1,0,1,'2009-02-03 17:00:10','2011-09-30 01:06:00',0),(32,'Товар 5','','','','','','','',999,6,'data/demo/ipod_touch_1.jpg',8,1,'100.0000',0,9,'2009-02-03','5.00000000',1,'0.00000000','0.00000000','0.00000000',1,1,1,0,1,'2009-02-03 17:07:26','2011-09-30 01:07:22',0),(33,'Товар 6','','','','','','','',1000,6,'data/demo/samsung_syncmaster_941bw.jpg',0,1,'200.0000',0,9,'2009-02-03','5.00000000',1,'0.00000000','0.00000000','0.00000000',2,1,1,0,1,'2009-02-03 17:08:31','2011-09-30 01:06:29',0),(34,'Товар 7','','','','','','','',1000,6,'data/demo/ipod_shuffle_1.jpg',8,1,'100.0000',0,9,'2009-02-03','5.00000000',1,'0.00000000','0.00000000','0.00000000',2,1,1,0,1,'2009-02-03 18:07:54','2011-09-30 01:07:17',0),(35,'Товар 8','','','','','','','',1000,5,'',0,0,'100.0000',0,9,'2009-02-03','5.00000000',1,'0.00000000','0.00000000','0.00000000',1,1,1,0,1,'2009-02-03 18:08:31','2011-09-30 01:06:17',0),(36,'Товар 9','','','','','','','',994,6,'data/demo/ipod_nano_1.jpg',8,0,'100.0000',100,9,'2009-02-03','5.00000000',1,'0.00000000','0.00000000','0.00000000',2,1,1,0,1,'2009-02-03 18:09:19','2011-09-30 01:07:12',0),(40,'Товар 11','','','','','','','',970,5,'data/demo/iphone_1.jpg',8,1,'101.0000',0,9,'2009-02-03','10.00000000',1,'0.00000000','0.00000000','0.00000000',1,1,1,0,1,'2009-02-03 21:07:12','2011-09-30 01:06:53',0),(41,'Товар 14','','','','','','','',977,5,'data/demo/imac_1.jpg',8,1,'100.0000',0,9,'2009-02-03','5.00000000',1,'0.00000000','0.00000000','0.00000000',1,1,1,0,1,'2009-02-03 21:07:26','2011-09-30 01:06:44',0),(42,'Товар 15','','','','','','','',990,5,'data/demo/apple_cinema_30.jpg',8,1,'100.0000',400,9,'2009-02-04','12.50000000',1,'1.00000000','2.00000000','3.00000000',1,1,2,0,1,'2009-02-03 21:07:37','2011-09-30 00:46:19',0),(43,'Товар 16','','','','','','','',929,5,'data/demo/macbook_1.jpg',8,0,'500.0000',0,9,'2009-02-03','0.00000000',1,'0.00000000','0.00000000','0.00000000',2,1,1,0,1,'2009-02-03 21:07:49','2011-09-30 01:05:46',0),(44,'Товар 17','','','','','','','',1000,5,'data/demo/macbook_air_1.jpg',8,1,'1000.0000',0,9,'2009-02-03','0.00000000',1,'0.00000000','0.00000000','0.00000000',2,1,1,0,1,'2009-02-03 21:08:00','2011-09-30 01:05:53',0),(45,'Товар 18','','','','','','','',998,5,'data/demo/macbook_pro_1.jpg',8,1,'2000.0000',0,100,'2009-02-03','0.00000000',1,'0.00000000','0.00000000','0.00000000',2,1,1,0,1,'2009-02-03 21:08:17','2011-09-15 22:22:01',0),(46,'Товар 19','','','','','','','',1000,5,'data/demo/sony_vaio_1.jpg',10,1,'1000.0000',0,9,'2009-02-03','0.00000000',1,'0.00000000','0.00000000','0.00000000',2,1,1,0,1,'2009-02-03 21:08:29','2011-09-30 01:06:39',0),(47,'Товар 21','','','','','','','',1000,5,'data/demo/hp_1.jpg',7,1,'100.0000',400,9,'2009-02-03','1.00000000',1,'0.00000000','0.00000000','0.00000000',1,0,1,0,1,'2009-02-03 21:08:40','2011-09-30 01:05:28',0),(48,'Товар 20','test 1','','','','','','test 2',995,5,'data/demo/ipod_classic_1.jpg',8,1,'100.0000',0,9,'2009-02-08','1.00000000',1,'0.00000000','0.00000000','0.00000000',2,1,1,0,1,'2009-02-08 17:21:51','2011-09-30 01:07:06',0),(49,'SAM1','','','','','','','',0,8,'data/demo/samsung_tab_1.jpg',0,1,'199.9900',0,9,'2011-04-25','0.00000000',1,'0.00000000','0.00000000','0.00000000',1,1,1,1,1,'2011-04-26 08:57:34','2011-09-30 01:06:23',4),(64,'Товар 01','','','','','','','',946,7,'data/demo/htc_touch_hd_1.jpg',5,1,'500.0000',200,9,'2009-02-03','146.40000000',2,'0.00000000','0.00000000','0.00000000',1,1,1,0,0,'2011-05-24 23:48:34','0000-00-00 00:00:00',0);
+INSERT INTO `product_old` VALUES (28,'Товар 1','','','','','','','',939,7,'data/demo/htc_touch_hd_1.jpg',5,1,100.0000,200,9,'2009-02-03',146.40000000,2,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 16:06:50','2011-09-30 01:05:39',0),(29,'Товар 2','','','','','','','',999,6,'data/demo/palm_treo_pro_1.jpg',6,1,279.9900,0,9,'2009-02-03',133.00000000,2,0.00000000,0.00000000,0.00000000,3,1,1,0,1,'2009-02-03 16:42:17','2011-09-30 01:06:08',0),(30,'Товар 3','','','','','','','',7,6,'data/demo/canon_eos_5d_1.jpg',9,1,100.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 16:59:00','2011-09-30 01:05:23',0),(31,'Товар 4','','','','','','','',1000,6,'data/demo/nikon_d300_1.jpg',0,1,80.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,3,1,1,0,1,'2009-02-03 17:00:10','2011-09-30 01:06:00',0),(32,'Товар 5','','','','','','','',999,6,'data/demo/ipod_touch_1.jpg',8,1,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 17:07:26','2011-09-30 01:07:22',0),(33,'Товар 6','','','','','','','',1000,6,'data/demo/samsung_syncmaster_941bw.jpg',0,1,200.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 17:08:31','2011-09-30 01:06:29',0),(34,'Товар 7','','','','','','','',1000,6,'data/demo/ipod_shuffle_1.jpg',8,1,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 18:07:54','2011-09-30 01:07:17',0),(35,'Товар 8','','','','','','','',1000,5,'',0,0,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 18:08:31','2011-09-30 01:06:17',0),(36,'Товар 9','','','','','','','',994,6,'data/demo/ipod_nano_1.jpg',8,0,100.0000,100,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 18:09:19','2011-09-30 01:07:12',0),(40,'Товар 11','','','','','','','',970,5,'data/demo/iphone_1.jpg',8,1,101.0000,0,9,'2009-02-03',10.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 21:07:12','2011-09-30 01:06:53',0),(41,'Товар 14','','','','','','','',977,5,'data/demo/imac_1.jpg',8,1,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 21:07:26','2011-09-30 01:06:44',0),(42,'Товар 15','','','','','','','',990,5,'data/demo/apple_cinema_30.jpg',8,1,100.0000,400,9,'2009-02-04',12.50000000,1,1.00000000,2.00000000,3.00000000,1,1,2,0,1,'2009-02-03 21:07:37','2011-09-30 00:46:19',0),(43,'Товар 16','','','','','','','',929,5,'data/demo/macbook_1.jpg',8,0,500.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 21:07:49','2011-09-30 01:05:46',0),(44,'Товар 17','','','','','','','',1000,5,'data/demo/macbook_air_1.jpg',8,1,1000.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 21:08:00','2011-09-30 01:05:53',0),(45,'Товар 18','','','','','','','',998,5,'data/demo/macbook_pro_1.jpg',8,1,2000.0000,0,100,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 21:08:17','2011-09-15 22:22:01',0),(46,'Товар 19','','','','','','','',1000,5,'data/demo/sony_vaio_1.jpg',10,1,1000.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 21:08:29','2011-09-30 01:06:39',0),(47,'Товар 21','','','','','','','',1000,5,'data/demo/hp_1.jpg',7,1,100.0000,400,9,'2009-02-03',1.00000000,1,0.00000000,0.00000000,0.00000000,1,0,1,0,1,'2009-02-03 21:08:40','2011-09-30 01:05:28',0),(48,'Товар 20','test 1','','','','','','test 2',995,5,'data/demo/ipod_classic_1.jpg',8,1,100.0000,0,9,'2009-02-08',1.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-08 17:21:51','2011-09-30 01:07:06',0),(49,'SAM1','','','','','','','',0,8,'data/demo/samsung_tab_1.jpg',0,1,199.9900,0,9,'2011-04-25',0.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,1,1,'2011-04-26 08:57:34','2011-09-30 01:06:23',4),(64,'Товар 01','','','','','','','',946,7,'data/demo/htc_touch_hd_1.jpg',5,1,500.0000,200,9,'2009-02-03',146.40000000,2,0.00000000,0.00000000,0.00000000,1,1,1,0,0,'2011-05-24 23:48:34','0000-00-00 00:00:00',0);
 /*!40000 ALTER TABLE `product_old` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1923,11 +1929,11 @@ DROP TABLE IF EXISTS `product_tag`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product_tag` (
-  `product_tag_id` int(11) NOT NULL,
+  `product_tag_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `image` varchar(255) NOT NULL,
   PRIMARY KEY (`product_tag_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1936,6 +1942,7 @@ CREATE TABLE `product_tag` (
 
 LOCK TABLES `product_tag` WRITE;
 /*!40000 ALTER TABLE `product_tag` DISABLE KEYS */;
+INSERT INTO `product_tag` VALUES (1,'hot','hg');
 /*!40000 ALTER TABLE `product_tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1960,7 +1967,7 @@ CREATE TABLE `product_to_category` (
 
 LOCK TABLES `product_to_category` WRITE;
 /*!40000 ALTER TABLE `product_to_category` DISABLE KEYS */;
-INSERT INTO `product_to_category` VALUES (1,3,1);
+INSERT INTO `product_to_category` VALUES (1,4,1),(3,6,1),(4,6,1);
 /*!40000 ALTER TABLE `product_to_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2034,7 +2041,7 @@ CREATE TABLE `setting` (
   `value` text NOT NULL,
   `serialized` tinyint(1) NOT NULL,
   PRIMARY KEY (`setting_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=131 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=233 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2043,7 +2050,7 @@ CREATE TABLE `setting` (
 
 LOCK TABLES `setting` WRITE;
 /*!40000 ALTER TABLE `setting` DISABLE KEYS */;
-INSERT INTO `setting` VALUES (1,0,'shipping','shipping_sort_order','3',0),(2,0,'sub_total','sub_total_sort_order','1',0),(3,0,'sub_total','sub_total_status','1',0),(4,0,'tax','tax_status','1',0),(5,0,'total','total_sort_order','9',0),(6,0,'total','total_status','1',0),(7,0,'tax','tax_sort_order','5',0),(8,0,'free_checkout','free_checkout_sort_order','1',0),(9,0,'cod','cod_sort_order','5',0),(10,0,'cod','cod_total','0.01',0),(11,0,'cod','cod_order_status_id','1',0),(12,0,'cod','cod_geo_zone_id','0',0),(13,0,'cod','cod_status','1',0),(14,0,'shipping','shipping_status','1',0),(15,0,'shipping','shipping_estimator','1',0),(16,0,'config','config_google_analytics','',0),(17,0,'config','config_error_filename','error.txt',0),(18,0,'config','config_error_log','1',0),(19,0,'config','config_error_display','1',0),(20,0,'config','config_compression','0',0),(129,0,'config','config_encryption','6094b04d9fccf2a54131d7364253ca7e',0),(22,0,'config','config_maintenance','0',0),(23,0,'config','config_account_mail','0',0),(24,0,'config','config_alert_emails','',0),(25,0,'config','config_use_ssl','0',0),(26,0,'config','config_seo_url','0',0),(27,0,'coupon','coupon_sort_order','4',0),(28,0,'coupon','coupon_status','1',0),(29,0,'config','config_alert_mail','0',0),(30,0,'config','config_smtp_username','',0),(31,0,'config','config_smtp_password','',0),(32,0,'config','config_smtp_port','25',0),(33,0,'config','config_smtp_timeout','5',0),(34,0,'flat','flat_sort_order','1',0),(35,0,'flat','flat_status','1',0),(36,0,'flat','flat_geo_zone_id','0',0),(37,0,'flat','flat_tax_class_id','9',0),(41,0,'flat','flat_cost','5.00',0),(42,0,'credit','credit_sort_order','7',0),(43,0,'credit','credit_status','1',0),(44,0,'config','config_smtp_host','',0),(45,0,'config','config_image_cart_height','47',0),(46,0,'config','config_mail_protocol','mail',0),(47,0,'config','config_mail_parameter','',0),(48,0,'config','config_image_wishlist_height','47',0),(49,0,'config','config_image_cart_width','47',0),(50,0,'config','config_image_wishlist_width','47',0),(51,0,'config','config_image_compare_height','90',0),(52,0,'config','config_image_compare_width','90',0),(53,0,'reward','reward_sort_order','2',0),(54,0,'reward','reward_status','1',0),(55,0,'config','config_image_related_height','80',0),(58,0,'config','config_image_related_width','80',0),(59,0,'config','config_image_additional_height','74',0),(60,0,'account','account_module','a:1:{i:0;a:4:{s:9:\"layout_id\";s:1:\"6\";s:8:\"position\";s:12:\"column_right\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"1\";}}',1),(61,0,'config','config_image_additional_width','74',0),(62,0,'config','config_image_manufacturer_height','80',0),(63,0,'config','config_image_manufacturer_width','80',0),(64,0,'config','config_image_category_height','80',0),(65,0,'config','config_image_category_width','80',0),(66,0,'config','config_image_product_height','80',0),(67,0,'config','config_image_product_width','80',0),(68,0,'config','config_image_popup_height','500',0),(69,0,'config','config_image_popup_width','500',0),(70,0,'config','config_image_thumb_height','228',0),(71,0,'config','config_image_thumb_width','228',0),(72,0,'config','config_icon','data/cart.png',0),(73,0,'config','config_logo','data/logo.png',0),(74,0,'config','config_cart_weight','1',0),(75,0,'config','config_upload_allowed','jpg, JPG, jpeg, gif, png, txt',0),(76,0,'config','config_review_status','1',0),(77,0,'config','config_download','1',0),(78,0,'config','config_return_status_id','2',0),(79,0,'config','config_complete_status_id','5',0),(80,0,'config','config_order_status_id','1',0),(81,0,'config','config_stock_status_id','5',0),(82,0,'config','config_stock_checkout','0',0),(83,0,'config','config_stock_warning','0',0),(84,0,'config','config_stock_display','0',0),(85,0,'config','config_commission','5',0),(86,0,'config','config_affiliate_id','4',0),(87,0,'config','config_checkout_id','5',0),(88,0,'config','config_guest_checkout','1',0),(89,0,'config','config_account_id','3',0),(91,0,'config','config_customer_price','0',0),(92,0,'config','config_customer_group_id','1',0),(93,0,'voucher','voucher_sort_order','8',0),(94,0,'voucher','voucher_status','1',0),(95,0,'config','config_length_class_id','1',0),(96,0,'config','config_invoice_prefix','INV-2012-00',0),(97,0,'config','config_tax','1',0),(98,0,'config','config_tax_customer','shipping',0),(99,0,'config','config_tax_default','shipping',0),(100,0,'config','config_admin_limit','20',0),(101,0,'config','config_catalog_limit','15',0),(102,0,'free_checkout','free_checkout_status','1',0),(103,0,'free_checkout','free_checkout_order_status_id','1',0),(104,0,'config','config_weight_class_id','1',0),(105,0,'config','config_currency_auto','1',0),(106,0,'config','config_currency','USD',0),(109,0,'config','config_name','Мой Магазин',0),(110,0,'config','config_owner','Мое Имя',0),(111,0,'config','config_address','Адрес',0),(127,0,'config','config_email','vittalik@i.ua',0),(113,0,'config','config_telephone','123456789',0),(114,0,'config','config_fax','',0),(115,0,'config','config_title','Мой Магазин',0),(116,0,'config','config_meta_description','Мой Магазин',0),(117,0,'config','config_template','default',0),(118,0,'config','config_layout_id','4',0),(119,0,'config','config_country_id','176',0),(120,0,'config','config_zone_id','2761',0),(121,0,'config','config_language','ru',0),(122,0,'config','config_admin_language','ru',0),(123,0,'config','config_order_edit','100',0),(124,0,'config','config_voucher_min','1',0),(125,0,'config','config_voucher_max','1000',0),(126,0,'config','config_customer_group_display','a:1:{i:0;s:1:\"1\";}',1),(128,0,'config','config_url','http://realty/',0);
+INSERT INTO `setting` VALUES (1,0,'shipping','shipping_sort_order','3',0),(2,0,'sub_total','sub_total_sort_order','1',0),(3,0,'sub_total','sub_total_status','1',0),(4,0,'tax','tax_status','1',0),(5,0,'total','total_sort_order','9',0),(6,0,'total','total_status','1',0),(7,0,'tax','tax_sort_order','5',0),(8,0,'free_checkout','free_checkout_sort_order','1',0),(9,0,'cod','cod_sort_order','5',0),(10,0,'cod','cod_total','0.01',0),(11,0,'cod','cod_order_status_id','1',0),(12,0,'cod','cod_geo_zone_id','0',0),(13,0,'cod','cod_status','1',0),(14,0,'shipping','shipping_status','1',0),(15,0,'shipping','shipping_estimator','1',0),(195,0,'config','config_image_wishlist_width','47',0),(194,0,'config','config_image_compare_height','90',0),(193,0,'config','config_image_compare_width','90',0),(192,0,'config','config_image_related_height','80',0),(191,0,'config','config_image_related_width','80',0),(190,0,'config','config_image_additional_height','74',0),(27,0,'coupon','coupon_sort_order','4',0),(28,0,'coupon','coupon_status','1',0),(189,0,'config','config_image_additional_width','74',0),(188,0,'config','config_image_product_height','80',0),(187,0,'config','config_image_product_width','80',0),(34,0,'flat','flat_sort_order','1',0),(35,0,'flat','flat_status','1',0),(36,0,'flat','flat_geo_zone_id','0',0),(37,0,'flat','flat_tax_class_id','9',0),(41,0,'flat','flat_cost','5.00',0),(42,0,'credit','credit_sort_order','7',0),(43,0,'credit','credit_status','1',0),(186,0,'config','config_image_popup_height','500',0),(185,0,'config','config_image_popup_width','500',0),(184,0,'config','config_image_thumb_height','228',0),(183,0,'config','config_image_thumb_width','228',0),(182,0,'config','config_image_category_height','80',0),(181,0,'config','config_image_category_width','80',0),(53,0,'reward','reward_sort_order','2',0),(54,0,'reward','reward_status','1',0),(180,0,'config','config_icon','data/cart.png',0),(179,0,'config','config_logo','data/logo.png',0),(178,0,'config','config_commission','5',0),(60,0,'account','account_module','a:1:{i:0;a:4:{s:9:\"layout_id\";s:1:\"6\";s:8:\"position\";s:12:\"column_right\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"1\";}}',1),(177,0,'config','config_affiliate_id','4',0),(176,0,'config','config_stock_status_id','5',0),(175,0,'config','config_stock_checkout','0',0),(174,0,'config','config_stock_warning','0',0),(173,0,'config','config_stock_display','0',0),(172,0,'config','config_complete_status_id','5',0),(171,0,'config','config_order_status_id','1',0),(170,0,'config','config_invoice_prefix','INV-2012-00',0),(169,0,'config','config_order_edit','100',0),(168,0,'config','config_checkout_id','5',0),(167,0,'config','config_guest_checkout','1',0),(166,0,'config','config_cart_weight','1',0),(165,0,'config','config_account_id','3',0),(164,0,'config','config_customer_price','0',0),(163,0,'config','config_customer_group_display','a:1:{i:0;s:1:\"1\";}',1),(162,0,'config','config_customer_group_id','1',0),(161,0,'config','config_customer_online','0',0),(160,0,'config','config_tax_customer','shipping',0),(159,0,'config','config_tax_default','shipping',0),(158,0,'config','config_vat','0',0),(157,0,'config','config_tax','1',0),(156,0,'config','config_voucher_max','1000',0),(155,0,'config','config_voucher_min','1',0),(154,0,'config','config_upload_allowed','jpg, JPG, jpeg, gif, png, txt',0),(153,0,'config','config_download','1',0),(93,0,'voucher','voucher_sort_order','8',0),(94,0,'voucher','voucher_status','1',0),(152,0,'config','config_review_status','1',0),(151,0,'config','config_product_count','0',0),(150,0,'config','config_admin_limit','20',0),(149,0,'config','config_catalog_limit','15',0),(148,0,'config','config_weight_class_id','1',0),(102,0,'free_checkout','free_checkout_status','1',0),(103,0,'free_checkout','free_checkout_order_status_id','1',0),(147,0,'config','config_length_class_id','1',0),(146,0,'config','config_currency_auto','1',0),(145,0,'config','config_currency','USD',0),(144,0,'config','config_admin_language','ru',0),(143,0,'config','config_language','ru',0),(142,0,'config','config_zone_id','2761',0),(141,0,'config','config_country_id','176',0),(140,0,'config','config_layout_id','4',0),(139,0,'config','config_template','default',0),(138,0,'config','config_meta_description','Мой Магазин',0),(137,0,'config','config_title','Мой Магазин',0),(136,0,'config','config_fax','',0),(135,0,'config','config_telephone','123456789',0),(134,0,'config','config_email','vittalik@i.ua',0),(133,0,'config','config_address','Адрес',0),(132,0,'config','config_owner','Мое Имя',0),(131,0,'config','config_name','Мой Магазин',0),(196,0,'config','config_image_wishlist_height','47',0),(197,0,'config','config_image_cart_width','47',0),(198,0,'config','config_image_cart_height','47',0),(199,0,'config','config_mail_protocol','mail',0),(200,0,'config','config_mail_parameter','',0),(201,0,'config','config_smtp_host','',0),(202,0,'config','config_smtp_username','',0),(203,0,'config','config_smtp_password','',0),(204,0,'config','config_smtp_port','25',0),(205,0,'config','config_smtp_timeout','5',0),(206,0,'config','config_alert_mail','0',0),(207,0,'config','config_account_mail','0',0),(208,0,'config','config_alert_emails','',0),(209,0,'config','config_fraud_detection','0',0),(210,0,'config','config_fraud_key','',0),(211,0,'config','config_fraud_score','',0),(212,0,'config','config_fraud_status_id','14',0),(213,0,'config','config_sms_alert','0',0),(214,0,'config','config_sms_gatename','testsms',0),(215,0,'config','config_sms_from','',0),(216,0,'config','config_sms_to','',0),(217,0,'config','config_sms_copy','',0),(218,0,'config','config_sms_message','',0),(219,0,'config','config_sms_gate_username','',0),(220,0,'config','config_sms_gate_password','',0),(221,0,'config','config_use_ssl','0',0),(222,0,'config','config_seo_url','0',0),(223,0,'config','config_seo_url_type','seo_url',0),(224,0,'config','config_seo_url_include_path','0',0),(225,0,'config','config_seo_url_postfix','',0),(226,0,'config','config_maintenance','0',0),(227,0,'config','config_encryption','6094b04d9fccf2a54131d7364253ca7e',0),(228,0,'config','config_compression','0',0),(229,0,'config','config_error_display','1',0),(230,0,'config','config_error_log','1',0),(231,0,'config','config_error_filename','error.txt',0),(232,0,'config','config_google_analytics','',0);
 /*!40000 ALTER TABLE `setting` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2201,7 +2208,7 @@ CREATE TABLE `tax_rate` (
 
 LOCK TABLES `tax_rate` WRITE;
 /*!40000 ALTER TABLE `tax_rate` DISABLE KEYS */;
-INSERT INTO `tax_rate` VALUES (86,3,'НДС 18%','18.0000','P','2011-03-09 21:17:10','2011-09-22 22:24:29'),(87,3,'Eco Tax (-2.00)','2.0000','F','2011-09-21 21:49:23','2011-09-23 00:40:19');
+INSERT INTO `tax_rate` VALUES (86,3,'НДС 18%',18.0000,'P','2011-03-09 21:17:10','2011-09-22 22:24:29'),(87,3,'Eco Tax (-2.00)',2.0000,'F','2011-09-21 21:49:23','2011-09-23 00:40:19');
 /*!40000 ALTER TABLE `tax_rate` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2268,7 +2275,7 @@ CREATE TABLE `url_alias` (
   `query` varchar(255) NOT NULL,
   `keyword` varchar(255) NOT NULL,
   PRIMARY KEY (`url_alias_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=775 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=794 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2277,7 +2284,7 @@ CREATE TABLE `url_alias` (
 
 LOCK TABLES `url_alias` WRITE;
 /*!40000 ALTER TABLE `url_alias` DISABLE KEYS */;
-INSERT INTO `url_alias` VALUES (704,'product_id=48','ipod_classic'),(773,'category_id=20','desktops'),(503,'category_id=26','pc'),(505,'category_id=27','mac'),(730,'manufacturer_id=8','apple'),(772,'information_id=4','about_us'),(768,'product_id=42','test'),(767,'category_id=34','mp3-players'),(536,'category_id=36','Normal'),(774,'category_id=3','ert');
+INSERT INTO `url_alias` VALUES (704,'product_id=48','ipod_classic'),(773,'category_id=20','desktops'),(503,'category_id=26','pc'),(505,'category_id=27','mac'),(730,'manufacturer_id=8','apple'),(772,'information_id=4','about_us'),(768,'product_id=42','test'),(767,'category_id=34','mp3-players'),(536,'category_id=36','Normal'),(774,'category_id=3','ert'),(792,'product_id=1','665'),(784,'product_id=3','ff'),(793,'product_id=4','rty');
 /*!40000 ALTER TABLE `url_alias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2468,7 +2475,7 @@ CREATE TABLE `weight_class` (
 
 LOCK TABLES `weight_class` WRITE;
 /*!40000 ALTER TABLE `weight_class` DISABLE KEYS */;
-INSERT INTO `weight_class` VALUES (1,'1.00000000'),(2,'1000.00000000');
+INSERT INTO `weight_class` VALUES (1,1.00000000),(2,1000.00000000);
 /*!40000 ALTER TABLE `weight_class` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2562,4 +2569,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-14  0:33:36
+-- Dump completed on 2013-03-14 22:24:32

@@ -67,16 +67,8 @@ $(document).ready(function(){
         <ul>
           <li><a href="<?php echo $category; ?>"><?php echo $text_category; ?></a></li>
           <li><a href="<?php echo $product; ?>"><?php echo $text_product; ?></a></li>
-          <li><a class="parent"><?php echo $text_attribute; ?></a>
-            <ul>
-              <li><a href="<?php echo $attribute; ?>"><?php echo $text_attribute; ?></a></li>
-              <li><a href="<?php echo $attribute_group; ?>"><?php echo $text_attribute_group; ?></a></li>
-            </ul>
-          </li>
-          <li><a href="<?php echo $option; ?>"><?php echo $text_option; ?></a></li>
-          <li><a href="<?php echo $manufacturer; ?>"><?php echo $text_manufacturer; ?></a></li>
-          <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
-          <li><a href="<?php echo $review; ?>"><?php echo $text_review; ?></a></li>
+          <li><a href="<?php echo $currency; ?>"><?php echo $text_currency; ?></a></li>
+          <li><a href="<?php echo $tag; ?>"><?php echo $text_tag; ?></a></li>
           <li><a href="<?php echo $information; ?>"><?php echo $text_information; ?></a></li>
         </ul>
       </li>

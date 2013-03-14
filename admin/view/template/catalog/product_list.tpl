@@ -14,7 +14,7 @@
   <div class="box">
     <div class="heading">
       <h1><img src="view/image/product.png" alt="" /> <?php echo $heading_title; ?></h1>
-      <div class="buttons"><a onclick="location = '<?php echo $insert; ?>'" class="button"><?php echo $button_insert; ?></a><a onclick="$('#form').attr('action', '<?php echo $copy; ?>'); $('#form').submit();" class="button"><?php echo $button_copy; ?></a><a onclick="$('form').submit();" class="button"><?php echo $button_delete; ?></a></div>
+      <div class="buttons"><a onclick="location = '<?php echo $insert; ?>'" class="button"><?php echo $button_insert; ?></a><a onclick="$('form').submit();" class="button"><?php echo $button_delete; ?></a></div>
     </div>
     <div class="content">
       <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form">
@@ -56,8 +56,8 @@
               <td></td>
               <td></td>
               <td><input type="text" name="filter_name" value="<?php echo $filter_name; ?>" /></td>
-              <td><input type="text" name="filter_model" value="<?php echo $filter_number; ?>" /></td>
-              <td><input type="text" name="filter_model" value="<?php echo $filter_city; ?>" /></td>
+              <td><input type="text" name="filter_number" value="<?php echo $filter_number; ?>" /></td>
+              <td><input type="text" name="filter_city" value="<?php echo $filter_city; ?>" /></td>
               <td align="left"><input type="text" name="filter_price" value="<?php echo $filter_price; ?>" size="8"/></td>
               <td><select name="filter_status">
                   <option value="*"></option>
@@ -116,10 +116,10 @@ function filter() {
 		url += '&filter_name=' + encodeURIComponent(filter_name);
 	}
 	
-	var filter_model = $('input[name=\'filter_model\']').attr('value');
+	var filter_model = $('input[name=\'filter_number\']').attr('value');
 	
 	if (filter_model) {
-		url += '&filter_model=' + encodeURIComponent(filter_model);
+		url += '&filter_number=' + encodeURIComponent(filter_model);
 	}
 	
 	var filter_price = $('input[name=\'filter_price\']').attr('value');
@@ -128,10 +128,10 @@ function filter() {
 		url += '&filter_price=' + encodeURIComponent(filter_price);
 	}
 	
-	var filter_quantity = $('input[name=\'filter_quantity\']').attr('value');
+	var filter_quantity = $('input[name=\'filter_city\']').attr('value');
 	
 	if (filter_quantity) {
-		url += '&filter_quantity=' + encodeURIComponent(filter_quantity);
+		url += '&filter_city=' + encodeURIComponent(filter_quantity);
 	}
 	
 	var filter_status = $('select[name=\'filter_status\']').attr('value');
@@ -150,57 +150,5 @@ $('#form input').keydown(function(e) {
 	}
 });
 //--></script> 
-<script type="text/javascript"><!--
-$('input[name=\'filter_name\']').autocomplete({
-	delay: 0,
-	source: function(request, response) {
-		$.ajax({
-			url: 'index.php?route=catalog/product/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
-			dataType: 'json',
-			success: function(json) {		
-				response($.map(json, function(item) {
-					return {
-						label: item.name,
-						value: item.product_id
-					}
-				}));
-			}
-		});
-	}, 
-	select: function(event, ui) {
-		$('input[name=\'filter_name\']').val(ui.item.label);
-						
-		return false;
-	},
-	focus: function(event, ui) {
-      	return false;
-   	}
-});
 
-$('input[name=\'filter_model\']').autocomplete({
-	delay: 0,
-	source: function(request, response) {
-		$.ajax({
-			url: 'index.php?route=catalog/product/autocomplete&token=<?php echo $token; ?>&filter_model=' +  encodeURIComponent(request.term),
-			dataType: 'json',
-			success: function(json) {		
-				response($.map(json, function(item) {
-					return {
-						label: item.model,
-						value: item.product_id
-					}
-				}));
-			}
-		});
-	}, 
-	select: function(event, ui) {
-		$('input[name=\'filter_model\']').val(ui.item.label);
-						
-		return false;
-	},
-	focus: function(event, ui) {
-      	return false;
-   	}
-});
-//--></script> 
 <?php echo $footer; ?>

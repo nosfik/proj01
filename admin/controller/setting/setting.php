@@ -668,15 +668,6 @@ class ControllerSettingSetting extends Controller {
 			$this->data['config_commission'] = '5.00';
 		}
 				
-		if (isset($this->request->post['config_return_status_id'])) {
-			$this->data['config_return_status_id'] = $this->request->post['config_return_status_id'];
-		} else {
-			$this->data['config_return_status_id'] = $this->config->get('config_return_status_id');		
-		}
-		
-		$this->load->model('localisation/return_status');
-		
-		$this->data['return_statuses'] = $this->model_localisation_return_status->getReturnStatuses();	
 				
 		$this->load->model('tool/image');
 

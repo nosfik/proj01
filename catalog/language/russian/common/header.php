@@ -1,5 +1,18 @@
 <?php
 // Text
+
+
+
+$_['text_about_us']         = 'О нас';
+$_['text_sales']           = 'Продажи';
+$_['text_building']         = 'Стоительство';
+$_['text_request']          = 'Заявки';
+$_['text_news']           	= 'Новости';
+$_['text_photo']            = 'Фото';
+$_['text_video']            = 'Видео';
+$_['text_contact']          = 'Контакты';
+
+
 $_['text_home']           = 'Главная';
 $_['text_wishlist']       = 'Закладки (%s)';
 $_['text_shopping_cart']  = 'Корзина покупок';
