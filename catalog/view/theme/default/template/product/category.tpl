@@ -48,8 +48,9 @@
 	    	<div class="house-item" onclick="location.href='<?php echo $product['href']; ?>'">
                     <div class="frame"></div>
                     <div style="width:228px; height:167px"><img height="167" width="228" src="<?php echo $product['thumb']; ?>"></div>
-                    <img height="68" width="68" class="house-tag" src="<?php echo $product['tag'];?>">
-
+                    <?php if(!empty($product)) { ?>
+                       <img height="68" width="68" class="house-tag" src="<?php echo $product['tag'];?>"> 
+                    <?php } ?>
                     <p class="house-price"><?php echo $product['price'];?> <?php echo $product['currency'];?></p>
                     <a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
                     <ul class="house-characteristics">

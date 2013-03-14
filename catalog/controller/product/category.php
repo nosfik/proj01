@@ -153,7 +153,7 @@ class ControllerProductCategory extends Controller {
 			
 			foreach ($results as $result) {
 				if ($result['image']) {
-					$image = $this->model_tool_image->resize($result['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
+					$image = $this->model_tool_image->resize($result['image'], 228, 167);
 				} else {
 					$image = false;
 				}
@@ -166,7 +166,7 @@ class ControllerProductCategory extends Controller {
 					'thumb'       => $image,
 					'name'        => $result['name'],
 					'currency'        => $result['currency'],
-					'tag'        => $result['tag'],
+					'tag'        => 'image/'.$result['tag'],
 					//'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 100) . '..',
 					'price'       => $result['price'],
 					'city'         	   => $result['city'],
