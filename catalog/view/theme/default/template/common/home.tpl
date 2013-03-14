@@ -232,7 +232,103 @@
                 </table>
             </form>
         </div>
-        <div id="areasTab"></div>
+        <div id="areasTab">
+            <form id="select-region-form">
+                <table>
+                    <tr class="row-separator">
+                        <td colspan="2">
+                            <label>Номер объекта или название</label>
+                        </td>
+                    </tr>
+                    <tr class="row-separator">
+                        <td colspan="2">
+                            <input type="text" name="regionNumber" id="regionNumber" value="Номер или название объекта" onblur="if(this.value=='') this.value='Номер или название объекта';" onfocus="if(this.value=='Ромер или название объекта') this.value='';"/>
+                        </td>
+                    </tr>
+                    <tr class="row-separator">
+                        <td colspan="2">
+                            <label>Выберите город</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <select name="regionCity" id="regionCity">
+                                <option value="1">Киев</option>
+                                <option value="2">Львов</option>
+                                <option value="3">Житомир</option>
+                                <option value="4">Донецк</option>
+                                <option value="5">Днепропетровск</option>
+                                <option value="6">Полтава</option>
+                                <option value="7">Алушта</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="row-separator">
+                        <td colspan="2"><label>Площадь</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select id="selectRegionAreaFrom" name="selectRegionAreaFrom" class="fromTo">
+                                <option value="0">От</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="selectRegionAreaTo" name="selectRegionAreaTo" class="fromTo">
+                                <option value="0">До</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="row-separator">
+                        <td colspan="2"><label>Цена</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select id="selectRegionPriceFrom" name="selectRegionPriceFrom" class="fromTo">
+                                <option value="0">От</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="selectRegionPriceTo" name="selectRegionPriceTo" class="fromTo">
+                                <option value="0">До</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="btn-container" colspan="2">
+                            <input type="submit" value="найти" class="form-btn"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
     </div>
 </div>
 <div class="left">
@@ -412,8 +508,15 @@
             visRows: 6,
             scrollArrows: true
         });
-        
-        
+
+        $('#tab-header-area').click(function(){
+            cuSel({
+                changedEl: '#select-region-form select',
+                visRows: 6,
+                scrollArrows: true
+            });
+        });
+
             $(document).ready(function(){
         $("#myController").jFlow({
             controller: ".jFlowControl", // must be class, use . sign
