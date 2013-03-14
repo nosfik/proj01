@@ -332,12 +332,14 @@ li:first-child div.house-item {
     top: 0;
     right: 0;
     cursor: pointer;
+    z-index: 1;
 }
 
 .house-item .house-tag {
     position: absolute;
     top: -13px;
     right: -9px;
+    z-index: 2;
 }
 
 .house-item .frame.house-item-hover {
@@ -363,6 +365,7 @@ li:first-child div.house-item {
     padding-left: 20px;
     font-size: 14px;
     font-weight: bold;
+    z-index: 2;
 }
 
 .house-item a {
