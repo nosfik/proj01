@@ -16,6 +16,56 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `aboutus`
+--
+
+DROP TABLE IF EXISTS `aboutus`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `aboutus` (
+  `aboutus_id` int(11) NOT NULL AUTO_INCREMENT,
+  `image` varchar(255) DEFAULT NULL,
+  `url` varchar(255) NOT NULL,
+  PRIMARY KEY (`aboutus_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `aboutus`
+--
+
+LOCK TABLES `aboutus` WRITE;
+/*!40000 ALTER TABLE `aboutus` DISABLE KEYS */;
+INSERT INTO `aboutus` VALUES (1,'data/about_us/tan.png','423');
+/*!40000 ALTER TABLE `aboutus` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `aboutus_description`
+--
+
+DROP TABLE IF EXISTS `aboutus_description`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `aboutus_description` (
+  `aboutus_id` int(11) NOT NULL AUTO_INCREMENT,
+  `short_text` text,
+  `language_id` int(2) NOT NULL,
+  PRIMARY KEY (`aboutus_id`,`language_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `aboutus_description`
+--
+
+LOCK TABLES `aboutus_description` WRITE;
+/*!40000 ALTER TABLE `aboutus_description` DISABLE KEYS */;
+INSERT INTO `aboutus_description` VALUES (1,'&lt;p&gt;\r\n	Мы являемся одними из лидеров в сфере продажи элитного жилья за рубежом. Мы как никто другой понимаем все значение инвестиций в жилье в других странах. В нашем каталоге Вы найдете только лучшие предложения, которые, без сомнения, придутся Вам по вкусу. Недвижимость в Испании – это простор для фантазии. Кого-то привлекает идиллическая картина домика у моря, кто-то жить не может без больших, шумных городов с их яркой ночной жизнью. Все это Вы можете найти у нас. Мы являемся одними из лидеров в сфере продажи элитного жилья за рубежом. Мы как никто другой понимаем все значение инвестиций в жилье в других странах.&lt;/p&gt;\r\n',1),(1,'&lt;p&gt;\r\n	We are one of the leaders in the sale of luxury homes abroad. We are like no one else understands the importance of investment in housing in other countries. In our catalog you will find only the best offers that will no doubt come to your liking. Property in Spain - is room for imagination. Someone draws an idyllic picture of a house by the sea, one can not live without the big, bustling cities with their vibrant nightlife. All this you can find us. We are one of the leaders in the sale of luxury homes abroad. We are like no one else understands the importance of investment in housing in other countries.&lt;/p&gt;\r\n',2);
+/*!40000 ALTER TABLE `aboutus_description` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `address`
 --
 
@@ -585,7 +635,7 @@ CREATE TABLE `currency` (
 
 LOCK TABLES `currency` WRITE;
 /*!40000 ALTER TABLE `currency` DISABLE KEYS */;
-INSERT INTO `currency` VALUES (1,'Рубль','RUB','',' р.','2',30.80500031,1,'2013-03-14 01:55:46'),(2,'US Dollar','USD','$','','2',1.00000000,1,'2013-03-14 22:16:02'),(3,'Euro','EUR','','€','2',0.77160001,1,'2013-03-14 01:55:46');
+INSERT INTO `currency` VALUES (1,'Рубль','RUB','',' р.','2',30.63699913,1,'2013-03-16 19:20:47'),(2,'US Dollar','USD','$','','2',1.00000000,1,'2013-03-16 23:30:24'),(3,'Euro','EUR','','€','2',0.76450002,1,'2013-03-16 19:20:47');
 /*!40000 ALTER TABLE `currency` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -862,6 +912,31 @@ CREATE TABLE `download_description` (
 LOCK TABLES `download_description` WRITE;
 /*!40000 ALTER TABLE `download_description` DISABLE KEYS */;
 /*!40000 ALTER TABLE `download_description` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `dreamhouse`
+--
+
+DROP TABLE IF EXISTS `dreamhouse`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dreamhouse` (
+  `dreamhouse_id` int(11) NOT NULL AUTO_INCREMENT,
+  `number` varchar(45) NOT NULL,
+  `sort_order` int(2) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`dreamhouse_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dreamhouse`
+--
+
+LOCK TABLES `dreamhouse` WRITE;
+/*!40000 ALTER TABLE `dreamhouse` DISABLE KEYS */;
+INSERT INTO `dreamhouse` VALUES (3,'123',1),(4,'236',12);
+/*!40000 ALTER TABLE `dreamhouse` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1778,7 +1853,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'data/logo.png','236','123',509,1,50,1200006,'0000-00-00 00:00:00',1,2,11,'2013-03-14 19:47:56','1','1','5','4','3',2),(3,'data/menu_info/pic1.png','234','207',453,234,34,345,'2013-03-14 16:34:11',1,1,10,'0000-00-00 00:00:00','1','1','0','0','0',0),(4,'','123','17',1,2,3,345,'2013-03-14 19:48:57',1,1,0,'0000-00-00 00:00:00','1','1','7','6','5',4);
+INSERT INTO `product` VALUES (1,'data/logo.png','236','123',509,1,50,1200006,'0000-00-00 00:00:00',1,2,16,'2013-03-14 19:47:56','1','1','5','4','3',2),(3,'data/menu_info/pic1.png','234','207',453,234,34,345,'2013-03-14 16:34:11',1,1,13,'0000-00-00 00:00:00','1','1','0','0','0',0),(4,'','123','17',1,2,3,345,'2013-03-14 19:48:57',1,1,0,'0000-00-00 00:00:00','1','1','7','6','5',4);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2157,6 +2232,31 @@ LOCK TABLES `store` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `suggestion`
+--
+
+DROP TABLE IF EXISTS `suggestion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `suggestion` (
+  `suggestion_id` int(11) NOT NULL AUTO_INCREMENT,
+  `number` varchar(45) NOT NULL,
+  `sort_order` int(2) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`suggestion_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `suggestion`
+--
+
+LOCK TABLES `suggestion` WRITE;
+/*!40000 ALTER TABLE `suggestion` DISABLE KEYS */;
+INSERT INTO `suggestion` VALUES (1,'236',2),(2,'234',2);
+/*!40000 ALTER TABLE `suggestion` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tax_class`
 --
 
@@ -2343,7 +2443,7 @@ CREATE TABLE `user_group` (
 
 LOCK TABLES `user_group` WRITE;
 /*!40000 ALTER TABLE `user_group` DISABLE KEYS */;
-INSERT INTO `user_group` VALUES (1,'Главный администратор','a:2:{s:6:\"access\";a:121:{i:0;s:17:\"catalog/attribute\";i:1;s:23:\"catalog/attribute_group\";i:2;s:16:\"catalog/category\";i:3;s:16:\"catalog/download\";i:4;s:19:\"catalog/information\";i:5;s:20:\"catalog/manufacturer\";i:6;s:14:\"catalog/option\";i:7;s:15:\"catalog/product\";i:8;s:14:\"catalog/review\";i:9;s:18:\"common/filemanager\";i:10;s:13:\"design/banner\";i:11;s:13:\"design/layout\";i:12;s:14:\"extension/feed\";i:13;s:16:\"extension/module\";i:14;s:17:\"extension/payment\";i:15;s:18:\"extension/shipping\";i:16;s:15:\"extension/total\";i:17;s:16:\"feed/google_base\";i:18;s:19:\"feed/google_sitemap\";i:19;s:20:\"localisation/country\";i:20;s:21:\"localisation/currency\";i:21;s:21:\"localisation/geo_zone\";i:22;s:21:\"localisation/language\";i:23;s:25:\"localisation/length_class\";i:24;s:25:\"localisation/order_status\";i:25;s:26:\"localisation/return_action\";i:26;s:26:\"localisation/return_reason\";i:27;s:26:\"localisation/return_status\";i:28;s:25:\"localisation/stock_status\";i:29;s:22:\"localisation/tax_class\";i:30;s:21:\"localisation/tax_rate\";i:31;s:25:\"localisation/weight_class\";i:32;s:17:\"localisation/zone\";i:33;s:14:\"module/account\";i:34;s:16:\"module/affiliate\";i:35;s:13:\"module/banner\";i:36;s:17:\"module/bestseller\";i:37;s:15:\"module/carousel\";i:38;s:15:\"module/category\";i:39;s:15:\"module/featured\";i:40;s:18:\"module/google_talk\";i:41;s:18:\"module/information\";i:42;s:13:\"module/latest\";i:43;s:16:\"module/slideshow\";i:44;s:14:\"module/special\";i:45;s:12:\"module/store\";i:46;s:14:\"module/welcome\";i:47;s:24:\"payment/authorizenet_aim\";i:48;s:21:\"payment/bank_transfer\";i:49;s:14:\"payment/cheque\";i:50;s:11:\"payment/cod\";i:51;s:21:\"payment/free_checkout\";i:52;s:14:\"payment/liqpay\";i:53;s:20:\"payment/moneybookers\";i:54;s:14:\"payment/nochex\";i:55;s:15:\"payment/paymate\";i:56;s:16:\"payment/paypoint\";i:57;s:13:\"payment/payza\";i:58;s:26:\"payment/perpetual_payments\";i:59;s:14:\"payment/pp_pro\";i:60;s:17:\"payment/pp_pro_uk\";i:61;s:19:\"payment/pp_standard\";i:62;s:15:\"payment/sagepay\";i:63;s:22:\"payment/sagepay_direct\";i:64;s:18:\"payment/sagepay_us\";i:65;s:19:\"payment/twocheckout\";i:66;s:28:\"payment/web_payment_software\";i:67;s:16:\"payment/worldpay\";i:68;s:27:\"report/affiliate_commission\";i:69;s:22:\"report/customer_credit\";i:70;s:22:\"report/customer_online\";i:71;s:21:\"report/customer_order\";i:72;s:22:\"report/customer_reward\";i:73;s:24:\"report/product_purchased\";i:74;s:21:\"report/product_viewed\";i:75;s:18:\"report/sale_coupon\";i:76;s:17:\"report/sale_order\";i:77;s:18:\"report/sale_return\";i:78;s:20:\"report/sale_shipping\";i:79;s:15:\"report/sale_tax\";i:80;s:14:\"sale/affiliate\";i:81;s:12:\"sale/contact\";i:82;s:11:\"sale/coupon\";i:83;s:13:\"sale/customer\";i:84;s:23:\"sale/customer_blacklist\";i:85;s:19:\"sale/customer_group\";i:86;s:10:\"sale/order\";i:87;s:11:\"sale/return\";i:88;s:12:\"sale/voucher\";i:89;s:18:\"sale/voucher_theme\";i:90;s:17:\"setting/menu_info\";i:91;s:15:\"setting/setting\";i:92;s:13:\"setting/slide\";i:93;s:13:\"setting/store\";i:94;s:16:\"shipping/auspost\";i:95;s:17:\"shipping/citylink\";i:96;s:14:\"shipping/fedex\";i:97;s:13:\"shipping/flat\";i:98;s:13:\"shipping/free\";i:99;s:13:\"shipping/item\";i:100;s:23:\"shipping/parcelforce_48\";i:101;s:15:\"shipping/pickup\";i:102;s:19:\"shipping/royal_mail\";i:103;s:12:\"shipping/ups\";i:104;s:13:\"shipping/usps\";i:105;s:15:\"shipping/weight\";i:106;s:11:\"tool/backup\";i:107;s:14:\"tool/error_log\";i:108;s:12:\"total/coupon\";i:109;s:12:\"total/credit\";i:110;s:14:\"total/handling\";i:111;s:16:\"total/klarna_fee\";i:112;s:19:\"total/low_order_fee\";i:113;s:12:\"total/reward\";i:114;s:14:\"total/shipping\";i:115;s:15:\"total/sub_total\";i:116;s:9:\"total/tax\";i:117;s:11:\"total/total\";i:118;s:13:\"total/voucher\";i:119;s:9:\"user/user\";i:120;s:20:\"user/user_permission\";}s:6:\"modify\";a:121:{i:0;s:17:\"catalog/attribute\";i:1;s:23:\"catalog/attribute_group\";i:2;s:16:\"catalog/category\";i:3;s:16:\"catalog/download\";i:4;s:19:\"catalog/information\";i:5;s:20:\"catalog/manufacturer\";i:6;s:14:\"catalog/option\";i:7;s:15:\"catalog/product\";i:8;s:14:\"catalog/review\";i:9;s:18:\"common/filemanager\";i:10;s:13:\"design/banner\";i:11;s:13:\"design/layout\";i:12;s:14:\"extension/feed\";i:13;s:16:\"extension/module\";i:14;s:17:\"extension/payment\";i:15;s:18:\"extension/shipping\";i:16;s:15:\"extension/total\";i:17;s:16:\"feed/google_base\";i:18;s:19:\"feed/google_sitemap\";i:19;s:20:\"localisation/country\";i:20;s:21:\"localisation/currency\";i:21;s:21:\"localisation/geo_zone\";i:22;s:21:\"localisation/language\";i:23;s:25:\"localisation/length_class\";i:24;s:25:\"localisation/order_status\";i:25;s:26:\"localisation/return_action\";i:26;s:26:\"localisation/return_reason\";i:27;s:26:\"localisation/return_status\";i:28;s:25:\"localisation/stock_status\";i:29;s:22:\"localisation/tax_class\";i:30;s:21:\"localisation/tax_rate\";i:31;s:25:\"localisation/weight_class\";i:32;s:17:\"localisation/zone\";i:33;s:14:\"module/account\";i:34;s:16:\"module/affiliate\";i:35;s:13:\"module/banner\";i:36;s:17:\"module/bestseller\";i:37;s:15:\"module/carousel\";i:38;s:15:\"module/category\";i:39;s:15:\"module/featured\";i:40;s:18:\"module/google_talk\";i:41;s:18:\"module/information\";i:42;s:13:\"module/latest\";i:43;s:16:\"module/slideshow\";i:44;s:14:\"module/special\";i:45;s:12:\"module/store\";i:46;s:14:\"module/welcome\";i:47;s:24:\"payment/authorizenet_aim\";i:48;s:21:\"payment/bank_transfer\";i:49;s:14:\"payment/cheque\";i:50;s:11:\"payment/cod\";i:51;s:21:\"payment/free_checkout\";i:52;s:14:\"payment/liqpay\";i:53;s:20:\"payment/moneybookers\";i:54;s:14:\"payment/nochex\";i:55;s:15:\"payment/paymate\";i:56;s:16:\"payment/paypoint\";i:57;s:13:\"payment/payza\";i:58;s:26:\"payment/perpetual_payments\";i:59;s:14:\"payment/pp_pro\";i:60;s:17:\"payment/pp_pro_uk\";i:61;s:19:\"payment/pp_standard\";i:62;s:15:\"payment/sagepay\";i:63;s:22:\"payment/sagepay_direct\";i:64;s:18:\"payment/sagepay_us\";i:65;s:19:\"payment/twocheckout\";i:66;s:28:\"payment/web_payment_software\";i:67;s:16:\"payment/worldpay\";i:68;s:27:\"report/affiliate_commission\";i:69;s:22:\"report/customer_credit\";i:70;s:22:\"report/customer_online\";i:71;s:21:\"report/customer_order\";i:72;s:22:\"report/customer_reward\";i:73;s:24:\"report/product_purchased\";i:74;s:21:\"report/product_viewed\";i:75;s:18:\"report/sale_coupon\";i:76;s:17:\"report/sale_order\";i:77;s:18:\"report/sale_return\";i:78;s:20:\"report/sale_shipping\";i:79;s:15:\"report/sale_tax\";i:80;s:14:\"sale/affiliate\";i:81;s:12:\"sale/contact\";i:82;s:11:\"sale/coupon\";i:83;s:13:\"sale/customer\";i:84;s:23:\"sale/customer_blacklist\";i:85;s:19:\"sale/customer_group\";i:86;s:10:\"sale/order\";i:87;s:11:\"sale/return\";i:88;s:12:\"sale/voucher\";i:89;s:18:\"sale/voucher_theme\";i:90;s:17:\"setting/menu_info\";i:91;s:15:\"setting/setting\";i:92;s:13:\"setting/slide\";i:93;s:13:\"setting/store\";i:94;s:16:\"shipping/auspost\";i:95;s:17:\"shipping/citylink\";i:96;s:14:\"shipping/fedex\";i:97;s:13:\"shipping/flat\";i:98;s:13:\"shipping/free\";i:99;s:13:\"shipping/item\";i:100;s:23:\"shipping/parcelforce_48\";i:101;s:15:\"shipping/pickup\";i:102;s:19:\"shipping/royal_mail\";i:103;s:12:\"shipping/ups\";i:104;s:13:\"shipping/usps\";i:105;s:15:\"shipping/weight\";i:106;s:11:\"tool/backup\";i:107;s:14:\"tool/error_log\";i:108;s:12:\"total/coupon\";i:109;s:12:\"total/credit\";i:110;s:14:\"total/handling\";i:111;s:16:\"total/klarna_fee\";i:112;s:19:\"total/low_order_fee\";i:113;s:12:\"total/reward\";i:114;s:14:\"total/shipping\";i:115;s:15:\"total/sub_total\";i:116;s:9:\"total/tax\";i:117;s:11:\"total/total\";i:118;s:13:\"total/voucher\";i:119;s:9:\"user/user\";i:120;s:20:\"user/user_permission\";}}'),(10,'Демонстрация','');
+INSERT INTO `user_group` VALUES (1,'Главный администратор','a:2:{s:6:\"access\";a:126:{i:0;s:15:\"catalog/aboutus\";i:1;s:17:\"catalog/attribute\";i:2;s:23:\"catalog/attribute_group\";i:3;s:16:\"catalog/category\";i:4;s:16:\"catalog/currency\";i:5;s:16:\"catalog/download\";i:6;s:18:\"catalog/dreamhouse\";i:7;s:19:\"catalog/information\";i:8;s:20:\"catalog/manufacturer\";i:9;s:14:\"catalog/option\";i:10;s:15:\"catalog/product\";i:11;s:14:\"catalog/review\";i:12;s:18:\"catalog/suggestion\";i:13;s:11:\"catalog/tag\";i:14;s:18:\"common/filemanager\";i:15;s:13:\"design/banner\";i:16;s:13:\"design/layout\";i:17;s:14:\"extension/feed\";i:18;s:16:\"extension/module\";i:19;s:17:\"extension/payment\";i:20;s:18:\"extension/shipping\";i:21;s:15:\"extension/total\";i:22;s:16:\"feed/google_base\";i:23;s:19:\"feed/google_sitemap\";i:24;s:20:\"localisation/country\";i:25;s:21:\"localisation/currency\";i:26;s:21:\"localisation/geo_zone\";i:27;s:21:\"localisation/language\";i:28;s:25:\"localisation/length_class\";i:29;s:25:\"localisation/order_status\";i:30;s:26:\"localisation/return_action\";i:31;s:26:\"localisation/return_reason\";i:32;s:26:\"localisation/return_status\";i:33;s:25:\"localisation/stock_status\";i:34;s:22:\"localisation/tax_class\";i:35;s:21:\"localisation/tax_rate\";i:36;s:25:\"localisation/weight_class\";i:37;s:17:\"localisation/zone\";i:38;s:14:\"module/account\";i:39;s:16:\"module/affiliate\";i:40;s:13:\"module/banner\";i:41;s:17:\"module/bestseller\";i:42;s:15:\"module/carousel\";i:43;s:15:\"module/category\";i:44;s:15:\"module/featured\";i:45;s:18:\"module/google_talk\";i:46;s:18:\"module/information\";i:47;s:13:\"module/latest\";i:48;s:16:\"module/slideshow\";i:49;s:14:\"module/special\";i:50;s:12:\"module/store\";i:51;s:14:\"module/welcome\";i:52;s:24:\"payment/authorizenet_aim\";i:53;s:21:\"payment/bank_transfer\";i:54;s:14:\"payment/cheque\";i:55;s:11:\"payment/cod\";i:56;s:21:\"payment/free_checkout\";i:57;s:14:\"payment/liqpay\";i:58;s:20:\"payment/moneybookers\";i:59;s:14:\"payment/nochex\";i:60;s:15:\"payment/paymate\";i:61;s:16:\"payment/paypoint\";i:62;s:13:\"payment/payza\";i:63;s:26:\"payment/perpetual_payments\";i:64;s:14:\"payment/pp_pro\";i:65;s:17:\"payment/pp_pro_uk\";i:66;s:19:\"payment/pp_standard\";i:67;s:15:\"payment/sagepay\";i:68;s:22:\"payment/sagepay_direct\";i:69;s:18:\"payment/sagepay_us\";i:70;s:19:\"payment/twocheckout\";i:71;s:28:\"payment/web_payment_software\";i:72;s:16:\"payment/worldpay\";i:73;s:27:\"report/affiliate_commission\";i:74;s:22:\"report/customer_credit\";i:75;s:22:\"report/customer_online\";i:76;s:21:\"report/customer_order\";i:77;s:22:\"report/customer_reward\";i:78;s:24:\"report/product_purchased\";i:79;s:21:\"report/product_viewed\";i:80;s:18:\"report/sale_coupon\";i:81;s:17:\"report/sale_order\";i:82;s:18:\"report/sale_return\";i:83;s:20:\"report/sale_shipping\";i:84;s:15:\"report/sale_tax\";i:85;s:14:\"sale/affiliate\";i:86;s:12:\"sale/contact\";i:87;s:11:\"sale/coupon\";i:88;s:13:\"sale/customer\";i:89;s:23:\"sale/customer_blacklist\";i:90;s:19:\"sale/customer_group\";i:91;s:10:\"sale/order\";i:92;s:11:\"sale/return\";i:93;s:12:\"sale/voucher\";i:94;s:18:\"sale/voucher_theme\";i:95;s:17:\"setting/menu_info\";i:96;s:15:\"setting/setting\";i:97;s:13:\"setting/slide\";i:98;s:13:\"setting/store\";i:99;s:16:\"shipping/auspost\";i:100;s:17:\"shipping/citylink\";i:101;s:14:\"shipping/fedex\";i:102;s:13:\"shipping/flat\";i:103;s:13:\"shipping/free\";i:104;s:13:\"shipping/item\";i:105;s:23:\"shipping/parcelforce_48\";i:106;s:15:\"shipping/pickup\";i:107;s:19:\"shipping/royal_mail\";i:108;s:12:\"shipping/ups\";i:109;s:13:\"shipping/usps\";i:110;s:15:\"shipping/weight\";i:111;s:11:\"tool/backup\";i:112;s:14:\"tool/error_log\";i:113;s:12:\"total/coupon\";i:114;s:12:\"total/credit\";i:115;s:14:\"total/handling\";i:116;s:16:\"total/klarna_fee\";i:117;s:19:\"total/low_order_fee\";i:118;s:12:\"total/reward\";i:119;s:14:\"total/shipping\";i:120;s:15:\"total/sub_total\";i:121;s:9:\"total/tax\";i:122;s:11:\"total/total\";i:123;s:13:\"total/voucher\";i:124;s:9:\"user/user\";i:125;s:20:\"user/user_permission\";}s:6:\"modify\";a:126:{i:0;s:15:\"catalog/aboutus\";i:1;s:17:\"catalog/attribute\";i:2;s:23:\"catalog/attribute_group\";i:3;s:16:\"catalog/category\";i:4;s:16:\"catalog/currency\";i:5;s:16:\"catalog/download\";i:6;s:18:\"catalog/dreamhouse\";i:7;s:19:\"catalog/information\";i:8;s:20:\"catalog/manufacturer\";i:9;s:14:\"catalog/option\";i:10;s:15:\"catalog/product\";i:11;s:14:\"catalog/review\";i:12;s:18:\"catalog/suggestion\";i:13;s:11:\"catalog/tag\";i:14;s:18:\"common/filemanager\";i:15;s:13:\"design/banner\";i:16;s:13:\"design/layout\";i:17;s:14:\"extension/feed\";i:18;s:16:\"extension/module\";i:19;s:17:\"extension/payment\";i:20;s:18:\"extension/shipping\";i:21;s:15:\"extension/total\";i:22;s:16:\"feed/google_base\";i:23;s:19:\"feed/google_sitemap\";i:24;s:20:\"localisation/country\";i:25;s:21:\"localisation/currency\";i:26;s:21:\"localisation/geo_zone\";i:27;s:21:\"localisation/language\";i:28;s:25:\"localisation/length_class\";i:29;s:25:\"localisation/order_status\";i:30;s:26:\"localisation/return_action\";i:31;s:26:\"localisation/return_reason\";i:32;s:26:\"localisation/return_status\";i:33;s:25:\"localisation/stock_status\";i:34;s:22:\"localisation/tax_class\";i:35;s:21:\"localisation/tax_rate\";i:36;s:25:\"localisation/weight_class\";i:37;s:17:\"localisation/zone\";i:38;s:14:\"module/account\";i:39;s:16:\"module/affiliate\";i:40;s:13:\"module/banner\";i:41;s:17:\"module/bestseller\";i:42;s:15:\"module/carousel\";i:43;s:15:\"module/category\";i:44;s:15:\"module/featured\";i:45;s:18:\"module/google_talk\";i:46;s:18:\"module/information\";i:47;s:13:\"module/latest\";i:48;s:16:\"module/slideshow\";i:49;s:14:\"module/special\";i:50;s:12:\"module/store\";i:51;s:14:\"module/welcome\";i:52;s:24:\"payment/authorizenet_aim\";i:53;s:21:\"payment/bank_transfer\";i:54;s:14:\"payment/cheque\";i:55;s:11:\"payment/cod\";i:56;s:21:\"payment/free_checkout\";i:57;s:14:\"payment/liqpay\";i:58;s:20:\"payment/moneybookers\";i:59;s:14:\"payment/nochex\";i:60;s:15:\"payment/paymate\";i:61;s:16:\"payment/paypoint\";i:62;s:13:\"payment/payza\";i:63;s:26:\"payment/perpetual_payments\";i:64;s:14:\"payment/pp_pro\";i:65;s:17:\"payment/pp_pro_uk\";i:66;s:19:\"payment/pp_standard\";i:67;s:15:\"payment/sagepay\";i:68;s:22:\"payment/sagepay_direct\";i:69;s:18:\"payment/sagepay_us\";i:70;s:19:\"payment/twocheckout\";i:71;s:28:\"payment/web_payment_software\";i:72;s:16:\"payment/worldpay\";i:73;s:27:\"report/affiliate_commission\";i:74;s:22:\"report/customer_credit\";i:75;s:22:\"report/customer_online\";i:76;s:21:\"report/customer_order\";i:77;s:22:\"report/customer_reward\";i:78;s:24:\"report/product_purchased\";i:79;s:21:\"report/product_viewed\";i:80;s:18:\"report/sale_coupon\";i:81;s:17:\"report/sale_order\";i:82;s:18:\"report/sale_return\";i:83;s:20:\"report/sale_shipping\";i:84;s:15:\"report/sale_tax\";i:85;s:14:\"sale/affiliate\";i:86;s:12:\"sale/contact\";i:87;s:11:\"sale/coupon\";i:88;s:13:\"sale/customer\";i:89;s:23:\"sale/customer_blacklist\";i:90;s:19:\"sale/customer_group\";i:91;s:10:\"sale/order\";i:92;s:11:\"sale/return\";i:93;s:12:\"sale/voucher\";i:94;s:18:\"sale/voucher_theme\";i:95;s:17:\"setting/menu_info\";i:96;s:15:\"setting/setting\";i:97;s:13:\"setting/slide\";i:98;s:13:\"setting/store\";i:99;s:16:\"shipping/auspost\";i:100;s:17:\"shipping/citylink\";i:101;s:14:\"shipping/fedex\";i:102;s:13:\"shipping/flat\";i:103;s:13:\"shipping/free\";i:104;s:13:\"shipping/item\";i:105;s:23:\"shipping/parcelforce_48\";i:106;s:15:\"shipping/pickup\";i:107;s:19:\"shipping/royal_mail\";i:108;s:12:\"shipping/ups\";i:109;s:13:\"shipping/usps\";i:110;s:15:\"shipping/weight\";i:111;s:11:\"tool/backup\";i:112;s:14:\"tool/error_log\";i:113;s:12:\"total/coupon\";i:114;s:12:\"total/credit\";i:115;s:14:\"total/handling\";i:116;s:16:\"total/klarna_fee\";i:117;s:19:\"total/low_order_fee\";i:118;s:12:\"total/reward\";i:119;s:14:\"total/shipping\";i:120;s:15:\"total/sub_total\";i:121;s:9:\"total/tax\";i:122;s:11:\"total/total\";i:123;s:13:\"total/voucher\";i:124;s:9:\"user/user\";i:125;s:20:\"user/user_permission\";}}'),(10,'Демонстрация','');
 /*!40000 ALTER TABLE `user_group` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2569,4 +2669,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-14 22:24:32
+-- Dump completed on 2013-03-17 21:59:37
