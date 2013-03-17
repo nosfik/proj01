@@ -72,7 +72,7 @@ DD_belatedPNG.fix('#logo img');
         <div id="headerMainMenu" class="droplinebar">
             <ul id="headerOuterMenu">
                 <li class="main-menu-item"><a href="#"><?php echo $text_about_us;?></a></li>
-                <li class="main-menu-item"><a href="#"><?php echo $text_sales;?></a>
+                <li class="main-menu-item"><a><?php echo $text_sales;?></a>
                 	<ul id="headerInnerMenu">
                 		<?php foreach($sale_categories as $category) {?>
                 			<li class="sub-main-menu-item"><a href="<?php echo $category['url'];?>"><?php echo $category['name'];?></a></li>
@@ -80,7 +80,7 @@ DD_belatedPNG.fix('#logo img');
                     </ul>
                 </li>
                 <li class="main-menu-item">
-                    <a href="#"><?php echo $text_building;?></a>
+                    <a><?php echo $text_building;?></a>
                     <ul id="headerInnerMenu">
                         <?php foreach($build_categories as $category) {?>
                 			<li class="sub-main-menu-item"><a href="<?php echo $category['url'];?>"><?php echo $category['name'];?></a></li>

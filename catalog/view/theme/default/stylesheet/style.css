@@ -246,12 +246,12 @@ ul.menu-horizontal > li {
 }
 
 #slideshow .previous {
-    background-position: left bottom;
+    background-position: right bottom;
     left: 0;
 }
 
 #slideshow .previous:hover {
-    background-position: right bottom;
+    background-position: left bottom;
 }
 
 #slideshow .next {

@@ -80,6 +80,12 @@ class ControllerProductSearch extends Controller {
 			$filter_zone_id = 0;
 		} 
 		
+		if (isset($this->request->get['parent'])) {
+			$parent = $this->request->get['parent'];
+		} else {
+			$parent = 0;
+		}
+		
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
@@ -154,6 +160,9 @@ class ControllerProductSearch extends Controller {
 		}
 		if (isset($this->request->get['filter_number'])) {
 			$url .= '&filter_number=' . $this->request->get['filter_number'];
+		}
+		if (isset($this->request->get['parent'])) {
+			$url .= '&parent=' . $this->request->get['parent'];
 		}
 		
 		if (isset($this->request->get['sort'])) {
@@ -231,6 +240,7 @@ class ControllerProductSearch extends Controller {
 				'filter_category_id'  	=> $filter_category_id, 
 				'filter_number' 		=> $filter_number, 
 				'filter_zone_id'	 	=> $filter_zone_id, 
+				'parent'				=> $parent,
 				'sort'                => $sort,
 				'order'               => $order,
 				'start'               => ($page - 1) * $limit,
@@ -303,6 +313,9 @@ class ControllerProductSearch extends Controller {
 		}
 		if (isset($this->request->get['filter_number'])) {
 			$url .= '&filter_number=' . $this->request->get['filter_number'];
+		}
+		if (isset($this->request->get['parent'])) {
+			$url .= '&parent=' . $this->request->get['parent'];
 		}
 					
 			if (isset($this->request->get['limit'])) {
@@ -402,6 +415,9 @@ class ControllerProductSearch extends Controller {
 		if (isset($this->request->get['filter_number'])) {
 			$url .= '&filter_number=' . $this->request->get['filter_number'];
 		}
+		if (isset($this->request->get['parent'])) {
+			$url .= '&parent=' . $this->request->get['parent'];
+		}
 						
 			if (isset($this->request->get['sort'])) {
 				$url .= '&sort=' . $this->request->get['sort'];
@@ -477,6 +493,9 @@ class ControllerProductSearch extends Controller {
 		}
 		if (isset($this->request->get['filter_number'])) {
 			$url .= '&filter_number=' . $this->request->get['filter_number'];
+		}
+		if (isset($this->request->get['parent'])) {
+			$url .= '&parent=' . $this->request->get['parent'];
 		}
 										
 			if (isset($this->request->get['sort'])) {
