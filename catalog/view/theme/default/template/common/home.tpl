@@ -310,7 +310,156 @@
             </form>
         </div>
     </div>
-</div>
+    <div id="creditFormTabs">
+        <ul>
+            <li><a href="#hypothecTab" id="tab-hypothec"></a></li>
+            <li><a href="#creditTab" id="tab-credit"></a></li>
+        </ul>
+        <div class="list-separator"></div>
+        <div id="hypothecTab">
+            <form id="hypothec-calculation-form">
+                <table>
+                    <tr class="row-separator">
+                        <td>
+                            <label for="realtyPrice">Цена недвижимости</label>
+                        </td>
+                        <td>
+                            <input type="text" name="realtyPrice" id="realtyPrice" class="textfield-small"/>
+                            <span class="units">&euro;</span>
+                        </td>
+                    </tr>
+                    <tr class="row-separator">
+                        <td>
+                            <label for="firstPayment">Начальній взнос</label>
+                        </td>
+                        <td>
+                            <input type="text" name="firstPayment" id="firstPayment" class="textfield-small"/>
+                            <span class="units">%</span>
+                        </td>
+                    </tr>
+                    <tr class="row-separator">
+                        <td>
+                            <label for="hypothecTerms">Сроки ипотеки</label>
+                        </td>
+                        <td>
+                            <input type="text" name="hypothecTerms" id="hypothecTerms" class="textfield-small"/>
+                            <span class="units">лет</span>
+                        </td>
+                    </tr>
+                    <tr class="row-separator">
+                        <td>
+                            <label for="percent">Процентная ставка</label>
+                        </td>
+                        <td>
+                            <input type="text" name="percent" id="percent" class="textfield-small"/>
+                            <span class="units">%</span>
+                        </td>
+                    </tr>
+                    <tr class="row-separator-small">
+                        <td colspan="2"><label>Первый платеж</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select id="selectPaymentDateFrom" name="selectPaymentDateFrom" class="fromTo">
+                                <option value="1">Январь</option>
+                                <option value="2">Февраль</option>
+                                <option value="3">Март</option>
+                                <option value="4">Апрель</option>
+                                <option value="5">Май</option>
+                                <option value="6">Июнь</option>
+                                <option value="7">Июль</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="selectPaymentDateTo" name="selectPaymentDateTo" class="fromTo">
+                                <option value="1">2013</option>
+                                <option value="2">2014</option>
+                                <option value="3">2015</option>
+                                <option value="4">2016</option>
+                                <option value="5">2017</option>
+                                <option value="6">2018</option>
+                                <option value="7">2019</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="btn-container" colspan="2">
+                            <input type="submit" value="посчитать" class="form-btn" style="padding: 0 5px;"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div id="creditTab">
+            <form id="credit-calculation-form">
+                <table>
+                    <tr class="row-separator">
+                        <td>
+                            <label for="creditPrice">Размер кредита</label>
+                        </td>
+                        <td>
+                            <input type="text" name="creditPrice" id="creditPrice" class="textfield-small"/>
+                            <span class="units">&euro;</span>
+                        </td>
+                    </tr>
+                    <tr class="row-separator">
+                        <td>
+                            <label for="creditTerms">Срок кредита</label>
+                        </td>
+                        <td>
+                            <input type="text" name="creditTerms" id="creditTerms" class="textfield-small"/>
+                            <span class="units">лет</span>
+                        </td>
+                    </tr>
+                    <tr class="row-separator">
+                        <td>
+                            <label for="creditPercent">Процентная ставка</label>
+                        </td>
+                        <td>
+                            <input type="text" name="creditPercent" id="creditPercent" class="textfield-small"/>
+                            <span class="units">%</span>
+                        </td>
+                    </tr>
+                    <tr class="row-separator-small">
+                        <td colspan="2"><label>Первый платеж</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select id="selectCreditDateFrom" name="selectPaymentDateFrom" class="fromTo">
+                                <option value="1">Январь</option>
+                                <option value="2">Февраль</option>
+                                <option value="3">Март</option>
+                                <option value="4">Апрель</option>
+                                <option value="5">Май</option>
+                                <option value="6">Июнь</option>
+                                <option value="7">Июль</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="selectCreditDateTo" name="selectPaymentDateTo" class="fromTo">
+                                <option value="1">2013</option>
+                                <option value="2">2014</option>
+                                <option value="3">2015</option>
+                                <option value="4">2016</option>
+                                <option value="5">2017</option>
+                                <option value="6">2018</option>
+                                <option value="7">2019</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="btn-container" colspan="2">
+                            <input type="submit" value="посчитать" class="form-btn" style="padding: 0 5px;"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        </div>
+        <div id="online-help">
+            <a href="#"></a>
+        </div>
+    </div>
 <div class="left">
    <div class="dream-house">
   	<div class="build-dream-house-title"></div>
@@ -434,7 +583,7 @@
 
 <script type="text/javascript">
     $(function(){
-        $('#formTabs').tabs();
+        $('#formTabs, #creditFormTabs').tabs();
 
         cuSel({
             changedEl: '#select-object-form select',
@@ -445,6 +594,21 @@
         $('#tab-header-area').click(function(){
             cuSel({
                 changedEl: '#select-region-form select',
+                visRows: 6,
+                scrollArrows: true
+            });
+        });
+
+        cuSel({
+            changedEl: '#hypothec-calculation-form select',
+            visRows: 6,
+            scrollArrows: true
+        });
+
+
+        $('#tab-credit').click(function(){
+            cuSel({
+                changedEl: '#credit-calculation-form select',
                 visRows: 6,
                 scrollArrows: true
             });

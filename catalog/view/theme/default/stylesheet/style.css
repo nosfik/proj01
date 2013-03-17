@@ -8,7 +8,7 @@
     src: url('../fonts/MyriadPro-SemiCn.otf'); /* Путь к файлу со шрифтом */
 }
 
-html, body, div, p, ul, ol, hr, a {
+html, body, div, p, ul, ol, hr, a, td {
     margin: 0;
     padding: 0;
     position: relative;
@@ -422,6 +422,10 @@ ul.house-characteristics li.house-bedroom {
     padding-right: 10px;
 }
 
+.about-us-content .us_content {
+    padding-right: 30px;
+}
+
 .about-us-content .us_content span {
     font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
@@ -521,6 +525,15 @@ form .fromTo, .cusel {
     left: 26px!important;
 }
 
+#creditFormTabs .fromTo .cuselText{
+    left: 0px!important;
+    color: #FFF;
+}
+
+.cuselFrameRight {
+    width: 20px!important;
+}
+
 form .jScrollPaneContainer, form .cusel-scroll-wrap {
     background: url('../image/select-dropdown-big.png') no-repeat 0px 0px #141414;
     height: 108px!important;
@@ -549,6 +562,15 @@ form td.btn-container {
 
 form tr.row-separator {
     height: 30px;
+    vertical-align: bottom;
+}
+
+#creditFormTabs form tr.row-separator {
+    height: 48px;
+    vertical-align: middle;
+}
+
+#creditFormTabs form tr.row-separator-small{
     vertical-align: bottom;
 }
 
@@ -695,13 +717,13 @@ form tr.row-separator {
     fonst-size:14px;
 }
 
-#formTabs, #formTabs > ul{
+#formTabs, #formTabs > ul,  #creditFormTabs,  #creditFormTabs > ul{
     background: #141414;
     padding: 0;
     border: none;
 }
 
-#formTabs > .list-separator {
+#formTabs > .list-separator, #creditFormTabs > .list-separator {
     position: absolute;
     top: 7px;
     left: 50%;
@@ -710,7 +732,7 @@ form tr.row-separator {
     background: url('../image/radio-toolbar-separator.png') no-repeat 50% 50%;
 }
 
-#formTabs > ul > li{
+#formTabs > ul > li, #creditFormTabs > ul > li{
     background-position: 0px 0px;
     border: none;
     margin: 0;
@@ -718,14 +740,19 @@ form tr.row-separator {
     background: #141414;
 }
 
-#formTabs > ul > li > a{
+#creditFormTabs > ul > li{
+    padding: 15px 15px 15px 30px;
+}
+
+
+#formTabs > ul > li > a, #creditFormTabs > ul > li > a{
     height: 16px;
     cursor: pointer;
     margin: 0;
     padding: 0;
 }
 
-#formTabs > ul > li> a:hover, #formTabs .ui-state-active > a{
+#formTabs > ul > li> a:hover, #formTabs .ui-state-active > a, #creditFormTabs > ul > li> a:hover, #creditFormTabs .ui-state-active > a{
     background-position: 0px -17px;
 }
 
@@ -739,14 +766,57 @@ form tr.row-separator {
     background: url('../image/areas.png') no-repeat #141414;
 }
 
-#formTabs input, #formTabs select {
+#formTabs input, #formTabs select, #creditFormTabs input, #creditFormTabs select {
     border: none;
     margin: 0;
-    padding: 0;
     padding: 0 5px;
 }
 
+#creditFormTabs input {
+    padding: 0 15px 0 5px;
+}
 
+#creditFormTabs, #online-help {
+    margin-top: 29px;
+}
+
+#tab-hypothec {
+    width: 85px;
+    background: url('../image/hypothec.png') no-repeat #141414;
+}
+
+#tab-credit {
+    width: 70px;
+    background: url('../image/credit.png') no-repeat #141414;
+}
+
+#creditFormTabs input.textfield-small {
+    width: 85px;
+    height: 23px;
+    color: #FFF;
+    background: url('../image/textfield-small.png') no-repeat 0px 0px #141414!important;
+}
+
+#creditFormTabs span.units{
+    color: #000;
+    position: absolute;
+    top: 36%;
+    right: 5px;
+}
+
+#online-help a {
+    display: block;
+    height: 40px;
+    background: url('../image/online-help.png') no-repeat -31px 3px #000;
+}
+
+#online-help a:hover {
+    display: block;
+    height: 40px;
+    background: url('../image/online-help.png') no-repeat -31px -58px #000;
+    padding: 5px;
+    width: 100%;
+}
 
 
 
