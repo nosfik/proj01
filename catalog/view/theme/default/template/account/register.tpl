@@ -150,7 +150,7 @@ $('input[name=\'customer_group_id\']:checked').live('change', function() {
 	customer_group[<?php echo $customer_group['customer_group_id']; ?>]['company_id_required'] = '<?php echo $customer_group['company_id_required']; ?>';
 	customer_group[<?php echo $customer_group['customer_group_id']; ?>]['tax_id_display'] = '<?php echo $customer_group['tax_id_display']; ?>';
 	customer_group[<?php echo $customer_group['customer_group_id']; ?>]['tax_id_required'] = '<?php echo $customer_group['tax_id_required']; ?>';
-<?php } ?>	
+<?php } ?>
 
 	if (customer_group[this.value]) {
 		if (customer_group[this.value]['company_id_display'] == '1') {
@@ -180,7 +180,7 @@ $('input[name=\'customer_group_id\']:checked').live('change', function() {
 });
 
 $('input[name=\'customer_group_id\']:checked').trigger('change');
-//--></script> 
+//--></script>
 <script type="text/javascript"><!--
 $('select[name=\'country_id\']').bind('change', function() {
 	$.ajax({
@@ -224,11 +224,7 @@ $('select[name=\'country_id\']').bind('change', function() {
 });
 
 $('select[name=\'country_id\']').trigger('change');
-//--></script> 
+//--></script>
 <script type="text/javascript"><!--
-$('.colorbox').colorbox({
-	width: 640,
-	height: 480
-});
-//--></script> 
+//--></script>
 <?php echo $footer; ?>

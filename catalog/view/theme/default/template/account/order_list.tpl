@@ -20,8 +20,13 @@
   <?php } else { ?>
   <div class="content"><?php echo $text_empty; ?></div>
   <?php } ?>
-  <div class="buttons">
-    <div class="right"><a href="<?php echo $continue; ?>" class="button"><?php echo $button_continue; ?></a></div>
+
+  <div class=buttons>
+    <div>
+        <div class=right-side></div>
+        <div class=right><a href="<?php echo $continue; ?>" class="button"><?php echo $button_continue; ?></a></a>
+        </div>
+    </div>
   </div>
   <?php echo $content_bottom; ?></div>
 <?php echo $footer; ?>

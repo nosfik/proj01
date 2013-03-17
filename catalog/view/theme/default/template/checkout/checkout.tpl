@@ -101,7 +101,8 @@
 
 
 
-<form onsubmit="return makeSubmit()" method="post" action="<?php echo $this->url->link('checkout/confirm', '', 'SSL') ;?>">
+<form onsubmit="return makeSubmit()" method="post" action="<?php echo $this->url->link('checkout/confirm', '', 'SSL') ;?>">
+
 
 <table border="0" cellspacing="0" cellpadding="0" id="order_table">
   <tr>
@@ -187,9 +188,15 @@
   
   
 
-  <div> 
-  <a style="margin:0 0 30px 20px" class="button" href="#">На главную</a>
-  <a style="margin:0 0 30px 120px" class="button" onclick="$('#cart_form_submit').click()">Оформить заказ и получить счет </a>
+  <div>
+      <div class="buttons" style="width: 99px; padding: 0; float: left; margin:0 0 30px 20px;">
+          <div class="right-side" style="background-color: #FFF;"></div>
+          <a style="width: 69px;" class="button" href="#">На главную</a>
+      </div>
+      <div class="buttons" style="width: 230px; padding: 0; float: left; margin:0 0 30px 120px;">
+          <div class="right-side" style="background-color: #FFF;"></div>
+          <a style="width: 200px;" class="button" onclick="$('#cart_form_submit').click()">Оформить заказ и получить счет </a>
+      </div>
   <input id="cart_form_submit" type="submit"  style="display:none"/>
    <div class="cart-total">
       <?php foreach ($totals as $total) { ?>

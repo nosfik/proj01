@@ -21,9 +21,17 @@
         </tr>
       </table>
     </div>
-    <div class="buttons">
-      <div class="left"><a href="<?php echo $back; ?>" class="button"><?php echo $button_back; ?></a></div>
-      <div class="right"><input type="submit" value="<?php echo $button_continue; ?>" class="button" /></div>
+    <div class=buttons>
+          <div>
+              <div class=right-side></div>
+              <div class=right><input type="submit" value="<?php echo $button_continue; ?>" class="button" style="background: none transparent;"/>
+              </div>
+          </div>
+          <div class="left">
+              <div class=right-side></div>
+              <div class=right><a class="button" href="<?php echo $back; ?>"><?php echo $button_back; ?></a>
+              </div>
+          </div>
     </div>
   </form>
   <?php echo $content_bottom; ?></div>

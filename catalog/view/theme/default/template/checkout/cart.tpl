@@ -111,10 +111,15 @@
       </table>
     </div>
   </form>
-  
-  
-  <a style="margin:0 0 30px 20px" class="button" href="<?php echo $continue; ?>"><?php echo $button_shopping; ?></a>
-  <a style="margin:0 0 30px 140px" class="button" href="<?php echo $checkout; ?>"><?php echo $button_checkout; ?> </a>
+
+<div class="buttons" style="width: 158px; padding: 0; float: left; margin:0 0 30px 20px;">
+  <div class="right-side" style="background-color: #FFF;"></div>
+  <a style="width: 128px;" class="button" href="<?php echo $continue; ?>"><?php echo $button_shopping; ?></a>
+</div>
+<div class="buttons" style="width: 149px; padding: 0; float: left; margin:0 0 30px 140px;">
+  <div class="right-side" style="background-color: #FFF;"></div>
+  <a style="width: 119px;" class="button" href="<?php echo $checkout; ?>"><?php echo $button_checkout; ?> </a>
+</div>
  <div class="cart-total">
       <?php foreach ($totals as $total) { ?>
         <div><b><?php echo $total['title']; ?> : <?php echo $total['text']; ?></b></div>

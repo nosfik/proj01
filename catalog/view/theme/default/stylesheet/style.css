@@ -17,7 +17,8 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 #logo.hover #title img {opacity:1; filter: 0;}
 #logo #title {width:263px; height:86px; float:left; background:url(../image/sprite.png) -161px 0; margin:0px 0 0 0}
 #logo #text {position:absolute; color:#FFF; margin:60px 0 0 170px; font-size:12px}
-#logo #hand {width:252px; height:84px; background:url(../image/sprite.png) -183px -112px; position:absolute; margin:80px 0 0 170px}
+#logo #hand {
+    width:252px; height:84px; background:url(../image/sprite.png) -183px -112px; position:absolute; margin:80px 0 0 170px}
 #logo #hand div {margin:22px 0 0 12px; font-size:12px}
 #top_menu {float:right; position:relative; margin:53px -5px 0 0}
 #top_menu #zigzag {width:58px; height:50px; float:right; background:url(../image/sprite.png) -442px 0}
@@ -80,7 +81,7 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 .bigButton .right {width:23px; height:48px; float:left; background:url(../image/btn_sprite.png) -577px -0px;-webkit-transition: none;-o-transition: none;-moz-transition: none; transition: none}
 .bigButton.hover .left {background:url(../image/btn_sprite.png) 0 -56px}
 .bigButton.hover .right {background:url(../image/btn_sprite.png) -577px -56px}
-#right_cont #reg_text {color:#FFF; text-shadow:1px 1px 0px #896172; width:130px; margin:0 auto; line-height:16px}
+#right_cont #reg_text {color:#FFF; text-shadow:1px 1px 0px #896172; width:130px; margin:0 auto; line-height:16px;}
 #right_cont #shop {width:180px; margin:0 auto}
 #right_cont #shop #title_left {float:left; text-align:center; font-family: 'Cuprum', sans-serif; text-transform:uppercase; font-size:14px; padding-left:28px; display:block; color:#FFF; text-shadow:1px 1px 0px #7f5d6c; line-height:18px; background: url(../image/sprite.png) no-repeat -474px -285px}
 #right_cont #shop #title_right {float:left; width:28px; height:40px; background:url(../image/sprite.png) -433px -285px}
@@ -96,7 +97,7 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 #right_cont #support {width:172px; height:211px; background:url(../image/sprite.png) 0 -577px; margin:0 auto; text-align:center; padding:20px 0 0 0; font-size:12px; line-height:18px}
 #right_cont #support span {color:#999}
 #right_cont #support .soc img {border:none; margin:8px 2px}
-#right_cont #support .soc:hover img {border:none; margin:8px 2px; opacity:0.7}
+#right_cont #support .soc:hover img {border:none; margin:8px 2px; opacity:0.7; filter: alpha(opacity = 70);}
 #right_cont #support #helper {width:91px; height:75px; background:url(../image/sprite.png) -203px -538px; margin:-25px 0 0 97px; z-index:2; position:relative; font-family: 'Cuprum', sans-serif; font-size:14px; padding:19px 0 0 2px}
 #right_cont #support #helper a b {text-transform:uppercase; font-size:17px; font-weight:normal}
 #right_cont #support #helper a {color:#ab4b65}
@@ -166,7 +167,10 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 #footer #fotobook #link span {text-transform:uppercase; font-size:19px; display:block}
 #footer #bottom_menu {float:left; font-family:Georgia, "Times New Roman", Times, serif; font-style:italic; font-size:12px; line-height:18px; margin-left:20px}
 #footer #bottom_menu a {display:block}
-#footer #sm {float:right; width:320px; position: absolute; margin:-20px 0 0 875px}
+#footer #sm {
+    float:right; width:320px; position: absolute; margin:-20px 0 0 875px;
+    *margin: -20px;
+}
 #footer #sm #logo {width:180px; height:105px; float:left; background:url(../image/sprite.png) -176px -734px; cursor:default}
 #footer #sm #logo div {width:66px; height:75px; background:url(../image/sprite.png) -426px -452px; margin:3px 0 0 105px; opacity:0; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);-webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease}
 #footer #sm.hover #logo div {opacity:1}
@@ -192,7 +196,10 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 .crumbs .menu {height:27px; width:795px; background:#FFF; float:left; margin-left:-14px}
 .crumbs .menuEnd {width:16px; height:27px; background:url(../image/sprite.png) -385px -921px; float:right; margin:0 -15px 0 0}
 .crumbs .menu .cont {float:left; line-height:27px; padding-left:45px}
-.crumbs .menu .cont a {display:block; float:left; padding:0 11px; color:#3f3f3f; text-shadow:none; background:url(../image/menu_sep.gif) no-repeat right; text-decoration:none}
+.crumbs .menu .cont a {
+    display:block; float:left; padding:0 11px; color:#3f3f3f; text-shadow:none; background:url(../image/menu_sep.gif) no-repeat right; text-decoration:none;
+    *padding:0 9px;
+}
 .crumbs .menu .cont a:hover {background:#000 url(../image/menu_sep.gif) no-repeat right; color:#FFF;}
 .crumbs .menu .cont a.active {background:#000 url(../image/menu_sep.gif) no-repeat right; color:#FFF;}
 .crumbs .menu .cont .last {background-image:none}
@@ -215,7 +222,9 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 .albumCont .picCont {width:136px; height:99px; margin:-105px 0 0 11px; border-radius: 0 3px 3px 0; overflow:hidden; text-align:center;}
 .albumCont .picCont img {max-width:150px; max-height:110px; min-height:99px}
 .albumCont .blick {width:136px; height:99px; background:url(../image/sprite.png) -140px -1003px; position:absolute; z-index:2; top:0px; left:11px}
-.albumCont .buttons {width:36px; height:49px; position:absolute; top:9px; left:141px}
+.albumCont .buttons {
+    width:36px; height:49px; position:absolute; top:9px; left:141px;
+}
 .albumCont .buttons .edit {width:36px; height:22px; display:block; background:url(../image/sprite.png) -9px -910px; margin-bottom:5px}
 .albumCont .buttons .edit:hover {background:url(../image/sprite.png) 0px -910px}
 .albumCont .buttons .del {width:36px; height:22px; display:block; background:url(../image/sprite.png) -9px -937px}
@@ -408,8 +417,29 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 #full_cart table .del {width:50px}
 #full_cart table .del a img {width:25px; height:25px; border:none; background:url(../image/sprite.png) -474px -946px}
 #full_cart table .del a:hover img {opacity:0.7; -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease;}
-#full_cart .button {display:block; border-radius:25px; background:url(../image/sprite.png) 0 -1126px; line-height:26px; padding:2px 15px 0 15px; font-family: 'Cuprum', sans-serif; font-size:14px; color:#fff; text-transform:uppercase; text-shadow:-1px -1px 0px #0564aa; float:left; text-decoration:none; -webkit-box-shadow: 0px 1px 3px 0px #407dc2;box-shadow: 0px 1px 3px 0px #407dc2;}
-#full_cart .button:hover {opacity:0.7}
+#full_cart .button {
+    display:block;
+    background: url("../image/blue-btn-bg.png") no-repeat 0 3px #FFF;
+    height: 31px;
+    line-height: 31px;
+    padding: 3px 0px 0px 15px;
+    font-family: 'Cuprum',
+    sans-serif;
+    font-size:14px;
+    color:#fff;
+    text-transform:uppercase;
+    float:left;
+    text-decoration:none;
+}
+
+#full_cart .buttons:hover {
+    opacity:0.7;
+    filter: alpha(opacity=60);
+}
+#full_cart .button:hover {
+    opacity:1;
+    filter: alpha(opacity=100);
+}
 #full_cart #total {float:right; font-size:13px; margin-right:40px}
 #full_cart #order_table {width:660px; margin:0 0 30px 20px}
 #full_cart #order_table td {vertical-align:top; padding:0; font-size:12px; border:none; padding-bottom:15px}
@@ -469,4 +499,8 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 	     margin-left: auto;
     margin-right: auto;
     width: 390px;
+}
+
+#registration-btn-wrapper {
+    background: url("../image/registration-btn-bg.png") no-repeat 0 0 transparent;
 }
