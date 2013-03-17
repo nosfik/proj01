@@ -56,14 +56,19 @@ class ModelCatalogProduct extends Model {
 		
 		if (!$product_data) {
 			$sql = "SELECT p.product_id FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id)"; 
-						
-			if (!empty($data['filter_category_id'])) {
+			
+			if(isset($data['parent']) && $data['parent'] > 0) {
+				$sql .= " LEFT JOIN " . DB_PREFIX . "product_to_category p2c ON (p.product_id = p2c.product_id) JOIN category as c ON p2c.category_id = c.category_id";
+			} elseif (!empty($data['filter_category_id'])) {
 				$sql .= " LEFT JOIN " . DB_PREFIX . "product_to_category p2c ON (p.product_id = p2c.product_id)";			
 			}
 			
 			$sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1' "; 
 			
 			
+			if(isset($data['parent']) && $data['parent'] > 0) {
+				$sql .= " AND c.parent_id = '" . (int)$data['parent'] . "'";
+			}
 			if (!empty($data['filter_category_id'])) {
 					$sql .= " AND p2c.category_id = '" . (int)$data['filter_category_id'] . "'";
 			}
@@ -77,6 +82,9 @@ class ModelCatalogProduct extends Model {
 				}
 			
 			if(isset($data['filter_area_l'])) {
+				
+				
+				
 				if ($data['filter_area_l'] > 0 && $data['filter_area_h'] > 0) {
 				$sql .= " AND p.area BETWEEN '" . (float)$data['filter_area_l'] . "' AND '" . (float)$data['filter_area_h'] . "'";
 			} elseif($data['filter_area_l'] > 0) {

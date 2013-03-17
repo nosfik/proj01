@@ -4,6 +4,7 @@
 
 <div id="slider">
     <div id="slideshow">
+    	 <div class="slider-shadow"></div>
    <span class="arrow previous jFlowPrev"></span>
         <span class="arrow next jFlowNext"></span>
        
@@ -43,14 +44,16 @@
         </ul>
         <div class="list-separator"></div>
         <div id="housesTab">
-            <form id="select-object-form">
+            <form id="select-object-form" action="index.php?route=product/search" method="get">
+            	<input type="hidden" name="route" value="product/search"/>
+            	<input type="hidden" name="parent" value="1"/>
                 <table>
                     <tr class="row-separator">
                         <td>
                             <label for="objectNumber">Номер объекта</label>
                         </td>
                         <td>
-                            <input type="text" name="objectNumber" id="objectNumber"/>
+                            <input type="text" name="filter_number" id="objectNumber"/>
                         </td>
                     </tr>
                     <tr class="row-separator">
@@ -60,14 +63,10 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <select name="city" id="city">
-                                <option value="1">Киев</option>
-                                <option value="2">Львов</option>
-                                <option value="3">Житомир</option>
-                                <option value="4">Донецк</option>
-                                <option value="5">Днепропетровск</option>
-                                <option value="6">Полтава</option>
-                                <option value="7">Алушта</option>
+                            <select name="filter_zone_id" id="city">
+                            	<?php foreach ($zones as $zone) { ?>
+                            		<option value="<?php echo $zone['id'];?>"><?php echo $zone['city'];?></option>
+                            	<?php } ?>	
                             </select>
                         </td>
                     </tr>
@@ -78,13 +77,10 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <select name="realtyType" id="realtyType">
-                                <option value="1">Вилла</option>
-                                <option value="2">Гараж</option>
-                                <option value="3">Подсобка</option>
-                                <option value="3">Квартира</option>
-                                <option value="3">Паркоместо</option>
-                                <option value="3">Дача</option>
+                            <select name="filter_category_id" id="realtyType">
+                            	<?php foreach ($categories as $category) { ?>
+                            		<option value="<?php echo $category['id'];?>"><?php echo $category['name'];?></option>
+                            	<?php } ?>	
                             </select>
                         </td>
                     </tr>
@@ -93,27 +89,19 @@
                     </tr>
                     <tr>
                         <td>
-                            <select id="selectBedroomFrom" name="selectBathroomFrom" class="fromTo">
+                            <select id="selectBedroomFrom" name="filter_bedroom_l" class="fromTo">
                                 <option value="0">От</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
+                                <?php foreach ($bedroom_l as $item) { ?>
+                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
+                            	<?php } ?>	
                             </select>
                         </td>
                         <td>
-                            <select id="selectBedroomTo" name="selectBathroomTo" class="fromTo">
+                            <select id="selectBedroomTo" name="filter_bedroom_h" class="fromTo">
                                 <option value="0">До</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
+                                <?php foreach ($bedroom_h as $item) { ?>
+                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
+                            	<?php } ?>	
                             </select>
                         </td>
                     </tr>
@@ -122,27 +110,19 @@
                     </tr>
                     <tr>
                         <td>
-                            <select id="selectBathroomFrom" name="selectBathroomFrom" class="fromTo">
+                            <select id="selectBathroomFrom" name="filter_bathroom_l" class="fromTo">
                                 <option value="0">От</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
+                                 <?php foreach ($bathroom_l as $item) { ?>
+                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
+                            	<?php } ?>	
                             </select>
                         </td>
                         <td>
-                            <select id="selectBathroomTo" name="selectBathroomTo" class="fromTo">
+                            <select id="selectBathroomTo" name="filter_bathroom_h" class="fromTo">
                                 <option value="0">До</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
+                                <?php foreach ($bathroom_h as $item) { ?>
+                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
+                            	<?php } ?>	
                             </select>
                         </td>
                     </tr>
@@ -151,27 +131,19 @@
                     </tr>
                     <tr>
                         <td>
-                            <select id="selectAreaFrom" name="selectAreaFrom" class="fromTo">
+                            <select id="selectAreaFrom" name="filter_area_l" class="fromTo">
                                 <option value="0">От</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
+                                <?php foreach ($area_l as $item) { ?>
+                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
+                            	<?php } ?>	
                             </select>
                         </td>
                         <td>
-                            <select id="selectAreaTo" name="selectAreaTo" class="fromTo">
+                            <select id="selectAreaTo" name="filter_area_h" class="fromTo">
                                 <option value="0">До</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
+                               <?php foreach ($area_h as $item) { ?>
+                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
+                            	<?php } ?>	
                             </select>
                         </td>
                     </tr>
@@ -180,27 +152,19 @@
                     </tr>
                     <tr>
                         <td>
-                            <select id="selectPriceFrom" name="selectPriceFrom" class="fromTo">
+                            <select id="selectPriceFrom" name="filter_price_l" class="fromTo">
                                 <option value="0">От</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
+                                <?php foreach ($price_l as $item) { ?>
+                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
+                            	<?php } ?>	
                             </select>
                         </td>
                         <td>
-                            <select id="selectPriceTo" name="selectPriceTo" class="fromTo">
+                            <select id="selectPriceTo" name="filter_price_h" class="fromTo">
                                 <option value="0">До</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
+                                 <?php foreach ($price_h as $item) { ?>
+                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
+                            	<?php } ?>	
                             </select>
                         </td>
                     </tr>
@@ -213,7 +177,9 @@
             </form>
         </div>
         <div id="areasTab">
-            <form id="select-region-form">
+            <form id="select-region-form" action="index.php" method="get">
+            	<input type="hidden" name="route" value="product/search"/>
+            	<input type="hidden" name="parent" value="2"/>
                 <table>
                     <tr class="row-separator">
                         <td colspan="2">
@@ -222,7 +188,7 @@
                     </tr>
                     <tr class="row-separator">
                         <td colspan="2">
-                            <input type="text" name="regionNumber" id="regionNumber" value="Номер или название объекта" onblur="if(this.value=='') this.value='Номер или название объекта';" onfocus="if(this.value=='Ромер или название объекта') this.value='';"/>
+                            <input type="text" name="filter_number" id="regionNumber" value="Номер или название объекта" onblur="if(this.value=='') this.value='Номер или название объекта';" onfocus="if(this.value=='Номер или название объекта') this.value='';"/>
                         </td>
                     </tr>
                     <tr class="row-separator">
@@ -233,13 +199,9 @@
                     <tr>
                         <td colspan="2">
                             <select name="regionCity" id="regionCity">
-                                <option value="1">Киев</option>
-                                <option value="2">Львов</option>
-                                <option value="3">Житомир</option>
-                                <option value="4">Донецк</option>
-                                <option value="5">Днепропетровск</option>
-                                <option value="6">Полтава</option>
-                                <option value="7">Алушта</option>
+                               <?php foreach ($b_zones as $zone) { ?>
+                            		<option value="<?php echo $zone['id'];?>"><?php echo $zone['city'];?></option>
+                            	<?php } ?>	
                             </select>
                         </td>
                     </tr>
@@ -250,25 +212,17 @@
                         <td>
                             <select id="selectRegionAreaFrom" name="selectRegionAreaFrom" class="fromTo">
                                 <option value="0">От</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
+                                <?php foreach ($b_area_l as $item) { ?>
+                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
+                            	<?php } ?>	
                             </select>
                         </td>
                         <td>
                             <select id="selectRegionAreaTo" name="selectRegionAreaTo" class="fromTo">
                                 <option value="0">До</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
+                                <?php foreach ($b_area_h as $item) { ?>
+                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
+                            	<?php } ?>	
                             </select>
                         </td>
                     </tr>
@@ -279,25 +233,17 @@
                         <td>
                             <select id="selectRegionPriceFrom" name="selectRegionPriceFrom" class="fromTo">
                                 <option value="0">От</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
+                                <?php foreach ($b_price_l as $item) { ?>
+                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
+                            	<?php } ?>	
                             </select>
                         </td>
                         <td>
                             <select id="selectRegionPriceTo" name="selectRegionPriceTo" class="fromTo">
                                 <option value="0">До</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
+                                <?php foreach ($b_price_h as $item) { ?>
+                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
+                            	<?php } ?>	
                             </select>
                         </td>
                     </tr>
