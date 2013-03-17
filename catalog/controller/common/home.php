@@ -22,7 +22,10 @@ class ControllerCommonHome extends Controller {
         $menu_list = $this->model_menu_info->getMenuItems();
         
         $this->data['menu_items'] = array();
-        
+        $this->data['slide_items'] = array();
+		$this->data['dreamhouse_items'] = array();
+        $this->data['suggestion_items'] = array();
+		
         foreach ($menu_list as $menu) {
             $this->data['menu_items'][] = array(
                 'name'      => $menu['name'],
@@ -42,8 +45,75 @@ class ControllerCommonHome extends Controller {
             );
         }
         
-        
-         
+		$this->load->model('menu/house');
+		$dreamhouse_list = $this->model_menu_house->getDreamHouse();
+		
+		foreach ($dreamhouse_list as $dreamhouse) {
+            $this->data['dreamhouse_items'][] = array(
+                'name'             => $dreamhouse['name'],
+				'city'         	   => $dreamhouse['city'],
+				'pool'         	   => $dreamhouse['pool'],
+				'garden'           => $dreamhouse['garden'],
+				'currency'         => $dreamhouse['currency'],
+				'number'           => $dreamhouse['number'],
+				'tag'              => $dreamhouse['tag'],
+				'area'        	   => $dreamhouse['area'],
+				'bathroom'         => $dreamhouse['bathroom'],
+				'bedroom'          => $dreamhouse['bedroom'],
+				'image'            => $dreamhouse['image'],
+				'price'            => $dreamhouse['price'],
+                'url'       	=> $this->url->link('product/product', 'product_id=' . $dreamhouse['product_id'])
+            );
+        }
+		
+		
+		$suggestion_list = $this->model_menu_house->getSuggestion();
+		
+		foreach ($suggestion_list as $suggestion) {
+            $this->data['suggestion_items'][] = array(
+                'name'             => $suggestion['name'],
+				'city'         	   => $suggestion['city'],
+				'pool'         	   => $suggestion['pool'],
+				'garden'           => $suggestion['garden'],
+				'currency'         => $suggestion['currency'],
+				'number'           => $suggestion['number'],
+				'tag'              => $suggestion['tag'],
+				'area'        	   => $suggestion['area'],
+				'bathroom'         => $suggestion['bathroom'],
+				'bedroom'          => $suggestion['bedroom'],
+				'image'            => $suggestion['image'],
+				'price'            => $suggestion['price'],
+                'url'       	=> $this->url->link('product/product', 'product_id=' . $suggestion['product_id'])
+            );
+        }
+
+
+		$this->load->model('menu/aboutus');
+		$about_us_info = $this->model_menu_aboutus->getAboutUs();
+		
+		
+		
+		
+		
+		// FILTER
+		$this->load->model('menu/filter');
+		$this->data['zones'] = $this->model_menu_filter->getZones();
+		$this->data['zones'] = $this->model_menu_filter->getZones();
+		
+		
+		$this->load->model('tool/image');
+
+		
+		
+		$this->data['about_us'] = array(
+			'url' => HTTPS_SERVER .  $about_us_info['url'],
+			'short_text' => html_entity_decode($about_us_info['short_text'])
+		);
+		
+		if ( file_exists(DIR_IMAGE . $about_us_info['image'])) {
+			$this->data['about_us']['image'] = $this->model_tool_image->resize($about_us_info['image'], 273, 200);
+		}
+		
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/home.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/common/home.tpl';
 		} else {

@@ -9,24 +9,57 @@ class ControllerProductSearch extends Controller {
 		
 		$this->load->model('tool/image'); 
 		
-		if (isset($this->request->get['filter_name'])) {
-			$filter_name = $this->request->get['filter_name'];
+		$this->document->addScript('catalog/view/javascript/cusel.js');
+		$this->document->addScript('catalog/view/javascript/jScrollPane.js');
+        $this->document->addScript('catalog/view/javascript/jquery.mousewheel.js');
+		$this->document->addStyle('catalog/view/theme/default/stylesheet/cusel.css');
+		
+		if (isset($this->request->get['filter_area_l'])) {
+			$filter_area_l = $this->request->get['filter_area_l'];
 		} else {
-			$filter_name = '';
+			$filter_area_l = 0;
 		} 
 		
-		if (isset($this->request->get['filter_tag'])) {
-			$filter_tag = $this->request->get['filter_tag'];
-		} elseif (isset($this->request->get['filter_name'])) {
-			$filter_tag = $this->request->get['filter_name'];
+		if (isset($this->request->get['filter_area_h'])) {
+			$filter_area_h = $this->request->get['filter_area_h'];
 		} else {
-			$filter_tag = '';
+			$filter_area_h = 0;
 		} 
-				
-		if (isset($this->request->get['filter_description'])) {
-			$filter_description = $this->request->get['filter_description'];
+		
+		if (isset($this->request->get['filter_bathroom_l'])) {
+			$filter_bathroom_l = $this->request->get['filter_bathroom_l'];
 		} else {
-			$filter_description = '';
+			$filter_bathroom_l = 0;
+		} 
+		
+		if (isset($this->request->get['filter_bathroom_h'])) {
+			$filter_bathroom_h = $this->request->get['filter_bathroom_h'];
+		} else {
+			$filter_bathroom_h = 0;
+		} 
+		
+		if (isset($this->request->get['filter_bedroom_h'])) {
+			$filter_bedroom_h = $this->request->get['filter_bedroom_h'];
+		} else {
+			$filter_bedroom_h = 0;
+		} 
+		
+		if (isset($this->request->get['filter_bedroom_l'])) {
+			$filter_bedroom_l = $this->request->get['filter_bedroom_l'];
+		} else {
+			$filter_bedroom_l = 0;
+		} 
+		
+		if (isset($this->request->get['filter_price_l'])) {
+			$filter_price_l = $this->request->get['filter_price_l'];
+		} else {
+			$filter_price_l = 0;
+		} 
+		
+		if (isset($this->request->get['filter_price_h'])) {
+			$filter_price_h = $this->request->get['filter_price_h'];
+		} else {
+			$filter_price_h = 0;
 		} 
 				
 		if (isset($this->request->get['filter_category_id'])) {
@@ -35,12 +68,18 @@ class ControllerProductSearch extends Controller {
 			$filter_category_id = 0;
 		} 
 		
-		if (isset($this->request->get['filter_sub_category'])) {
-			$filter_sub_category = $this->request->get['filter_sub_category'];
+		if (isset($this->request->get['filter_number'])) {
+			$filter_number = $this->request->get['filter_number'];
 		} else {
-			$filter_sub_category = '';
+			$filter_number = 0;
 		} 
-								
+		
+		if (isset($this->request->get['filter_zone_id'])) {
+			$filter_zone_id = $this->request->get['filter_zone_id'];
+		} else {
+			$filter_zone_id = 0;
+		} 
+		
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
@@ -81,24 +120,40 @@ class ControllerProductSearch extends Controller {
 		
 		$url = '';
 		
-		if (isset($this->request->get['filter_name'])) {
-			$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
-		}
 		
-		if (isset($this->request->get['filter_tag'])) {
-			$url .= '&filter_tag=' . urlencode(html_entity_decode($this->request->get['filter_tag'], ENT_QUOTES, 'UTF-8'));
+		
+		if (isset($this->request->get['filter_area_l'])) {
+			$url .= '&filter_area_l=' . urlencode(html_entity_decode($this->request->get['filter_area_l'], ENT_QUOTES, 'UTF-8'));
 		}
-				
-		if (isset($this->request->get['filter_description'])) {
-			$url .= '&filter_description=' . $this->request->get['filter_description'];
+		if (isset($this->request->get['filter_area_h'])) {
+			$url .= '&filter_area_h=' . urlencode(html_entity_decode($this->request->get['filter_area_h'], ENT_QUOTES, 'UTF-8'));
 		}
-				
+		if (isset($this->request->get['filter_bathroom_l'])) {
+			$url .= '&filter_bathroom_l=' . urlencode(html_entity_decode($this->request->get['filter_bathroom_l'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_bathroom_h'])) {
+			$url .= '&filter_bathroom_h=' . urlencode(html_entity_decode($this->request->get['filter_bathroom_h'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_bedroom_h'])) {
+			$url .= '&filter_area_l=' . urlencode(html_entity_decode($this->request->get['filter_bedroom_h'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_bedroom_l'])) {
+			$url .= '&filter_bedroom_l=' . urlencode(html_entity_decode($this->request->get['filter_bedroom_l'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_price_l'])) {
+			$url .= '&filter_price_l=' . urlencode(html_entity_decode($this->request->get['filter_price_l'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_price_h'])) {
+			$url .= '&filter_price_h=' . urlencode(html_entity_decode($this->request->get['filter_price_h'], ENT_QUOTES, 'UTF-8'));
+		}
 		if (isset($this->request->get['filter_category_id'])) {
 			$url .= '&filter_category_id=' . $this->request->get['filter_category_id'];
 		}
-		
-		if (isset($this->request->get['filter_sub_category'])) {
-			$url .= '&filter_sub_category=' . $this->request->get['filter_sub_category'];
+		if (isset($this->request->get['filter_zone_id'])) {
+			$url .= '&filter_zone_id=' . $this->request->get['filter_zone_id'];
+		}
+		if (isset($this->request->get['filter_number'])) {
+			$url .= '&filter_number=' . $this->request->get['filter_number'];
 		}
 		
 		if (isset($this->request->get['sort'])) {
@@ -123,11 +178,7 @@ class ControllerProductSearch extends Controller {
       		'separator' => $this->language->get('text_separator')
    		);
 		
-		if (isset($this->request->get['filter_name'])) {
-    		$this->data['heading_title'] = $this->language->get('heading_title') .  ' - ' . $this->request->get['filter_name'];
-		} else {
-			$this->data['heading_title'] = $this->language->get('heading_title');
-		}
+		
 		
 		$this->data['text_empty'] = $this->language->get('text_empty');
     	$this->data['text_critea'] = $this->language->get('text_critea');
@@ -160,51 +211,26 @@ class ControllerProductSearch extends Controller {
 		
 		$this->load->model('catalog/category');
 		
-		// 3 Level Category Search
-		$this->data['categories'] = array();
-					
-		$categories_1 = $this->model_catalog_category->getCategories(0);
-		
-		foreach ($categories_1 as $category_1) {
-			$level_2_data = array();
-			
-			$categories_2 = $this->model_catalog_category->getCategories($category_1['category_id']);
-			
-			foreach ($categories_2 as $category_2) {
-				$level_3_data = array();
-				
-				$categories_3 = $this->model_catalog_category->getCategories($category_2['category_id']);
-				
-				foreach ($categories_3 as $category_3) {
-					$level_3_data[] = array(
-						'category_id' => $category_3['category_id'],
-						'name'        => $category_3['name'],
-					);
-				}
-				
-				$level_2_data[] = array(
-					'category_id' => $category_2['category_id'],	
-					'name'        => $category_2['name'],
-					'children'    => $level_3_data
-				);					
-			}
-			
-			$this->data['categories'][] = array(
-				'category_id' => $category_1['category_id'],
-				'name'        => $category_1['name'],
-				'children'    => $level_2_data
-			);
-		}
-		
 		$this->data['products'] = array();
 		
-		if (isset($this->request->get['filter_name']) || isset($this->request->get['filter_tag'])) {
+		if (isset($this->request->get['filter_zone_id']) || isset($this->request->get['filter_category_id']) ||
+		isset($this->request->get['filter_number']) ||
+		isset($this->request->get['filter_area_l']) || isset($this->request->get['filter_area_h']) ||
+		isset($this->request->get['filter_bathroom_l']) || isset($this->request->get['filter_bathroom_h']) ||
+		isset($this->request->get['filter_bedroom_h']) || isset($this->request->get['filter_bedroom_l']) ||
+		isset($this->request->get['filter_price_l']) || isset($this->request->get['filter_price_h']) ) {
 			$data = array(
-				'filter_name'         => $filter_name, 
-				'filter_tag'          => $filter_tag, 
-				'filter_description'  => $filter_description,
-				'filter_category_id'  => $filter_category_id, 
-				'filter_sub_category' => $filter_sub_category, 
+				'filter_area_l'        	=> $filter_area_l, 
+				'filter_area_h'         => $filter_area_h, 
+				'filter_bathroom_l'  	=> $filter_bathroom_l,
+				'filter_bathroom_h'  	=> $filter_bathroom_h,
+				'filter_bedroom_h'  	=> $filter_bedroom_h,
+				'filter_bedroom_l'  	=> $filter_bedroom_l,
+				'filter_price_l'  		=> $filter_price_l,
+				'filter_price_h'  		=> $filter_price_h,
+				'filter_category_id'  	=> $filter_category_id, 
+				'filter_number' 		=> $filter_number, 
+				'filter_zone_id'	 	=> $filter_zone_id, 
 				'sort'                => $sort,
 				'order'               => $order,
 				'start'               => ($page - 1) * $limit,
@@ -215,72 +241,69 @@ class ControllerProductSearch extends Controller {
 								
 			$results = $this->model_catalog_product->getProducts($data);
 					
+			$results = $this->model_catalog_product->getProducts($data);
+			
 			foreach ($results as $result) {
 				if ($result['image']) {
-					$image = $this->model_tool_image->resize($result['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
+					$image = $this->model_tool_image->resize($result['image'], 228, 167);
 				} else {
 					$image = false;
 				}
 				
-				if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
-					$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')));
-				} else {
-					$price = false;
-				}
-				
-				if ((float)$result['special']) {
-					$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')));
-				} else {
-					$special = false;
-				}	
-				
-				if ($this->config->get('config_tax')) {
-					$tax = $this->currency->format((float)$result['special'] ? $result['special'] : $result['price']);
-				} else {
-					$tax = false;
-				}				
-				
-				if ($this->config->get('config_review_status')) {
-					$rating = (int)$result['rating'];
-				} else {
-					$rating = false;
-				}
-			
+								
 				$this->data['products'][] = array(
+				
+				
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
-					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 100) . '..',
-					'price'       => $price,
-					'special'     => $special,
-					'tax'         => $tax,
-					'rating'      => $result['rating'],
-					'reviews'     => sprintf($this->language->get('text_reviews'), (int)$result['reviews']),
-					'href'        => $this->url->link('product/product', $url . '&product_id=' . $result['product_id'])
+					'currency'        => $result['currency'],
+					'tag'        => 'image/'.$result['tag'],
+					'price'       => $result['price'],
+					'city'         	   => $result['city'],
+					'number'           => $result['number'],
+					'area'        	   => $result['area'],
+					'bathroom'         => $result['bathroom'],
+					'bedroom'          => $result['bedroom'],
+					'href'        => $this->url->link('product/product',  'product_id=' . $result['product_id'])
 				);
 			}
 					
 			$url = '';
 			
-			if (isset($this->request->get['filter_name'])) {
-				$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
-			}
-			
-			if (isset($this->request->get['filter_tag'])) {
-				$url .= '&filter_tag=' . urlencode(html_entity_decode($this->request->get['filter_tag'], ENT_QUOTES, 'UTF-8'));
-			}
-					
-			if (isset($this->request->get['filter_description'])) {
-				$url .= '&filter_description=' . $this->request->get['filter_description'];
-			}
-			
-			if (isset($this->request->get['filter_category_id'])) {
-				$url .= '&filter_category_id=' . $this->request->get['filter_category_id'];
-			}
-			
-			if (isset($this->request->get['filter_sub_category'])) {
-				$url .= '&filter_sub_category=' . $this->request->get['filter_sub_category'];
-			}
+		if (isset($this->request->get['filter_area_l'])) {
+			$url .= '&filter_area_l=' . urlencode(html_entity_decode($this->request->get['filter_area_l'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_area_h'])) {
+			$url .= '&filter_area_h=' . urlencode(html_entity_decode($this->request->get['filter_area_h'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_bathroom_l'])) {
+			$url .= '&filter_bathroom_l=' . urlencode(html_entity_decode($this->request->get['filter_bathroom_l'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_bathroom_h'])) {
+			$url .= '&filter_bathroom_h=' . urlencode(html_entity_decode($this->request->get['filter_bathroom_h'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_bedroom_h'])) {
+			$url .= '&filter_area_l=' . urlencode(html_entity_decode($this->request->get['filter_bedroom_h'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_bedroom_l'])) {
+			$url .= '&filter_bedroom_l=' . urlencode(html_entity_decode($this->request->get['filter_bedroom_l'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_price_l'])) {
+			$url .= '&filter_price_l=' . urlencode(html_entity_decode($this->request->get['filter_price_l'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_price_h'])) {
+			$url .= '&filter_price_h=' . urlencode(html_entity_decode($this->request->get['filter_price_h'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_category_id'])) {
+			$url .= '&filter_category_id=' . $this->request->get['filter_category_id'];
+		}
+		if (isset($this->request->get['filter_zone_id'])) {
+			$url .= '&filter_zone_id=' . $this->request->get['filter_zone_id'];
+		}
+		if (isset($this->request->get['filter_number'])) {
+			$url .= '&filter_number=' . $this->request->get['filter_number'];
+		}
 					
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
@@ -346,25 +369,39 @@ class ControllerProductSearch extends Controller {
 	
 			$url = '';
 			
-			if (isset($this->request->get['filter_name'])) {
-				$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
-			}
-			
-			if (isset($this->request->get['filter_tag'])) {
-				$url .= '&filter_tag=' . urlencode(html_entity_decode($this->request->get['filter_tag'], ENT_QUOTES, 'UTF-8'));
-			}
-					
-			if (isset($this->request->get['filter_description'])) {
-				$url .= '&filter_description=' . $this->request->get['filter_description'];
-			}
-			
-			if (isset($this->request->get['filter_category_id'])) {
-				$url .= '&filter_category_id=' . $this->request->get['filter_category_id'];
-			}
-			
-			if (isset($this->request->get['filter_sub_category'])) {
-				$url .= '&filter_sub_category=' . $this->request->get['filter_sub_category'];
-			}
+		if (isset($this->request->get['filter_area_l'])) {
+			$url .= '&filter_area_l=' . urlencode(html_entity_decode($this->request->get['filter_area_l'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_area_h'])) {
+			$url .= '&filter_area_h=' . urlencode(html_entity_decode($this->request->get['filter_area_h'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_bathroom_l'])) {
+			$url .= '&filter_bathroom_l=' . urlencode(html_entity_decode($this->request->get['filter_bathroom_l'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_bathroom_h'])) {
+			$url .= '&filter_bathroom_h=' . urlencode(html_entity_decode($this->request->get['filter_bathroom_h'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_bedroom_h'])) {
+			$url .= '&filter_area_l=' . urlencode(html_entity_decode($this->request->get['filter_bedroom_h'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_bedroom_l'])) {
+			$url .= '&filter_bedroom_l=' . urlencode(html_entity_decode($this->request->get['filter_bedroom_l'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_price_l'])) {
+			$url .= '&filter_price_l=' . urlencode(html_entity_decode($this->request->get['filter_price_l'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_price_h'])) {
+			$url .= '&filter_price_h=' . urlencode(html_entity_decode($this->request->get['filter_price_h'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_category_id'])) {
+			$url .= '&filter_category_id=' . $this->request->get['filter_category_id'];
+		}
+		if (isset($this->request->get['filter_zone_id'])) {
+			$url .= '&filter_zone_id=' . $this->request->get['filter_zone_id'];
+		}
+		if (isset($this->request->get['filter_number'])) {
+			$url .= '&filter_number=' . $this->request->get['filter_number'];
+		}
 						
 			if (isset($this->request->get['sort'])) {
 				$url .= '&sort=' . $this->request->get['sort'];
@@ -408,25 +445,39 @@ class ControllerProductSearch extends Controller {
 					
 			$url = '';
 	
-			if (isset($this->request->get['filter_name'])) {
-				$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
-			}
-			
-			if (isset($this->request->get['filter_tag'])) {
-				$url .= '&filter_tag=' . urlencode(html_entity_decode($this->request->get['filter_tag'], ENT_QUOTES, 'UTF-8'));
-			}
-					
-			if (isset($this->request->get['filter_description'])) {
-				$url .= '&filter_description=' . $this->request->get['filter_description'];
-			}
-			
-			if (isset($this->request->get['filter_category_id'])) {
-				$url .= '&filter_category_id=' . $this->request->get['filter_category_id'];
-			}
-			
-			if (isset($this->request->get['filter_sub_category'])) {
-				$url .= '&filter_sub_category=' . $this->request->get['filter_sub_category'];
-			}
+		if (isset($this->request->get['filter_area_l'])) {
+			$url .= '&filter_area_l=' . urlencode(html_entity_decode($this->request->get['filter_area_l'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_area_h'])) {
+			$url .= '&filter_area_h=' . urlencode(html_entity_decode($this->request->get['filter_area_h'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_bathroom_l'])) {
+			$url .= '&filter_bathroom_l=' . urlencode(html_entity_decode($this->request->get['filter_bathroom_l'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_bathroom_h'])) {
+			$url .= '&filter_bathroom_h=' . urlencode(html_entity_decode($this->request->get['filter_bathroom_h'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_bedroom_h'])) {
+			$url .= '&filter_area_l=' . urlencode(html_entity_decode($this->request->get['filter_bedroom_h'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_bedroom_l'])) {
+			$url .= '&filter_bedroom_l=' . urlencode(html_entity_decode($this->request->get['filter_bedroom_l'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_price_l'])) {
+			$url .= '&filter_price_l=' . urlencode(html_entity_decode($this->request->get['filter_price_l'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_price_h'])) {
+			$url .= '&filter_price_h=' . urlencode(html_entity_decode($this->request->get['filter_price_h'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_category_id'])) {
+			$url .= '&filter_category_id=' . $this->request->get['filter_category_id'];
+		}
+		if (isset($this->request->get['filter_zone_id'])) {
+			$url .= '&filter_zone_id=' . $this->request->get['filter_zone_id'];
+		}
+		if (isset($this->request->get['filter_number'])) {
+			$url .= '&filter_number=' . $this->request->get['filter_number'];
+		}
 										
 			if (isset($this->request->get['sort'])) {
 				$url .= '&sort=' . $this->request->get['sort'];
@@ -450,10 +501,18 @@ class ControllerProductSearch extends Controller {
 			$this->data['pagination'] = $pagination->render();
 		}	
 		
-		$this->data['filter_name'] = $filter_name;
-		$this->data['filter_description'] = $filter_description;
 		$this->data['filter_category_id'] = $filter_category_id;
-		$this->data['filter_sub_category'] = $filter_sub_category;
+		$this->data['filter_area_l'] =  $filter_area_l;
+		$this->data['filter_area_h'] =  $filter_area_h; 
+		$this->data['filter_bathroom_l'] = $filter_bathroom_l;
+		$this->data['filter_bathroom_h'] = $filter_bathroom_h;
+		$this->data['filter_bedroom_h'] = $filter_bedroom_h;
+		$this->data['filter_bedroom_l'] = $filter_bedroom_l;
+		$this->data['filter_price_l'] = $filter_price_l;
+		$this->data['filter_price_h'] = $filter_price_h;
+		$this->data['filter_category_id'] = $filter_category_id;
+		$this->data['filter_number'] = $filter_number;
+		$this->data['filter_zone_id'] = $filter_zone_id;
 				
 		$this->data['sort'] = $sort;
 		$this->data['order'] = $order;

@@ -67,7 +67,9 @@ $(document).ready(function(){
         <ul>
           <li><a href="<?php echo $category; ?>"><?php echo $text_category; ?></a></li>
           <li><a href="<?php echo $product; ?>"><?php echo $text_product; ?></a></li>
-          <li><a href="<?php echo $currency; ?>"><?php echo $text_currency; ?></a></li>
+          <li><a href="<?php echo $currency_p; ?>"><?php echo $text_currency; ?></a></li>
+          <li><a href="<?php echo $dreamhouse; ?>"><?php echo $text_dreamhouse; ?></a></li>
+          <li><a href="<?php echo $suggestion; ?>"><?php echo $text_suggestion; ?></a></li>
           <li><a href="<?php echo $tag; ?>"><?php echo $text_tag; ?></a></li>
           <li><a href="<?php echo $information; ?>"><?php echo $text_information; ?></a></li>
         </ul>
@@ -105,6 +107,7 @@ $(document).ready(function(){
       </li>
       <li id="system"><a class="top"><?php echo $text_system; ?></a>
         <ul>
+        	 <li><a href="<?php echo $about_us; ?>"><?php echo $text_about_us; ?></a></li>
             <li><a href="<?php echo $menu_info; ?>"><?php echo $text_menu_info; ?></a></li>
              <li><a href="<?php echo $slide; ?>"><?php echo $text_slide; ?></a></li>
           <li><a href="<?php echo $setting; ?>"><?php echo $text_setting; ?></a></li>

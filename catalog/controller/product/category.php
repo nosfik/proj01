@@ -167,7 +167,6 @@ class ControllerProductCategory extends Controller {
 					'name'        => $result['name'],
 					'currency'        => $result['currency'],
 					'tag'        => 'image/'.$result['tag'],
-					//'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 100) . '..',
 					'price'       => $result['price'],
 					'city'         	   => $result['city'],
 					'number'           => $result['number'],

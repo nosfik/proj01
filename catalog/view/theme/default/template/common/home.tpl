@@ -1,26 +1,6 @@
 <?php echo $header; ?>
 
 <div class="content-wrapper">
-<!--<div id="slider">
-    <div id="slideshow">
-        <ul class="slides">
-            <li><img src="catalog/view/theme/default/slide/photos/1.jpg" width="1200" height="527" alt="Marsa Alam underawter close up"/></li>
-            <li><img src="catalog/view/theme/default/slide/photos/2.jpg" width="1200" height="527" alt="Turrimetta Beach - Dawn"/></li>
-            <li><img src="catalog/view/theme/default/slide/photos/3.jpg" width="1200" height="527" alt="Power Station"/></li>
-        </ul>
-
-        <span class="arrow previous"></span>
-        <span class="arrow next"></span>
-    </div>
-    <div class="slider-shadow"></div>
-</div>-->
-
-
-
-
-
-
-
 
 <div id="slider">
     <div id="slideshow">
@@ -332,124 +312,77 @@
     </div>
 </div>
 <div class="left">
+   <div class="dream-house">
+  	<div class="build-dream-house-title"></div>
+  	<ul class="menu-horizontal house-list">
+  	<?php for ($i = 0; $i < count($dreamhouse_items); $i++) { $product = $dreamhouse_items[$i];	?>
+  		
+	    <?php if($i >= 3 && $i % 3 == 0) {?>
+	    	</ul><ul class="menu-horizontal house-list">
+	    <?php } ?>
+	    <li>
+	    	
+	    	<div class="house-item" onclick="location.href='<?php echo $product['url']; ?>'">
+                    <div class="frame"></div>
+                    <div style="width:228px; height:167px"><img height="167" width="228" src="<?php echo $product['thumb']; ?>"></div>
+                    <?php if(!empty($product)) { ?>
+                       <img height="68" width="68" class="house-tag" src="<?php echo $product['tag'];?>"> 
+                    <?php } ?>
+                    <p class="house-price"><?php echo $product['price'];?> <?php echo $product['currency'];?></p>
+                    <a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
+                    <ul class="house-characteristics">
+                        <li class="house-number"><?php echo $product['number']; ?></li>
+                        <li class="house-placement"><?php echo $product['city']; ?></li>
+                        <li class="house-bathroom"><?php echo $product['bathroom']; ?> санузлов</li>
+                        <li class="house-area"><?php echo $product['area']; ?> м/кв</li>
+                        <li class="house-bedroom"><?php echo $product['bedroom']; ?> спальни</li>
+                    </ul>
+                </div>
+	    	
+	    </li>
+    <?php } ?>
+    </ul>
+    
+  </div>
+  
     <div class="dream-house">
-        <div class="build-dream-house-title"></div>
-        <ul class="house-list menu-horizontal">
-            <li>
-                <div onclick="location.href='house.html'" class="house-item">
+  	<div class="interesting-proposal-title"></div>
+  	<ul class="menu-horizontal house-list">
+  	<?php for ($i = 0; $i < count($suggestion_items); $i++) { $product = $suggestion_items[$i];	?>
+  		
+	    <?php if($i >= 3 && $i % 3 == 0) {?>
+	    	</ul><ul class="menu-horizontal house-list">
+	    <?php } ?>
+	    <li>
+	    	
+	    	<div class="house-item" onclick="location.href='<?php echo $product['url']; ?>'">
                     <div class="frame"></div>
-                    <img src="catalog/view/theme/default/images-tmp/dream-house-1.png" width="228" height="167"/>
-
-                    <p class="house-price">130 370 &euro;</p>
-                    <a href="house.html">название обьекта</a>
+                    <div style="width:228px; height:167px"><img height="167" width="228" src="<?php echo $product['thumb']; ?>"></div>
+                    <?php if(!empty($product)) { ?>
+                       <img height="68" width="68" class="house-tag" src="<?php echo $product['tag'];?>"> 
+                    <?php } ?>
+                    <p class="house-price"><?php echo $product['price'];?> <?php echo $product['currency'];?></p>
+                    <a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
                     <ul class="house-characteristics">
-                        <li class="house-number">741</li>
-                        <li class="house-placement">г. Киев</li>
-                        <li class="house-bathroom">28 санузлов</li>
-                        <li class="house-area">138 м/кв</li>
-                        <li class="house-bedroom">2 спальни</li>
+                        <li class="house-number"><?php echo $product['number']; ?></li>
+                        <li class="house-placement"><?php echo $product['city']; ?></li>
+                        <li class="house-bathroom"><?php echo $product['bathroom']; ?> санузлов</li>
+                        <li class="house-area"><?php echo $product['area']; ?> м/кв</li>
+                        <li class="house-bedroom"><?php echo $product['bedroom']; ?> спальни</li>
                     </ul>
                 </div>
-            </li>
-            <li>
-                <div onclick="location.href='house.html'" class="house-item">
-                    <div class="frame"></div>
-                    <img src="catalog/view/theme/default/images-tmp/dream-house-2.png" width="228" height="167"/>
-
-                    <p class="house-price">130 370 &euro;</p>
-                    <a href="house.html">название обьекта</a>
-                    <ul class="house-characteristics">
-                        <li class="house-number">741</li>
-                        <li class="house-placement">г. Киев</li>
-                        <li class="house-bathroom">28 санузлов</li>
-                        <li class="house-area">138 м/кв</li>
-                        <li class="house-bedroom">2 спальни</li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div onclick="location.href='house.html'" class="house-item">
-                    <div class="frame"></div>
-                    <img src="catalog/view/theme/default/images-tmp/dream-house-3.png" width="228" height="167"/>
-
-                    <p class="house-price">130 370 &euro;</p>
-                    <a href="house.html">Очень длиное название обьекта</a>
-                    <ul class="house-characteristics">
-                        <li class="house-number">741</li>
-                        <li class="house-placement">г. Киев</li>
-                        <li class="house-bathroom">28 санузлов</li>
-                        <li class="house-area">138 м/кв</li>
-                        <li class="house-bedroom">2 спальни</li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div class="dream-house">
-        <div class="interesting-proposal-title"></div>
-        <ul class="house-list menu-horizontal">
-            <li>
-                <div onclick="location.href='house.html'" class="house-item">
-                    <div class="frame"></div>
-                    <img src="catalog/view/theme/default/images-tmp/interesting-1.png" width="228" height="167"/>
-                    <img src="catalog/view/theme/default/image/new-tag.png" width="68" height="68" class="house-tag"/>
-
-                    <p class="house-price">130 370 &euro;</p>
-                    <a href="house.html">название обьекта</a>
-                    <ul class="house-characteristics">
-                        <li class="house-number">741</li>
-                        <li class="house-placement">г. Киев</li>
-                        <li class="house-bathroom">28 санузлов</li>
-                        <li class="house-area">138 м/кв</li>
-                        <li class="house-bedroom">2 спальни</li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div onclick="location.href='house.html'" class="house-item">
-                    <div class="frame"></div>
-                    <img src="catalog/view/theme/default/images-tmp/interesting-2.png" width="228" height="167"/>
-                    <img src="catalog/view/theme/default/image/sale-25-tag.png" width="68" height="68" class="house-tag"/>
-
-                    <p class="house-price">130 370 &euro;</p>
-                    <a href="house.html">название обьекта</a>
-                    <ul class="house-characteristics">
-                        <li class="house-number">741</li>
-                        <li class="house-placement">г. Киев</li>
-                        <li class="house-bathroom">28 санузлов</li>
-                        <li class="house-area">138 м/кв</li>
-                        <li class="house-bedroom">2 спальни</li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div onclick="location.href='house.html'" class="house-item">
-                    <div class="frame"></div>
-                    <img src="catalog/view/theme/default/images-tmp/interesting-3.png" width="228" height="167"/>
-                    <img src="catalog/view/theme/default/image/hot-tag.png" width="68" height="68" class="house-tag"/>
-
-                    <p class="house-price">130 370 &euro;</p>
-                    <a href="house.html">Очень длиное название обьекта</a>
-                    <ul class="house-characteristics">
-                        <li class="house-number">741</li>
-                        <li class="house-placement">г. Киев</li>
-                        <li class="house-bathroom">28 санузлов</li>
-                        <li class="house-area">138 м/кв</li>
-                        <li class="house-bedroom">2 спальни</li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </div>
+	    	
+	    </li>
+    <?php } ?>
+    </ul>
+    
+  </div>
     <div>
-        <div class="about-us-header"><img src="catalog/view/theme/default/image/about_us.png" alt="about_us"/></div>
+        <div onclick="location.href='<?php echo $about_us['url'];?>'" class="about-us-header"><img src="catalog/view/theme/default/image/about_us.png" alt="about_us"/></div>
         <div class="about-us-content">
-            <div class="picture"></div>
+            <div style=" background: url('<?php echo $about_us['image'];?>') no-repeat;" class="picture"></div>
             <div class="us_content">
-                        <span>
-                            Мы являемся одними из лидеров в сфере продажи элитного жилья за рубежом. Мы как никто другой понимаем все значение инвестиций в жилье в других странах. В нашем каталоге Вы найдете только лучшие предложения, которые, без сомнения, придутся Вам по вкусу. Недвижимость в Испании – это простор для фантазии. Кого-то привлекает идиллическая картина домика у моря, кто-то жить не может без больших, шумных городов с их яркой ночной жизнью. Все это Вы можете найти у нас.
-    Мы являемся одними из лидеров в сфере продажи элитного жилья за рубежом. Мы как никто другой понимаем все значение инвестиций в жилье в других странах.
-                        </span>
+                        <span><?php echo $about_us['short_text'];?></span>
                 <br/>
                 <a href="#">Подробнее</a>
             </div>

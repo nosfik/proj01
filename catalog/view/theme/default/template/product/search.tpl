@@ -1,65 +1,290 @@
-<?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
-<div id="content"><?php echo $content_top; ?>
-  <div class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
-    <?php } ?>
-  </div>
-  <h1><?php echo $heading_title; ?></h1>
-  <b><?php echo $text_critea; ?></b>
-  <div class="content">
-    <p><?php echo $entry_search; ?>
-      <?php if ($filter_name) { ?>
-      <input type="text" name="filter_name" value="<?php echo $filter_name; ?>" />
-      <?php } else { ?>
-      <input type="text" name="filter_name" value="<?php echo $filter_name; ?>" onclick="this.value = '';" onkeydown="this.style.color = '000000'" style="color: #999;" />
-      <?php } ?>
-      <select name="filter_category_id">
-        <option value="0"><?php echo $text_category; ?></option>
-        <?php foreach ($categories as $category_1) { ?>
-        <?php if ($category_1['category_id'] == $filter_category_id) { ?>
-        <option value="<?php echo $category_1['category_id']; ?>" selected="selected"><?php echo $category_1['name']; ?></option>
-        <?php } else { ?>
-        <option value="<?php echo $category_1['category_id']; ?>"><?php echo $category_1['name']; ?></option>
-        <?php } ?>
-        <?php foreach ($category_1['children'] as $category_2) { ?>
-        <?php if ($category_2['category_id'] == $filter_category_id) { ?>
-        <option value="<?php echo $category_2['category_id']; ?>" selected="selected">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $category_2['name']; ?></option>
-        <?php } else { ?>
-        <option value="<?php echo $category_2['category_id']; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $category_2['name']; ?></option>
-        <?php } ?>
-        <?php foreach ($category_2['children'] as $category_3) { ?>
-        <?php if ($category_3['category_id'] == $filter_category_id) { ?>
-        <option value="<?php echo $category_3['category_id']; ?>" selected="selected">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $category_3['name']; ?></option>
-        <?php } else { ?>
-        <option value="<?php echo $category_3['category_id']; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $category_3['name']; ?></option>
-        <?php } ?>
-        <?php } ?>
-        <?php } ?>
-        <?php } ?>
-      </select>
-      <?php if ($filter_sub_category) { ?>
-      <input type="checkbox" name="filter_sub_category" value="1" id="sub_category" checked="checked" />
-      <?php } else { ?>
-      <input type="checkbox" name="filter_sub_category" value="1" id="sub_category" />
-      <?php } ?>
-      <label for="sub_category"><?php echo $text_sub_category; ?></label>
-    </p>
-    <?php if ($filter_description) { ?>
-    <input type="checkbox" name="filter_description" value="1" id="description" checked="checked" />
-    <?php } else { ?>
-    <input type="checkbox" name="filter_description" value="1" id="description" />
-    <?php } ?>
-    <label for="description"><?php echo $entry_description; ?></label>
-  </div>
-  <div class="buttons">
-    <div class="right"><input type="button" value="<?php echo $button_search; ?>" id="button-search" class="button" /></div>
-  </div>
-  <h2><?php echo $text_search; ?></h2>
-  <?php if ($products) { ?>
+<?php echo $header; ?>
+
+<div class="content-wrapper">
+
+<div class="content">
+    <?php echo $content_top; ?>
+<div class="right">
+    <div id="formTabs">
+        <ul>
+            <li><a href="#housesTab" id="tab-header-house"></a></li>
+            <li><a href="#areasTab" id="tab-header-area"></a></li>
+        </ul>
+        <div class="list-separator"></div>
+        <div id="housesTab">
+            <form id="select-object-form">
+                <table>
+                    <tr class="row-separator">
+                        <td>
+                            <label for="objectNumber">Номер объекта</label>
+                        </td>
+                        <td>
+                            <input type="text" name="objectNumber" id="objectNumber"/>
+                        </td>
+                    </tr>
+                    <tr class="row-separator">
+                        <td colspan="2">
+                            <label>Выберите город</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <select name="city" id="city">
+                                <option value="1">Киев</option>
+                                <option value="2">Львов</option>
+                                <option value="3">Житомир</option>
+                                <option value="4">Донецк</option>
+                                <option value="5">Днепропетровск</option>
+                                <option value="6">Полтава</option>
+                                <option value="7">Алушта</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="row-separator">
+                        <td colspan="2">
+                            <label>Вид недвижимости</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <select name="realtyType" id="realtyType">
+                                <option value="1">Вилла</option>
+                                <option value="2">Гараж</option>
+                                <option value="3">Подсобка</option>
+                                <option value="3">Квартира</option>
+                                <option value="3">Паркоместо</option>
+                                <option value="3">Дача</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="row-separator">
+                        <td colspan="2"><label>Количество спален</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select id="selectBedroomFrom" name="selectBathroomFrom" class="fromTo">
+                                <option value="0">От</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="selectBedroomTo" name="selectBathroomTo" class="fromTo">
+                                <option value="0">До</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="row-separator">
+                        <td colspan="2"><label>Количество санузлов</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select id="selectBathroomFrom" name="selectBathroomFrom" class="fromTo">
+                                <option value="0">От</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="selectBathroomTo" name="selectBathroomTo" class="fromTo">
+                                <option value="0">До</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="row-separator">
+                        <td colspan="2"><label>Площадь</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select id="selectAreaFrom" name="selectAreaFrom" class="fromTo">
+                                <option value="0">От</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="selectAreaTo" name="selectAreaTo" class="fromTo">
+                                <option value="0">До</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="row-separator">
+                        <td colspan="2"><label>Цена</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select id="selectPriceFrom" name="selectPriceFrom" class="fromTo">
+                                <option value="0">От</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="selectPriceTo" name="selectPriceTo" class="fromTo">
+                                <option value="0">До</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="btn-container" colspan="2">
+                            <input type="submit" value="найти" class="form-btn"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div id="areasTab">
+            <form id="select-region-form">
+                <table>
+                    <tr class="row-separator">
+                        <td colspan="2">
+                            <label>Номер объекта или название</label>
+                        </td>
+                    </tr>
+                    <tr class="row-separator">
+                        <td colspan="2">
+                            <input type="text" name="regionNumber" id="regionNumber" value="Номер или название объекта" onblur="if(this.value=='') this.value='Номер или название объекта';" onfocus="if(this.value=='Ромер или название объекта') this.value='';"/>
+                        </td>
+                    </tr>
+                    <tr class="row-separator">
+                        <td colspan="2">
+                            <label>Выберите город</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <select name="regionCity" id="regionCity">
+                                <option value="1">Киев</option>
+                                <option value="2">Львов</option>
+                                <option value="3">Житомир</option>
+                                <option value="4">Донецк</option>
+                                <option value="5">Днепропетровск</option>
+                                <option value="6">Полтава</option>
+                                <option value="7">Алушта</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="row-separator">
+                        <td colspan="2"><label>Площадь</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select id="selectRegionAreaFrom" name="selectRegionAreaFrom" class="fromTo">
+                                <option value="0">От</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="selectRegionAreaTo" name="selectRegionAreaTo" class="fromTo">
+                                <option value="0">До</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="row-separator">
+                        <td colspan="2"><label>Цена</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select id="selectRegionPriceFrom" name="selectRegionPriceFrom" class="fromTo">
+                                <option value="0">От</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="selectRegionPriceTo" name="selectRegionPriceTo" class="fromTo">
+                                <option value="0">До</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="btn-container" colspan="2">
+                            <input type="submit" value="найти" class="form-btn"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="left">
+	
+	  <?php if ($products) { ?>
   <div class="product-filter">
-    <div class="display"><b><?php echo $text_display; ?></b> <?php echo $text_list; ?> <b>/</b> <a onclick="display('grid');"><?php echo $text_grid; ?></a></div>
-    <div class="limit"><?php echo $text_limit; ?>
+    <div class="limit"><b><?php echo $text_limit; ?></b>
       <select onchange="location = this.value;">
         <?php foreach ($limits as $limits) { ?>
         <?php if ($limits['value'] == $limit) { ?>
@@ -70,7 +295,7 @@
         <?php } ?>
       </select>
     </div>
-    <div class="sort"><?php echo $text_sort; ?>
+    <div class="sort"><b><?php echo $text_sort; ?></b>
       <select onchange="location = this.value;">
         <?php foreach ($sorts as $sorts) { ?>
         <?php if ($sorts['value'] == $sort . '-' . $order) { ?>
@@ -82,168 +307,73 @@
       </select>
     </div>
   </div>
-  <div class="product-compare"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div>
-  <div class="product-list">
-    <?php foreach ($products as $product) { ?>
-    <div>
-      <?php if ($product['thumb']) { ?>
-      <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" title="<?php echo $product['name']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
-      <?php } ?>
-      <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
-      <div class="description"><?php echo $product['description']; ?></div>
-      <?php if ($product['price']) { ?>
-      <div class="price">
-        <?php if (!$product['special']) { ?>
-        <?php echo $product['price']; ?>
-        <?php } else { ?>
-        <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
-        <?php } ?>
-        <?php if ($product['tax']) { ?>
-        <br />
-        <span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>
-        <?php } ?>
-      </div>
-      <?php } ?>
-      <?php if ($product['rating']) { ?>
-      <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
-      <?php } ?>
-      <div class="cart"><input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" /></div>
-      <div class="wishlist"><a onclick="addToWishList('<?php echo $product['product_id']; ?>');"><?php echo $button_wishlist; ?></a></div>
-      <div class="compare"><a onclick="addToCompare('<?php echo $product['product_id']; ?>');"><?php echo $button_compare; ?></a></div>
-    </div>
+  
+  <div class="dream-house">
+  	
+  	<ul class="menu-horizontal house-list">
+  	<?php for ($i = 0; $i < count($products); $i++) { $product = $products[$i];	?>
+  		
+	    <?php if($i >= 4 && $i % 4 == 0) {?>
+	    	</ul><ul class="menu-horizontal house-list">
+	    <?php } ?>
+	    <li>
+	    	
+	    	<div class="house-item" onclick="location.href='<?php echo $product['href']; ?>'">
+                    <div class="frame"></div>
+                    <div style="width:228px; height:167px"><img height="167" width="228" src="<?php echo $product['thumb']; ?>"></div>
+                    <?php if(!empty($product)) { ?>
+                       <img height="68" width="68" class="house-tag" src="<?php echo $product['tag'];?>"> 
+                    <?php } ?>
+                    <p class="house-price"><?php echo $product['price'];?> <?php echo $product['currency'];?></p>
+                    <a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
+                    <ul class="house-characteristics">
+                        <li class="house-number"><?php echo $product['number']; ?></li>
+                        <li class="house-placement"><?php echo $product['city']; ?></li>
+                        <li class="house-bathroom"><?php echo $product['bathroom']; ?> санузлов</li>
+                        <li class="house-area"><?php echo $product['area']; ?> м/кв</li>
+                        <li class="house-bedroom"><?php echo $product['bedroom']; ?> спальни</li>
+                    </ul>
+                </div>
+	    	
+	    </li>
     <?php } ?>
+    </ul>
+    
   </div>
+  
+  
+  
   <div class="pagination"><?php echo $pagination; ?></div>
-  <?php } else { ?>
-  <div class="content"><?php echo $text_empty; ?></div>
-  <?php }?>
-  <?php echo $content_bottom; ?></div>
-<script type="text/javascript"><!--
-$('#content input[name=\'filter_name\']').keydown(function(e) {
-	if (e.keyCode == 13) {
-		$('#button-search').trigger('click');
-	}
-});
+  <?php } ?>
 
-$('#button-search').bind('click', function() {
-	url = 'index.php?route=product/search';
-	
-	var filter_name = $('#content input[name=\'filter_name\']').attr('value');
-	
-	if (filter_name) {
-		url += '&filter_name=' + encodeURIComponent(filter_name);
-	}
+  
+  
+</div>
+<div class="clear-right"></div>
 
-	var filter_category_id = $('#content select[name=\'filter_category_id\']').attr('value');
-	
-	if (filter_category_id > 0) {
-		url += '&filter_category_id=' + encodeURIComponent(filter_category_id);
-	}
-	
-	var filter_sub_category = $('#content input[name=\'filter_sub_category\']:checked').attr('value');
-	
-	if (filter_sub_category) {
-		url += '&filter_sub_category=true';
-	}
-		
-	var filter_description = $('#content input[name=\'filter_description\']:checked').attr('value');
-	
-	if (filter_description) {
-		url += '&filter_description=true';
-	}
+</div>
+</div>
+<?php echo $content_bottom; ?>
 
-	location = url;
-});
+<script type="text/javascript">
+    $(function(){
+        $('#formTabs').tabs();
 
-function display(view) {
-	if (view == 'list') {
-		$('.product-grid').attr('class', 'product-list');
-		
-		$('.product-list > div').each(function(index, element) {
-			html  = '<div class="right">';
-			html += '  <div class="cart">' + $(element).find('.cart').html() + '</div>';
-			html += '  <div class="wishlist">' + $(element).find('.wishlist').html() + '</div>';
-			html += '  <div class="compare">' + $(element).find('.compare').html() + '</div>';
-			html += '</div>';			
-			
-			html += '<div class="left">';
-			
-			var image = $(element).find('.image').html();
-			
-			if (image != null) { 
-				html += '<div class="image">' + image + '</div>';
-			}
-			
-			var price = $(element).find('.price').html();
-			
-			if (price != null) {
-				html += '<div class="price">' + price  + '</div>';
-			}
-						
-			html += '  <div class="name">' + $(element).find('.name').html() + '</div>';
-			html += '  <div class="description">' + $(element).find('.description').html() + '</div>';
-			
-			var rating = $(element).find('.rating').html();
-			
-			if (rating != null) {
-				html += '<div class="rating">' + rating + '</div>';
-			}
-				
-			html += '</div>';
+        cuSel({
+            changedEl: '#select-object-form select',
+            visRows: 6,
+            scrollArrows: true
+        });
 
-						
-			$(element).html(html);
-		});		
-		
-		$('.display').html('<b><?php echo $text_display; ?></b> <?php echo $text_list; ?> <b>/</b> <a onclick="display(\'grid\');"><?php echo $text_grid; ?></a>');
-		
-		$.cookie('display', 'list'); 
-	} else {
-		$('.product-list').attr('class', 'product-grid');
-		
-		$('.product-grid > div').each(function(index, element) {
-			html = '';
-			
-			var image = $(element).find('.image').html();
-			
-			if (image != null) {
-				html += '<div class="image">' + image + '</div>';
-			}
-			
-			html += '<div class="name">' + $(element).find('.name').html() + '</div>';
-			html += '<div class="description">' + $(element).find('.description').html() + '</div>';
-			
-			var price = $(element).find('.price').html();
-			
-			if (price != null) {
-				html += '<div class="price">' + price  + '</div>';
-			}	
-					
-			var rating = $(element).find('.rating').html();
-			
-			if (rating != null) {
-				html += '<div class="rating">' + rating + '</div>';
-			}
-						
-			html += '<div class="cart">' + $(element).find('.cart').html() + '</div>';
-			html += '<div class="wishlist">' + $(element).find('.wishlist').html() + '</div>';
-			html += '<div class="compare">' + $(element).find('.compare').html() + '</div>';
-			
-			$(element).html(html);
-		});	
-					
-		$('.display').html('<b><?php echo $text_display; ?></b> <a onclick="display(\'list\');"><?php echo $text_list; ?></a> <b>/</b> <?php echo $text_grid; ?>');
-		
-		$.cookie('display', 'grid');
-	}
-}
+        $('#tab-header-area').click(function(){
+            cuSel({
+                changedEl: '#select-region-form select',
+                visRows: 6,
+                scrollArrows: true
+            });
+        });
 
-view = $.cookie('display');
-
-if (view) {
-	display(view);
-} else {
-	display('list');
-}
-//--></script> 
+       
+    });
+</script>
 <?php echo $footer; ?>

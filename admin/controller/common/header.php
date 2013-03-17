@@ -54,6 +54,9 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_contact'] = $this->language->get('text_contact');
 		$this->data['text_tag'] = $this->language->get('text_tag');
         $this->data['text_currency'] = $this->language->get('text_currency');
+		$this->data['text_about_us'] = $this->language->get('text_about_us');
+		$this->data['text_dreamhouse'] = $this->language->get('text_dreamhouse');
+		$this->data['text_suggestion'] = $this->language->get('text_suggestion');
 		$this->data['text_module'] = $this->language->get('text_module');
 		$this->data['text_option'] = $this->language->get('text_option');
 		$this->data['text_order'] = $this->language->get('text_order');
@@ -128,7 +131,10 @@ class ControllerCommonHeader extends Controller {
 			$this->data['feed'] = $this->url->link('extension/feed', 'token=' . $this->session->data['token'], 'SSL');			
 			$this->data['geo_zone'] = $this->url->link('localisation/geo_zone', 'token=' . $this->session->data['token'], 'SSL');
             $this->data['tag'] = $this->url->link('catalog/tag', 'token=' . $this->session->data['token'], 'SSL');
-            $this->data['currency'] = $this->url->link('catalog/currency', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['dreamhouse'] = $this->url->link('catalog/dreamhouse', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['suggestion'] = $this->url->link('catalog/suggestion', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['about_us'] = $this->url->link('catalog/aboutus', 'token=' . $this->session->data['token'], 'SSL');
+            $this->data['currency_p'] = $this->url->link('catalog/currency', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['information'] = $this->url->link('catalog/information', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['language'] = $this->url->link('localisation/language', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['layout'] = $this->url->link('design/layout', 'token=' . $this->session->data['token'], 'SSL');

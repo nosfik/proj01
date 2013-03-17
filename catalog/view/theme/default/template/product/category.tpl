@@ -40,7 +40,7 @@
   	<ul class="menu-horizontal house-list">
   	<?php for ($i = 0; $i < count($products); $i++) { $product = $products[$i];	?>
   		
-	    <?php if($i >= 3 && $i % 3 == 0) {?>
+	    <?php if($i >= 4 && $i % 4 == 0) {?>
 	    	</ul><ul class="menu-horizontal house-list">
 	    <?php } ?>
 	    <li>

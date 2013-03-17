@@ -66,36 +66,55 @@ class ModelCatalogProduct extends Model {
 			
 			if (!empty($data['filter_category_id'])) {
 					$sql .= " AND p2c.category_id = '" . (int)$data['filter_category_id'] . "'";
-				}
+			}
+			
+			if (!empty($data['filter_number'])) {
+					$sql .= " AND p.number = '" . (int)$data['filter_number'] . "'";
+			}
 
-			if (!empty($data['zone_id'])) {
-					$sql .= " AND p.zone_id = '" . (int)$data['zone_id'] . "'";
+			if (!empty($data['filter_zone_id'])) {
+					$sql .= " AND p.zone_id = '" . (int)$data['filter_zone_id'] . "'";
 				}
 			
-			if (!empty($data['area'])) {
-					$sql .= " AND p.area = '" . (float)$data['area'] . "'";
-				}
-
-			if (!empty($data['bathroom'])) {
-					$sql .= " AND p.bathroom = '" . (int)$data['bathroom'] . "'";
-				}
-
-			if (!empty($data['badroom'])) {
-					$sql .= " AND p.badroom = '" . (int)$data['badroom'] . "'";
-				}
-
-			if (! (empty($data['price_l']) && empty($data['price_h'])) ) {
-					$sql .= " AND p.price BETWEEN ".(float)$data['price_l']." AND ".(float)$data['price_h'];
-				}
-					
+			if(isset($data['filter_area_l'])) {
+				if ($data['filter_area_l'] > 0 && $data['filter_area_h'] > 0) {
+				$sql .= " AND p.area BETWEEN '" . (float)$data['filter_area_l'] . "' AND '" . (float)$data['filter_area_h'] . "'";
+			} elseif($data['filter_area_l'] > 0) {
+				$sql .= " AND p.area >= '" . (float)$data['filter_area_l'] . "'";
+			} elseif($data['filter_area_h'] > 0) {
+				$sql .= " AND p.area <= '" . (float)$data['filter_area_h'] . "'";
+			}
 			
+			if ($data['filter_bathroom_l'] > 0 && $data['filter_bathroom_h'] > 0) {
+				$sql .= " AND p.bathroom BETWEEN '" . (float)$data['filter_bathroom_l'] . "' AND '" . (float)$data['filter_bathroom_h'] . "'";
+			} elseif($data['filter_bathroom_l'] > 0) {
+				$sql .= " AND p.bathroom >= '" . (float)$data['filter_bathroom_l'] . "'";
+			} elseif($data['filter_bathroom_h'] > 0) {
+				$sql .= " AND p.bathroom =< '" . (float)$data['filter_bathroom_h'] . "'";
+			}
+			
+			if ($data['filter_bedroom_l'] > 0  && $data['filter_bedroom_h'] > 0) {
+				$sql .= " AND p.bedroom BETWEEN '" . (int)$data['filter_bedroom_l'] . "' AND '" . (int)$data['filter_bedroom_h'] . "'";
+			} elseif($data['filter_bedroom_l'] > 0) {
+				$sql .= " AND p.bedroom >= '" . (int)$data['filter_bedroom_l'] . "'";
+			} elseif($data['filter_bedroom_h'] > 0) {
+				$sql .= " AND p.bedroom <= '" . (int)$data['filter_bedroom_h'] . "'";
+			}
+			
+			if ($data['filter_price_l'] > 0 && $data['filter_price_h'] > 0) {
+				$sql .= " AND p.price BETWEEN '" . (float)$data['filter_price_h'] . "' AND '" . (float)$data['filter_price_h'] . "'";
+			} elseif($data['filter_price_l'] > 0) {
+				$sql .= " AND p.price >= '" . (float)$data['filter_price_l'] . "'";
+			} elseif($data['filter_price_h'] > 0) {
+				$sql .= " AND p.price <= '" . (float)$data['filter_price_h'] . "'";
+			}
+			}
 			
 			$sql .= " GROUP BY p.product_id";
 			
 			$sort_data = array(
 				'pd.name',
 				'p.area',
-				'p.quantity',
 				'p.price',
 				'p.zone_id',
 				'p.sort_order',
