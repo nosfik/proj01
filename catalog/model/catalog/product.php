@@ -71,9 +71,9 @@ class ModelCatalogProduct extends Model {
 			}
 			if (!empty($data['filter_category_id'])) {
 				
-				if($data['filter_category_id'] == 1 || $data['filter_category_id'] == 0) {
+				if($data['filter_category_id'] == 1 || $data['filter_category_id'] == 2) {
 					
-					$sql .= " AND p2c.maine_category = '" . (int)$data['filter_category_id'] . "'";
+					$sql .= " AND p2c.main_category = '" . (int)$data['filter_category_id'] . "'";
 					
 				}
 			}

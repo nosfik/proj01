@@ -36,14 +36,16 @@ class ModelCatalogProduct extends Model {
 		
 		if (isset($data['product_category'])) {
 			foreach ($data['product_category'] as $category_id) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$category_id . "'");
+				$res_cat = $this->db->query("SELECT parent_id FROM " . DB_PREFIX . "category WHERE category_id = ".(int)$category_id);
+				$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$category_id . "', main_category =".(int)$res_cat['parent_id']);
 			}
 		}
 		
 		if (isset($data['main_category_id']) && $data['main_category_id'] > 0) {
+			$res_cat = $this->db->query("SELECT parent_id FROM " . DB_PREFIX . "category WHERE category_id = ".(int)$data['main_category_id']);
 			$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$product_id . "' AND category_id = '" . (int)$data['main_category_id'] . "'");
-			$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$data['main_category_id'] . "', main_category = 1");
-		} elseif (isset($data['product_category'][0])) {
+			$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$data['main_category_id'] . "', main_category = ".(int)$res_cat->row['parent_id']);
+		} elseif (isset($data['product_category'])) {
 			$this->db->query("UPDATE " . DB_PREFIX . "product_to_category SET main_category = 1 WHERE product_id = '" . (int)$product_id . "' AND category_id = '" . (int)$data['product_category'][0] . "'");
 		}
 
@@ -113,13 +115,15 @@ class ModelCatalogProduct extends Model {
 		
 		if (isset($data['product_category'])) {
 			foreach ($data['product_category'] as $category_id) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$category_id . "'");
-			}		
+				$res_cat = $this->db->query("SELECT parent_id FROM " . DB_PREFIX . "category WHERE category_id = ".(int)$category_id);
+				$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$category_id . "', main_category =".(int)$res_cat['parent_id']);
+			}
 		}
 
 		if (isset($data['main_category_id']) && $data['main_category_id'] > 0) {
+			$res_cat = $this->db->query("SELECT parent_id FROM " . DB_PREFIX . "category WHERE category_id = ".(int)$data['main_category_id']);
 			$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$product_id . "' AND category_id = '" . (int)$data['main_category_id'] . "'");
-			$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$data['main_category_id'] . "', main_category = 1");
+			$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$data['main_category_id'] . "', main_category = ".(int)$res_cat->row['parent_id']);
 		} elseif (isset($data['product_category'])) {
 			$this->db->query("UPDATE " . DB_PREFIX . "product_to_category SET main_category = 1 WHERE product_id = '" . (int)$product_id . "' AND category_id = '" . (int)$data['product_category'][0] . "'");
 		}
