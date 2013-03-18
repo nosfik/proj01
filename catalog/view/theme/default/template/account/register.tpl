@@ -106,7 +106,7 @@
         </div>
         <h2>Доставка</h2>
          <div class="reg_field">
-            <p class="reg_p"><label for="reg_transporter">Перевозчик и подходящий скал для доставки</label></p>
+            <p class="reg_p"><label for="reg_transporter">Перевозчик и подходящий склад для доставки</label></p>
             <input class="input" type="text" id="reg_transporter" name="transporter" value="<?php echo $transporter;?>"/>
           </div>
           <div class="reg_field" style="height: 150px">

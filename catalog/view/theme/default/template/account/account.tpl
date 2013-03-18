@@ -11,7 +11,7 @@
     <ul>
       <li><a style="font-size:15px" href="<?php echo $edit; ?>"><?php echo $text_edit; ?></a></li>
       <li><a style="font-size:15px" href="<?php echo $password; ?>"><?php echo $text_password; ?></a></li>
-      <li><a style="font-size:15px" href="<?php echo $address; ?>">Изменить Адресс</a></li>
+      <li><a style="font-size:15px" href="<?php echo $address; ?>">Изменить адресс</a></li>
        <li><a style="font-size:15px" href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
       <li><a style="font-size:15px" href="<?php echo $newsletter; ?>"><?php echo $text_newsletter; ?></a></li>
       

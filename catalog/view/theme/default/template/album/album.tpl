@@ -32,7 +32,7 @@
           <img src="catalog/view/theme/default/image/blank.gif">
         </a>
       </div>
-      <div id="mess">Редактирование альбома "<span id="deleteContent"></span>"?</div>
+      <div id="mess">Редактирование альбома "<span id="editContent"></span>"?</div>
       <form method="post" action="<?php echo $this -> url -> link('album/album/edit', '', 'SSL'); ?>" enctype="multipart/form-data">
        <input type="hidden" name="album_id" />
       <table style="margin:10px auto">
@@ -148,6 +148,7 @@
     var $ediWindow = $('#edit_album_window');
     $ediWindow.find('input[name=album_id]').val(id);
     $ediWindow.find('input[name=name]').val(name);
+    $ediWindow.find('#editContent').html(name);
     $ediWindow.find('input[name=description]').val(description);
     $ediWindow.find('#cover').attr('src', photo);
     $('#edit_album_window').fadeIn();
