@@ -845,8 +845,98 @@ form tr.row-separator {
 }
 
 
+.order .header {
+    margin: 22px 0;
+    height: 20px;
+    background: url('../image/fill_in_form.png') no-repeat 0 0 #141414;
+}
+
+.order .form {
+    background-color: #141414;
+    padding: 25px 31px;
+    margin-bottom: 55px;
+}
+
+.order .form td{
+   vertical-align: top;
+}
 
 
+.order .form .column {
+    width: 50%;
+}
+
+.order .form .column input, .order .form .column textarea{
+    width: 435px;
+    padding: 0 5px 0 7px;
+    border: none;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.order .form .column input {
+    height: 45px;
+    background: url('../image/order_textfield.png') no-repeat 0 3px #141414;
+}
+
+.order .form .column textarea{
+    height: 76px;
+    background: url('../image/order_textarea.png') no-repeat 0 3px #141414;
+    resize: none;
+    padding: 5px 5px 5px 7px;
+    overflow: auto;
+}
+
+.order .form .column .input-focus{
+    background-position: 0 -43px;
+}
+
+.order .form .column .textarea-focus{
+    background-position:0 -83px;
+}
+
+.order .form .column p{
+    padding: 5px 0;
+}
+
+.orange {
+    color: #ff9e14;
+}
+
+.order .form .input-column td{
+    height: 115px;
+}
+.order .form .textarea-column td{
+    height: 140px;
+    padding-left: 30px;
+}
+
+#capchaField {
+    width: 126px;
+    height: 46px;
+    background: url('../image/order_captcha_field.png') no-repeat 0 3px #141414;
+    float: left;
+    margin-right: 20px;
+}
+
+.order .form .column .capcha-focus {
+    background-position: 0 -43px!important;
+}
+
+#createOrder {
+    width: 168px;
+    height: 50px;
+    background: url('../image/order_create-btn.png') no-repeat -1px 4px #141414;
+    margin-top: 25px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+
+#createOrder:hover {
+   background-position: -1px -53px;
+}
 
 
 
