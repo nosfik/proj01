@@ -33,10 +33,10 @@
         <thead>
           <tr>
               <td>Наименование</td>
-              <td align="center">Фотографии</td>
+              <td >Фотографии</td>
               <td align="center">Копии</td>
               <td align="center">Сумма</td>
-              <td align="center">Итого (грн)</td>
+              <td align="right">Итого (грн)</td>
               <td> </td>
           </tr>
         </thead>
@@ -44,10 +44,10 @@
           <?php foreach ($albums as $album) { ?>
             <tr>
               <td><a href="<?php echo $album['album_href']?>">Фотопечать "Альбом <?php echo $album['album_name'];?>"</a></td>
-              <td align="center"><?php echo $album['count'];?></td>
+              <td style="padding-left:40px"><?php echo $album['count'];?></td>
               <td align="center"><?php echo $album['quantity'];?></td>
               <td align="center"><?php echo $album['price'];?></td>
-              <td align="center"><?php echo $album['total'];?></td>
+              <td style="padding-right: 25px;" align="right"><?php echo $album['total'];?></td>
               <td align="center" class="del">
                   <a href="<?php echo $this->url->link('checkout/cart', 'removeAlbum='.$album['key']);?> "> <img src="catalog/view/theme/default/image/blank.gif">   </a>
               </td>
@@ -67,10 +67,9 @@
         <thead>
           <tr>
               <td colspan="2">Наименование</td>
-               <td align="center">Количество</td>
-              <td align="center">Цена (грн)</td>
-             
-              <td align="right">Итого (грн)</td>
+               <td style="width:200px;" align="left">Количество</td>
+              <td width="85px" align="center">Цена (грн)</td>
+              <td width="100px" align="right">Итого (грн)</td>
               <td> </td>
           </tr>
         </thead>
@@ -93,7 +92,7 @@
               <?php if ($product['reward']) { ?>
               <small><?php echo $product['reward']; ?></small>
               <?php } ?></td>
-       <td style="text-align: center" class="quantity"><input type="text" name="quantity[<?php echo $product['key']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" />
+       <td style="text-align: left;padding-left:20px" class="quantity"><input type="text" name="quantity[<?php echo $product['key']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" />
               &nbsp;
               <input type="image" src="catalog/view/theme/default/image/update.png" alt="<?php echo $button_update; ?>" title="<?php echo $button_update; ?>" />
         </td>

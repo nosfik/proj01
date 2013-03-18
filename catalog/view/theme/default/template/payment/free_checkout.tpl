@@ -1,8 +1,9 @@
-<div class="buttons">
-  <div class="right">
-    <input type="button" value="<?php echo $button_confirm; ?>" id="button-confirm" class="button" />
-  </div>
-</div>
+<div style="width: 175px; padding: 0;  float: right;" class="buttons">
+                        <div class="right-side"></div>
+                        <div style="width: 160px; float: left;" class="right">
+                            <input type="button" id="button-confirm" class="button" value="<?php echo $button_confirm; ?>" style="background: none transparent;">
+                        </div>
+                    </div>
 <script type="text/javascript"><!--
 $('#button-confirm').bind('click', function() {
 	$.ajax({ 

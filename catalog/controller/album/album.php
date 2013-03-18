@@ -39,15 +39,12 @@ class ControllerAlbumAlbum extends Controller {
 			$this -> load -> model('album/album');
 			$this -> load -> model('album/content');
 			$album_id = (int)$this -> request -> post['album_id'];
-
 			$return['order'] = array();
 			$photos_in_order = $this -> cart -> getPhotosOrder();
 			$photos_album = $this -> model_album_content -> getPhotosByAlbum($album_id, $this -> customer -> getId());
-
+			$photoInOrder = false;
 			foreach ($photos_album as $photo_album) {
-				$photoInOrder = false;
 				foreach ($photos_in_order as $photo_in_order => $photo_name) {
-
 					if ($photo_album['album_photo_id'] == $photo_in_order) {
 						$photoInOrder = true;
 						$return['order'][] = $photo_name;

@@ -56,7 +56,10 @@ class ModelCheckoutOrder extends Model {
      
     
       $orderDir = DIR_ORDER_PHOTOS.'order_'.$order_id;
-      mkdir($orderDir);
+	  if(!is_dir($orderDir)) {
+	  	mkdir($orderDir);
+	  }
+      
       
       foreach($album['photos_arr'] as $photo_id) {
         $photo_name = $album['photos_name_map'][$photo_id];

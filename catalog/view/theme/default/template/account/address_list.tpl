@@ -14,14 +14,7 @@
       <tr>
         <td><?php echo $result['address']; ?></td>
         <td style="text-align: right;">
-            <div class=buttons>
-                <div>
-                    <div class=right-side></div>
-                    <div class=right style="width: 105px;">
-                        <a href="<?php echo $result['update']; ?>" class="button"><?php echo $button_edit; ?></a>
-                    </div>
-                </div>
-            </div>
+            
             <!--<a href="<?php echo $result['delete']; ?>" class="button"><?php echo $button_delete; ?></a>-->
         </td>
       </tr>
@@ -32,9 +25,17 @@
   <div class=buttons>
         <div class="left">
             <div class=right-side></div>
-            <div class=right><a class="button" href="<?php echo $back; ?>"><?php echo $button_back; ?></a>
-            </div>
+            <div class=right style="width: 105px;">
+                        <a href="<?php echo $result['update']; ?>" class="button"><?php echo $button_edit; ?></a>
+                    </div>
         </div>
+        
+        <div class=buttons>
+                <div>
+                    <div class=right-side></div>
+                    <div class=right><a class="button" href="<?php echo $back; ?>"><?php echo $button_back; ?></a></div>
+                </div>
+            </div>
    </div>
   <?php echo $content_bottom; ?></div>
 <?php echo $footer; ?>
