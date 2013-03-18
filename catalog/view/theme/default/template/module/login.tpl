@@ -26,7 +26,7 @@
   </div>
   <div class="sep"></div>
   
-  <div style="margin: 0px auto; width: 155px; background-color: #daa4c3; border-radius: 25px 25px 25px 25px; padding: 6px;">
+  <div id="registration-btn-wrapper" style="margin: 0px auto; width: 167px; height: 56px; padding-top: 5px;">
   <div class="bigButton registration" onMouseOver="$(this).addClass('hover');" onMouseOut="$(this).removeClass('hover');">
         <a class="left" href="<?php echo $this -> url -> link('account/register', '', 'SSL'); ?>">Регистрация</a>
         <div class="right"></div>

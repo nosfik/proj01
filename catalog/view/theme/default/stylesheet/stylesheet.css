@@ -565,22 +565,19 @@ table.radio tr.highlight:hover td {
 }
 /* button */
 a.button, input.button {
+    display: block;
 	cursor: pointer;
 	color: #FFFFFF;
-	background: url("../image/sprite.png") 0px -1126px;
-	
-	border-radius: 25px;
-	box-shadow: 0px 1px 3px 0px #407DC2;
-	color: #FFFFFF;
-	display: block;
 	font-family: "Cuprum", sans-serif;
 	font-size: 14px;
-	line-height: 26px;
-	padding: 2px 15px 0px;
+    height: 31px;
+	line-height: 31px;
+	padding: 3px 0px 0px 15px;
 	text-decoration: none;
 	text-shadow: -1px -1px 0px #0564AA;
 	text-transform: uppercase;
 }
+
 a.button {
 	display: inline-block;
 	text-decoration: none;
@@ -589,14 +586,20 @@ a.button {
 input.button {
 	margin: 0;
 	border: 0;
-	height: 26px;
+	height: 34px;
 }
-a.button:hover, input.button:hover {
-	
+a.button:hover, input.button:hover, .buttons .hovered:hover {
     opacity: 0.7;
+    filter: alpha(opacity=70);
 }
+
+.buttons .hovered a.button:hover, .buttons .hovered input.button:hover {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
 .buttons {
-	overflow: auto;
+	overflow: hidden;
 	padding: 6px;
 	margin-bottom: 20px;
 }
@@ -604,10 +607,27 @@ a.button:hover, input.button:hover {
 	float: left;
 	text-align: left;
 }
+
+/*
+.buttons .button-left{
+    background: url("../image/blue-btn-bg.png") no-repeat 0 3px;
+}
+*/
+
 .buttons .right {
 	float: right;
 	text-align: right;
+    background: url("../image/blue-btn-bg.png") no-repeat 0 3px;
 }
+
+.buttons .right-side{
+    width: 15px;
+    height: 31px;
+    float: right;
+    padding: 2px 0px 0px;
+    background: url("../image/blue-btn-bg.png") no-repeat -588px -29px;
+}
+
 .buttons .center {
 	text-align: center;
 	margin-left: auto;

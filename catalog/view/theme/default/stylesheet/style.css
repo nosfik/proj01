@@ -17,7 +17,8 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 #logo.hover #title img {opacity:1; filter: 0;}
 #logo #title {width:263px; height:86px; float:left; background:url(../image/sprite.png) -161px 0; margin:0px 0 0 0}
 #logo #text {position:absolute; color:#FFF; margin:60px 0 0 170px; font-size:12px}
-#logo #hand {width:252px; height:84px; background:url(../image/sprite.png) -183px -112px; position:absolute; margin:80px 0 0 170px}
+#logo #hand {
+    width:252px; height:84px; background:url(../image/sprite.png) -183px -112px; position:absolute; margin:80px 0 0 170px}
 #logo #hand div {margin:22px 0 0 12px; font-size:12px}
 #top_menu {float:right; position:relative; margin:53px -5px 0 0}
 #top_menu #zigzag {width:58px; height:50px; float:right; background:url(../image/sprite.png) -442px 0}
@@ -80,13 +81,13 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 .bigButton .right {width:23px; height:48px; float:left; background:url(../image/btn_sprite.png) -577px -0px;-webkit-transition: none;-o-transition: none;-moz-transition: none; transition: none}
 .bigButton.hover .left {background:url(../image/btn_sprite.png) 0 -56px}
 .bigButton.hover .right {background:url(../image/btn_sprite.png) -577px -56px}
-#right_cont #reg_text {color:#FFF; text-shadow:1px 1px 0px #896172; width:130px; margin:0 auto; line-height:16px}
+#right_cont #reg_text {color:#FFF; text-shadow:1px 1px 0px #896172; width:130px; margin:0 auto; line-height:16px;}
 #right_cont #shop {width:180px; margin:0 auto}
 #right_cont #shop #title_left {float:left; text-align:center; font-family: 'Cuprum', sans-serif; text-transform:uppercase; font-size:14px; padding-left:28px; display:block; color:#FFF; text-shadow:1px 1px 0px #7f5d6c; line-height:18px; background: url(../image/sprite.png) no-repeat -474px -285px}
 #right_cont #shop #title_right {float:left; width:28px; height:40px; background:url(../image/sprite.png) -433px -285px}
 #right_cont #shop #pic {width:180px; height:170px; background:url(../image/sprite.png) 0 -339px; margin:10px 0 0 5px}
 #right_cont #shop #pic img {width:180px; height:170px; background:url(../image/sprite.png) -213px -339px; border:none; opacity:0; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0); -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease}
-#right_cont #shop.hover #pic img {opacity:1}
+#right_cont #shop.hover #pic img {opacity:1;filter:1}
 #right_cont #cart {width:105px; margin:0 auto}
 #right_cont #cart #title_left {float:left; text-align:center; font-family: 'Cuprum', sans-serif; text-transform:uppercase; font-size:14px; padding-left:28px; display:block; color:#FFF; text-shadow:1px 1px 0px #7f5d6c; line-height:18px; background: url(../image/sprite.png) no-repeat -474px -291px}
 #right_cont #cart #title_right {margin-left: 80px;width:28px; height:25px; background:url(../image/sprite.png) -433px -291px}
@@ -96,7 +97,7 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 #right_cont #support {width:172px; height:211px; background:url(../image/sprite.png) 0 -577px; margin:0 auto; text-align:center; padding:20px 0 0 0; font-size:12px; line-height:18px}
 #right_cont #support span {color:#999}
 #right_cont #support .soc img {border:none; margin:8px 2px}
-#right_cont #support .soc:hover img {border:none; margin:8px 2px; opacity:0.7}
+#right_cont #support .soc:hover img {border:none; margin:8px 2px; opacity:0.7; filter: alpha(opacity = 70);}
 #right_cont #support #helper {width:91px; height:75px; background:url(../image/sprite.png) -203px -538px; margin:-25px 0 0 97px; z-index:2; position:relative; font-family: 'Cuprum', sans-serif; font-size:14px; padding:19px 0 0 2px}
 #right_cont #support #helper a b {text-transform:uppercase; font-size:17px; font-weight:normal}
 #right_cont #support #helper a {color:#ab4b65}
@@ -137,17 +138,17 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 #footer #partnership #robot {float:left; position:relative; margin:10px 0 0 0}
 #footer #partnership #robot #body {width:75px; height:81px; background:url(../image/sprite.png) -223px -644px; position:absolute; z-index:3; margin-top:0px; -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease}
 #footer #partnership #robot #body #hand {width:41px; height:83px; position:absolute; margin:0 0 0 -41px}
-#footer #partnership #robot #body #hand #down {width:20px; height:68px; background:url(../image/sprite.png) -203px -657px; position:absolute; z-index:4; margin:13px 0 0 21px; opacity:1; -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease}
-#footer #partnership #robot #body #hand #up {width:41px; height:44px; background:url(../image/sprite.png) -318px -553px; position:absolute; z-index:5; margin:-2px 0 0 0; opacity:0; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0); -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease}
+#footer #partnership #robot #body #hand #down {width:20px; height:68px; background:url(../image/sprite.png) -203px -657px; position:absolute; z-index:4; margin:13px 0 0 21px; opacity:1;filter:0; -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease}
+#footer #partnership #robot #body #hand #up {width:41px; height:44px; background:url(../image/sprite.png) -318px -553px; position:absolute; z-index:5; margin:-2px 0 0 0; opacity:0; filter: alpha(opacity = 0); -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease}
 #footer #partnership #robot #leg {width:19px; height:73px; background:url(../image/sprite.png) -328px -648px; position:absolute; z-index:2; margin:35px 0 0 6px}
 #footer #partnership #robot #leg2 {width:19px; height:73px; background:url(../image/sprite.png) -328px -648px; position:absolute; z-index:2; margin:35px 0 0 30px}
 #footer #partnership #robot #shadow {width:92px; height:12px; background:url(../image/sprite.png) -13px -547px; position:absolute; z-index:1; margin:100px 0 0 -18px; -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease; opacity:1}
 #footer #partnership.hover #robot #body {width:75px; height:81px; background:url(../image/sprite.png) -223px -644px; position:absolute; z-index:3; margin-top:-20px}
-#footer #partnership.hover #robot #body #hand #down {opacity:0}
-#footer #partnership.hover #robot #body #hand #up {opacity:1}
+#footer #partnership.hover #robot #body #hand #down {opacity:0;filter: alpha(opacity = 0);}
+#footer #partnership.hover #robot #body #hand #up {opacity:1; filter:0}
 #footer #partnership.hover #robot #shadow {opacity:0.6}
-#footer #partnership #robot #cloud {position:absolute; z-index:7; background:#FFF; border-radius:15px; padding:15px; margin:-40px 0 0 70px; -webkit-box-shadow: 1px 1px 0px 0px #e0d090;-moz-box-shadow: 1px 1px 0px 0px #e0d090;box-shadow: 1px 1px 0px 0px #e0d090; white-space:nowrap; opacity:0; progid:DXImageTransform.Microsoft.Alpha(opacity=0); -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease;}
-#footer #partnership.hover #robot #cloud {margin:-115px 0 0 70px; opacity:1; progid:DXImageTransform.Microsoft.Alpha(opacity=100)}
+#footer #partnership #robot #cloud {position:absolute; z-index:7; background:#FFF; border-radius:15px; padding:15px; margin:-40px 0 0 70px; -webkit-box-shadow: 1px 1px 0px 0px #e0d090;-moz-box-shadow: 1px 1px 0px 0px #e0d090;box-shadow: 1px 1px 0px 0px #e0d090; white-space:nowrap; opacity:0; filter: alpha(opacity = 0); -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease;}
+#footer #partnership.hover #robot #cloud {margin:-115px 0 0 70px; opacity:1; filter:0;}
 #footer #partnership #robot #cloud #tail {width:37px; height:17px; background:url(../image/sprite.png) -146px -542px; position:absolute; margin:15px 0 0 -20px}
 #footer #partnership #robot #cloud h4 {font-family: 'Open Sans Condensed', sans-serif; font-size:19px; color:#C00; margin:-2px 0 7px 0; line-height:19px}
 #footer #partnership #link {float:left; font-family: 'Cuprum', sans-serif; color:#2a6ca9; margin:30px 0 0 90px; line-height:20px}
@@ -161,12 +162,15 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 #footer #fotobook #book #bottom {width:105px; height:89px; background:url(../image/sprite.png) 0 -808px; opacity:1;-webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease;}
 #footer #fotobook #book #top {width:105px; height:89px; background:url(../image/sprite.png) -389px -808px; position:absolute; top:0; opacity:0; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);-webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease;}
 #footer #fotobook #book.hover #bottom {opacity:0}
-#footer #fotobook #book.hover #top {opacity:1}
+#footer #fotobook #book.hover #top {opacity:1;filter:0}
 #footer #fotobook #link {font-family: 'Cuprum', sans-serif; color:#2a6ca9; line-height:20px; float:left; font-size:16px; margin:13px 0 0 -5px}
 #footer #fotobook #link span {text-transform:uppercase; font-size:19px; display:block}
 #footer #bottom_menu {float:left; font-family:Georgia, "Times New Roman", Times, serif; font-style:italic; font-size:12px; line-height:18px; margin-left:20px}
 #footer #bottom_menu a {display:block}
-#footer #sm {float:right; width:320px; position: absolute; margin:-20px 0 0 875px}
+#footer #sm {
+    float:right; width:320px; position: absolute; margin:-20px 0 0 875px;
+    *margin: -20px;
+}
 #footer #sm #logo {width:180px; height:105px; float:left; background:url(../image/sprite.png) -176px -734px; cursor:default}
 #footer #sm #logo div {width:66px; height:75px; background:url(../image/sprite.png) -426px -452px; margin:3px 0 0 105px; opacity:0; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);-webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease}
 #footer #sm.hover #logo div {opacity:1}
@@ -192,7 +196,10 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 .crumbs .menu {height:27px; width:795px; background:#FFF; float:left; margin-left:-14px}
 .crumbs .menuEnd {width:16px; height:27px; background:url(../image/sprite.png) -385px -921px; float:right; margin:0 -15px 0 0}
 .crumbs .menu .cont {float:left; line-height:27px; padding-left:45px}
-.crumbs .menu .cont a {display:block; float:left; padding:0 11px; color:#3f3f3f; text-shadow:none; background:url(../image/menu_sep.gif) no-repeat right; text-decoration:none}
+.crumbs .menu .cont a {
+    display:block; float:left; padding:0 11px; color:#3f3f3f; text-shadow:none; background:url(../image/menu_sep.gif) no-repeat right; text-decoration:none;
+    *padding:0 9px;
+}
 .crumbs .menu .cont a:hover {background:#000 url(../image/menu_sep.gif) no-repeat right; color:#FFF;}
 .crumbs .menu .cont a.active {background:#000 url(../image/menu_sep.gif) no-repeat right; color:#FFF;}
 .crumbs .menu .cont .last {background-image:none}
@@ -215,7 +222,9 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 .albumCont .picCont {width:136px; height:99px; margin:-105px 0 0 11px; border-radius: 0 3px 3px 0; overflow:hidden; text-align:center;}
 .albumCont .picCont img {max-width:150px; max-height:110px; min-height:99px}
 .albumCont .blick {width:136px; height:99px; background:url(../image/sprite.png) -140px -1003px; position:absolute; z-index:2; top:0px; left:11px}
-.albumCont .buttons {width:36px; height:49px; position:absolute; top:9px; left:141px}
+.albumCont .buttons {
+    width:36px; height:49px; position:absolute; top:9px; left:141px;
+}
 .albumCont .buttons .edit {width:36px; height:22px; display:block; background:url(../image/sprite.png) -9px -910px; margin-bottom:5px}
 .albumCont .buttons .edit:hover {background:url(../image/sprite.png) 0px -910px}
 .albumCont .buttons .del {width:36px; height:22px; display:block; background:url(../image/sprite.png) -9px -937px}
@@ -408,8 +417,29 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 #full_cart table .del {width:50px}
 #full_cart table .del a img {width:25px; height:25px; border:none; background:url(../image/sprite.png) -474px -946px}
 #full_cart table .del a:hover img {opacity:0.7; -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease;}
-#full_cart .button {display:block; border-radius:25px; background:url(../image/sprite.png) 0 -1126px; line-height:26px; padding:2px 15px 0 15px; font-family: 'Cuprum', sans-serif; font-size:14px; color:#fff; text-transform:uppercase; text-shadow:-1px -1px 0px #0564aa; float:left; text-decoration:none; -webkit-box-shadow: 0px 1px 3px 0px #407dc2;box-shadow: 0px 1px 3px 0px #407dc2;}
-#full_cart .button:hover {opacity:0.7}
+#full_cart .button {
+    display:block;
+    background: url("../image/blue-btn-bg.png") no-repeat 0 3px #FFF;
+    height: 31px;
+    line-height: 31px;
+    padding: 3px 0px 0px 15px;
+    font-family: 'Cuprum',
+    sans-serif;
+    font-size:14px;
+    color:#fff;
+    text-transform:uppercase;
+    float:left;
+    text-decoration:none;
+}
+
+#full_cart .buttons:hover {
+    opacity:0.7;
+    filter: alpha(opacity=60);
+}
+#full_cart .button:hover {
+    opacity:1;
+    filter: alpha(opacity=100);
+}
 #full_cart #total {float:right; font-size:13px; margin-right:40px}
 #full_cart #order_table {width:660px; margin:0 0 30px 20px}
 #full_cart #order_table td {vertical-align:top; padding:0; font-size:12px; border:none; padding-bottom:15px}
@@ -469,4 +499,8 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 	     margin-left: auto;
     margin-right: auto;
     width: 390px;
+}
+
+#registration-btn-wrapper {
+    background: url("../image/registration-btn-bg.png") no-repeat 0 0 transparent;
 }
