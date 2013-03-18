@@ -178,7 +178,7 @@ ul.menu-horizontal > li {
 }
 
 #headerMainMenu {
-    height: 200px;
+    
     z-index: 10000;
 }
 
@@ -215,23 +215,29 @@ ul.menu-horizontal > li {
 }
 
 #headerInnerMenu li > a {
-    margin: 0;
-    padding: 0 12px 15px 12px;
-    line-height: 56px;
+	background: url("../image/header-menu-separator.png") no-repeat scroll 0 30% transparent;
+    border-bottom: 2px solid black;
+    color: #80634F;
+    font-family: Arial,sans-serif;
     font-size: 11px;
-    text-transform: uppercase;
     font-weight: normal;
-    font-family: Arial, sans-serif;
-    word-wrap: normal;
+    height: 26px;
+    line-height: 40px;
+    margin: 0;
+    padding: 10px 12px 15px;
+    text-transform: uppercase;
     white-space: nowrap;
-    color: #80634f;
     width: auto;
-    background: url('../image/header-menu-separator.png') no-repeat 0 30%;
-    border: none;
+    word-wrap: normal;
+    height:31px;
+	
 }
 
 #headerInnerMenu li > a:hover {
+	background: url("../image/header-menu-separator.png") no-repeat scroll 0 30% transparent;
     color: #c79605;
+    border-bottom: 2px solid #c79605;
+    text-shadow: 4px 4px 4px black, 0 0 2px #c79605;
 }
 
 #slideshow .arrow {
@@ -818,7 +824,25 @@ form tr.row-separator {
     width: 100%;
 }
 
+.menu-hover {
+	background-color:red; 
+	border : 1px solid black;
+	opacity:0.1;
+	position: absolute; 
+	height: 62px; 
+	width: 123px; 
+	/*background: url('catalog/view/theme/default/image/headerMainMenuHover.png') repeat scroll -20px -20px transparent*/
+}
 
+.menu-hover-1 {
+	background-color:red; 
+	border : 1px solid black;
+	opacity:0.1;
+	position: absolute; 
+	height: 62px; 
+	width: 134px; 
+	/*background: url('catalog/view/theme/default/image/headerMainMenuHover.png') repeat scroll -20px -20px transparent*/
+}
 
 
 

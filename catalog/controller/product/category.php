@@ -119,24 +119,6 @@ class ControllerProductCategory extends Controller {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
 								
-			$this->data['categories'] = array();
-			
-			$results = $this->model_catalog_category->getCategories($category_id);
-			
-			foreach ($results as $result) {
-				$data = array(
-					'filter_category_id'  => $result['category_id'],
-					'filter_sub_category' => true
-				);
-				
-				$product_total = $this->model_catalog_product->getTotalProducts($data);				
-				
-				$this->data['categories'][] = array(
-					'name'  => $result['name'] . ($this->config->get('config_product_count') ? ' (' . $product_total . ')' : ''),
-					'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url)
-				);
-			}
-			
 			$this->data['products'] = array();
 			
 			$data = array(

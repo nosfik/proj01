@@ -72,7 +72,7 @@
   
   <div class="pagination"><?php echo $pagination; ?></div>
   <?php } ?>
-  <?php if (!$categories && !$products) { ?>
+  <?php if ( !$products) { ?>
   <div class="content"><?php echo $text_empty; ?></div>
   <div class="buttons">
     <div class="right"><a href="<?php echo $continue; ?>" class="button"><?php echo $button_continue; ?></a></div>

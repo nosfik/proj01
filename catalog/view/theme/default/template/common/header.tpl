@@ -28,7 +28,19 @@
 <script type="text/javascript" src="catalog/view/javascript/jquery/ui/external/jquery.cookie.js"></script>
 <script type="text/javascript" src="catalog/view/javascript/jquery/colorbox/jquery.colorbox.js"></script>
 <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/colorbox/colorbox.css" media="screen" />
-
+<script>
+	
+ jQuery(document).ready(function($){
+ 	$("#headerMainMenu").hover(
+  function () {
+    $("#headerMainMenu").css('height', '200px');
+  },
+  function () {
+    $('#headerMainMenu').css('height', '');
+  }
+);
+ });
+</script>
 
 <script type="text/javascript" src="catalog/view/javascript/droplinemenu.js"></script>
 <script type="text/javascript" src="catalog/view/javascript/scripts.js"></script>
@@ -62,17 +74,16 @@ DD_belatedPNG.fix('#logo img');
        
         <div class="moto">
             <p>слоган компании</p>
-            <?php print_r($languages);?>
             <?php echo $language; ?>
-            <ul style="display:none" class="menu-horizontal languages">
-                <li id="langRu" class="active">ru</li>
-                <li id="langEn">en</li>
-            </ul>
         </div>
         <div id="headerMainMenu" class="droplinebar">
             <ul id="headerOuterMenu">
-                <li class="main-menu-item"><a href="#"><?php echo $text_about_us;?></a></li>
-                <li class="main-menu-item"><a><?php echo $text_sales;?></a>
+                <li class="main-menu-item"><div class="menu-hover"></div><a href="#"><?php echo $text_about_us;?></a>
+                	
+                	</li>
+                <li class="main-menu-item">
+                	<div class="menu-hover" style="left : 123px;"></div>
+                	<a href="<?php echo $this->url->link('product/category', 'path=1');?>"><?php echo $text_sales;?></a>
                 	<ul id="headerInnerMenu">
                 		<?php foreach($sale_categories as $category) {?>
                 			<li class="sub-main-menu-item"><a href="<?php echo $category['url'];?>"><?php echo $category['name'];?></a></li>
@@ -80,6 +91,7 @@ DD_belatedPNG.fix('#logo img');
                     </ul>
                 </li>
                 <li class="main-menu-item">
+                	<div class="menu-hover-1" style="left : 247px;"></div>
                     <a><?php echo $text_building;?></a>
                     <ul id="headerInnerMenu">
                         <?php foreach($build_categories as $category) {?>
@@ -87,11 +99,13 @@ DD_belatedPNG.fix('#logo img');
                 		<?php } ?>
                     </ul>
                 </li>
-                <li class="main-menu-item"><a href="#"><?php echo $text_request;?></a></li>
-                <li class="main-menu-item"><a href="#"><?php echo $text_news;?></a></li>
-                <li class="main-menu-item"><a href="#"><?php echo $text_photo;?></a></li>
-                <li class="main-menu-item"><a href="#"><?php echo $text_video;?></a></li>
-                <li class="main-menu-item"><a href="#"><?php echo $text_contact;?></a></li>
+                <li class="main-menu-item">
+                	<div class="menu-hover" style="left : 382px;"></div>
+                	<a href="<?php echo $this->url->link('product/category', 'path=2');?>"><?php echo $text_request;?></a></li>
+                <li class="main-menu-item"><div class="menu-hover" style="left : 506px;"></div><a href="#"><?php echo $text_news;?></a></li>
+                <li class="main-menu-item"><div class="menu-hover" style="left : 629px;"></div><a href="#"><?php echo $text_photo;?></a></li>
+                <li class="main-menu-item"><div class="menu-hover" style="left : 753px;"></div><a href="#"><?php echo $text_video;?></a></li>
+                <li class="main-menu-item"><div class="menu-hover" style="left : 876px;"></div><a href="#"><?php echo $text_contact;?></a></li>
             </ul>
         </div>
     </div>

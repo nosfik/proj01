@@ -403,7 +403,6 @@ label {
 .breadcrumb {
 	color: #CCCCCC;
 	margin-bottom: 10px;
-	z-index: 10001;
 }
 .success, .warning, .attention, .information {
 	padding: 10px 10px 10px 33px;

@@ -5,7 +5,7 @@
 
 $_['text_about_us']         = 'О нас';
 $_['text_sales']           = 'Продажи';
-$_['text_building']         = 'Стоительство';
+$_['text_building']         = 'Строительство';
 $_['text_request']          = 'Заявки';
 $_['text_news']           	= 'Новости';
 $_['text_photo']            = 'Фото';

@@ -35,11 +35,12 @@ var droplinemenu={
                                 $targetul.css({left: $mainmenu.position().left, top: $mainmenu.position().top+this._dimensions.h})
                         if (document.all && !window.XMLHttpRequest) //detect IE6 or less, fix issue with overflow
                             $mainmenu.find('ul').css({overflow: (this.istopheader)? 'hidden' : 'visible'})
-                        $targetul.dequeue().slideDown(droplinemenu.animateduration.over)
+                        $targetul.dequeue().toggle()
+                        //$targetul.css('display', 'table');
                     },
                     function(e){
                         var $targetul=$(this).children("ul:eq(0)")
-                        $targetul.dequeue().slideUp(droplinemenu.animateduration.out)
+                        $targetul.dequeue().toggle();
                     }
                 ); //end hover
             }); //end $headers.each()

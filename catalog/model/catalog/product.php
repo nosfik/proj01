@@ -70,7 +70,12 @@ class ModelCatalogProduct extends Model {
 				$sql .= " AND c.parent_id = '" . (int)$data['parent'] . "'";
 			}
 			if (!empty($data['filter_category_id'])) {
-					$sql .= " AND p2c.category_id = '" . (int)$data['filter_category_id'] . "'";
+				
+				if($data['filter_category_id'] == 1 || $data['filter_category_id'] == 0) {
+					
+					$sql .= " AND p2c.maine_category = '" . (int)$data['filter_category_id'] . "'";
+					
+				}
 			}
 			
 			if (!empty($data['filter_number'])) {
