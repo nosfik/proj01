@@ -6,7 +6,7 @@ class ModelCatalogCategory extends Model {
 	
 	public function getCategoriesByArray($arr) {
 		
-		$sql = "SELECT c.category_id, cd.name FROM " . DB_PREFIX . "category c 
+		$sql = "SELECT c.category_id, cd.name, c.parent_id FROM " . DB_PREFIX . "category c 
 		LEFT JOIN " . DB_PREFIX . "category_description cd ON (c.category_id = cd.category_id) 
 		WHERE cd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND c.category_id IN (".implode(',', $arr).")	
 		AND c.status = '1' ORDER BY c.parent_id, c.sort_order, cd.name";

@@ -120,7 +120,7 @@ class ControllerCommonHeader extends Controller {
 			$this->data['sale_categories'][] = array(
 				'category_id' => $category['category_id'],
 				'name' => $category['name'],
-				'url' => $this->url->link('product/category', 'path=' . $category['category_id']),
+				'url' => $this->url->link('product/category', 'path=' .$category['parent_id'].'_'.$category['category_id']),
 			);
 		}
 		
@@ -128,7 +128,7 @@ class ControllerCommonHeader extends Controller {
 			$this->data['build_categories'][] = array(
 				'category_id' => $category['category_id'],
 				'name' => $category['name'],
-				'url' => $this->url->link('product/category', 'path=' . $category['category_id']),
+				'url' => $this->url->link('product/category', 'path=' .$category['parent_id'].'_'. $category['category_id']),
 			);
 		}
 		

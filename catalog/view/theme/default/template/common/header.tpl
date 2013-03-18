@@ -92,7 +92,7 @@ DD_belatedPNG.fix('#logo img');
                 </li>
                 <li class="main-menu-item">
                 	<div class="menu-hover-1" style="left : 247px;"></div>
-                    <a><?php echo $text_building;?></a>
+                    <a href="<?php echo $this->url->link('product/category', 'path=2');?>"><?php echo $text_building;?></a>
                     <ul id="headerInnerMenu">
                         <?php foreach($build_categories as $category) {?>
                 			<li class="sub-main-menu-item"><a href="<?php echo $category['url'];?>"><?php echo $category['name'];?></a></li>
