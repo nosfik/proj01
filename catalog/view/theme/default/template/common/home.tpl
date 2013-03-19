@@ -424,7 +424,7 @@
                        <img height="68" width="68" class="house-tag" src="<?php echo $product['tag'];?>"> 
                     <?php } ?>
                     <p class="house-price"><?php echo $product['price'];?> <?php echo $product['currency'];?></p>
-                    <a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
+                    <a href="<?php echo $product['url']; ?>"><?php echo $product['name']; ?></a>
                     <ul class="house-characteristics">
                         <li class="house-number"><?php echo $product['number']; ?></li>
                         <li class="house-placement"><?php echo $product['city']; ?></li>

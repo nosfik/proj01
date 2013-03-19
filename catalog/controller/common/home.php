@@ -60,7 +60,7 @@ class ControllerCommonHome extends Controller {
 				'area'        	   => $dreamhouse['area'],
 				'bathroom'         => $dreamhouse['bathroom'],
 				'bedroom'          => $dreamhouse['bedroom'],
-				'image'            => $dreamhouse['image'],
+				'thumb'            => $dreamhouse['image'],
 				'price'            => $dreamhouse['price'],
                 'url'       	=> $this->url->link('product/product', 'product_id=' . $dreamhouse['product_id'])
             );
@@ -81,7 +81,7 @@ class ControllerCommonHome extends Controller {
 				'area'        	   => $suggestion['area'],
 				'bathroom'         => $suggestion['bathroom'],
 				'bedroom'          => $suggestion['bedroom'],
-				'image'            => $suggestion['image'],
+				'thumb'            => $suggestion['image'],
 				'price'            => $suggestion['price'],
                 'url'       	=> $this->url->link('product/product', 'product_id=' . $suggestion['product_id'])
             );

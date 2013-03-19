@@ -39,6 +39,17 @@
     $('#headerMainMenu').css('height', '');
   }
 );
+
+
+$('.main-menu-item').hover(
+  function () {
+  	console.log(1);
+    $(this).find('.menu-hover').show();
+  },
+  function () {
+   $(this).find('.menu-hover').hide();
+  }
+  );
  });
 </script>
 
@@ -78,11 +89,11 @@ DD_belatedPNG.fix('#logo img');
         </div>
         <div id="headerMainMenu" class="droplinebar">
             <ul id="headerOuterMenu">
-                <li class="main-menu-item"><div class="menu-hover"></div><a href="#"><?php echo $text_about_us;?></a>
+                <li class="main-menu-item"><div class="menu-hover"><img src="catalog/view/theme/default/image/headerMainMenuHover3.png" style="height: 71px;margin-left: -16px;margin-top: -10px;width: 149px;"/></div><a href="#"><?php echo $text_about_us;?></a>
                 	
                 	</li>
                 <li class="main-menu-item">
-                	<div class="menu-hover" style="left : 123px;"></div>
+                	<div class="menu-hover" style="left : 123px;"><img src="catalog/view/theme/default/image/headerMainMenuHover3.png" style="height: 71px;margin-left: -11px;margin-top: -10px;width: 141px;"/></div>
                 	<a href="<?php echo $this->url->link('product/category', 'path=1');?>"><?php echo $text_sales;?></a>
                 	<ul id="headerInnerMenu">
                 		<?php foreach($sale_categories as $category) {?>
@@ -91,7 +102,7 @@ DD_belatedPNG.fix('#logo img');
                     </ul>
                 </li>
                 <li class="main-menu-item">
-                	<div class="menu-hover-1" style="left : 247px;"></div>
+                	<div class="menu-hover" style="left : 247px;"><img src="catalog/view/theme/default/image/headerMainMenuHover3.png" style="height: 71px;margin-left: -16px;margin-top: -10px;width: 163px;"/></div>
                     <a href="<?php echo $this->url->link('product/category', 'path=2');?>"><?php echo $text_building;?></a>
                     <ul id="headerInnerMenu">
                         <?php foreach($build_categories as $category) {?>
@@ -100,12 +111,12 @@ DD_belatedPNG.fix('#logo img');
                     </ul>
                 </li>
                 <li class="main-menu-item">
-                	<div class="menu-hover" style="left : 382px;"></div>
+                	<div class="menu-hover" style="left : 382px;"><img src="catalog/view/theme/default/image/headerMainMenuHover3.png" style="height: 71px;margin-left: -9px;margin-top: -10px;width: 137px;"/></div>
                 	<a href="<?php echo $this->url->link('product/category', 'path=2');?>"><?php echo $text_request;?></a></li>
-                <li class="main-menu-item"><div class="menu-hover" style="left : 506px;"></div><a href="#"><?php echo $text_news;?></a></li>
-                <li class="main-menu-item"><div class="menu-hover" style="left : 629px;"></div><a href="#"><?php echo $text_photo;?></a></li>
-                <li class="main-menu-item"><div class="menu-hover" style="left : 753px;"></div><a href="#"><?php echo $text_video;?></a></li>
-                <li class="main-menu-item"><div class="menu-hover" style="left : 876px;"></div><a href="#"><?php echo $text_contact;?></a></li>
+                <li class="main-menu-item"><div class="menu-hover" style="left : 506px;"><img src="catalog/view/theme/default/image/headerMainMenuHover3.png" style="height: 71px;margin-left: -16px;margin-top: -10px;width: 147px;"/></div><a href="#"><?php echo $text_news;?></a></li>
+                <li class="main-menu-item"><div class="menu-hover" style="left : 629px;"><img src="catalog/view/theme/default/image/headerMainMenuHover3.png" style="height: 71px;margin-left: -12px;margin-top: -10px;width: 144px;"/></div><a href="#"><?php echo $text_photo;?></a></li>
+                <li class="main-menu-item"><div class="menu-hover" style="left : 753px;"><img src="catalog/view/theme/default/image/headerMainMenuHover3.png" style="height: 71px;margin-left: -12px;margin-top: -10px;width: 138px;"/></div><a href="#"><?php echo $text_video;?></a></li>
+                <li class="main-menu-item"><div class="menu-hover" style="left : 876px;"><img src="catalog/view/theme/default/image/headerMainMenuHover3.png" style="height: 71px;margin-left: -18px;margin-top: -10px;width: 153px;"/></div><a href="#"><?php echo $text_contact;?></a></li>
             </ul>
         </div>
     </div>

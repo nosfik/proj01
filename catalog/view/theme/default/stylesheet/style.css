@@ -825,19 +825,18 @@ form tr.row-separator {
 }
 
 .menu-hover {
-	background-color:red; 
-	border : 1px solid black;
-	opacity:0.1;
+
+	
+	display:none;
 	position: absolute; 
 	height: 62px; 
 	width: 123px; 
-	/*background: url('catalog/view/theme/default/image/headerMainMenuHover.png') repeat scroll -20px -20px transparent*/
+
 }
 
+
 .menu-hover-1 {
-	background-color:red; 
-	border : 1px solid black;
-	opacity:0.1;
+	
 	position: absolute; 
 	height: 62px; 
 	width: 134px; 
