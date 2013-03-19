@@ -1,6 +1,13 @@
 <?php
 class ControllerProductOrder extends Controller {
 	public function index() {
+
+        $this->document->addScript('catalog/view/javascript/cusel.js');
+        $this->document->addScript('catalog/view/javascript/jScrollPane.js');
+        $this->document->addScript('catalog/view/javascript/jquery.mousewheel.js');
+
+        $this->document->addStyle('catalog/view/theme/default/stylesheet/cusel.css');
+
 		$this->language->load('product/order');
 
 
