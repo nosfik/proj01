@@ -401,8 +401,15 @@ label {
 	color: #FFFFFF;
 }
 .breadcrumb {
+	background : url('../image/breadcrumbs.png');
+	width:1002px;
+	height:37px;
 	color: #CCCCCC;
 	margin-bottom: 10px;
+}
+.breadcrumb div {
+	padding-left: 10px;
+    padding-top: 10px;
 }
 .success, .warning, .attention, .information {
 	padding: 10px 10px 10px 33px;
