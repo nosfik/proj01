@@ -56,6 +56,7 @@ ul.menu-horizontal > li {
     width: 1200px;
     padding-bottom: 149px;
     margin: 0 auto;
+    background: url('../image/main-bg-shadow.png') repeat-y 50% 0 #000;
 }
 
 .header-wrapper {
@@ -936,6 +937,38 @@ form tr.row-separator {
 
 #createOrder:hover {
    background-position: -1px -53px;
+}
+
+.order .form .column .cusel,
+.order .form .column .cuselFrameRight{
+    background: url(../image/selects-2-order.png) no-repeat -1px 1px;
+    height: 48px;
+    width: 448px;
+}
+
+.order .form .column .cuselFrameRight{
+     display: none;
+}
+
+.order .form .column .cusel:hover,
+.order .form .column .cusel:hover .cuselFrameRight,
+.order .form .column .cusel:focus,
+.order .form .column .cusel:focus .cuselFrameRight,
+.order .form .column .cuselFocus,
+.order .form .column .cuselFocus .cuselFrameRight {
+    background-image: url(../image/selects-order-focus.png);
+}
+
+.order .form .column .jScrollPaneContainer, .order .form .column .cusel-scroll-wrap {
+    background: url('../image/select-dropdown-order.png') no-repeat 0px 0px #141414;
+    height: 108px!important;
+    width: 446px!important;
+}
+
+.order .form .column .cuselText{
+    padding: 16px 7px;
+    font-size: 14px;
+    line-height: 16px;
 }
 
 

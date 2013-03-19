@@ -43,7 +43,15 @@
                               <tr>
                                   <td>
                                       <p><label for="services">Интересующее направление наших услуг:</label></p>
-                                      <input type="text" name="otherPeople" id="otherPeople"/>
+                                      <select id="services" name="services" class="">
+                                          <option value="0">Услуга 1</option>
+                                          <option value="1">Услуга 2</option>
+                                          <option value="2">Услуга 3</option>
+                                          <option value="3">Услуга 4</option>
+                                          <option value="4">Услуга 5</option>
+                                          <option value="5">Услуга 6</option>
+                                          <option value="6">Услуга 7</option>
+                                      </select>
                                   </td>
                               </tr>
                               <tr>
@@ -103,29 +111,38 @@
 
   </div>
   <script>
-      $('.order .form .column input')
-          .focus(function(){
-                $(this).addClass('input-focus');
-          })
-          .blur(function(){
-              $(this).removeClass('input-focus');
+      $(function(){
+          cuSel({
+              changedEl: '#services',
+              visRows: 6,
+              scrollArrows: true
           });
 
-      $('.order .form .column textarea')
-              .focus(function(){
-                  $(this).addClass('textarea-focus');
-              })
-              .blur(function(){
-                  $(this).removeClass('textarea-focus');
-              });
+          $('.order .form .column input')
+                  .focus(function(){
+                      $(this).addClass('input-focus');
+                  })
+                  .blur(function(){
+                      $(this).removeClass('input-focus');
+                  });
 
-      $('#capchaField')
-              .focus(function(){
-                  $(this).addClass('capcha-focus');
-              })
-              .blur(function(){
-                  $(this).removeClass('capcha-focus');
-              });
+          $('.order .form .column textarea')
+                  .focus(function(){
+                      $(this).addClass('textarea-focus');
+                  })
+                  .blur(function(){
+                      $(this).removeClass('textarea-focus');
+                  });
+
+          $('#capchaField')
+                  .focus(function(){
+                      $(this).addClass('capcha-focus');
+                  })
+                  .blur(function(){
+                      $(this).removeClass('capcha-focus');
+                  });
+      });
+
   </script>
 
 <?php echo $footer; ?>
