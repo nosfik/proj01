@@ -4,8 +4,6 @@
 <div id="content">
     <?php echo $content_top; ?>
 
-	
-  
   	<input type="hidden" name="copy" id="photo_copy" value=""/>
     <div id="yellow_cont">
         <div id="help_cont">
@@ -293,7 +291,15 @@
                 buttons: {
                     'Кадрировать': function(){
                         $(this).dialog('close');
-                    },
+                        var width = 300;
+                        var koef = oCropData.width / width;
+                        var height = oCropData.height / koef;
+                       //$('#edit_photo_cont #photo_cont img').css('height', height);
+                       $('#crop-preview-container').css('height', oCropData.height);
+                       $('#crop-preview-container img').css('height', oCropData.height * 2);
+                       //$('#crop-preview-container img').css('margin-top', '0px');
+												console.log(height)                    
+												},
                     'Отменить': function(){
                         jcropApi.release();
                         $(this).dialog('close');
