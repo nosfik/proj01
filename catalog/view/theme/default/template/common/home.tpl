@@ -473,7 +473,7 @@
     
   </div>
     <div>
-        <div onclick="location.href='<?php echo $about_us['url'];?>'" class="about-us-header"><img src="catalog/view/theme/default/image/about_us.png" alt="about_us"/></div>
+        <div onclick="location.href='<?php echo $about_us['url'];?>'" class="about-us-header"></div>
         <div class="about-us-content">
             <div style=" background: url('<?php echo $about_us['image'];?>') no-repeat;" class="picture"></div>
             <div class="us_content">
@@ -504,9 +504,7 @@
             </table>
 
         </div>
-        <div style="float:left;">
-            <img src="catalog/view/theme/default/image/info.png" alt="info"/>
-        </div>
+        <div style="float:left;" class="useful-info-image-header"> </div>
     </div>
     <div style="clear:both;"></div>
     <ul id="mycarousel" class="jcarousel-skin-realty">

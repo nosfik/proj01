@@ -304,23 +304,37 @@ ul.menu-horizontal > li {
    /* background: #ffe4c4;*/
 }
 
-.content .build-dream-house-title, .content .interesting-proposal-title {
-    height: 31px;
+.content .build-dream-house-title, .content .interesting-proposal-title, .about-us-header {
+    height: 29px;
     margin: 65px 0 32px 0;
 }
 
 .content .build-dream-house-title {
-    background: url('../image/build-dream-house-title.png') no-repeat 0 0;
+    background: url('../image/build-dream-house-title-ru.png') no-repeat 0 0;
 }
 
-.content .interesting-proposal-title {
-    background: url('../image/interesting-proposal-title.png') no-repeat 0 0;
+.content .interesting-proposal-title, .about-us-header {
     cursor: pointer;
     margin-top: 55px;
 }
 
-.content .interesting-proposal-title:hover {
-   /* background-position: 0 -30px;*/
+.content .interesting-proposal-title {
+    background: url('../image/interesting-proposal-title-ru.png') no-repeat 0 0;
+}
+
+.about-us-header {
+    background: url('../image/about_us-ru.png') no-repeat 0 0;
+}
+
+.useful-info-image-header {
+    background: url('../image/info-ru.png') no-repeat 0 0;
+    width: 500px;
+    height: 29px;
+}
+
+
+.content .interesting-proposal-title:hover, .about-us-header:hover {
+    background-position: 0 -30px;
 }
 
 .content .left {
@@ -436,10 +450,6 @@ ul.house-characteristics li.house-area {
 
 ul.house-characteristics li.house-bedroom {
     background: url('../image/build-dream-house-icons.png') no-repeat 0 -80px;
-}
-
-.about-us-header {
-    padding-bottom: 31px;
 }
 
 .about-us-content .picture {
@@ -834,13 +844,13 @@ form tr.row-separator {
 #online-help a {
     display: block;
     height: 40px;
-    background: url('../image/online-help.png') no-repeat -31px 3px #000;
+    background: url('../image/online-help.png') no-repeat -22px 3px #000;
 }
 
 #online-help a:hover {
     display: block;
     height: 40px;
-    background: url('../image/online-help.png') no-repeat -31px -58px #000;
+    background: url('../image/online-help.png') no-repeat -22px -58px #000;
     padding: 5px;
     width: 100%;
 }
