@@ -98,7 +98,7 @@ DD_belatedPNG.fix('#logo img');
         </div>
         <div id="headerMainMenu" class="droplinebar">
             <ul id="headerOuterMenu">
-                <li class="main-menu-item"><div class="menu-hover"><img src="catalog/view/theme/default/image/headerMainMenuHover3.png" style="height: 71px;margin-left: -16px;margin-top: -10px;width: 149px;"/></div><a href="#"><?php echo $text_about_us;?></a>
+                <li class="main-menu-item"><div class="menu-hover"><img src="catalog/view/theme/default/image/headerMainMenuHover3.png" style="height: 71px;margin-left: -9px;margin-top: -10px;width: 142px;"/></div><a href="#"><?php echo $text_about_us;?></a>
                 	
                 	</li>
                 <li class="main-menu-item">
@@ -115,7 +115,7 @@ DD_belatedPNG.fix('#logo img');
                     <a href="<?php echo $this->url->link('product/category', 'path=2');?>"><?php echo $text_building;?></a>
                     <ul id="headerInnerMenu">
                         <?php foreach($build_categories as $category) {?>
-                			<li class="sub-main-menu-item"><a href="<?php echo $category['url'];?>"><?php echo $category['name'];?></a></li>
+                			<li class="sub-main-menu-item"><a href="<?php echo $category['url'];?>"><?php echo $category['name'];?><img src="catalog/view/theme/default/image/menu-h.png"/></a></li>
                 		<?php } ?>
                     </ul>
                 </li>
