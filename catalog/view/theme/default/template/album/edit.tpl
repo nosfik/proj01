@@ -4,8 +4,6 @@
 <div id="content">
     <?php echo $content_top; ?>
 
-	
-  
   	<input type="hidden" name="copy" id="photo_copy" value=""/>
     <div id="yellow_cont">
         <div id="help_cont">
@@ -276,6 +274,7 @@
             img.src = $previewImg.attr('src');
 
             img.onload = function(){
+         
                 if(this.width > windowWidth || this.height > windowHeight) {
                 	var koef = this.width / this.height;
                 	var koef1 = this.width  / windowWidth;
@@ -308,6 +307,7 @@
                 updateInitialSize(this);
                 updateCropSize(this);
 
+                
             };
 
             $cropDialog.dialog({
@@ -329,13 +329,15 @@
                 $previewContainer.css('height', previewHeight);
 
                 $cropDialog.dialog('open');
+
                 
                 var params = {
                     bgColor: 'white',
                     bgOpacity: 0.7,
                     onSelect: updatePreview,
                     onRelease: releaseCheck
-                }
+                };
+                
                 
                     
                     

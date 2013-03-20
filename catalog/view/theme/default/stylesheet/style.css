@@ -212,7 +212,9 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 #white_cont #top_corr {width:48px; height:24px; background:url(../image/sprite.png) -328px -924px; position:absolute; margin:-48px 0 0 400px;}
 /*#for_albums {width:1100px}*/
 .order_album {width:178px!important; height:233px!important; margin:0 0px 20px 40px; border-radius:10px; padding:28px 0 0 28px; cursor:pointer}
-.order_album.hover {border:3px solid #fff; -webkit-box-shadow: inset 0px 1px 1px 0px #d8cfb5;box-shadow: inset 0px 1px 1px 0px #d8cfb5;width:175px!important; height:230px!important; padding:25px 0 0 25px;}
+
+#order_step2_new_album_cont.order_album.selected {padding:22px 15px 0!important;}
+
 .order_album.selected {background:#fbf1d4;border:3px solid #fff; -webkit-box-shadow: inset 0px 1px 1px 0px #d8cfb5;box-shadow: inset 0px 1px 1px 0px #d8cfb5;padding:25px 0 0 25px;width:175px!important; height:230px!important;}
 .order_album .blick {top:28px!important; left:39px!important;}
 .order_album.selected .blick {top:25px!important; left:36px!important;}
@@ -411,7 +413,7 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 #full_cart table td {border-bottom:1px solid #deedf7; vertical-align:middle; padding:10px}
 #full_cart table .pic {width:50px}
 #full_cart table .pic img {width:50px;}
-#full_cart table .price {width:70px; text-align:center; font-size:13px}
+#full_cart table .price {width:70px; text-align:center; }
 #full_cart table .qty {width:70px; text-align:center}
 #full_cart table .qty input {width:44px; text-align:center}
 #full_cart table .del {width:50px}
