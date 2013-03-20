@@ -290,16 +290,7 @@
                 modal: true,
                 buttons: {
                     'Кадрировать': function(){
-                        $(this).dialog('close');
-                        var width = 300;
-                        var koef = oCropData.width / width;
-                        var height = oCropData.height / koef;
-                       //$('#edit_photo_cont #photo_cont img').css('height', height);
-                       $('#crop-preview-container').css('height', oCropData.height);
-                       $('#crop-preview-container img').css('height', oCropData.height * 2);
-                       //$('#crop-preview-container img').css('margin-top', '0px');
-												console.log(height)                    
-												},
+                        $(this).dialog('close');                  												},
                     'Отменить': function(){
                         jcropApi.release();
                         $(this).dialog('close');
