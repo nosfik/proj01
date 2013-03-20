@@ -261,6 +261,8 @@
                 previewWidth = $previewContainer.width(),
                 previewHeight,
                 img = new Image(),
+                imageRWidth,
+                imageRHeight,
                 windowWidth = $(window).width() - 50,
                 windowHeight = $(window).height() - 50,
                 $initSizeContainer = $('#bottom.imgSize .initialSize'),
@@ -274,17 +276,38 @@
             img.src = $previewImg.attr('src');
 
             img.onload = function(){
-                var realWidth = this.width + 25,
-                    realHeight = this.height + 25;
+                if(this.width > windowWidth || this.height > windowHeight) {
+                	var koef = this.width / this.height;
+                	var koef1 = this.width  / windowWidth;
+                	var koef2 = this.height  / windowHeight;
+                	if(koef1 > koef2) {
+                		$cropDialog.dialog('option', 'width', windowWidth);
+                		imgRWidth = windowWidth;
+                		
+                		$cropDialog.dialog('option', 'height', windowWidth * (this.height / this.width));
+                		imgRHeight = windowWidth * (this.height / this.width);
+                	} else {
+                		$cropDialog.dialog('option', 'height', windowHeight );
+                		imgRHeight = windowHeight - 120;
+                		
+                		
+                		$cropDialog.dialog('option', 'width', imgRHeight * koef + 25);
+                		imgRWidth = imgRHeight * koef;
+                		
+                		
+                	}
+                	
+                	
+                } else {
+                	 $cropDialog.dialog('option', 'width', this.width + 40);
+					 $cropDialog.dialog('option', 'height', this.height + 160);
+					 imgRWidth = this.width;
+					 imgRHeight = this.height;
+                }
 
                 updateInitialSize(this);
                 updateCropSize(this);
 
-                $cropDialog.dialog('option', 'width', realWidth > windowWidth ? windowWidth : realWidth);
-
-                if(realHeight > windowHeight){
-                    $cropDialog.dialog('option', 'height', realHeight > windowHeight ? windowHeight : realHeight);
-                }
             };
 
             $cropDialog.dialog({
@@ -306,13 +329,21 @@
                 $previewContainer.css('height', previewHeight);
 
                 $cropDialog.dialog('open');
-
-                $cropTarget.Jcrop({
+                
+                var params = {
                     bgColor: 'white',
                     bgOpacity: 0.7,
                     onSelect: updatePreview,
                     onRelease: releaseCheck
-                }, function(){
+                }
+                
+                    
+                    
+                params['boxWidth'] = imgRWidth;
+                 params['boxHeight'] = imageRHeight;
+
+				
+                $cropTarget.Jcrop(params , function(){
                     jcropApi = this;
 
                     boundX = this.getBounds()[0];
@@ -431,8 +462,8 @@
             };
 
             function updateCropSize(img) {
-                $cropSizeContainer.find('.imgWidth').html(img.width);
-                $cropSizeContainer.find('.imgHeight').html(img.height);
+                $cropSizeContainer.find('.imgWidth').html(Math.round(img.width));
+                $cropSizeContainer.find('.imgHeight').html(Math.round(img.height));
             };
 
             function rotateImg(angle){
