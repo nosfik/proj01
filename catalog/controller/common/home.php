@@ -98,138 +98,34 @@ class ControllerCommonHome extends Controller {
 		//FILTER BUILDS
 		$this->data['b_zones'] = $this->model_menu_filter->getZones(2);
 		
-		$this->data['b_area_l'] = array();
-		$this->data['b_area_h'] = array();
 		$areas = $this->model_menu_filter->getAreas(2);
-		$avg_areas = (int)$areas['avg'];    
-		$avg_diff = $avg_areas - $areas['min'];
+		$this->data['b_area_l'] = $areas['l'];
+		$this->data['b_area_h'] = $areas['h'];
 		
-		$step_area = 10;
-		if($avg_diff > 100 && $avg_diff < 500) {
-			$step_area = 20;
-		} elseif($avg_diff > 500) {
-			$step_area = 50;
-		}
-		
-		for($i = $areas['min']; $i <= $avg_areas; $i += $step_area) {
-			$this->data['b_area_l'][] = $i;
-		}
-		for($i = $areas['max']; $i >= $avg_areas; $i -= $step_area) {
-			$this->data['b_area_h'][] = $i;
-		}
-		
-		
-		$this->data['b_price_l'] = array();
-		$this->data['b_price_h'] = array();
 		$prices = $this->model_menu_filter->getPrices(2);
-		$avg_prices = (int)$prices['avg'];    
-		$avg_diff = $avg_prices - $prices['min'];
-		
-		$step_price = 10;
-		if($avg_diff > 100 && $avg_diff < 500) {
-			$step_price = 20;
-		} elseif($avg_diff > 500 && $avg_diff < 1000) {
-			$step_price = 100;
-		} elseif($avg_diff > 1000 && $avg_diff < 5000) {
-			$step_price = 500;
-		} elseif($avg_diff > 5000 && $avg_diff < 20000) {
-			$step_price = 1000;
-		} elseif($avg_diff > 20000 && $avg_diff < 100000) {
-			$step_price = 5000;
-		}  elseif($avg_diff > 100000) {
-			$step_price = 20000;
-		}
-		
-		for($i = $prices['min']; $i <= $avg_prices; $i += $step_price) {
-			$this->data['b_price_l'][] = $i;
-		}
-		for($i = $prices['max']; $i >= $avg_prices; $i -= $step_price) {
-			$this->data['b_price_h'][] = $i;
-		}
-		
-		
-		
-		
-		
-		
+		$this->data['price_l'] = $prices['l'];
+		$this->data['price_h'] = $prices['h'];
 		
 		// FILTER SALES
 		$this->data['zones'] = $this->model_menu_filter->getZones();
 		$this->data['categories'] = $this->model_menu_filter->getCategories();
 		
-		
-		$this->data['bedroom_l'] = array();
-		$this->data['bedroom_h'] = array();
 		$bedrooms = $this->model_menu_filter->getBedrooms();
-		$avg_bedrooms = (int)$bedrooms['avg']; 
-		for($i = $bedrooms['min']; $i <= $avg_bedrooms; $i++) {
-			$this->data['bedroom_l'][] = $i;
-		}
-		for($i = $bedrooms['max']; $i >= $avg_bedrooms; $i--) {
-			$this->data['bedroom_h'][] = $i;
-		}
+		$this->data['bedroom_l'] = $bedrooms['l'];
+		$this->data['bedroom_h'] = $bedrooms['h'];
 		
-		
-		$this->data['bathroom_l'] = array();
-		$this->data['bathroom_h'] = array();
 		$bathrooms = $this->model_menu_filter->getBathrooms();
-		$avg_bathrooms = (int)$bathrooms['avg']; 
-		for($i = $bathrooms['min']; $i <= $avg_bathrooms; $i++) {
-			$this->data['bathroom_l'][] = $i;
-		}
-		for($i = $bathrooms['max']; $i >= $avg_bathrooms; $i--) {
-			$this->data['bathroom_h'][] = $i;
-		}
+		$this->data['bathroom_l'] = $bathrooms['l'];
+		$this->data['bathroom_h'] = $bathrooms['h'];
 		
 		
-		$this->data['area_l'] = array();
-		$this->data['area_h'] = array();
 		$areas = $this->model_menu_filter->getAreas();
-		$avg_areas = (int)$areas['avg'];    
-		$avg_diff = $avg_areas - $areas['min'];
+		$this->data['area_l'] = $areas['l'];
+		$this->data['area_h'] = $areas['h'];
 		
-		$step_area = 10;
-		if($avg_diff > 100 && $avg_diff < 500) {
-			$step_area = 20;
-		} elseif($avg_diff > 500) {
-			$step_area = 50;
-		}
-		
-		for($i = $areas['min']; $i <= $avg_areas; $i += $step_area) {
-			$this->data['area_l'][] = $i;
-		}
-		for($i = $areas['max']; $i >= $avg_areas; $i -= $step_area) {
-			$this->data['area_h'][] = $i;
-		}
-		
-		
-		$this->data['price_l'] = array();
-		$this->data['price_h'] = array();
 		$prices = $this->model_menu_filter->getPrices();
-		$avg_prices = (int)$prices['avg'];    
-		$avg_diff = $avg_prices - $prices['min'];
-		
-		$step_price = 10;
-		if($avg_diff > 100 && $avg_diff < 500) {
-			$step_price = 20;
-		} elseif($avg_diff > 500 && $avg_diff < 1000) {
-			$step_price = 100;
-		} elseif($avg_diff > 1000 && $avg_diff < 5000) {
-			$step_price = 500;
-		} elseif($avg_diff > 5000 && $avg_diff < 20000) {
-			$step_price = 1000;
-		} elseif($avg_diff > 20000 && $avg_diff < 100000) {
-			$step_price = 5000;
-		}  elseif($avg_diff > 100000) {
-			$step_price = 20000;
-		}
-		
-		for($i = $prices['min']; $i <= $avg_prices; $i += $step_price) {
-			$this->data['price_l'][] = $i;
-		}
-		for($i = $prices['max']; $i >= $avg_prices; $i -= $step_price) {
-			$this->data['price_h'][] = $i;
-		}
+		$this->data['price_l'] = $prices['l'];
+		$this->data['price_h'] = $prices['h'];
 		
 		$this->load->model('tool/image');
 

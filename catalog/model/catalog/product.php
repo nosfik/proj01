@@ -75,6 +75,8 @@ class ModelCatalogProduct extends Model {
 					
 					$sql .= " AND p2c.main_category = '" . (int)$data['filter_category_id'] . "'";
 					
+				} else {
+					$sql .= " AND p2c.category_id = '" . (int)$data['filter_category_id'] . "'";
 				}
 			}
 			

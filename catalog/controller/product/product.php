@@ -163,6 +163,11 @@ class ControllerProductProduct extends Controller {
 			$this->data['product_id'] = $this->request->get['product_id'];
 			
 			
+			$this->load->model('setting/setting');
+			$settings = $this->model_setting_setting->getSetting('config');
+			$this->data['mail'] = $settings['config_email'];
+			$this->data['skype'] = $settings['config_fax'];
+			
 			$this->load->model('tool/image');
 
 			if ($product_info['image']) {

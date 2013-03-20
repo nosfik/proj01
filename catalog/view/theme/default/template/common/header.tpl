@@ -50,6 +50,15 @@ $('.main-menu-item').hover(
    $(this).find('.menu-hover').hide();
   }
   );
+  $('.sub-main-menu-item').hover(
+  function () {
+  	console.log(1);
+    $(this).find('img').show();
+  },
+  function () {
+   $(this).find('img').hide();
+  }
+  );
  });
 </script>
 
@@ -97,7 +106,7 @@ DD_belatedPNG.fix('#logo img');
                 	<a href="<?php echo $this->url->link('product/category', 'path=1');?>"><?php echo $text_sales;?></a>
                 	<ul id="headerInnerMenu">
                 		<?php foreach($sale_categories as $category) {?>
-                			<li class="sub-main-menu-item"><a href="<?php echo $category['url'];?>"><?php echo $category['name'];?></a></li>
+                			<li class="sub-main-menu-item"><a href="<?php echo $category['url'];?>"><?php echo $category['name'];?><img src="catalog/view/theme/default/image/menu-h.png"/></a></li>
                 		<?php } ?>
                     </ul>
                 </li>

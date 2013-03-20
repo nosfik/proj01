@@ -23,7 +23,7 @@
             </li>
         </ul>
         <div class="up">
-            <a href="#top">
+            <a onclick="window.scroll(0,0)">
                 <p>наверх</p>
             </a>
         </div>

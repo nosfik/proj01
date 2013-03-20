@@ -1,5 +1,18 @@
 @font-face {
     font-family: MyriadProBlack; /* Гарнитура шрифта */
+    src: url('../fonts/MyriadPro-Black.eot'); /* Путь к файлу со шрифтом */
+}
+
+@font-face {
+    font-family: MyriadProSemiCn; /* Гарнитура шрифта */
+    src: url('../fonts/MyriadPro-SemiCn.eot'); /* Путь к файлу со шрифтом */
+}
+
+
+
+
+@font-face {
+    font-family: MyriadProBlack; /* Гарнитура шрифта */
     src: url('../fonts/MyriadPro-Black.otf'); /* Путь к файлу со шрифтом */
 }
 
@@ -67,7 +80,7 @@ ul.menu-horizontal > li {
 #slider {
     width: 100%;
    /* background: blue;*/
-    matgin-top: 42px;
+    margin-top: 42px;
     height: 527px;
 }
 
@@ -232,6 +245,13 @@ ul.menu-horizontal > li {
     word-wrap: normal;
     height:31px;
 	
+}
+
+#headerInnerMenu li > a img {
+	display:none; 
+	position:absolute; 
+	top:45px; 
+	left:50%
 }
 
 #headerInnerMenu li > a:hover {

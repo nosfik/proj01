@@ -69,6 +69,62 @@ class ControllerProductCategory extends Controller {
 			$category_id = 0;
 		}
 		
+		
+		$this->load->model('menu/filter');
+		
+		//FILTER BUILDS
+		$this->data['b_zones'] = $this->model_menu_filter->getZones(2);
+		
+		$areas = $this->model_menu_filter->getAreas(2);
+		$this->data['b_area_l'] = $areas['l'];
+		$this->data['b_area_h'] = $areas['h'];
+		
+		$prices = $this->model_menu_filter->getPrices(2);
+		$this->data['price_l'] = $prices['l'];
+		$this->data['price_h'] = $prices['h'];
+		
+		// FILTER SALES
+		$this->data['zones'] = $this->model_menu_filter->getZones();
+		$this->data['categories'] = $this->model_menu_filter->getCategories();
+		
+		$bedrooms = $this->model_menu_filter->getBedrooms();
+		$this->data['bedroom_l'] = $bedrooms['l'];
+		$this->data['bedroom_h'] = $bedrooms['h'];
+		
+		$bathrooms = $this->model_menu_filter->getBathrooms();
+		$this->data['bathroom_l'] = $bathrooms['l'];
+		$this->data['bathroom_h'] = $bathrooms['h'];
+		
+		
+		$areas = $this->model_menu_filter->getAreas();
+		$this->data['area_l'] = $areas['l'];
+		$this->data['area_h'] = $areas['h'];
+		
+		$prices = $this->model_menu_filter->getPrices();
+		$this->data['price_l'] = $prices['l'];
+		$this->data['price_h'] = $prices['h'];
+		
+		
+		
+		$this->document->addScript('catalog/view/javascript/jflow.plus.js');
+		$this->document->addStyle('catalog/view/theme/default/stylesheet/jflow.style.css');
+		$this->document->addScript('catalog/view/javascript/cusel.js');
+        $this->document->addScript('catalog/view/javascript/jScrollPane.js');
+        $this->document->addScript('catalog/view/javascript/jquery.mousewheel.js');
+        $this->document->addStyle('catalog/view/theme/default/stylesheet/cusel.css');
+		 $this->load->model('menu/slide');
+        
+        $slide_list = $this->model_menu_slide->getSlideItems();
+        foreach ($slide_list as $slide) {
+            $this->data['slide_items'][] = array(
+                'text'      => html_entity_decode($slide['text']),
+                'picture'   => 'image/'.$slide['picture'],
+                'url'       => HTTP_SERVER . $slide['url']
+            );
+        }
+		
+		
+		
 		$category_info = $this->model_catalog_category->getCategory($category_id);
 		if ($category_info) {
 			if ($category_info['seo_title']) {
@@ -79,6 +135,9 @@ class ControllerProductCategory extends Controller {
 
 			$this->document->setDescription($category_info['meta_description']);
 			$this->document->setKeywords($category_info['meta_keyword']);
+			
+			$this->data['category_header'] = $category_info['header'];
+			$this->data['category_description'] = html_entity_decode($category_info['description']);
 			
 			$this->data['seo_h1'] = $category_info['seo_h1'];
 

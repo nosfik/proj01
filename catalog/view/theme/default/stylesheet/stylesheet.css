@@ -406,11 +406,31 @@ label {
 	height:37px;
 	color: #CCCCCC;
 	margin-bottom: 10px;
+	margin-top:30px;
 }
 .breadcrumb div {
-	padding-left: 10px;
-    padding-top: 10px;
+	padding-left: 15px;
+    padding-top: 8px;
 }
+
+.breadcrumb a {
+	color: #787878;
+	text-decoration: underline;
+	font-size:14px;
+}
+
+.breadcrumb a:last-child {
+	color: #FF9E14;
+	text-decoration: none;
+}
+
+.breadcrumb a:hover {
+	color: #FF9E14;
+	text-decoration: none;
+}
+
+
+
 .success, .warning, .attention, .information {
 	padding: 10px 10px 10px 33px;
 	margin-bottom: 15px;
@@ -568,6 +588,7 @@ table.radio tr.highlight:hover td {
 .pagination .results {
 	float: right;
 	padding-top: 3px;
+	color : #787878;
 }
 /* button */
 a.button, input.button {

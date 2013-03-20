@@ -2,9 +2,11 @@
  <div class="content-wrapper">
         <div class="content"><?php echo $content_top; ?>
   <div class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
-    <?php } ?>
+  	<div>
+	    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+	    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
+	    <?php } ?>
+    </div>
   </div>
 
 
@@ -63,9 +65,9 @@
 
                 <div class="contact-with-us">
                     <table><tr>
-                        <td><a class="item-print"></a></td>
-                        <td><a class="item-mail"></a></td>
-                        <td><a class="item-skype"></a></td>
+                        <td><a onlick="window.print()" class="item-print"></a></td>
+                        <td><a href="mailto:<?php echo $mail;?>" class="item-mail"></a></td>
+                        <td><a href="skype:<?php echo $skype;?>?call" class="item-skype"></a></td>
                     </tr></table>
 
 

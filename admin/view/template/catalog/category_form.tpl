@@ -48,6 +48,10 @@
                 <td><?php echo $entry_meta_description; ?></td>
                 <td><textarea name="category_description[<?php echo $language['language_id']; ?>][meta_description]" cols="100" rows="2"><?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['meta_description'] : ''; ?></textarea></td>
               </tr>
+               <tr>
+                <td><?php echo $entry_header; ?></td>
+                <td><input type="text" name="category_description[<?php echo $language['language_id']; ?>][header]" maxlength="255" size="100" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['header'] : ''; ?>" /></td>
+              </tr>
               <tr>
                 <td><?php echo $entry_description; ?></td>
                 <td><textarea name="category_description[<?php echo $language['language_id']; ?>][description]" id="description<?php echo $language['language_id']; ?>"><?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['description'] : ''; ?></textarea></td>
