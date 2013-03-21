@@ -14,6 +14,9 @@ class ControllerProductSearch extends Controller {
         $this->document->addScript('catalog/view/javascript/jquery.mousewheel.js');
 		$this->document->addStyle('catalog/view/theme/default/stylesheet/cusel.css');
 		
+		
+		
+		
 		if (isset($this->request->get['filter_area_l'])) {
 			$filter_area_l = $this->request->get['filter_area_l'];
 		} else {
@@ -110,11 +113,52 @@ class ControllerProductSearch extends Controller {
 			$limit = $this->config->get('config_catalog_limit');
 		}
 		
-		if (isset($this->request->get['filter_name'])) {
-			$this->document->setTitle($this->language->get('heading_title') .  ' - ' . $this->request->get['filter_name']);
-		} else {
-			$this->document->setTitle($this->language->get('heading_title'));
-		}
+		$this->load->model('menu/filter');
+		
+		//FILTER BUILDS
+		$this->data['b_zones'] = $this->model_menu_filter->getZones(2);
+		
+		$areas = $this->model_menu_filter->getAreas(2);
+		$this->data['b_area_l'] = $areas['l'];
+		$this->data['b_area_h'] = $areas['h'];
+		
+		$prices = $this->model_menu_filter->getPrices(2);
+		$this->data['b_price_l'] = $prices['l'];
+		$this->data['b_price_h'] = $prices['h'];
+		
+		// FILTER SALES
+		$this->data['zones'] = $this->model_menu_filter->getZones();
+		$this->data['categories'] = $this->model_menu_filter->getCategories();
+		
+		$bedrooms = $this->model_menu_filter->getBedrooms();
+		$this->data['bedroom_l'] = $bedrooms['l'];
+		$this->data['bedroom_h'] = $bedrooms['h'];
+		
+		$bathrooms = $this->model_menu_filter->getBathrooms();
+		$this->data['bathroom_l'] = $bathrooms['l'];
+		$this->data['bathroom_h'] = $bathrooms['h'];
+		
+		
+		$areas = $this->model_menu_filter->getAreas();
+		$this->data['area_l'] = $areas['l'];
+		$this->data['area_h'] = $areas['h'];
+		
+		$prices = $this->model_menu_filter->getPrices();
+		$this->data['price_l'] = $prices['l'];
+		$this->data['price_h'] = $prices['h'];
+		
+		$this->data['filter_area_l'] = $filter_area_l;
+		$this->data['filter_area_h'] = $filter_area_h;
+		$this->data['filter_bathroom_l'] = $filter_bathroom_l;
+		$this->data['filter_bathroom_h'] = $filter_bathroom_h;
+		$this->data['filter_bedroom_h'] = $filter_bedroom_h;
+		$this->data['filter_bedroom_l'] = $filter_bedroom_l;
+		$this->data['filter_price_l'] = $filter_price_l;
+		$this->data['filter_price_h'] = $filter_price_h;
+		$this->data['filter_category_id'] = $filter_category_id;
+		$this->data['filter_number'] = $filter_number;
+		$this->data['filter_zone_id'] = $filter_zone_id;
+		$this->data['parent'] = $parent;
 
 		$this->data['breadcrumbs'] = array();
 

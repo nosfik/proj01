@@ -17,7 +17,7 @@ class ControllerCommonHome extends Controller {
         $this->document->addStyle('catalog/view/theme/default/stylesheet/cusel.css');
         
         
-        
+        $this->data['lang'] = $this->config->get('config_language_id') == 1 ? 'ru' : 'en';
         $this->load->model('menu/info');
         $menu_list = $this->model_menu_info->getMenuItems();
         
@@ -103,8 +103,8 @@ class ControllerCommonHome extends Controller {
 		$this->data['b_area_h'] = $areas['h'];
 		
 		$prices = $this->model_menu_filter->getPrices(2);
-		$this->data['price_l'] = $prices['l'];
-		$this->data['price_h'] = $prices['h'];
+		$this->data['b_price_l'] = $prices['l'];
+		$this->data['b_price_h'] = $prices['h'];
 		
 		// FILTER SALES
 		$this->data['zones'] = $this->model_menu_filter->getZones();

@@ -3,9 +3,11 @@
     <div class="content">
     <?php echo $content_top; ?>
   <div class="breadcrumb">
+  	<div>
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
     <?php } ?>
+	</div>
   </div>
 
   <div class="order">
@@ -93,7 +95,8 @@
                                       <input type="text" name="capchaField" id="capchaField" style="float: left;"/>
                                   </td>
                                   <td style="padding: 0;">
-                                      <p class="capcha-text" style="margin-top: 42px; padding: 0;">VERYGREATTEXT</p>
+                                      <p class="capcha-text" style="margin-top: 42px; padding: 0;"><img style=" margin-left: -40px; margin-top: -11px;"src="index.php?route=product/order/captcha" alt="" />
+    </p>
                                   </td>
                                   <td style="padding: 0;">
                                       <button id="createOrder"></button>

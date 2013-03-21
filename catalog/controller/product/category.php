@@ -72,6 +72,9 @@ class ControllerProductCategory extends Controller {
 		
 		$this->load->model('menu/filter');
 		
+		$this->data['lang'] = $this->config->get('config_language_id') == 1 ? 'ru' : 'en';
+		
+		
 		//FILTER BUILDS
 		$this->data['b_zones'] = $this->model_menu_filter->getZones(2);
 		
