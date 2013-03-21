@@ -287,8 +287,10 @@ mlcalc_loan_term = '15';
                             <label for="realtyPrice">Цена недвижимости</label>
                         </td>
                         <td>
+                            <div>
                             <input type="text" name="realtyPrice" id="realtyPrice" class="textfield-small"/>
                             <span class="units">&euro;</span>
+                                </div>
                         </td>
                     </tr>
                     <tr class="row-separator">
@@ -296,8 +298,10 @@ mlcalc_loan_term = '15';
                             <label for="firstPayment">Начальній взнос</label>
                         </td>
                         <td>
+                            <div>
                             <input type="text" name="firstPayment" id="firstPayment" class="textfield-small"/>
                             <span class="units">%</span>
+                                </div>
                         </td>
                     </tr>
                     <tr class="row-separator">
@@ -305,8 +309,10 @@ mlcalc_loan_term = '15';
                             <label for="hypothecTerms">Сроки ипотеки</label>
                         </td>
                         <td>
+                            <div>
                             <input type="text" name="hypothecTerms" id="hypothecTerms" class="textfield-small"/>
                             <span class="units">лет</span>
+                                </div>
                         </td>
                     </tr>
                     <tr class="row-separator">
@@ -314,8 +320,10 @@ mlcalc_loan_term = '15';
                             <label for="percent">Процентная ставка</label>
                         </td>
                         <td>
+                            <div>
                             <input type="text" name="percent" id="percent" class="textfield-small"/>
                             <span class="units">%</span>
+                                </div>
                         </td>
                     </tr>
                     <tr class="row-separator-small">
@@ -361,8 +369,10 @@ mlcalc_loan_term = '15';
                             <label for="creditPrice">Размер кредита</label>
                         </td>
                         <td>
+                            <div>
                             <input type="text" name="creditPrice" id="creditPrice" class="textfield-small" value="150,000"/>
                             <span class="units">&euro;</span>
+                                </div>
                         </td>
                     </tr>
                     <tr class="row-separator">
@@ -370,8 +380,10 @@ mlcalc_loan_term = '15';
                             <label for="creditTerms">Срок кредита</label>
                         </td>
                         <td>
+                            <div>
                             <input type="text" name="creditTerms" id="creditTerms" class="textfield-small" value="15"/>
                             <span class="units">лет</span>
+                                </div>
                         </td>
                     </tr>
                     <tr class="row-separator">
@@ -379,8 +391,10 @@ mlcalc_loan_term = '15';
                             <label for="creditPercent">Процентная ставка</label>
                         </td>
                         <td>
+                            <div>
                             <input type="text" name="creditPercent" id="creditPercent" class="textfield-small" value="4.5"/>
                             <span class="units">%</span>
+                                </div>
                         </td>
                     </tr>
                     <tr class="row-separator-small">
@@ -551,7 +565,36 @@ mlcalc_loan_term = '15';
 <script type="text/javascript">
     $(function(){
         $('#formTabs').tabs();
- 		$('#creditFormTabs').tabs({ selected: 1});
+        $('#creditFormTabs').tabs({selected: 1});
+
+        cuSel({
+            changedEl:'#select-object-form select',
+            visRows:6,
+            scrollArrows:true
+        });
+
+        cuSel({
+            changedEl:'#credit-calculation-form select',
+            visRows:6,
+            scrollArrows:true
+        });
+
+
+        $('#tab-header-area').click(function () {
+            cuSel({
+                changedEl:'#select-region-form select',
+                visRows:6,
+                scrollArrows:true
+            });
+        });
+
+        $('#tab-hypothec').click(function () {
+            cuSel({
+                changedEl:'#hypothec-calculation-form select',
+                visRows:6,
+                scrollArrows:true
+            });
+        });
  		
  		
  		
@@ -581,41 +624,6 @@ mlcalc_loan_term = '15';
  			alert(1);
  		});
  		
- 		
- 		
- 		
- 		
-        cuSel({
-            changedEl: '#select-object-form select',
-            visRows: 6,
-            scrollArrows: true
-        });
-        
-        
-        $()
-
-        $('#tab-header-area').click(function(){
-            cuSel({
-                changedEl: '#select-region-form select',
-                visRows: 6,
-                scrollArrows: true
-            });
-        });
-
-        cuSel({
-            changedEl: '#hypothec-calculation-form select',
-            visRows: 6,
-            scrollArrows: true
-        });
-
-
-        $('#tab-credit').click(function(){
-            cuSel({
-                changedEl: '#credit-calculation-form select',
-                visRows: 6,
-                scrollArrows: true
-            });
-        });
 
             $(document).ready(function(){
         $("#myController").jFlow({
