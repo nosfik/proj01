@@ -304,30 +304,53 @@ ul.menu-horizontal > li {
    /* background: #ffe4c4;*/
 }
 
-.content .build-dream-house-title, .content .interesting-proposal-title, .about-us-header {
+.content .build-dream-house-title-ru,.build-dream-house-title-en, 
+.content .interesting-proposal-title-ru, 
+.content .interesting-proposal-title-en,
+.about-us-header-ru,
+.about-us-header-en {
     height: 29px;
     margin: 65px 0 32px 0;
 }
 
-.content .build-dream-house-title {
+.content .build-dream-house-title-ru {
     background: url('../image/build-dream-house-title-ru.png') no-repeat 0 0;
 }
+.content .build-dream-house-title-en {
+    background: url('../image/build-dream-house-title-en.png') no-repeat 0 0;
+}
 
-.content .interesting-proposal-title, .about-us-header {
+
+.content .interesting-proposal-title-ru {
+    background: url('../image/interesting-proposal-title-ru.png') no-repeat 0 0;
     cursor: pointer;
     margin-top: 55px;
 }
 
-.content .interesting-proposal-title {
-    background: url('../image/interesting-proposal-title-ru.png') no-repeat 0 0;
+.content .interesting-proposal-title-en {
+    background: url('../image/interesting-proposal-title-en.png') no-repeat 0 0;
+    cursor: pointer;
+    margin-top: 55px;
 }
 
-.about-us-header {
+.about-us-header-ru {
     background: url('../image/about_us-ru.png') no-repeat 0 0;
+    cursor: pointer;
+    margin-top: 55px;
+}
+.about-us-header-en {
+    background: url('../image/about_us-en.png') no-repeat 0 0;
+    cursor: pointer;
+    margin-top: 55px;
 }
 
-.useful-info-image-header {
+.useful-info-image-header-ru {
     background: url('../image/info-ru.png') no-repeat 0 0;
+    width: 500px;
+    height: 29px;
+}
+.useful-info-image-header-en {
+    background: url('../image/info-en.png') no-repeat 0 0;
     width: 500px;
     height: 29px;
 }
@@ -559,7 +582,7 @@ form .fromTo, .cusel {
 }
 
 .fromTo .cuselText{
-    left: 26px!important;
+  /*  left: 26px!important;*/
 }
 
 #creditFormTabs .fromTo .cuselText{
