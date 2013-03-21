@@ -1,5 +1,18 @@
 <?php echo $header; ?>
-
+<script type="text/javascript">
+mlcalc_default_calculator = 'loan';
+mlcalc_currency_code = 'eur';
+mlcalc_amortization = 'year_nc';
+mlcalc_purchase_price = '300,000';
+mlcalc_down_payment = '10';
+mlcalc_mortgage_term = '30';
+mlcalc_interest_rate = '4.5';
+mlcalc_property_tax = '3,000';
+mlcalc_property_insurance = '1,500';
+mlcalc_pmi = '0.52';
+mlcalc_loan_amount = '150,000';
+mlcalc_loan_term = '15';
+</script>
 <div class="content-wrapper">
 
 <div id="slider">
@@ -256,6 +269,10 @@
             </form>
         </div>
     </div>
+    <div style="font-weight:normal;font-size:9px;font-family:Tahoma;padding:0;margin:0;border:0;text-align:center;background:transparent;color:#EEEEEE;width:150px;" class="mlcalc_d3d3LmFtb3J0aXphdGlvbi1jYWxjLmNvbQ== mlcalc_ua_VUEtODE4MzUxOC0x" id="mlcalcWidgetHolder">
+	<script type="text/javascript">document.write(unescape("%3Cscript src='" + (document.location.protocol == 'https:' ? 'https://ssl.mlcalc.com' : 'http://cdn.mlcalc.com') + "/ru/widget-narrow.js' type='text/javascript'%3E%3C/script%3E"));</script>
+	Powered by <a href="http://www.amortization-calc.com/" style="font-weight:normal;font-size:9px;font-family:Tahoma;color:#EEEEEE;text-decoration:none;" class="panelItem">Amortization Schedule</a> <a href="http://www.mlcalc.com/" style="font-weight:normal;font-size:9px;font-family:Tahoma;color:#EEEEEE;text-decoration:none;" class="panelItem secondaryLink">Auto Loan Calculator</a>
+	</div>
     <div id="creditFormTabs">
         <ul>
             <li><a href="#hypothecTab" id="tab-hypothec"></a></li>
@@ -330,7 +347,7 @@
                     </tr>
                     <tr>
                         <td class="btn-container" colspan="2">
-                            <input type="submit" value="посчитать" class="form-btn" style="padding: 0 5px;"/>
+                            <input type="button" value="посчитать" class="form-btn" style="padding: 0 5px;"/>
                         </td>
                     </tr>
                 </table>
@@ -344,7 +361,7 @@
                             <label for="creditPrice">Размер кредита</label>
                         </td>
                         <td>
-                            <input type="text" name="creditPrice" id="creditPrice" class="textfield-small"/>
+                            <input type="text" name="creditPrice" id="creditPrice" class="textfield-small" value="150,000"/>
                             <span class="units">&euro;</span>
                         </td>
                     </tr>
@@ -353,7 +370,7 @@
                             <label for="creditTerms">Срок кредита</label>
                         </td>
                         <td>
-                            <input type="text" name="creditTerms" id="creditTerms" class="textfield-small"/>
+                            <input type="text" name="creditTerms" id="creditTerms" class="textfield-small" value="15"/>
                             <span class="units">лет</span>
                         </td>
                     </tr>
@@ -362,7 +379,7 @@
                             <label for="creditPercent">Процентная ставка</label>
                         </td>
                         <td>
-                            <input type="text" name="creditPercent" id="creditPercent" class="textfield-small"/>
+                            <input type="text" name="creditPercent" id="creditPercent" class="textfield-small" value="4.5"/>
                             <span class="units">%</span>
                         </td>
                     </tr>
@@ -371,31 +388,37 @@
                     </tr>
                     <tr>
                         <td>
-                            <select id="selectCreditDateFrom" name="selectPaymentDateFrom" class="fromTo">
+                            <select onchange="$('select[name=sm]').val(this.value)" id="selectCreditDateFrom" name="selectPaymentDateFrom" class="fromTo">
                                 <option value="1">Январь</option>
                                 <option value="2">Февраль</option>
-                                <option value="3">Март</option>
+                                <option value="3" selected="selected">Март</option>
                                 <option value="4">Апрель</option>
                                 <option value="5">Май</option>
                                 <option value="6">Июнь</option>
                                 <option value="7">Июль</option>
+                                <option value="8">Август</option>
+                                <option value="9">Сентябрь</option>
+                                <option value="10">Октябрь</option>
+                                <option value="11">Ноябрь</option>
+                                <option value="12">Декабрь</option>
                             </select>
                         </td>
                         <td>
-                            <select id="selectCreditDateTo" name="selectPaymentDateTo" class="fromTo">
-                                <option value="1">2013</option>
-                                <option value="2">2014</option>
-                                <option value="3">2015</option>
-                                <option value="4">2016</option>
-                                <option value="5">2017</option>
-                                <option value="6">2018</option>
-                                <option value="7">2019</option>
+                            <select onchange="$('select[name=sy]').val(this.value)" id="selectCreditDateTo" name="selectPaymentDateTo" class="fromTo">
+                                <option value="2013">2013</option>
+                                <option value="2014">2014</option>
+                                <option value="2015">2015</option>
+                                <option value="2016">2016</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td class="btn-container" colspan="2">
-                            <input type="submit" value="посчитать" class="form-btn" style="padding: 0 5px;"/>
+                            <input type="button" onclick="$('.sbmButton').click()" value="посчитать" class="form-btn" style="padding: 0 5px;"/>
                         </td>
                     </tr>
                 </table>
@@ -527,13 +550,49 @@
 
 <script type="text/javascript">
     $(function(){
-        $('#formTabs, #creditFormTabs').tabs();
-
+        $('#formTabs').tabs();
+ 		$('#creditFormTabs').tabs({ selected: 1});
+ 		
+ 		
+ 		
+ 		$('#tab-hypothec').click(function(){
+ 			$('#MLCalcForm .panelItem, #mlcalcWidgetHolder .panelItem').toggle();
+ 		});
+ 		
+ 		$('#tab-credit').click(function(){
+ 			$('#MLCalcForm .panelItem, #mlcalcWidgetHolder .panelItem').toggle();
+ 		});
+ 		
+ 		
+ 		
+ 		$('#creditPrice').change(function(){
+ 			$('input[name=la]').val(this.value)
+ 		});
+ 		$('#creditTerms').change(function(){
+ 			$('input[name=lt]').val(this.value)
+ 		});
+ 		$('#creditPercent').change(function(){
+ 			$('input[name=ir]').val(this.value)
+ 		});
+ 		$('input#selectCreditDateFrom').change(function(){
+ 			alert(1);
+ 		});
+ 		$('#selectCreditDateTo').change(function(){
+ 			alert(1);
+ 		});
+ 		
+ 		
+ 		
+ 		
+ 		
         cuSel({
             changedEl: '#select-object-form select',
             visRows: 6,
             scrollArrows: true
         });
+        
+        
+        $()
 
         $('#tab-header-area').click(function(){
             cuSel({
@@ -626,4 +685,8 @@
         });
     });
 </script>
+
+<!-- MORTGAGE LOAN CALCULATOR BEGIN -->
+
+
 <?php echo $footer; ?>
