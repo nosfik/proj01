@@ -660,13 +660,13 @@ mlcalc_loan_term = '15';
 
         $('#con-left').hover(
                 function(){
-                    //$(this).find('.arrow-left').css('background', 'url(images/arrows2.png) no-repeat 0 -14px');
+                    $(this).find('.arrow-left').css('background', 'url(catalog/view/theme/default/image/arrows2.png) no-repeat 0 -14px');
                     $(this).find('span').css('color', '#ca9000');
                 },
                 function(){
                     $arrow = $(this).find('.arrow-left');
                     $span = $(this).find('span');
-                    // $arrow.css('background', 'url(images/arrows2.png) no-repeat 0 0px');
+                    $arrow.css('background', 'url(catalog/view/theme/default/image/arrows2.png) no-repeat 0 0px');
                     $span.css('color', '#363636');
                 }
         );
@@ -678,13 +678,13 @@ mlcalc_loan_term = '15';
                 function(){
                     $arrow = $(this).find('.arrow-right');
                     $span = $(this).find('span');
-                    // $arrow.css('background', 'url(images/arrows2.png) no-repeat -39px -14px');
+                    $arrow.css('background', 'url(catalog/view/theme/default/image/arrows2.png) no-repeat -39px -14px');
                     $span.css('color', '#ca9000');
                 },
                 function(){
                     $arrow = $(this).find('.arrow-right');
                     $span = $(this).find('span');
-                    //  $arrow.css('background', 'url(images/arrows2.png) no-repeat -39px 0px');
+                    $arrow.css('background', 'url(catalog/view/theme/default/image/arrows2.png) no-repeat -39px 0px');
                     $span.css('color', '#363636');
                 }
         );

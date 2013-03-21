@@ -11,7 +11,6 @@ function cuSel(params) {
 	jQuery(params.changedEl).each(
 	function(num)
 	{
-        console.log(this)
 	var chEl = jQuery(this),
 		chElWid = chEl.outerWidth(), // ширина селекта
 		chElClass = chEl.prop("class"), // класс селекта
@@ -162,7 +161,6 @@ jQuery("html").click(
 		{
 	
 			var cuselWrap = clicked.find(".cusel-scroll-wrap").eq(0);
-            console.log(cuselWrap);
 			/* если выпадающее меню скрыто - показываем */
 			cuselShowList(cuselWrap);
 	

@@ -7,18 +7,15 @@
                 <p>Сайт разработан в студии <a href="#">&laquo;ABWEB&raquo;</a></p>
             </li>
             <li class="socials">
-                <img src="catalog/view/theme/default/image/vk.png" width="64px" height="64px"/>
-
-                <p id="socials-vk">поделиться</p>
-            </li>
-            <li class="socials">
-                <img src="catalog/view/theme/default/image/twitter.png" width="64px" height="64px"/>
-
+                <div id="twit"></div>
                 <p id="socials-twit">поделиться</p>
             </li>
             <li class="socials">
-                <img src="catalog/view/theme/default/image/facebook.png" width="64px" height="64px"/>
-
+                <div id="vk"></div>
+                <p id="socials-vk">поделиться</p>
+            </li>
+            <li class="socials">
+                <div id="facebook"></div>
                 <p id="socials-facebook">поделиться</p>
             </li>
         </ul>

@@ -144,6 +144,29 @@ ul.menu-horizontal > li {
     color: #a57603;
 }
 
+.socials div {
+    width: 64px;
+    height: 64px;
+    background-position: 0 -66px;
+    background-repeat: no-repeat;
+}
+
+.socials div:hover {
+    background-position: 0 0;
+}
+
+#vk {
+    background-image: url('../image/vk.png');
+}
+
+#twit {
+    background-image: url('../image/twitter.png');
+}
+
+#facebook {
+    background-image: url('../image/facebook.png');
+}
+
 #socials-vk {
     color: #413322;
 }
@@ -844,13 +867,13 @@ form tr.row-separator {
 #online-help a {
     display: block;
     height: 40px;
-    background: url('../image/online-help.png') no-repeat -22px 3px #000;
+    background: url('../image/online-help.png') no-repeat -22px 3px;
 }
 
 #online-help a:hover {
     display: block;
     height: 40px;
-    background: url('../image/online-help.png') no-repeat -22px -58px #000;
+    background: url('../image/online-help.png') no-repeat -22px -58px;
     padding: 5px;
     width: 100%;
 }

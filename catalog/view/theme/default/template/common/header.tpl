@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>">
 <head>
 <meta charset="UTF-8" />
@@ -43,7 +44,6 @@
 
 $('.main-menu-item').hover(
   function () {
-  	console.log(1);
     $(this).find('.menu-hover').show();
   },
   function () {
@@ -52,7 +52,6 @@ $('.main-menu-item').hover(
   );
   $('.sub-main-menu-item').hover(
   function () {
-  	console.log(1);
     $(this).find('img').show();
   },
   function () {
