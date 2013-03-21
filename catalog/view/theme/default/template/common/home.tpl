@@ -4,424 +4,443 @@
 
 <div id="slider">
     <div id="slideshow">
-    	 <div class="slider-shadow"></div>
-   <span class="arrow previous jFlowPrev"></span>
+        <div class="slider-shadow"></div>
+        <span class="arrow previous jFlowPrev"></span>
         <span class="arrow next jFlowNext"></span>
-       
- <div id="mySlides">
-     
-     
-        <?php for($i = 0; $i < count($slide_items); $i++) { 
+
+        <div id="mySlides">
+
+
+            <?php for($i = 0; $i < count($slide_items); $i++) {
             $slide_item = $slide_items[$i];
             
             ?>
-            
-         <div class="bigslide">
-          <a href="<?php echo $slide_item['url'];?> "><img src="<?php echo $slide_item['picture'];?>" width="1200px" height="527px" /></a>
-          <span><?php echo $slide_item['text'];?> </span>
+
+            <div class="bigslide">
+                <a href="<?php echo $slide_item['url'];?> "><img src="<?php echo $slide_item['picture'];?>"
+                                                                 width="1200px" height="527px"/></a>
+                <span><?php echo $slide_item['text'];?> </span>
+            </div>
+
+            <?php } ?>
+
         </div>
-            
-       <?php } ?>
-
-      </div>
-      <div id="myController">
-           <?php for($i = 0; $i < count($slide_items); $i++) {  ?>
-               <span class="jFlowControl"></span>
-               <?php } ?>
-      </div>
+        <div id="myController">
+            <?php for($i = 0; $i < count($slide_items); $i++) {  ?>
+            <span class="jFlowControl"></span>
+            <?php } ?>
+        </div>
 
 
-</div>
+    </div>
 </div>
 
 <div class="content">
-    <?php echo $content_top; ?>
+<?php echo $content_top; ?>
 <div class="right">
-    <div id="formTabs">
-        <ul>
-            <li><a href="#housesTab" id="tab-header-house"></a></li>
-            <li><a href="#areasTab" id="tab-header-area"></a></li>
-        </ul>
-        <div class="list-separator"></div>
-        <div id="housesTab">
-            <form id="select-object-form" action="index.php?route=product/search" method="get">
-            	<input type="hidden" name="route" value="product/search"/>
-            	<input type="hidden" name="parent" value="1"/>
-                <table>
-                    <tr class="row-separator">
-                        <td>
-                            <label for="objectNumber">Номер объекта</label>
-                        </td>
-                        <td>
-                            <input type="text" name="filter_number" id="objectNumber"/>
-                        </td>
-                    </tr>
-                    <tr class="row-separator">
-                        <td colspan="2">
-                            <label>Выберите город</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <select name="filter_zone_id" id="city">
-                            	<?php foreach ($zones as $zone) { ?>
-                            		<option value="<?php echo $zone['id'];?>"><?php echo $zone['city'];?></option>
-                            	<?php } ?>	
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="row-separator">
-                        <td colspan="2">
-                            <label>Вид недвижимости</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <select name="filter_category_id" id="realtyType">
-                            	<?php foreach ($categories as $category) { ?>
-                            		<option value="<?php echo $category['id'];?>"><?php echo $category['name'];?></option>
-                            	<?php } ?>	
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="row-separator">
-                        <td colspan="2"><label>Количество спален</label></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <select id="selectBedroomFrom" name="filter_bedroom_l" class="fromTo">
-                                <option value="0">От</option>
-                                <?php foreach ($bedroom_l as $item) { ?>
-                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
-                            	<?php } ?>	
-                            </select>
-                        </td>
-                        <td>
-                            <select id="selectBedroomTo" name="filter_bedroom_h" class="fromTo">
-                                <option value="0">До</option>
-                                <?php foreach ($bedroom_h as $item) { ?>
-                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
-                            	<?php } ?>	
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="row-separator">
-                        <td colspan="2"><label>Количество санузлов</label></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <select id="selectBathroomFrom" name="filter_bathroom_l" class="fromTo">
-                                <option value="0">От</option>
-                                 <?php foreach ($bathroom_l as $item) { ?>
-                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
-                            	<?php } ?>	
-                            </select>
-                        </td>
-                        <td>
-                            <select id="selectBathroomTo" name="filter_bathroom_h" class="fromTo">
-                                <option value="0">До</option>
-                                <?php foreach ($bathroom_h as $item) { ?>
-                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
-                            	<?php } ?>	
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="row-separator">
-                        <td colspan="2"><label>Площадь</label></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <select id="selectAreaFrom" name="filter_area_l" class="fromTo">
-                                <option value="0">От</option>
-                                <?php foreach ($area_l as $item) { ?>
-                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
-                            	<?php } ?>	
-                            </select>
-                        </td>
-                        <td>
-                            <select id="selectAreaTo" name="filter_area_h" class="fromTo">
-                                <option value="0">До</option>
-                               <?php foreach ($area_h as $item) { ?>
-                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
-                            	<?php } ?>	
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="row-separator">
-                        <td colspan="2"><label>Цена</label></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <select id="selectPriceFrom" name="filter_price_l" class="fromTo">
-                                <option value="0">От</option>
-                                <?php foreach ($price_l as $item) { ?>
-                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
-                            	<?php } ?>	
-                            </select>
-                        </td>
-                        <td>
-                            <select id="selectPriceTo" name="filter_price_h" class="fromTo">
-                                <option value="0">До</option>
-                                 <?php foreach ($price_h as $item) { ?>
-                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
-                            	<?php } ?>	
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="btn-container" colspan="2">
-                            <input type="submit" value="найти" class="form-btn"/>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-        <div id="areasTab">
-            <form id="select-region-form" action="index.php" method="get">
-            	<input type="hidden" name="route" value="product/search"/>
-            	<input type="hidden" name="parent" value="2"/>
-                <table>
-                    <tr class="row-separator">
-                        <td colspan="2">
-                            <label>Номер объекта или название</label>
-                        </td>
-                    </tr>
-                    <tr class="row-separator">
-                        <td colspan="2">
-                            <input type="text" name="filter_number" id="regionNumber" value="Номер или название объекта" onblur="if(this.value=='') this.value='Номер или название объекта';" onfocus="if(this.value=='Номер или название объекта') this.value='';"/>
-                        </td>
-                    </tr>
-                    <tr class="row-separator">
-                        <td colspan="2">
-                            <label>Выберите город</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <select name="regionCity" id="regionCity">
-                               <?php foreach ($b_zones as $zone) { ?>
-                            		<option value="<?php echo $zone['id'];?>"><?php echo $zone['city'];?></option>
-                            	<?php } ?>	
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="row-separator">
-                        <td colspan="2"><label>Площадь</label></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <select id="selectRegionAreaFrom" name="selectRegionAreaFrom" class="fromTo">
-                                <option value="0">От</option>
-                                <?php foreach ($b_area_l as $item) { ?>
-                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
-                            	<?php } ?>	
-                            </select>
-                        </td>
-                        <td>
-                            <select id="selectRegionAreaTo" name="selectRegionAreaTo" class="fromTo">
-                                <option value="0">До</option>
-                                <?php foreach ($b_area_h as $item) { ?>
-                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
-                            	<?php } ?>	
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="row-separator">
-                        <td colspan="2"><label>Цена</label></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <select id="selectRegionPriceFrom" name="selectRegionPriceFrom" class="fromTo">
-                                <option value="0">От</option>
-                                <?php foreach ($b_price_l as $item) { ?>
-                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
-                            	<?php } ?>	
-                            </select>
-                        </td>
-                        <td>
-                            <select id="selectRegionPriceTo" name="selectRegionPriceTo" class="fromTo">
-                                <option value="0">До</option>
-                                <?php foreach ($b_price_h as $item) { ?>
-                            		<option value="<?php echo $item;?>"><?php echo $item;?></option>
-                            	<?php } ?>	
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="btn-container" colspan="2">
-                            <input type="submit" value="найти" class="form-btn"/>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-    </div>
-    <div id="creditFormTabs">
-        <ul>
-            <li><a href="#hypothecTab" id="tab-hypothec"></a></li>
-            <li><a href="#creditTab" id="tab-credit"></a></li>
-        </ul>
-        <div class="list-separator"></div>
-        <div id="hypothecTab">
-            <form id="hypothec-calculation-form">
-                <table>
-                    <tr class="row-separator">
-                        <td>
-                            <label for="realtyPrice">Цена недвижимости</label>
-                        </td>
-                        <td>
+<div id="formTabs">
+<ul>
+    <li><a href="#housesTab" id="tab-header-house"></a></li>
+    <li><a href="#areasTab" id="tab-header-area"></a></li>
+</ul>
+<div class="list-separator"></div>
+<div id="housesTab">
+    <form id="select-object-form" action="index.php?route=product/search" method="get">
+        <input type="hidden" name="route" value="product/search"/>
+        <input type="hidden" name="parent" value="1"/>
+        <table>
+            <tr class="row-separator">
+                <td>
+                    <label for="objectNumber">Номер объекта</label>
+                </td>
+                <td>
+                    <input type="text" name="filter_number" id="objectNumber"/>
+                </td>
+            </tr>
+            <tr class="row-separator">
+                <td colspan="2">
+                    <label>Выберите город</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <select name="filter_zone_id" id="city">
+                        <?php foreach ($zones as $zone) { ?>
+                        <option value="<?php echo $zone['id'];?>"><?php echo $zone['city'];?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+            </tr>
+            <tr class="row-separator">
+                <td colspan="2">
+                    <label>Вид недвижимости</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <select name="filter_category_id" id="realtyType">
+                        <?php foreach ($categories as $category) { ?>
+                        <option value="<?php echo $category['id'];?>"><?php echo $category['name'];?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+            </tr>
+            <tr class="row-separator">
+                <td colspan="2"><label>Количество спален</label></td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="selectBedroomFrom" name="filter_bedroom_l" class="fromTo">
+                        <option value="0">От</option>
+                        <?php foreach ($bedroom_l as $item) { ?>
+                        <option value="<?php echo $item;?>"><?php echo $item;?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+                <td>
+                    <select id="selectBedroomTo" name="filter_bedroom_h" class="fromTo">
+                        <option value="0">До</option>
+                        <?php foreach ($bedroom_h as $item) { ?>
+                        <option value="<?php echo $item;?>"><?php echo $item;?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+            </tr>
+            <tr class="row-separator">
+                <td colspan="2"><label>Количество санузлов</label></td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="selectBathroomFrom" name="filter_bathroom_l" class="fromTo">
+                        <option value="0">От</option>
+                        <?php foreach ($bathroom_l as $item) { ?>
+                        <option value="<?php echo $item;?>"><?php echo $item;?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+                <td>
+                    <select id="selectBathroomTo" name="filter_bathroom_h" class="fromTo">
+                        <option value="0">До</option>
+                        <?php foreach ($bathroom_h as $item) { ?>
+                        <option value="<?php echo $item;?>"><?php echo $item;?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+            </tr>
+            <tr class="row-separator">
+                <td colspan="2"><label>Площадь</label></td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="selectAreaFrom" name="filter_area_l" class="fromTo">
+                        <option value="0">От</option>
+                        <?php foreach ($area_l as $item) { ?>
+                        <option value="<?php echo $item;?>"><?php echo $item;?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+                <td>
+                    <select id="selectAreaTo" name="filter_area_h" class="fromTo">
+                        <option value="0">До</option>
+                        <?php foreach ($area_h as $item) { ?>
+                        <option value="<?php echo $item;?>"><?php echo $item;?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+            </tr>
+            <tr class="row-separator">
+                <td colspan="2"><label>Цена</label></td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="selectPriceFrom" name="filter_price_l" class="fromTo">
+                        <option value="0">От</option>
+                        <?php foreach ($price_l as $item) { ?>
+                        <option value="<?php echo $item;?>"><?php echo $item;?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+                <td>
+                    <select id="selectPriceTo" name="filter_price_h" class="fromTo">
+                        <option value="0">До</option>
+                        <?php foreach ($price_h as $item) { ?>
+                        <option value="<?php echo $item;?>"><?php echo $item;?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="btn-container" colspan="2">
+                    <input type="submit" value="найти" class="form-btn"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div id="areasTab">
+    <form id="select-region-form" action="index.php" method="get">
+        <input type="hidden" name="route" value="product/search"/>
+        <input type="hidden" name="parent" value="2"/>
+        <table>
+            <tr class="row-separator">
+                <td colspan="2">
+                    <label>Номер объекта или название</label>
+                </td>
+            </tr>
+            <tr class="row-separator">
+                <td colspan="2">
+                    <input type="text" name="filter_number" id="regionNumber" value="Номер или название объекта"
+                           onblur="if(this.value=='') this.value='Номер или название объекта';"
+                           onfocus="if(this.value=='Номер или название объекта') this.value='';"/>
+                </td>
+            </tr>
+            <tr class="row-separator">
+                <td colspan="2">
+                    <label>Выберите город</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <select name="regionCity" id="regionCity">
+                        <?php foreach ($b_zones as $zone) { ?>
+                        <option value="<?php echo $zone['id'];?>"><?php echo $zone['city'];?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+            </tr>
+            <tr class="row-separator">
+                <td colspan="2"><label>Площадь</label></td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="selectRegionAreaFrom" name="selectRegionAreaFrom" class="fromTo">
+                        <option value="0">От</option>
+                        <?php foreach ($b_area_l as $item) { ?>
+                        <option value="<?php echo $item;?>"><?php echo $item;?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+                <td>
+                    <select id="selectRegionAreaTo" name="selectRegionAreaTo" class="fromTo">
+                        <option value="0">До</option>
+                        <?php foreach ($b_area_h as $item) { ?>
+                        <option value="<?php echo $item;?>"><?php echo $item;?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+            </tr>
+            <tr class="row-separator">
+                <td colspan="2"><label>Цена</label></td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="selectRegionPriceFrom" name="selectRegionPriceFrom" class="fromTo">
+                        <option value="0">От</option>
+                        <?php foreach ($b_price_l as $item) { ?>
+                        <option value="<?php echo $item;?>"><?php echo $item;?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+                <td>
+                    <select id="selectRegionPriceTo" name="selectRegionPriceTo" class="fromTo">
+                        <option value="0">До</option>
+                        <?php foreach ($b_price_h as $item) { ?>
+                        <option value="<?php echo $item;?>"><?php echo $item;?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="btn-container" colspan="2">
+                    <input type="submit" value="найти" class="form-btn"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</div>
+<div id="creditFormTabs">
+    <ul>
+        <li><a href="#hypothecTab" id="tab-hypothec"></a></li>
+        <li><a href="#creditTab" id="tab-credit"></a></li>
+    </ul>
+    <div class="list-separator"></div>
+    <div id="hypothecTab">
+        <form id="hypothec-calculation-form">
+            <table>
+                <tr class="row-separator">
+                    <td>
+                        <label for="realtyPrice">Цена недвижимости</label>
+                    </td>
+                    <td>
+                        <div>
                             <input type="text" name="realtyPrice" id="realtyPrice" class="textfield-small"/>
                             <span class="units">&euro;</span>
-                        </td>
-                    </tr>
-                    <tr class="row-separator">
-                        <td>
-                            <label for="firstPayment">Начальній взнос</label>
-                        </td>
-                        <td>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="row-separator">
+                    <td>
+                        <label for="firstPayment">Начальній взнос</label>
+                    </td>
+                    <td>
+                        <div>
                             <input type="text" name="firstPayment" id="firstPayment" class="textfield-small"/>
                             <span class="units">%</span>
-                        </td>
-                    </tr>
-                    <tr class="row-separator">
-                        <td>
-                            <label for="hypothecTerms">Сроки ипотеки</label>
-                        </td>
-                        <td>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="row-separator">
+                    <td>
+                        <label for="hypothecTerms">Сроки ипотеки</label>
+                    </td>
+                    <td>
+                        <div>
                             <input type="text" name="hypothecTerms" id="hypothecTerms" class="textfield-small"/>
                             <span class="units">лет</span>
-                        </td>
-                    </tr>
-                    <tr class="row-separator">
-                        <td>
-                            <label for="percent">Процентная ставка</label>
-                        </td>
-                        <td>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="row-separator">
+                    <td>
+                        <label for="percent">Процентная ставка</label>
+                    </td>
+                    <td>
+                        <div>
                             <input type="text" name="percent" id="percent" class="textfield-small"/>
                             <span class="units">%</span>
-                        </td>
-                    </tr>
-                    <tr class="row-separator-small">
-                        <td colspan="2"><label>Первый платеж</label></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <select id="selectPaymentDateFrom" name="selectPaymentDateFrom" class="fromTo">
-                                <option value="1">Январь</option>
-                                <option value="2">Февраль</option>
-                                <option value="3">Март</option>
-                                <option value="4">Апрель</option>
-                                <option value="5">Май</option>
-                                <option value="6">Июнь</option>
-                                <option value="7">Июль</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select id="selectPaymentDateTo" name="selectPaymentDateTo" class="fromTo">
-                                <option value="1">2013</option>
-                                <option value="2">2014</option>
-                                <option value="3">2015</option>
-                                <option value="4">2016</option>
-                                <option value="5">2017</option>
-                                <option value="6">2018</option>
-                                <option value="7">2019</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="btn-container" colspan="2">
-                            <input type="submit" value="посчитать" class="form-btn" style="padding: 0 5px;"/>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-        <div id="creditTab">
-            <form id="credit-calculation-form">
-                <table>
-                    <tr class="row-separator">
-                        <td>
-                            <label for="creditPrice">Размер кредита</label>
-                        </td>
-                        <td>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="row-separator-small">
+                    <td colspan="2"><label>Первый платеж</label></td>
+                </tr>
+                <tr>
+                    <td>
+                        <select id="selectPaymentDateFrom" name="selectPaymentDateFrom" class="fromTo">
+                            <option value="1">Январь</option>
+                            <option value="2">Февраль</option>
+                            <option value="3">Март</option>
+                            <option value="4">Апрель</option>
+                            <option value="5">Май</option>
+                            <option value="6">Июнь</option>
+                            <option value="7">Июль</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="selectPaymentDateTo" name="selectPaymentDateTo" class="fromTo">
+                            <option value="1">2013</option>
+                            <option value="2">2014</option>
+                            <option value="3">2015</option>
+                            <option value="4">2016</option>
+                            <option value="5">2017</option>
+                            <option value="6">2018</option>
+                            <option value="7">2019</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="btn-container" colspan="2">
+                        <input type="submit" value="посчитать" class="form-btn" style="padding: 0 5px;"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="creditTab">
+        <form id="credit-calculation-form">
+            <table>
+                <tr class="row-separator">
+                    <td>
+                        <label for="creditPrice">Размер кредита</label>
+                    </td>
+                    <td>
+                        <div>
                             <input type="text" name="creditPrice" id="creditPrice" class="textfield-small"/>
                             <span class="units">&euro;</span>
-                        </td>
-                    </tr>
-                    <tr class="row-separator">
-                        <td>
-                            <label for="creditTerms">Срок кредита</label>
-                        </td>
-                        <td>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="row-separator">
+                    <td>
+                        <label for="creditTerms">Срок кредита</label>
+                    </td>
+                    <td>
+                        <div>
                             <input type="text" name="creditTerms" id="creditTerms" class="textfield-small"/>
                             <span class="units">лет</span>
-                        </td>
-                    </tr>
-                    <tr class="row-separator">
-                        <td>
-                            <label for="creditPercent">Процентная ставка</label>
-                        </td>
-                        <td>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="row-separator">
+                    <td>
+                        <label for="creditPercent">Процентная ставка</label>
+                    </td>
+                    <td>
+                        <div>
                             <input type="text" name="creditPercent" id="creditPercent" class="textfield-small"/>
                             <span class="units">%</span>
-                        </td>
-                    </tr>
-                    <tr class="row-separator-small">
-                        <td colspan="2"><label>Первый платеж</label></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <select id="selectCreditDateFrom" name="selectPaymentDateFrom" class="fromTo">
-                                <option value="1">Январь</option>
-                                <option value="2">Февраль</option>
-                                <option value="3">Март</option>
-                                <option value="4">Апрель</option>
-                                <option value="5">Май</option>
-                                <option value="6">Июнь</option>
-                                <option value="7">Июль</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select id="selectCreditDateTo" name="selectPaymentDateTo" class="fromTo">
-                                <option value="1">2013</option>
-                                <option value="2">2014</option>
-                                <option value="3">2015</option>
-                                <option value="4">2016</option>
-                                <option value="5">2017</option>
-                                <option value="6">2018</option>
-                                <option value="7">2019</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="btn-container" colspan="2">
-                            <input type="submit" value="посчитать" class="form-btn" style="padding: 0 5px;"/>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-        </div>
-        <div id="online-help">
-            <a href="#"></a>
-        </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="row-separator-small">
+                    <td colspan="2"><label>Первый платеж</label></td>
+                </tr>
+                <tr>
+                    <td>
+                        <select id="selectCreditDateFrom" name="selectPaymentDateFrom" class="fromTo">
+                            <option value="1">Январь</option>
+                            <option value="2">Февраль</option>
+                            <option value="3">Март</option>
+                            <option value="4">Апрель</option>
+                            <option value="5">Май</option>
+                            <option value="6">Июнь</option>
+                            <option value="7">Июль</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="selectCreditDateTo" name="selectPaymentDateTo" class="fromTo">
+                            <option value="1">2013</option>
+                            <option value="2">2014</option>
+                            <option value="3">2015</option>
+                            <option value="4">2016</option>
+                            <option value="5">2017</option>
+                            <option value="6">2018</option>
+                            <option value="7">2019</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="btn-container" colspan="2">
+                        <input type="submit" value="посчитать" class="form-btn" style="padding: 0 5px;"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
+</div>
+<div id="online-help">
+    <a href="#"></a>
+</div>
+</div>
 <div class="left">
-   <div class="dream-house">
-  	<div class="build-dream-house-title"></div>
-  	<ul class="menu-horizontal house-list">
-  	<?php for ($i = 0; $i < count($dreamhouse_items); $i++) { $product = $dreamhouse_items[$i];	?>
-  		
-	    <?php if($i >= 3 && $i % 3 == 0) {?>
-	    	</ul><ul class="menu-horizontal house-list">
-	    <?php } ?>
-	    <li>
-	    	
-	    	<div class="house-item" onclick="location.href='<?php echo $product['url']; ?>'">
+    <div class="dream-house">
+        <div class="build-dream-house-title"></div>
+        <ul class="menu-horizontal house-list">
+            <?php for ($i = 0; $i < count($dreamhouse_items); $i++) { $product = $dreamhouse_items[$i];	?>
+
+            <?php if($i >= 3 && $i % 3 == 0) {?>
+        </ul>
+        <ul class="menu-horizontal house-list">
+            <?php } ?>
+            <li>
+
+                <div class="house-item" onclick="location.href='<?php echo $product['url']; ?>'">
                     <div class="frame"></div>
-                    <div style="width:228px; height:167px"><img height="167" width="228" src="<?php echo $product['thumb']; ?>"></div>
+                    <div style="width:228px; height:167px"><img height="167" width="228"
+                                                                src="<?php echo $product['thumb']; ?>"></div>
                     <?php if(!empty($product)) { ?>
-                       <img height="68" width="68" class="house-tag" src="<?php echo $product['tag'];?>"> 
+                    <img height="68" width="68" class="house-tag" src="<?php echo $product['tag'];?>">
                     <?php } ?>
                     <p class="house-price"><?php echo $product['price'];?> <?php echo $product['currency'];?></p>
                     <a href="<?php echo $product['url']; ?>"><?php echo $product['name']; ?></a>
@@ -433,28 +452,30 @@
                         <li class="house-bedroom"><?php echo $product['bedroom']; ?> спальни</li>
                     </ul>
                 </div>
-	    	
-	    </li>
-    <?php } ?>
-    </ul>
-    
-  </div>
-  
+
+            </li>
+            <?php } ?>
+        </ul>
+
+    </div>
+
     <div class="dream-house">
-  	<div class="interesting-proposal-title"></div>
-  	<ul class="menu-horizontal house-list">
-  	<?php for ($i = 0; $i < count($suggestion_items); $i++) { $product = $suggestion_items[$i];	?>
-  		
-	    <?php if($i >= 3 && $i % 3 == 0) {?>
-	    	</ul><ul class="menu-horizontal house-list">
-	    <?php } ?>
-	    <li>
-	    	
-	    	<div class="house-item" onclick="location.href='<?php echo $product['url']; ?>'">
+        <div class="interesting-proposal-title"></div>
+        <ul class="menu-horizontal house-list">
+            <?php for ($i = 0; $i < count($suggestion_items); $i++) { $product = $suggestion_items[$i];	?>
+
+            <?php if($i >= 3 && $i % 3 == 0) {?>
+        </ul>
+        <ul class="menu-horizontal house-list">
+            <?php } ?>
+            <li>
+
+                <div class="house-item" onclick="location.href='<?php echo $product['url']; ?>'">
                     <div class="frame"></div>
-                    <div style="width:228px; height:167px"><img height="167" width="228" src="<?php echo $product['thumb']; ?>"></div>
+                    <div style="width:228px; height:167px"><img height="167" width="228"
+                                                                src="<?php echo $product['thumb']; ?>"></div>
                     <?php if(!empty($product)) { ?>
-                       <img height="68" width="68" class="house-tag" src="<?php echo $product['tag'];?>"> 
+                    <img height="68" width="68" class="house-tag" src="<?php echo $product['tag'];?>">
                     <?php } ?>
                     <p class="house-price"><?php echo $product['price'];?> <?php echo $product['currency'];?></p>
                     <a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
@@ -466,18 +487,18 @@
                         <li class="house-bedroom"><?php echo $product['bedroom']; ?> спальни</li>
                     </ul>
                 </div>
-	    	
-	    </li>
-    <?php } ?>
-    </ul>
-    
-  </div>
+
+            </li>
+            <?php } ?>
+        </ul>
+
+    </div>
     <div>
         <div onclick="location.href='<?php echo $about_us['url'];?>'" class="about-us-header"></div>
         <div class="about-us-content">
             <div style=" background: url('<?php echo $about_us['image'];?>') no-repeat;" class="picture"></div>
             <div class="us_content">
-                        <span><?php echo $about_us['short_text'];?></span>
+                <span><?php echo $about_us['short_text'];?></span>
                 <br/>
                 <a href="#">Подробнее</a>
             </div>
@@ -504,21 +525,24 @@
             </table>
 
         </div>
-        <div style="float:left;" class="useful-info-image-header"> </div>
+        <div style="float:left;" class="useful-info-image-header"></div>
     </div>
     <div style="clear:both;"></div>
     <ul id="mycarousel" class="jcarousel-skin-realty">
-        
+
         <?php foreach ($menu_items as $menu_item) { ?>
-            
-            <li>
-                <div onclick="location.href = '<?php echo $menu_item['url'];?>'" class="j-item"><p><?php echo $menu_item['name'];?></p>
-                    <div class="frame"><img src="<?php echo $menu_item['picture'];?>" width="218px" height="131px" alt=""/></div>
+
+        <li>
+            <div onclick="location.href = '<?php echo $menu_item['url'];?>'" class="j-item">
+                <p><?php echo $menu_item['name'];?></p>
+
+                <div class="frame"><img src="<?php echo $menu_item['picture'];?>" width="218px" height="131px" alt=""/>
                 </div>
-            </li>
-            
+            </div>
+        </li>
+
         <?php } ?>
-        
+
     </ul>
 </div>
 </div>
@@ -526,102 +550,103 @@
 <?php echo $content_bottom; ?>
 
 <script type="text/javascript">
-    $(function(){
-        $('#formTabs, #creditFormTabs').tabs();
+    $(function () {
+        $('#formTabs').tabs();
+        $('#creditFormTabs').tabs({selected: 1});
 
         cuSel({
-            changedEl: '#select-object-form select',
-            visRows: 6,
-            scrollArrows: true
-        });
-
-        $('#tab-header-area').click(function(){
-            cuSel({
-                changedEl: '#select-region-form select',
-                visRows: 6,
-                scrollArrows: true
-            });
+            changedEl:'#select-object-form select',
+            visRows:6,
+            scrollArrows:true
         });
 
         cuSel({
-            changedEl: '#hypothec-calculation-form select',
-            visRows: 6,
-            scrollArrows: true
+            changedEl:'#credit-calculation-form select',
+            visRows:6,
+            scrollArrows:true
         });
 
 
-        $('#tab-credit').click(function(){
+        $('#tab-header-area').click(function () {
             cuSel({
-                changedEl: '#credit-calculation-form select',
-                visRows: 6,
-                scrollArrows: true
+                changedEl:'#select-region-form select',
+                visRows:6,
+                scrollArrows:true
             });
         });
 
-            $(document).ready(function(){
-        $("#myController").jFlow({
-            controller: ".jFlowControl", // must be class, use . sign
-            slideWrapper : "#jFlowSlider", // must be id, use # sign
-            slides: "#mySlides",  // the div where all your sliding divs are nested in
-            selectedWrapper: "jFlowSelected",  // just pure text, no sign
-            width: "1200px",  // this is the width for the content-slider
-            height: "527px",  // this is the height for the content-slider
-            duration: 400,  // time in miliseconds to transition one slide
-            prev: ".jFlowPrev", // must be class, use . sign
-            next: ".jFlowNext", // must be class, use . sign
-            auto: false  
-    });
-});
-        
+        $('#tab-hypothec').click(function () {
+            cuSel({
+                changedEl:'#hypothec-calculation-form select',
+                visRows:6,
+                scrollArrows:true
+            });
+        });
+
+        $(document).ready(function () {
+            $("#myController").jFlow({
+                controller:".jFlowControl", // must be class, use . sign
+                slideWrapper:"#jFlowSlider", // must be id, use # sign
+                slides:"#mySlides", // the div where all your sliding divs are nested in
+                selectedWrapper:"jFlowSelected", // just pure text, no sign
+                width:"1200px", // this is the width for the content-slider
+                height:"527px", // this is the height for the content-slider
+                duration:400, // time in miliseconds to transition one slide
+                prev:".jFlowPrev", // must be class, use . sign
+                next:".jFlowNext", // must be class, use . sign
+                auto:false
+            });
+        });
+
 
         jQuery('#mycarousel').jcarousel({
-            wrap: 'circular',
+            wrap:'circular',
             start:1
         });
 
 
         $('.j-item').hover(
-                function(){
+                function () {
                     $(this).find('p').css('color', '#864704');
                     $(this).find('.frame').css('background', 'url(catalog/view/theme/default/image/frame.png) no-repeat 0 0');
                 },
-                function(){
+                function () {
                     $(this).find('p').css('color', '#80634f');
                     $(this).find('.frame').css('background', 'url(catalog/view/theme/default/image/frame.png) no-repeat -229px 0');
                 }
         );
 
         $('#con-left').hover(
-                function(){
+                function () {
                     //$(this).find('.arrow-left').css('background', 'url(images/arrows2.png) no-repeat 0 -14px');
                     $(this).find('span').css('color', '#ca9000');
                 },
-                function(){
+                function () {
                     $arrow = $(this).find('.arrow-left');
                     $span = $(this).find('span');
                     // $arrow.css('background', 'url(images/arrows2.png) no-repeat 0 0px');
                     $span.css('color', '#363636');
                 }
         );
-        $('#con-left').click(function(){
+        $('#con-left').click(function () {
             $('.jcarousel-prev').click();
         });
 
         $('#con-right').hover(
-                function(){
+                function () {
                     $arrow = $(this).find('.arrow-right');
                     $span = $(this).find('span');
                     // $arrow.css('background', 'url(images/arrows2.png) no-repeat -39px -14px');
                     $span.css('color', '#ca9000');
                 },
-                function(){
+                function () {
                     $arrow = $(this).find('.arrow-right');
                     $span = $(this).find('span');
                     //  $arrow.css('background', 'url(images/arrows2.png) no-repeat -39px 0px');
                     $span.css('color', '#363636');
                 }
         );
-        $('#con-right').click(function(){
+        $('#con-right').click(function () {
             $('.jcarousel-next').click();
         });
     });
