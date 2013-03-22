@@ -286,7 +286,6 @@ class ControllerCatalogProduct extends Controller {
 		$this->data['delete'] = $this->url->link('catalog/product/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
     	
 		$this->data['products'] = array();
-
 		$data = array(
 			'filter_name'	  => $filter_name, 
 			'filter_city'	  => $filter_city,
@@ -313,8 +312,8 @@ class ControllerCatalogProduct extends Controller {
 				'href' => $this->url->link('catalog/product/update', 'token=' . $this->session->data['token'] . '&product_id=' . $result['product_id'] . $url, 'SSL')
 			);
 			
-			if ($result['image'] && file_exists(DIR_IMAGE . $result['image'])) {
-				$image = $this->model_tool_image->resize($result['image'], 40, 40);
+			if ($result['imageo'] && file_exists(DIR_IMAGE . $result['imageo'])) {
+				$image = $this->model_tool_image->resize($result['imageo'], 40, 40);
 			} else {
 				$image = $this->model_tool_image->resize('no_image.jpg', 40, 40);
 			}
@@ -570,10 +569,10 @@ class ControllerCatalogProduct extends Controller {
 			$this->data['error_warning'] = '';
 		}
 
- 		if (isset($this->error['name'])) {
-			$this->data['error_name'] = $this->error['name'];
+ 		if (isset($this->error['number'])) {
+			$this->data['error_number'] = 'Ошибка';
 		} else {
-			$this->data['error_name'] = array();
+			$this->data['error_number'] = array();
 		}
 
  		if (isset($this->error['meta_description'])) {

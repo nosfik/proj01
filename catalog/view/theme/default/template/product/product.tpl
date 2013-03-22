@@ -65,7 +65,7 @@
 
                 <div class="contact-with-us">
                     <table><tr>
-                        <td><a onlick="window.print()" class="item-print"></a></td>
+                        <td><a onclick="window.print()" class="item-print"></a></td>
                         <td><a href="mailto:<?php echo $mail;?>" class="item-mail"></a></td>
                         <td><a href="skype:<?php echo $skype;?>?call" class="item-skype"></a></td>
                     </tr></table>

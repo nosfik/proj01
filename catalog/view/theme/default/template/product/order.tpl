@@ -9,11 +9,13 @@
     <?php } ?>
 	</div>
   </div>
+  
+  
 
   <div class="order">
       <div class="header"></div>
       <div class="form">
-          <form>
+          <form onSubmit="return validate()" method="post">
               <table class="main">
                   <tr>
                       <td class="input-column">
@@ -114,6 +116,38 @@
 
   </div>
   <script>
+  function validate() {
+  	var allPerfect = true;
+  	var regexp = /\S+@\S+\.\S+/;
+  	if($('#customerName').val() == '') {
+  		$('#customerName').css('border', '1px solid red');
+  		allPerfect = false;
+  	} else {
+  		$('#customerName').css('border', '');
+  	}
+  	
+  	if($('#telephoneNumber').val() == '') {
+  		$('#telephoneNumber').css('border', '1px solid red');
+  		allPerfect = false;
+  	} else {
+  		$('#telephoneNumber').css('border', '');
+  	}
+  	
+  	if(!regexp.test($('#email').val())) {
+  		$('#email').css('border', '1px solid red');
+  		allPerfect = false;
+  	} else {
+  		$('#email').css('border', '');
+  	}
+	if($('#capchaField').val() == '') {
+  		$('#capchaField').css('border', '1px solid red');
+  		allPerfect = false;
+  	} else {
+  		$('#capchaField').css('border', '');
+  	}
+	  	
+  	return allPerfect;
+  }
       $(function(){
           cuSel({
               changedEl: '#services',

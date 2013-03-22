@@ -73,6 +73,11 @@ class ControllerProductSearch extends Controller {
 		
 		if (isset($this->request->get['filter_number'])) {
 			$filter_number = $this->request->get['filter_number'];
+			
+			if($filter_number == 'Номер объекта или название') {
+				$filter_number = 0;
+			}
+			
 		} else {
 			$filter_number = 0;
 		} 

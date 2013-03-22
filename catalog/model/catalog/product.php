@@ -81,7 +81,7 @@ class ModelCatalogProduct extends Model {
 			}
 			
 			if (!empty($data['filter_number'])) {
-					$sql .= " AND p.number = '" . (int)$data['filter_number'] . "'";
+					$sql .= " AND (p.number = '" . (int)$data['filter_number'] . "' OR  pd.name LIKE '%".$data['filter_number']."%')";
 			}
 
 			if (!empty($data['filter_zone_id'])) {
@@ -221,36 +221,76 @@ class ModelCatalogProduct extends Model {
 		
 		if (!$product_data) {
 			$sql = "SELECT COUNT(DISTINCT p.product_id) AS total FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id)";
-	
-			if (!empty($data['filter_category_id'])) {
+			
+			
+			if(isset($data['parent']) && $data['parent'] > 0) {
+				$sql .= " LEFT JOIN " . DB_PREFIX . "product_to_category p2c ON (p.product_id = p2c.product_id) JOIN category as c ON p2c.category_id = c.category_id";
+			} elseif (!empty($data['filter_category_id'])) {
 				$sql .= " LEFT JOIN " . DB_PREFIX . "product_to_category p2c ON (p.product_id = p2c.product_id)";			
 			}
-						
-			$sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1'";			
 			
+			$sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1' "; 
+			
+			
+			if(isset($data['parent']) && $data['parent'] > 0) {
+				$sql .= " AND c.parent_id = '" . (int)$data['parent'] . "'";
+			}
 			if (!empty($data['filter_category_id'])) {
+				
+				if($data['filter_category_id'] == 1 || $data['filter_category_id'] == 2) {
+					
+					$sql .= " AND p2c.main_category = '" . (int)$data['filter_category_id'] . "'";
+					
+				} else {
 					$sql .= " AND p2c.category_id = '" . (int)$data['filter_category_id'] . "'";
 				}
+			}
+			
+			if (!empty($data['filter_number'])) {
+					$sql .= " AND (p.number = '" . (int)$data['filter_number'] . "' OR  pd.name LIKE '%".$data['filter_number']."%')";
+			}
 
-			if (!empty($data['zone_id'])) {
-					$sql .= " AND p.zone_id = '" . (int)$data['zone_id'] . "'";
+			if (!empty($data['filter_zone_id'])) {
+					$sql .= " AND p.zone_id = '" . (int)$data['filter_zone_id'] . "'";
 				}
 			
-			if (!empty($data['area'])) {
-					$sql .= " AND p.area = '" . (float)$data['area'] . "'";
-				}
-
-			if (!empty($data['bathroom'])) {
-					$sql .= " AND p.bathroom = '" . (int)$data['bathroom'] . "'";
-				}
-
-			if (!empty($data['badroom'])) {
-					$sql .= " AND p.badroom = '" . (int)$data['badroom'] . "'";
-				}
-
-			if (! (empty($data['price_l']) && empty($data['price_h'])) ) {
-					$sql .= " AND p.price BETWEEN ".(float)$data['price_l']." AND ".(float)$data['price_h'];
-				}
+			if(isset($data['filter_area_l'])) {
+				
+				
+				
+				if ($data['filter_area_l'] > 0 && $data['filter_area_h'] > 0) {
+				$sql .= " AND p.area BETWEEN '" . (float)$data['filter_area_l'] . "' AND '" . (float)$data['filter_area_h'] . "'";
+			} elseif($data['filter_area_l'] > 0) {
+				$sql .= " AND p.area >= '" . (float)$data['filter_area_l'] . "'";
+			} elseif($data['filter_area_h'] > 0) {
+				$sql .= " AND p.area <= '" . (float)$data['filter_area_h'] . "'";
+			}
+			
+			if ($data['filter_bathroom_l'] > 0 && $data['filter_bathroom_h'] > 0) {
+				$sql .= " AND p.bathroom BETWEEN '" . (float)$data['filter_bathroom_l'] . "' AND '" . (float)$data['filter_bathroom_h'] . "'";
+			} elseif($data['filter_bathroom_l'] > 0) {
+				$sql .= " AND p.bathroom >= '" . (float)$data['filter_bathroom_l'] . "'";
+			} elseif($data['filter_bathroom_h'] > 0) {
+				$sql .= " AND p.bathroom =< '" . (float)$data['filter_bathroom_h'] . "'";
+			}
+			
+			if ($data['filter_bedroom_l'] > 0  && $data['filter_bedroom_h'] > 0) {
+				$sql .= " AND p.bedroom BETWEEN '" . (int)$data['filter_bedroom_l'] . "' AND '" . (int)$data['filter_bedroom_h'] . "'";
+			} elseif($data['filter_bedroom_l'] > 0) {
+				$sql .= " AND p.bedroom >= '" . (int)$data['filter_bedroom_l'] . "'";
+			} elseif($data['filter_bedroom_h'] > 0) {
+				$sql .= " AND p.bedroom <= '" . (int)$data['filter_bedroom_h'] . "'";
+			}
+			
+			if ($data['filter_price_l'] > 0 && $data['filter_price_h'] > 0) {
+				$sql .= " AND p.price BETWEEN '" . (float)$data['filter_price_h'] . "' AND '" . (float)$data['filter_price_h'] . "'";
+			} elseif($data['filter_price_l'] > 0) {
+				$sql .= " AND p.price >= '" . (float)$data['filter_price_l'] . "'";
+			} elseif($data['filter_price_h'] > 0) {
+				$sql .= " AND p.price <= '" . (float)$data['filter_price_h'] . "'";
+			}
+			}
+			
 					
 			
 			

@@ -26,7 +26,7 @@ define('DIR_CATALOG', 'Z:\home\realty\www/catalog/');
 define('DB_DRIVER', 'mysql');
 define('DB_HOSTNAME', 'localhost');
 define('DB_USERNAME', 'root');
-define('DB_PASSWORD', 'sa');
+define('DB_PASSWORD', 'q1w2');
 define('DB_DATABASE', 'realty');
 define('DB_PREFIX', '');
 ?>

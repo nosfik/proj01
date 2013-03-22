@@ -12,7 +12,7 @@
 	</div>
   </div>
 <div class="right">
-        <div id="formTabs">
+        <div style="margin-bottom:50px" id="formTabs">
         <ul>
             <li><a href="#housesTab" id="tab-header-house"></a></li>
             <li><a href="#areasTab" id="tab-header-area"></a></li>
@@ -28,7 +28,12 @@
                             <label for="objectNumber">Номер объекта</label>
                         </td>
                         <td>
-                            <input type="text" name="filter_number" id="objectNumber"/>
+                        	<?php if (!empty($filter_number)) { ?>
+                        		<input type="text" name="filter_number" id="objectNumber" value="<?php echo $filter_number;?>"/>
+                        		<?php } else { ?>
+                        		<input type="text" name="filter_number" id="objectNumber"/>
+                        	<?php } ?>
+                            
                         </td>
                     </tr>
                     <tr class="row-separator">
@@ -211,7 +216,14 @@
                     </tr>
                     <tr class="row-separator">
                         <td colspan="2">
-                            <input type="text" name="filter_number" id="regionNumber" value="Номер или название объекта" onblur="if(this.value=='') this.value='Номер или название объекта';" onfocus="if(this.value=='Номер или название объекта') this.value='';"/>
+                        	
+                        		<?php if (!empty($filter_number)) { ?>
+                        		<input type="text" name="filter_number" id="regionNumber" value="<?php echo $filter_number;?>"/>
+                        		<?php } else { ?>
+                        		<input type="text" name="filter_number" id="regionNumber" value="Номер или название объекта" onblur="if(this.value=='') this.value='Номер или название объекта';" onfocus="if(this.value=='Номер или название объекта') this.value='';"/>
+                        	<?php } ?>
+                        	
+                            
                         </td>
                     </tr>
                     <tr class="row-separator">

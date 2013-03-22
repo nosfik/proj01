@@ -324,6 +324,7 @@ ul.menu-horizontal > li {
 }
 
 .content {
+	margin-bottom:15px;
    /* background: #ffe4c4;*/
 }
 
@@ -338,11 +339,19 @@ ul.menu-horizontal > li {
 
 .content .build-dream-house-title-ru {
     background: url('../image/build-dream-house-title-ru.png') no-repeat 0 0;
+    cursor: pointer;
 }
 .content .build-dream-house-title-en {
     background: url('../image/build-dream-house-title-en.png') no-repeat 0 0;
+    cursor: pointer;
 }
 
+.content .build-dream-house-title-ru:hover {
+	background: url('../image/build-dream-house-title-ru.png') no-repeat 0 -31px;
+}
+.content .build-dream-house-title-en:hover {
+	 background: url('../image/build-dream-house-title-en.png') no-repeat 0 -34px;
+}
 
 .content .interesting-proposal-title-ru {
     background: url('../image/interesting-proposal-title-ru.png') no-repeat 0 0;
@@ -356,6 +365,13 @@ ul.menu-horizontal > li {
     margin-top: 55px;
 }
 
+.content .interesting-proposal-title-ru:hover {
+	background: url('../image/interesting-proposal-title-ru.png') no-repeat 0 -30px;
+}
+.content .interesting-proposal-title-en:hover {
+	background: url('../image/interesting-proposal-title-en.png') no-repeat 0 -30px;
+}
+
 .about-us-header-ru {
     background: url('../image/about_us-ru.png') no-repeat 0 0;
     cursor: pointer;
@@ -367,6 +383,12 @@ ul.menu-horizontal > li {
     margin-top: 55px;
 }
 
+.about-us-header-ru:hover {
+    background: url('../image/about_us-ru.png') no-repeat 0 -30px;
+}
+.about-us-header-en:hover {
+    background: url('../image/about_us-en.png') no-repeat 0 -30px;
+}
 .useful-info-image-header-ru {
     background: url('../image/info-ru.png') no-repeat 0 0;
     width: 500px;
@@ -891,14 +913,11 @@ form tr.row-separator {
     display: block;
     height: 40px;
     background: url('../image/online-help.png') no-repeat -22px 3px;
+    margin-bottom:30px;
 }
 
 #online-help a:hover {
-    display: block;
-    height: 40px;
     background: url('../image/online-help.png') no-repeat -22px -58px;
-    padding: 5px;
-    width: 100%;
 }
 
 .menu-hover {

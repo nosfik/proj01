@@ -14,7 +14,7 @@
       <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a onclick="location = '<?php echo $cancel; ?>';" class="button"><?php echo $button_cancel; ?></a></div>
     </div>
     <div class="content">
-      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><a href="#tab-links"><?php echo $tab_links; ?></a><a href="#tab-image"><?php echo $tab_image; ?></a><a href="#tab-design"><?php echo $tab_design; ?></a></div>
+      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><a href="#tab-links"><?php echo $tab_links; ?></a><a href="#tab-image"><?php echo $tab_image; ?></a></div>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
         <div id="tab-general">
           <div id="languages" class="htabs">
@@ -33,7 +33,7 @@
                   <?php } ?></td>
               </tr>
               <tr>
-                <td><?php echo $entry_heating; ?></td>
+                <td>Отопление</td>
                 <td><input type="text" name="product_description[<?php echo $language['language_id']; ?>][heating]" maxlength="255" size="100" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['heating'] : ''; ?>" /></td>
               </tr>
               <tr>
@@ -63,7 +63,7 @@
         <div id="tab-data">
           <table class="form">
             <tr>
-              <td><span class="required">*</span><?php echo $entry_number; ?></td>
+              <td><span class="required">*</span>Номер</td>
               <td><input type="text" name="number" value="<?php echo $number; ?>" />
               	<input type="hidden" name="o_number" value="<?php echo $number; ?>" />
                 <?php if ($error_number) { ?>
@@ -71,32 +71,32 @@
                 <?php } ?></td>
             </tr>
             <tr>
-              <td><?php echo $entry_area; ?></td>
+              <td>Площадь</td>
               <td><input type="text" name="area" value="<?php echo $area; ?>" /></td>
             </tr>
             <tr>
-              <td><?php echo $entry_bathroom; ?></td>
+              <td>Количество Ванных комнат</td>
               <td><input type="text" name="bathroom" value="<?php echo $bathroom; ?>" /></td>
             </tr>
             <tr>
-              <td><?php echo $entry_bedroom; ?></td>
+              <td>Количество спален</td>
               <td><input type="text" name="bedroom" value="<?php echo $bedroom; ?>" /></td>
             </tr>
             
             <tr>
-              <td><?php echo $entry_air_cond; ?></td>
+              <td>Количество кондиционеров</td>
               <td><input type="text" name="air_cond" value="<?php echo $air_cond; ?>" /></td>
             </tr>
             <tr>
-              <td><?php echo $entry_pool; ?></td>
+              <td>Количество басейнов</td>
               <td><input type="text" name="pool" value="<?php echo $pool; ?>" /></td>
             </tr>
             <tr>
-              <td><?php echo $entry_garden; ?></td>
+              <td>Количество садов</td>
               <td><input type="text" name="garden" value="<?php echo $garden; ?>" /></td>
             </tr>
             <tr>
-              <td><?php echo $entry_kitchen; ?></td>
+              <td>Количество кухонь</td>
               <td><input type="text" name="kitchen" value="<?php echo $kitchen; ?>" /></td>
             </tr>
             
@@ -233,32 +233,7 @@
           </table>
         </div>
     
-        <div id="tab-design">
-          <table class="list">
-            <thead>
-              <tr>
-                <td class="left"><?php echo $entry_store; ?></td>
-                <td class="left"><?php echo $entry_layout; ?></td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="left"><?php echo $text_default; ?></td>
-                <td class="left"><select name="product_layout[0][layout_id]">
-                    <option value=""></option>
-                    <?php foreach ($layouts as $layout) { ?>
-                    <?php if (isset($product_layout[0]) && $product_layout[0] == $layout['layout_id']) { ?>
-                    <option value="<?php echo $layout['layout_id']; ?>" selected="selected"><?php echo $layout['name']; ?></option>
-                    <?php } else { ?>
-                    <option value="<?php echo $layout['layout_id']; ?>"><?php echo $layout['name']; ?></option>
-                    <?php } ?>
-                    <?php } ?>
-                  </select></td>
-              </tr>
-            </tbody>
-         
-          </table>
-        </div>
+       
       </form>
     </div>
   </div>

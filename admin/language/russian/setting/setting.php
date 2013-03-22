@@ -24,16 +24,16 @@ $_['text_seo_url']             = 'По умолчанию';
 $_['text_seo_pro']             = 'SeoPro';
 
 // Entry
-$_['entry_name']               = 'Название магазина:';
-$_['entry_owner']              = 'Владелец магазина:';
-$_['entry_address']            = 'Адрес магазина:';
+$_['entry_name']               = 'Название сайта:';
+$_['entry_owner']              = 'Владелец сайта:';
+$_['entry_address']            = 'Адрес сайта:';
 $_['entry_email']              = 'E-Mail:';
 $_['entry_telephone']          = 'Телефон:';
 $_['entry_fax']                = 'Факс:';
 $_['entry_title']              = 'Заголовок:';
 $_['entry_meta_description']   = 'Мета-тег Description:';
 $_['entry_layout']             = 'Схема по умолчанию:';
-$_['entry_template']           = 'Шаблон магазина:';
+$_['entry_template']           = 'Шаблон сайта:';
 $_['entry_country']            = 'Страна:';
 $_['entry_zone']               = 'Регион / Область:';
 $_['entry_language']           = 'Язык:';

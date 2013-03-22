@@ -487,7 +487,7 @@ mlcalc_loan_term = '15';
     </div>
 <div class="left">
    <div class="dream-house">
-  	<div class="build-dream-house-title-<?php echo $lang;?>"></div>
+  	<div onclick="location.href='index.php?route=product/category&path=2'" class="build-dream-house-title-<?php echo $lang;?>"></div>
   	<ul class="menu-horizontal house-list">
   	<?php for ($i = 0; $i < count($dreamhouse_items); $i++) { $product = $dreamhouse_items[$i];	?>
   		
@@ -500,7 +500,7 @@ mlcalc_loan_term = '15';
                     <div class="frame"></div>
                     <div style="width:228px; height:167px"><img height="167" width="228" src="<?php echo $product['thumb']; ?>"></div>
                     <?php if(!empty($product)) { ?>
-                       <img height="68" width="68" class="house-tag" src="<?php echo $product['tag'];?>"> 
+                       <img height="68" width="68" class="house-tag" src="image/<?php echo $product['tag'];?>"> 
                     <?php } ?>
                     <p class="house-price"><?php echo $product['price'];?> <?php echo $product['currency'];?></p>
                     <a href="<?php echo $product['url']; ?>"><?php echo $product['name']; ?></a>
@@ -520,7 +520,7 @@ mlcalc_loan_term = '15';
   </div>
   
     <div class="dream-house">
-  	<div class="interesting-proposal-title-<?php echo $lang;?>"></div>
+  	<div onclick="location.href='index.php?route=product/category&path=1'" class="interesting-proposal-title-<?php echo $lang;?>"></div>
   	<ul class="menu-horizontal house-list">
   	<?php for ($i = 0; $i < count($suggestion_items); $i++) { $product = $suggestion_items[$i];	?>
   		
@@ -533,7 +533,7 @@ mlcalc_loan_term = '15';
                     <div class="frame"></div>
                     <div style="width:228px; height:167px"><img height="167" width="228" src="<?php echo $product['thumb']; ?>"></div>
                     <?php if(!empty($product)) { ?>
-                       <img height="68" width="68" class="house-tag" src="<?php echo $product['tag'];?>"> 
+                       <img height="68" width="68" class="house-tag" src="image/<?php echo $product['tag'];?>"> 
                     <?php } ?>
                     <p class="house-price"><?php echo $product['price'];?> <?php echo $product['currency'];?></p>
                     <a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
@@ -552,13 +552,12 @@ mlcalc_loan_term = '15';
     
   </div>
     <div>
-        <div onclick="location.href='<?php echo $about_us['url'];?>'" class="about-us-header-<?php echo $lang;?>"></div>
+        <div onclick="location.href='index.php?route=information/information&information_id=4'" class="about-us-header-<?php echo $lang;?>"></div>
         <div class="about-us-content">
             <div style=" background: url('<?php echo $about_us['image'];?>') no-repeat;" class="picture"></div>
             <div class="us_content">
-                        <span><?php echo $about_us['short_text'];?></span>
-                <br/>
-                <a href="#">Подробнее</a>
+            	<table><tr><td> <span><?php echo $about_us['short_text'];?></span></td></tr><tr><td><a href="index.php?route=information/information&information_id=4">Подробнее</a></td></tr></table>
+                
             </div>
             <div style="clear:left;"></div>
         </div>

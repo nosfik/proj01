@@ -201,7 +201,7 @@ class ModelCatalogProduct extends Model {
 	
 	public function getProducts($data = array()) {
 		if ($data) {
-			$sql = "SELECT *, pd.name as product_name, z.name as city, pt.name as tag FROM " . DB_PREFIX . "product p 
+			$sql = "SELECT *, pd.name as product_name, z.name as city, pt.name as tag, p.image as imageo FROM " . DB_PREFIX . "product p 
                 LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) 
                 LEFT JOIN " . DB_PREFIX . "product_tag pt ON (p.product_tag_id = pt.product_tag_id) 
                 LEFT JOIN " . DB_PREFIX . "zone z ON (z.zone_id = p.zone_id) ";
@@ -217,7 +217,7 @@ class ModelCatalogProduct extends Model {
 			}
 
 			if (!empty($data['filter_city']) && !is_null($data['filter_city'])) {
-				$sql .= " AND p.zone_id  = '" . (int)$data['filter_city']. "'";
+				$sql .= " AND z.name  LIKE '%" . $data['filter_city']. "%'";
 			}
 			
 			if (isset($data['filter_number']) && !is_null($data['filter_number'])) {

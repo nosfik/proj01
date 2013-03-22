@@ -156,14 +156,7 @@ class ControllerSettingSetting extends Controller {
 		$this->data['tab_server'] = $this->language->get('tab_server');
 		$this->data['tab_sms'] = $this->language->get('tab_sms');
 
-		$this->data['sms_gatenames'] = array();
-
-		$files = glob(DIR_SYSTEM . 'smsgate/*.php');
-
-		foreach ($files as $file) {
-			$this->data['sms_gatenames'][] =  basename($file, '.php');
-		}
-
+		
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
@@ -1061,49 +1054,8 @@ class ControllerSettingSetting extends Controller {
 			$this->error['customer_group_display'] = $this->language->get('error_customer_group_display');
 		}	
 		
-		if (!$this->request->post['config_voucher_min']) {
-			$this->error['voucher_min'] = $this->language->get('error_voucher_min');
-		}	
 		
-		if (!$this->request->post['config_voucher_max']) {
-			$this->error['voucher_max'] = $this->language->get('error_voucher_max');
-		}	
 								
-		if (!$this->request->post['config_image_category_width'] || !$this->request->post['config_image_category_height']) {
-			$this->error['image_category'] = $this->language->get('error_image_category');
-		} 
-				
-		if (!$this->request->post['config_image_thumb_width'] || !$this->request->post['config_image_thumb_height']) {
-			$this->error['image_thumb'] = $this->language->get('error_image_thumb');
-		}	
-		
-		if (!$this->request->post['config_image_popup_width'] || !$this->request->post['config_image_popup_height']) {
-			$this->error['image_popup'] = $this->language->get('error_image_popup');
-		}	
-		
-		if (!$this->request->post['config_image_product_width'] || !$this->request->post['config_image_product_height']) {
-			$this->error['image_product'] = $this->language->get('error_image_product');
-		}
-				
-		if (!$this->request->post['config_image_additional_width'] || !$this->request->post['config_image_additional_height']) {
-			$this->error['image_additional'] = $this->language->get('error_image_additional');
-		}
-		
-		if (!$this->request->post['config_image_related_width'] || !$this->request->post['config_image_related_height']) {
-			$this->error['image_related'] = $this->language->get('error_image_related');
-		}
-		
-		if (!$this->request->post['config_image_compare_width'] || !$this->request->post['config_image_compare_height']) {
-			$this->error['image_compare'] = $this->language->get('error_image_compare');
-		}
-		
-		if (!$this->request->post['config_image_wishlist_width'] || !$this->request->post['config_image_wishlist_height']) {
-			$this->error['image_wishlist'] = $this->language->get('error_image_wishlist');
-		}			
-		
-		if (!$this->request->post['config_image_cart_width'] || !$this->request->post['config_image_cart_height']) {
-			$this->error['image_cart'] = $this->language->get('error_image_cart');
-		}
 		
 		if (!$this->request->post['config_error_filename']) {
 			$this->error['error_filename'] = $this->language->get('error_error_filename');
