@@ -28,6 +28,21 @@
 	background-position: right top;
 }
 
+.fromTo .cuselText { /* контейнер для отображенного текста селект */
+	height: 14px;
+	padding: 6px 0 0 7px; /* подбираем отступы и высоту для видимого текста в селекте */
+	cursor: pointer;
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
+	font: 12px Arial, "Helvetica CY", "Nimbus Sans L", sans-serif; /* шрифты */
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 70px;
+	text-align:center;
+}
+
 .cuselText { /* контейнер для отображенного текста селект */
 	height: 14px;
 	padding: 6px 0 0 7px; /* подбираем отступы и высоту для видимого текста в селекте */
@@ -39,6 +54,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+
 }
 * html .cuselText { /* высота блока для текста для ие6 */
 	height: 22px;

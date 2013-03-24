@@ -19,6 +19,7 @@
 @font-face {
     font-family: MyriadProSemiCn; /* Гарнитура шрифта */
     src: url('../fonts/MyriadPro-SemiCn.otf'); /* Путь к файлу со шрифтом */
+
 }
 
 html, body, div, p, ul, ol, hr, a, td {
@@ -80,7 +81,7 @@ ul.menu-horizontal > li {
 #slider {
     width: 100%;
    /* background: blue;*/
-    margin-top: 42px;
+    margin-top: 10px;
     height: 527px;
 }
 
@@ -180,11 +181,14 @@ ul.menu-horizontal > li {
     text-align: center;
 }
 
+.moto {
+	height:20px;
+	margin-top:20px;
+}
 .moto p {
     text-transform: uppercase;
     font-size: 24px;
     color: #6a5546;
-    margin-top: 20px;
     text-align: center;
     /* font-family: "MyriadPro LightSemiExt";*/
 }
@@ -215,12 +219,12 @@ ul.menu-horizontal > li {
 }
 
 #headerMainMenu {
-    
+    margin-top: 42px;
     z-index: 10000;
 }
 
 #headerOuterMenu {
-    margin-top: 42px;
+    
     height: 62px;
     width: 100%;
     background: url('../image/headerMainMenuBg.png') no-repeat 0 0;
@@ -1065,7 +1069,9 @@ form tr.row-separator {
     line-height: 16px;
 }
 
-
+.jFlowPrev, .jFlowNext {
+	display:none;
+}
 
 
 

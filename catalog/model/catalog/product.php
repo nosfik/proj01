@@ -105,7 +105,7 @@ class ModelCatalogProduct extends Model {
 			} elseif($data['filter_bathroom_l'] > 0) {
 				$sql .= " AND p.bathroom >= '" . (float)$data['filter_bathroom_l'] . "'";
 			} elseif($data['filter_bathroom_h'] > 0) {
-				$sql .= " AND p.bathroom =< '" . (float)$data['filter_bathroom_h'] . "'";
+				$sql .= " AND p.bathroom <= '" . (float)$data['filter_bathroom_h'] . "'";
 			}
 			
 			if ($data['filter_bedroom_l'] > 0  && $data['filter_bedroom_h'] > 0) {
@@ -271,7 +271,7 @@ class ModelCatalogProduct extends Model {
 			} elseif($data['filter_bathroom_l'] > 0) {
 				$sql .= " AND p.bathroom >= '" . (float)$data['filter_bathroom_l'] . "'";
 			} elseif($data['filter_bathroom_h'] > 0) {
-				$sql .= " AND p.bathroom =< '" . (float)$data['filter_bathroom_h'] . "'";
+				$sql .= " AND p.bathroom <= '" . (float)$data['filter_bathroom_h'] . "'";
 			}
 			
 			if ($data['filter_bedroom_l'] > 0  && $data['filter_bedroom_h'] > 0) {

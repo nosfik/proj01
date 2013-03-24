@@ -92,8 +92,7 @@ DD_belatedPNG.fix('#logo img');
 
        
         <div class="moto">
-            <p>слоган компании</p>
-            <?php echo $language; ?>
+            <p>слоган компании</p>      <?php echo $language; ?>
         </div>
         <div id="headerMainMenu" class="droplinebar">
             <ul id="headerOuterMenu">
