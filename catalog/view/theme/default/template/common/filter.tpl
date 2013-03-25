@@ -10,14 +10,13 @@
                 <input type="hidden" name="parent" value="1"/>
                 <table>
                     <tr class="row-separator">
-                        <td>
+                        <td style="line-height:24px">
                             <label for="objectNumber">Номер объекта</label>
                         </td>
                         <td>
-                            <?php if (isset($filter_number) && !empty($filter_number)) { ?>
+                            <?php if (!empty($filter_number)) { ?>
                                 <input type="text" name="filter_number" id="objectNumber" value="<?php echo $filter_number;?>"/>
                                 <?php } else { ?>
-                                    <?php echo $filter_number;?>
                                 <input type="text" name="filter_number" id="objectNumber"/>
                             <?php } ?>
                             
@@ -179,7 +178,7 @@
                     </tr>
                     <tr>
                         <td class="btn-container" colspan="2">
-                            <input type="submit" value="найти" class="form-btn"/>
+                            <input style="font-family: Arial, Helvetica, sans-serif; font-size:12px;" type="submit" value="найти" class="form-btn"/>
                         </td>
                     </tr>
                 </table>
@@ -418,7 +417,7 @@
                     </tr>
                     <tr>
                         <td class="btn-container" colspan="2">
-                            <input type="button" onclick="$('#MLCalcFormMortgageForm .sbmButton').click()" value="посчитать" class="form-btn" style="padding: 0 5px;"/>
+                            <input type="button" style="font-family: Arial, Helvetica, sans-serif; font-size:12px;" onclick="$('#MLCalcFormMortgageForm .sbmButton').click()" value="посчитать" class="form-btn" style="padding: 0 5px;"/>
                         </td>
                     </tr>
                 </table>

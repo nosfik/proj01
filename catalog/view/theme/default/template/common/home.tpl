@@ -154,7 +154,7 @@ mlcalc_loan_term = '15';
             </table>
 
         </div>
-        <div style="float:left;" class="useful-info-image-header"> </div>
+        <div style="float:left;" class="useful-info-header-<?php echo $lang;?>"> </div>
     </div>
     <div style="clear:both;"></div>
     <ul id="mycarousel" class="jcarousel-skin-realty">

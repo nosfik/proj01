@@ -393,12 +393,12 @@ ul.menu-horizontal > li {
 .about-us-header-en:hover {
     background: url('../image/about_us-en.png') no-repeat 0 -30px;
 }
-.useful-info-image-header-ru {
+.useful-info-header-ru {
     background: url('../image/info-ru.png') no-repeat 0 0;
     width: 500px;
     height: 29px;
 }
-.useful-info-image-header-en {
+.useful-info-header-en {
     background: url('../image/info-en.png') no-repeat 0 0;
     width: 500px;
     height: 29px;
@@ -644,7 +644,7 @@ form .fromTo, .cusel {
 }
 
 form .jScrollPaneContainer, form .cusel-scroll-wrap {
-    background: url('../image/select-dropdown-big.png') no-repeat 0px 0px #141414;
+    background: url('../image/select-dropdown-big.png') no-repeat 0px 0px;
     height: 108px!important;
 }
 

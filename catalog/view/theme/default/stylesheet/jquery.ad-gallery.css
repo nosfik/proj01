@@ -9,6 +9,7 @@
  */
 .ad-gallery {
   width: 620px;
+  background: url("../image/border_big.png") no-repeat 0 0;
 }
 .ad-gallery, .ad-gallery * {
   margin: 0;
