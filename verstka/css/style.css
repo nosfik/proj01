@@ -515,7 +515,7 @@ form .fromTo, .cusel {
 }
 
 form .jScrollPaneContainer {
-    background: url('../images/select-dropdown-big.png') no-repeat 0px 0px #000;
+    background: url('../images/select-dropdown-big.png') no-repeat 0px 0px;
     height: 108px!important;
 }
 

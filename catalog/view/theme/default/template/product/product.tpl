@@ -24,8 +24,7 @@
                         </tr></table>
                     </div>
 
-                    <div class="ad-image-wrapper">
-                    </div>
+                    <div class="ad-image-wrapper"></div>
                     <div class="ad-controls">
                     </div>
                     <div class="ad-nav">
@@ -48,7 +47,7 @@
             </div>
 
             <div style="padding-left: 650px;">
-                <table cellspacing="4">
+                <table cellspacing="3">
                     <tr><td><p class="header-description"><?php echo $name;?></p></td></tr>
 
                     <tr><td class="first-column"><table><tr><td class="table-header">Номер объекта</td><td class="table-value"><?php echo $number;?></td></tr></table></td></tr>

@@ -83,8 +83,10 @@ DD_belatedPNG.fix('#logo img');
 </head>
 <body>
 
+<div class="bgimage"></div>
 
-<div class="page-wrapper">
+<div class="page-wrapper" style="z-index:2">
+
 <div id="top" class="header-wrapper">
     <div class="header">
     	

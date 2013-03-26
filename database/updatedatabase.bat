@@ -1,5 +1,5 @@
 set MYSQLUSER=root
-set MYSQLPASS=q1w2
+set MYSQLPASS=sa
 
 set DATABASE=realty
 

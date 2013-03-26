@@ -37,7 +37,7 @@
 	
     <div class="content">
     <?php echo $content_top; ?>
-  <div class="breadcrumb">
+  <div style="margin-top:20px;" class="breadcrumb">
   	<div>
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>

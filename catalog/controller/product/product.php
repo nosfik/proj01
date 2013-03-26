@@ -171,13 +171,13 @@ class ControllerProductProduct extends Controller {
 			$this->load->model('tool/image');
 
 			if ($product_info['image']) {
-				$this->data['popup'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_popup_width'), $this->config->get('config_image_popup_height'));
+				$this->data['popup'] = $this->model_tool_image->resize($product_info['image'], 610, 444);
 			} else {
 				$this->data['popup'] = '';
 			}
 			
 			if ($product_info['image']) {
-				$this->data['thumb'] = $this->model_tool_image->resize($product_info['image'], 610, 444);
+				$this->data['thumb'] = $this->model_tool_image->resize($product_info['image'], 181, 130);
 			} else {
 				$this->data['thumb'] = '';
 			}

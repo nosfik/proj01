@@ -8,15 +8,12 @@
             </li>
             <li class="socials">
                 <div id="twit"></div>
-                <p id="socials-twit">поделиться</p>
             </li>
             <li class="socials">
                 <div id="vk"></div>
-                <p id="socials-vk">поделиться</p>
             </li>
             <li class="socials">
                 <div id="facebook"></div>
-                <p id="socials-facebook">поделиться</p>
             </li>
         </ul>
         <div class="up">

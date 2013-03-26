@@ -618,8 +618,9 @@
     _centerImage: function(img_container, image_width, image_height) {
       img_container.css('top', '0px');
       if(image_height < this.image_wrapper_height) {
-        var dif = this.image_wrapper_height - image_height;
-        img_container.css('top', (dif / 2) +'px');
+        //var dif = this.image_wrapper_height - image_height;
+        //img_container.css('top', (dif / 2) +'px');
+        img_container.css('top', 5 +'px');
       };
       img_container.css('left', '0px');
       if(image_width < this.image_wrapper_width) {

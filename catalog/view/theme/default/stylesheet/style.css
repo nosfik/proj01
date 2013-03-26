@@ -33,6 +33,10 @@ html, body {
     height: 100%;
 }
 
+body {
+	background: url('../image/fon_b.jpg') repeat;
+}
+
 ul {
     list-style: none;
     *zoom: 1;
@@ -50,7 +54,7 @@ ul.menu-horizontal > li {
 
 .page-wrapper {
    /* background: #3582c4;*/
-    background: #000;
+
     min-height: 100%;
     min-width: 1200px;
 }
@@ -70,12 +74,25 @@ ul.menu-horizontal > li {
     width: 1200px;
     padding-bottom: 149px;
     margin: 0 auto;
-    background: url('../image/main-bg-shadow.png') repeat-y 50% 0 #000;
+   /* background: url('../image/main-bg-shadow.png') repeat-y 50% 0 #000; */
 }
 
 .header-wrapper {
-    background: #000;
     height: 274px;
+}
+
+.bgimage{
+	
+	background: url('../image/fon_2.jpg') no-repeat 0 0;
+	display:none;
+	
+	position:absolute; 
+	width:1200px; 
+	left:0;
+	right:0;
+	 margin:0 auto;z-index:1;height: 2480px;
+	
+	
 }
 
 #slider {
@@ -747,29 +764,35 @@ form tr.row-separator {
 }
 
 .table-header{
-    font-size: 20px;
-    font-weight:bold;
+    font-size: 12px;
+    text-transform:uppercase;
     color:#787878;
     width: 200px;
     padding-left: 5px;
+    font-weight: 900;
+    height: 25px;
 }
 
 .table-value{
-    font-size: 20px;
-    font-weight:bold;
+    font-size: 12px;
+    font-weight: 900;
     color:#ffffff;
     width: 150px;
     text-align: center;
 }
 
-.first-column {
-    background-color: #191919;
-    border-radius:5px;
+.first-column,
+.second-column {
+	border-radius:3px;
+	padding-left:8px;
 }
 
+.first-column{
+    background-color: #191919;
+    
+}
 .second-column {
     background-color: #141414;
-    border-radius:5px;
 }
 
 .item-print,
