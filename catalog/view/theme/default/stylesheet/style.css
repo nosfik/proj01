@@ -994,7 +994,7 @@ form tr.row-separator {
 }
 
 .order .form .column input, .order .form .column textarea{
-    width: 435px;
+    width: 436px;
     padding: 0 5px 0 7px;
     border: none;
     font-size: 14px;
@@ -1008,7 +1008,7 @@ form tr.row-separator {
 
 .order .form .column textarea{
     height: 76px;
-    background: url('../image/order_textarea.png') no-repeat 0 3px #141414;
+    background: url('../image/order_textarea.png') no-repeat 0 2px #141414;
     resize: none;
     padding: 5px 5px 5px 7px;
     overflow: auto;
@@ -1019,7 +1019,7 @@ form tr.row-separator {
 }
 
 .order .form .column .textarea-focus{
-    background-position:0 -83px;
+    background-position:0 -87px;
 }
 
 .order .form .column p{
@@ -1034,7 +1034,7 @@ form tr.row-separator {
     height: 115px;
 }
 .order .form .textarea-column td{
-    height: 140px;
+    height: 141px;
     padding-left: 30px;
 }
 

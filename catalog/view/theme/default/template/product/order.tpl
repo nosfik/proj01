@@ -59,7 +59,7 @@
                                   </td>
                               </tr>
                               <tr>
-                                  <td>
+                                  <td style="height: 20px;">
                                       <span class="orange">*</span><span>Поля обязательные для заполнения</span>
                                   </td>
                               </tr>
@@ -86,22 +86,22 @@
                                   </td>
                               </tr>
                               <tr>
-                                  <td colspan="3">
+                                  <td colspan="3" style="height: 130px;">
                                       <p><label for="additionalInfo">Дополнительная информация:</label></p>
                                       <textarea id="additionalInfo" name="additionalInfo"></textarea>
                                   </td>
                               </tr>
                               <tr>
-                                  <td style="padding: 0;">
+                                  <td style="padding: 0 0 0 30px;height: 75px;">
                                       <p><label for="capchaField">Введите код с картинки:</label><span class="orange">*</span></p>
                                       <input type="text" name="capchaField" id="capchaField" style="float: left;"/>
                                   </td>
-                                  <td style="padding: 0;">
-                                      <p class="capcha-text" style="margin-top: 42px; padding: 0;"><img style=" margin-left: -40px; margin-top: -11px;"src="index.php?route=product/order/captcha" alt="" />
+                                  <td style="padding: 0;height: 75px;">
+                                      <p class="capcha-text" style="margin-top: 42px; padding: 0;"><img style=" margin-left: -40px; margin-top: -11px; width: 120px;"src="index.php?route=product/order/captcha" alt="" />
     </p>
                                   </td>
-                                  <td style="padding: 0;">
-                                      <button id="createOrder"></button>
+                                  <td style="padding: 0;height: 75px;">
+                                      <button id="createOrder" style="margin-right: -3px;"></button>
                                   </td>
                               </tr>
                           </table>
