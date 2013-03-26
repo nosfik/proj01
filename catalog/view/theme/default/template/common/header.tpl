@@ -69,6 +69,7 @@ $('.main-menu-item').hover(
 <?php foreach ($scripts as $script) { ?>
 <script type="text/javascript" src="<?php echo $script; ?>"></script>
 <?php } ?>
+<script type="text/javascript" src="catalog/view/javascript/scripts.js"></script>
 <!--[if IE 7]>
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/ie7.css" />
 <![endif]-->

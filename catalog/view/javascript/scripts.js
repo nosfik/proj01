@@ -9,9 +9,16 @@ $(function(){
         }
     );
     
-    
-    var height = $('.page-wrapper').height() - 100;
+    var height = $('.page-wrapper').height()- 100;
     $('.bgimage').css('height', height);
     $('.bgimage').show();
+    
+    
+    
+    $('.page-wrapper').resize(function() {
+	  console.log(1);
+    	 var height = $('.page-wrapper').height()- 100;
+   		 $('.bgimage').css('height', height);
+	});
 
 });

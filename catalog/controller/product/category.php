@@ -110,8 +110,29 @@ class ControllerProductCategory extends Controller {
 			$this->data['category_description'] = html_entity_decode($category_info['description']);
 			
 			$this->data['seo_h1'] = $category_info['seo_h1'];
+            
+            
+            $this->data['lang'] = $this->config->get('config_language_id') == 1 ? 'ru' : 'en';
+            
+            if(isset($this->request->get['path'])) {
+               $path_l =  $this->request->get['path'];
+               
+               $url = $this->url->link('product/category', 'path=' . $this->request->get['path'] );
+                
+                if ($path_l == 2) {
+                    $this->data['heading_picture'] = '<div style="margin: 0 0 25px;" class="build-dream-house-title-'. $this->data['lang'].'" onclick="'.$url.'"></div>';
+                    
+                } elseif($path_l == 1) {
+                    $this->data['heading_picture'] = '<div style="margin: 0 0 25px;" class="interesting-proposal-title-'. $this->data['lang'].'" onclick="'.$url.'"></div>';
+                    
+                } else {
+                    $this->data['heading_title'] = $category_info['name'];
+                }
+                
+                
+            }
 
-			$this->data['heading_title'] = $category_info['name'];
+			
 			
 			$this->data['text_refine'] = $this->language->get('text_refine');
 			$this->data['text_empty'] = $this->language->get('text_empty');			

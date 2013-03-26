@@ -137,7 +137,7 @@ ul.menu-horizontal > li {
     color: #fff;
     position: absolute;
     top: 43px;
-    right: -100px;
+    right: -135px;
 }
 
 .up a {
@@ -262,7 +262,6 @@ ul.menu-horizontal > li {
 
 #headerMainMenu li > a:hover {
     background: none;
-    color: yellow;
 }
 
 #headerInnerMenu {
@@ -302,7 +301,8 @@ ul.menu-horizontal > li {
 	background: url("../image/header-menu-separator.png") no-repeat scroll 0 30% transparent;
     color: #c79605;
     border-bottom: 2px solid #c79605;
-    text-shadow: 4px 4px 4px black, 0 0 2px #c79605;
+    text-shadow: 0px 0px 10px #C79605,0px 0px 10px #C79605;
+    filter: Shadow(Color=#C79605, Direction=20, Strength=1);
 }
 
 #slideshow .arrow {
@@ -553,7 +553,7 @@ ul.house-characteristics li.house-bedroom {
 }
 
 .about-us-content .us_content span {
-    font-size: 15px;
+    font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
     color: #787878;
 }
@@ -812,17 +812,16 @@ form tr.row-separator {
 }
 
 .item-mail {
-    margin-left : 15px;
+    margin-left : 25px;
     background: url(../image/mail.png) no-repeat 0 0;
 }
 
 .item-mail:hover {
-    margin-left : 15px;
     background: url(../image/mail.png) no-repeat -27px 0;
 }
 
 .item-skype {
-    margin-left : 15px;
+    margin-left : 25px;
     background: url(../image/skype.png) no-repeat 0 0;
 }
 
@@ -841,7 +840,7 @@ form tr.row-separator {
 }
 
 .item-description {
-    margin-top:170px;
+    margin-top:50px;
     margin-bottom: 50px;
 }
 .text2 {
@@ -937,14 +936,20 @@ form tr.row-separator {
 }
 
 #online-help a {
+    background: url("../image/b_button.png") no-repeat scroll 0 -7px transparent;
     display: block;
-    height: 40px;
-    background: url('../image/online-help.png') no-repeat -22px 3px;
-    margin-bottom:30px;
+    height: 51px;
+    margin-bottom: 278px;
+    margin-left: -9px;
+    margin-right: -10px;
+	
 }
 
 #online-help a:hover {
-    background: url('../image/online-help.png') no-repeat -22px -58px;
+	
+	
+	  
+    background: url("../image/b_button.png") no-repeat scroll 0 -61px transparent;
 }
 
 .menu-hover {
@@ -970,7 +975,7 @@ form tr.row-separator {
 .order .header {
     margin: 22px 0;
     height: 20px;
-    background: url('../image/fill_in_form.png') no-repeat 0 0 #141414;
+    background: url('../image/fill_in_form.png') no-repeat 0 0;
 }
 
 .order .form {

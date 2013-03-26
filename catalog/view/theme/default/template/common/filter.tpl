@@ -1,4 +1,4 @@
-    <div id="formTabs">
+    <div id="formTabs" style="height:576px">
         <ul>
             <li><a href="#housesTab" id="tab-header-house"></a></li>
             <li><a href="#areasTab" id="tab-header-area"></a></li>
@@ -293,7 +293,7 @@
     <script type="text/javascript">document.write(unescape("%3Cscript src='" + (document.location.protocol == 'https:' ? 'https://ssl.mlcalc.com' : 'http://cdn.mlcalc.com') + "/ru/widget-narrow.js' type='text/javascript'%3E%3C/script%3E"));</script>
     Powered by <a href="http://www.amortization-calc.com/" style="font-weight:normal;font-size:9px;font-family:Tahoma;color:#EEEEEE;text-decoration:none;" class="panelItem">Amortization Schedule</a> <a href="http://www.mlcalc.com/" style="font-weight:normal;font-size:9px;font-family:Tahoma;color:#EEEEEE;text-decoration:none;" class="panelItem secondaryLink">Auto Loan Calculator</a>
     </div>
-    <div id="creditFormTabs">
+    <div id="creditFormTabs" style="height:368px">
         <ul>
             <li><a href="#hypothecTab" id="tab-hypothec"></a></li>
             <li><a href="#creditTab" id="tab-credit"></a></li>

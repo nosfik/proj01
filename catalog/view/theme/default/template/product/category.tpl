@@ -44,7 +44,13 @@
     <?php } ?>
  	</div>
   </div>
-  <h1><?php echo $heading_title; ?></h1>
+  
+  <?php if(isset($heading_picture)) { ?>
+      <?php echo $heading_picture;?>
+      <?php } else { ?>
+          <h1><?php echo $heading_title; ?></h1>
+      <?php } ?>
+  
 
  <!-- <div class="product-filter">
     <div class="limit"><b><?php echo $text_limit; ?></b>

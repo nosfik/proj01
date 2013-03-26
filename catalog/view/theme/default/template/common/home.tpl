@@ -157,7 +157,7 @@ mlcalc_loan_term = '15';
         <div style="float:left;" class="useful-info-header-<?php echo $lang;?>"> </div>
     </div>
     <div style="clear:both;"></div>
-    <ul id="mycarousel" class="jcarousel-skin-realty">
+    <ul id="mycarousel" class="jcarousel-skin-realty" style="height:190px;">
         
         <?php foreach ($menu_items as $menu_item) { ?>
             
