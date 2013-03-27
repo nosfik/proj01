@@ -47,7 +47,7 @@
               <td style="padding-left:40px"><?php echo $album['count'];?></td>
               <td align="center"><?php echo $album['quantity'];?></td>
               <td align="center"><?php echo $album['price'];?></td>
-              <td style="padding-right: 25px;" align="right"><?php echo $album['total'];?></td>
+              <td align="right"><?php echo $album['total'];?></td>
               <td align="center" class="del">
                   <a href="<?php echo $this->url->link('checkout/cart', 'removeAlbum='.$album['key']);?> "> <img src="catalog/view/theme/default/image/blank.gif">   </a>
               </td>
@@ -67,8 +67,8 @@
         <thead>
           <tr>
               <td colspan="2">Наименование</td>
-               <td style="width:200px;" align="left">Количество</td>
-              <td width="85px" align="center">Цена (грн)</td>
+               <td style="width:170px;" align="left">Количество</td>
+              <td width="75px" align="center">Цена (грн)</td>
               <td width="100px" align="right">Итого (грн)</td>
               <td> </td>
           </tr>
@@ -97,7 +97,7 @@
               <input type="image" src="catalog/view/theme/default/image/update.png" alt="<?php echo $button_update; ?>" title="<?php echo $button_update; ?>" />
         </td>
         <td class="price"><?php echo $product['price']; ?></td>
-        <td style="padding-right: 25px;" class="total"><?php echo $product['total'];?></td>
+        <td class="total"><?php echo $product['total'];?></td>
         <td  align="center" class="del">
                   <a href="<?php echo $this->url->link('checkout/cart', 'remove='.$product['key']);?> ">
             <img src="catalog/view/theme/default/image/blank.gif">

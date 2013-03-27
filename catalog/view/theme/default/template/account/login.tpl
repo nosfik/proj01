@@ -43,9 +43,9 @@
                     <br/>
                     <a href="<?php echo $forgotten; ?>"><?php echo $text_forgotten; ?></a><br/>
                     <br/>
-                    <div class="buttons" style="width: 68px; padding: 0;">
+                    <div class="buttons" style="width: 76px; padding: 0;">
                         <div class="right-side"></div>
-                        <div class="right" style="width: 53px; float: left;">
+                        <div class="right" style="width: 61px; float: left;">
                             <input type="submit" style="background: none transparent;" value="<?php echo $button_login; ?>" class="button"/>
                         </div>
                     </div>

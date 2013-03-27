@@ -101,7 +101,7 @@
               <div class="picCont">
                 <img id="album_cover" src="<?php echo $album['cover'];?>"/>
               </div>
-              <div class="blick"></div>
+              <div style="cursor:pointer" onclick="location.href='<?php echo $this -> url -> link('album/content', 'album_id='.$album['id'], 'SSL'); ?>'" class="blick"></div>
               <div class="buttons">
                 <a onclick="edit_album(<?php echo $album['id'];?>, this)" title="Редактировать альбом" class="edit">
                   <img src="catalog/view/theme/default/image/flag.png"/>
