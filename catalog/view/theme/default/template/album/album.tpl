@@ -103,10 +103,10 @@
               </div>
               <div class="blick"></div>
               <div class="buttons">
-                <a onclick="edit_album(<?php echo $album['id'];?>)" title="Редактировать альбом" class="edit">
+                <a onclick="edit_album(<?php echo $album['id'];?>, this)" title="Редактировать альбом" class="edit">
                   <img src="catalog/view/theme/default/image/flag.png"/>
                 </a>
-                <a onclick="delete_album(<?php echo $album['id'];?>, '<?php echo $album['name'];?>')" title="Удалить альбом" class="del">
+                <a onclick="delete_album(<?php echo $album['id'];?>, '<?php echo $album['name'];?>', this)" title="Удалить альбом" class="del">
                   <img src="catalog/view/theme/default/image/flag.png"/>
                 </a>
               </div>
@@ -133,13 +133,18 @@
 <?php echo $content_bottom; ?>
 </div>
 <script type="text/javascript">
-  function delete_album(id, name) {
+  function delete_album(id, name, el) {
+     $('#dell_album_window').hide();
+     $('#edit_album_window').hide()
+     $('#dell_album_window').css('top', $(el).offset().top - 400);
     $('#dell_album_window #deleteContent').html(name);
     $('#dell_album_window input[name=album]').val(id);
     $('#dell_album_window').fadeIn();
   }
   
-   function edit_album(id) {
+   function edit_album(id, el) {
+     $('#dell_album_window').hide();
+     $('#edit_album_window').hide();
     var $albumDiv = $("#album_" + id);
     var name = $albumDiv.find("#album_name").text();
     var description  = $albumDiv.find("#album_description").text();
@@ -151,6 +156,7 @@
     $ediWindow.find('#editContent').html(name);
     $ediWindow.find('input[name=description]').val(description);
     $ediWindow.find('#cover').attr('src', photo);
+    $('#edit_album_window').css('top', $(el).offset().top - 400);
     $('#edit_album_window').fadeIn();
   }
   

@@ -91,7 +91,7 @@
               <a href="<?php echo $this -> url -> link('album/order/edit', 'key='.$key.'&photo='.$photo['id'], 'SSL'); ?>" title="Редактировать фото" class="edit">
                 <img src="catalog/view/theme/default/image/flag.png">
               </a>
-              <a onclick="delete_photo( <?php echo $photo['id']?>, '<?php echo $photo['name']?>')" title="Удалить фото" class="del">
+              <a onclick="delete_photo( <?php echo $photo['id']?>, '<?php echo $photo['name']?>', this)" title="Удалить фото" class="del">
                 <img src="catalog/view/theme/default/image/flag.png">
               </a>
             </div>
@@ -133,7 +133,9 @@
   
  
   
-   function delete_photo(id, name) {
+     function delete_photo(id, name, el) {
+     $('#dell_photo_window').hide();
+     $('#dell_photo_window').css('top', $(el).offset().top - 400);
     $('#dell_photo_window #deleteContent').html(name);
     $('#dell_photo_window input[name=photo]').val(id);
     $('#dell_photo_window').fadeIn();
