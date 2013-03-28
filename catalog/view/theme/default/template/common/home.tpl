@@ -108,7 +108,7 @@ mlcalc_loan_term = '15';
                        <img height="68" width="68" class="house-tag" src="image/<?php echo $product['tag'];?>"> 
                     <?php } ?>
                     <p class="house-price"><?php echo $product['price'];?> <?php echo $product['currency'];?></p>
-                    <a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
+                    <a href="<?php echo $product['url']; ?>"><?php echo $product['name']; ?></a>
                     <ul class="house-characteristics">
                         <li class="house-number"><?php echo $product['number']; ?></li>
                         <li class="house-placement"><?php echo $product['city']; ?></li>
@@ -223,8 +223,8 @@ mlcalc_loan_term = '15';
             slideWrapper : "#jFlowSlider", // must be id, use # sign
             slides: "#mySlides",  // the div where all your sliding divs are nested in
             selectedWrapper: "jFlowSelected",  // just pure text, no sign
-            width: "1200px",  // this is the width for the content-slider
-            height: "527px",  // this is the height for the content-slider
+            width: "1190px",  // this is the width for the content-slider
+            height: "517px",  // this is the height for the content-slider
             duration: 400,  // time in miliseconds to transition one slide
             prev: ".jFlowPrev", // must be class, use . sign
             next: ".jFlowNext", // must be class, use . sign
