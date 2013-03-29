@@ -136,26 +136,24 @@ ul.menu-horizontal > li {
 .up {
     color: #fff;
     position: absolute;
-    top: 43px;
+    top: 28px;
     right: -135px;
 }
 
 .up a {
     color: #ca9000;
     width: 54px;
-    height: 37px;
+    height: 50px;
     display: block;
-    background-image: url('../image/up.png');
-    background-repeat: no-repeat;
-    background-position: 0 -37px;
+    background: url('../image/up_button.png') no-repeat -3px 0px;
 }
 
 .up a:hover {
-    background-position: 0 0;
+    background-position: -3px -45px;
 }
 
 .up p {
-    padding-top: 33px;
+    padding-top: 41px;
 }
 
 #socials-facebook {
@@ -435,6 +433,7 @@ ul.menu-horizontal > li {
     width: 258px;
     /*background: #ff00ff;*/
     float: right;
+    margin-bottom: -220px;
 }
 
 .clear-right {
@@ -571,7 +570,7 @@ ul.house-characteristics li.house-bedroom {
 }
 
 .useful-info {
-    margin-top: 60px;
+    
 }
 
 .useful-info .useful-info-header #con-left,
@@ -639,12 +638,18 @@ form .fromTo, .cusel {
 
 #objectNumber {
     width: 121px;
-    background: url('../image/obj-num-bg.png') no-repeat 0px 0px #141414;
+    background: url('../image/textfield_b.png') no-repeat 0px -26px #141414;
+}
+#objectNumber:hover {
+    background: url('../image/obj-num-bg1.png') no-repeat 0px 0px #141414;
 }
 
 #regionNumber {
     width: 205px;
-    background: url('../image/textfield-big.png') no-repeat 0px 0px #141414;
+    background: url('../image/textfield_b.png') no-repeat 0px -26px #141414;
+}
+#regionNumber:hover {
+    background: url('../image/textfield_b.png') no-repeat 0px 0px #141414;
 }
 
 .fromTo .cuselText{
@@ -676,14 +681,14 @@ form td.btn-container {
 
 .form-btn {
     width: 126px;
-    height: 34px;
-    background: url('../image/form-btn-bg.png') no-repeat 0px 6px #141414;
+    height: 33px;
+    background: url('../image/s_button.png') no-repeat 0px -5px #141414;
     text-transform: uppercase;
     cursor: pointer;
 }
 
 .form-btn:hover {
-    background-position: 0px -30px;
+    background-position: 0px -45px;
 }
 
 form tr.row-separator {
@@ -925,7 +930,10 @@ form tr.row-separator {
     width: 85px;
     height: 23px;
     color: #FFF;
-    background: url('../image/textfield-small.png') no-repeat 0px 0px #141414!important;
+    background: url('../image/textfield_small.png') no-repeat 0px -26px #141414!important;
+}
+#creditFormTabs input.textfield-small:hover {
+    background: url('../image/textfield_small.png') no-repeat 0px 0px #141414!important;
 }
 
 #creditFormTabs span.units{

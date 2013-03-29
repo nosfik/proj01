@@ -1,5 +1,5 @@
 $(function(){
-	droplinemenu.buildmenu("headerMainMenu");
+	
     $("li div.house-item").hover(
         function () {
             $(this).find(".frame, a, li").addClass('house-item-hover');
@@ -13,12 +13,6 @@ $(function(){
     $('.bgimage').css('height', height);
     $('.bgimage').show();
     
-    
-    
-    $('.page-wrapper').resize(function() {
-	  console.log(1);
-    	 var height = $('.page-wrapper').height()- 100;
-   		 $('.bgimage').css('height', height);
-	});
+    console.log(1);
 
 });

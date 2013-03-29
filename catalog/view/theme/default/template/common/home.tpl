@@ -123,7 +123,7 @@ mlcalc_loan_term = '15';
     </ul>
     
   </div>
-    <div>
+    <div style="margin-bottom:50px">
         <div onclick="location.href='index.php?route=information/information&information_id=4'" class="about-us-header-<?php echo $lang;?>"></div>
         <div class="about-us-content">
             <div style=" background: url('<?php echo $about_us['image'];?>') no-repeat;" class="picture"></div>
@@ -212,11 +212,6 @@ mlcalc_loan_term = '15';
                 }
         );
         
-         
-        
-        
- 
- 		
 
         $("#myController").jFlow({
             controller: ".jFlowControl", // must be class, use . sign
@@ -287,6 +282,5 @@ mlcalc_loan_term = '15';
 </script>
 
 <!-- MORTGAGE LOAN CALCULATOR BEGIN -->
-
 
 <?php echo $footer; ?>

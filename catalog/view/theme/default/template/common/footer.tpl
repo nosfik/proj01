@@ -24,4 +24,12 @@
     </div>
 </div>
 </div>
+<script>
+	$(function(){
+		 droplinemenu.buildmenu("headerMainMenu");
+		 $('#formTabs').css('height', '');
+		 $('#creditFormTabs').css('height', '');
+	})
+	
+</script>
 </body></html>
