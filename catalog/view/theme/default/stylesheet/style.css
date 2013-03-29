@@ -83,7 +83,7 @@ ul.menu-horizontal > li {
 
 .bgimage{
 	
-	background: url('../image/fon_2.jpg') no-repeat 0 0;
+	background: url('../image/fon10.jpg') no-repeat 0 0;
 	display:none;
 	
 	position:absolute; 
@@ -472,7 +472,7 @@ li:first-child div.house-item {
 }
 
 .house-item .frame.house-item-hover {
-    background-position: -229px 0;
+    background-position: -228px 0;
 }
 
 .house-item a.house-item-hover {
@@ -1109,6 +1109,9 @@ form tr.row-separator {
 	display:none;
 }
 
+#jFlowSlider{
+	border: 5px solid white;
+}
 
 
 

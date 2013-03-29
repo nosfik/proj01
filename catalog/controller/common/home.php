@@ -19,6 +19,7 @@ class ControllerCommonHome extends Controller {
         
         $this->data['lang'] = $this->config->get('config_language_id') == 1 ? 'ru' : 'en';
         $this->load->model('menu/info');
+        $this->load->model('tool/image'); 
         $menu_list = $this->model_menu_info->getMenuItems();
         
         $this->data['menu_items'] = array();
@@ -60,7 +61,7 @@ class ControllerCommonHome extends Controller {
 				'area'        	   => $dreamhouse['area'],
 				'bathroom'         => $dreamhouse['bathroom'],
 				'bedroom'          => $dreamhouse['bedroom'],
-				'thumb'            => $dreamhouse['image'],
+				'thumb'            => $this->model_tool_image->resize($dreamhouse['image'], 228, 167),
 				'price'            => $dreamhouse['price'],
                 'url'       	=> $this->url->link('product/product', 'product_id=' . $dreamhouse['product_id'])
             );
@@ -81,7 +82,7 @@ class ControllerCommonHome extends Controller {
 				'area'        	   => $suggestion['area'],
 				'bathroom'         => $suggestion['bathroom'],
 				'bedroom'          => $suggestion['bedroom'],
-				'thumb'            => $suggestion['image'],
+				'thumb'            => $this->model_tool_image->resize($suggestion['image'], 228, 167),
 				'price'            => $suggestion['price'],
                 'url'       	=> $this->url->link('product/product', 'product_id=' . $suggestion['product_id'])
             );

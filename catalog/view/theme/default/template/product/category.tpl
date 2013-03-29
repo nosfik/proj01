@@ -2,37 +2,6 @@
 <div class="content-wrapper">
 	
 	
-	<div id="slider">
-    <div id="slideshow">
-    	 <div class="slider-shadow"></div>
-   <span class="arrow previous jFlowPrev"></span>
-        <span class="arrow next jFlowNext"></span>
-       
- <div id="mySlides">
-     
-     
-        <?php for($i = 0; $i < count($slide_items); $i++) { 
-            $slide_item = $slide_items[$i];
-            
-            ?>
-            
-         <div class="bigslide">
-          <a href="<?php echo $slide_item['url'];?> "><img src="<?php echo $slide_item['picture'];?>" width="1200px" height="527px" /></a>
-          <span><?php echo $slide_item['text'];?> </span>
-        </div>
-            
-       <?php } ?>
-
-      </div>
-      <div id="myController">
-           <?php for($i = 0; $i < count($slide_items); $i++) {  ?>
-               <span class="jFlowControl"></span>
-               <?php } ?>
-      </div>
-
-
-</div>
-</div>
 	
 	
     <div class="content">
