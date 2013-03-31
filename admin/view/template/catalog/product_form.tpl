@@ -186,10 +186,12 @@
           	
             <tr>
               <td><?php echo $entry_main_category; ?></td>
+              <pre>
+              </pre>
               <td><select name="main_category_id">
                 <option value="0" selected="selected"><?php echo $text_none; ?></option>
                 <?php foreach ($categories as $category) { ?>
-                <?php if (!preg_match('/'.$sep.'/', $category['name'])) {continue;} ?>
+                <?php if (!preg_match('/'.$sep.'/', $category['name']) && ($category['category_id'] != 10 && $category['category_id'] != 11)) {continue;} ?>
                 <?php if ($category['category_id'] == $main_category_id) { ?>
                 <option value="<?php echo $category['category_id']; ?>" selected="selected"><?php echo $category['name']; ?></option>
                 <?php } else { ?>

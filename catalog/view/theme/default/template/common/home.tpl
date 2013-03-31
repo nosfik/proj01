@@ -54,12 +54,12 @@ mlcalc_loan_term = '15';
         <?php echo $filter;?>
 
         <div id="online-help">
-            <a href="#"></a>
+            <a href="#">ОНЛАЙН ПОМОЩЬ</a>
         </div>
     </div>
 <div class="left">
    <div class="dream-house">
-  	<div onclick="location.href='index.php?route=product/category&path=2'" class="build-dream-house-title-<?php echo $lang;?>"></div>
+  	<div onclick="location.href='index.php?route=product/category&path=11'" class="build-dream-house-title-<?php echo $lang;?>"></div>
   	<ul class="menu-horizontal house-list">
   	<?php for ($i = 0; $i < count($dreamhouse_items); $i++) { $product = $dreamhouse_items[$i];	?>
   		
@@ -92,7 +92,7 @@ mlcalc_loan_term = '15';
   </div>
   
     <div class="dream-house">
-  	<div onclick="location.href='index.php?route=product/category&path=1'" class="interesting-proposal-title-<?php echo $lang;?>"></div>
+  	<div onclick="location.href='index.php?route=product/category&path=10'" class="interesting-proposal-title-<?php echo $lang;?>"></div>
   	<ul class="menu-horizontal house-list">
   	<?php for ($i = 0; $i < count($suggestion_items); $i++) { $product = $suggestion_items[$i];	?>
   		

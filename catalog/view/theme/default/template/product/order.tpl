@@ -116,6 +116,9 @@
 
   </div>
   <script>
+  
+  
+  
   function validate() {
   	var allPerfect = true;
   	var regexp = /\S+@\S+\.\S+/;
@@ -157,27 +160,84 @@
 
           $('.order .form .column input')
                   .focus(function(){
-                      $(this).addClass('input-focus');
+                      $(this).addClass('focus');
                   })
                   .blur(function(){
+                      $(this).removeClass('focus');
                       $(this).removeClass('input-focus');
                   });
 
           $('.order .form .column textarea')
                   .focus(function(){
-                      $(this).addClass('textarea-focus');
+                      $(this).addClass('focus');
                   })
                   .blur(function(){
                       $(this).removeClass('textarea-focus');
+                      $(this).removeClass('focus');
                   });
 
           $('#capchaField')
                   .focus(function(){
-                      $(this).addClass('capcha-focus');
+                       $(this).addClass('focus');
                   })
                   .blur(function(){
                       $(this).removeClass('capcha-focus');
+                      $(this).removeClass('focus');
                   });
+                  
+                  
+            $('#capchaField').hover(
+                function(){
+                   $(this).parent().find('p').css('color', '#FF9E14'); 
+                   $(this).addClass('capcha-focus');
+                },
+                function(){ 
+                   $(this).parent().find('p').css('color', ''); 
+                   if(!$(this).hasClass('focus')) {
+                   	$(this).removeClass('capcha-focus');
+                   }
+                   
+                }
+        );
+                  
+                  
+          $('#additionalInfo, #terms, #questions, #preferences').hover(
+                function(){
+                   $(this).parent().find('p').css('color', '#FF9E14'); 
+                   $(this).addClass('textarea-focus');
+                },
+                function(){ 
+                   $(this).parent().find('p').css('color', ''); 
+                   if(!$(this).hasClass('focus')) {
+                   	$(this).removeClass('textarea-focus');
+                   }
+                   
+                }
+        );
+                  
+                  
+          $('#customerName, #telephoneNumber, #email, #otherPeople').hover(
+                function(){
+                   $(this).parent().find('p').css('color', '#FF9E14'); 
+                   $(this).addClass('input-focus');
+                },
+                function(){ 
+                   $(this).parent().find('p').css('color', ''); 
+                   if(!$(this).hasClass('focus')) {
+                   	$(this).removeClass('input-focus');
+                   }
+                   
+                }
+        );
+        
+        $('#cuselFrame-services').hover(
+                function(){
+                   $(this).parent().find('p').css('color', '#FF9E14'); 
+                },
+                function(){ 
+                   $(this).parent().find('p').css('color', ''); 
+                }
+        );
       });
 
   </script>

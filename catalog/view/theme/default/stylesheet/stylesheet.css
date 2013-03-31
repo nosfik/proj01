@@ -591,6 +591,7 @@ table.radio tr.highlight:hover td {
 	float: right;
 	padding-top: 3px;
 	color : #787878;
+	margin-right:10px
 }
 /* button */
 a.button, input.button {

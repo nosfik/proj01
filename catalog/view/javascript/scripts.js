@@ -9,10 +9,4 @@ $(function(){
         }
     );
     
-    var height = $('.page-wrapper').height()- 100;
-    $('.bgimage').css('height', height);
-    $('.bgimage').show();
-    
-    console.log(1);
-
 });

@@ -119,10 +119,10 @@ class ControllerProductCategory extends Controller {
                
                $url = $this->url->link('product/category', 'path=' . $this->request->get['path'] );
                 
-                if ($path_l == 2) {
+                if ($path_l == 11) {
                     $this->data['heading_picture'] = '<div style="margin: 0 0 25px;" class="build-dream-house-title-'. $this->data['lang'].'" onclick="'.$url.'"></div>';
                     
-                } elseif($path_l == 1) {
+                } elseif($path_l == 10) {
                     $this->data['heading_picture'] = '<div style="margin: 0 0 25px;" class="interesting-proposal-title-'. $this->data['lang'].'" onclick="'.$url.'"></div>';
                     
                 } else {

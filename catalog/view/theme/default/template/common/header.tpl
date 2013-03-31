@@ -83,7 +83,35 @@ DD_belatedPNG.fix('#logo img');
 <?php echo $google_analytics; ?>
 </head>
 <body>
+<style>
+	#headerOuterMenu li > a {
+	    padding: 0 <?php if($lang == 'en') {echo "34px";} else {echo "28px";}?>
+	}
 
+</style>
+
+<?php
+
+	$w1 = ($lang == 'en') ? 182 : 132;
+	
+	$w2 = ($lang == 'en') ? 144 : 174;
+	$w3 = ($lang == 'en') ? 172 : 222;
+	$w4 = ($lang == 'en') ? 160 : 154;
+	$w5 = ($lang == 'en') ? 152 : 160;
+	$w6 = ($lang == 'en') ? 143 : 141;
+	$w7 = ($lang == 'en') ? 150 : 132;
+	$w8 = ($lang == 'en') ? 178 : 199;
+	
+	$l1 = ($lang == 'en') ? -6 : 0;
+	$l2 = ($lang == 'en') ? 138 : 95;
+	$l3 = ($lang == 'en') ? 247 : 225;
+	$l4 = ($lang == 'en') ? 386 : 404;
+	$l5 = ($lang == 'en') ? 511 : 520;
+	$l6 = ($lang == 'en') ? 630 : 642;
+	$l7 = ($lang == 'en') ? 741 : 748;
+	$l8 = ($lang == 'en') ? 858 : 840;
+
+?>
 <div class="bgimage"></div>
 
 <div class="page-wrapper" style="z-index:2">
@@ -99,11 +127,11 @@ DD_belatedPNG.fix('#logo img');
         </div>
         <div id="headerMainMenu" class="droplinebar">
             <ul id="headerOuterMenu">
-                <li class="main-menu-item"><div class="menu-hover"><img src="catalog/view/theme/default/image/headerMainMenuHover3.png" style="height: 71px;margin-left: -9px;margin-top: -10px;width: 142px;"/></div><a href="index.php?route=information/information&information_id=4"><?php echo $text_about_us;?></a>
+                <li class="main-menu-item"><div class="menu-hover" style="left : <?=$l1?>px;"><img src="catalog/view/theme/default/image/headerMainMenuHover4_1.png" style="width: <?=$w1?>px;"/></div><a href="index.php?route=information/information&information_id=4"><?php echo $text_about_us;?></a>
                 	
                 	</li>
                 <li class="main-menu-item">
-                	<div class="menu-hover" style="left : 123px;"><img src="catalog/view/theme/default/image/headerMainMenuHover3.png" style="height: 71px;margin-left: -11px;margin-top: -10px;width: 141px;"/></div>
+                	<div class="menu-hover" style="left : <?=$l2?>px;"><img src="catalog/view/theme/default/image/headerMainMenuHover4_1.png" style="width: <?=$w2?>px;"/></div>
                 	<a href="<?php echo $this->url->link('product/category', 'path=1');?>"><?php echo $text_sales;?></a>
                 	<ul id="headerInnerMenu">
                 		<?php foreach($sale_categories as $category) {?>
@@ -112,7 +140,7 @@ DD_belatedPNG.fix('#logo img');
                     </ul>
                 </li>
                 <li class="main-menu-item">
-                	<div class="menu-hover" style="left : 247px;"><img src="catalog/view/theme/default/image/headerMainMenuHover3.png" style="height: 71px;margin-left: -16px;margin-top: -10px;width: 163px;"/></div>
+                	<div class="menu-hover" style="left : <?=$l3?>px;"><img src="catalog/view/theme/default/image/headerMainMenuHover4.png" style="width: <?=$w3?>px;"/></div>
                     <a href="<?php echo $this->url->link('product/category', 'path=2');?>"><?php echo $text_building;?></a>
                     <ul id="headerInnerMenu">
                         <?php foreach($build_categories as $category) {?>
@@ -121,26 +149,17 @@ DD_belatedPNG.fix('#logo img');
                     </ul>
                 </li>
                 <li class="main-menu-item">
-                	<div class="menu-hover" style="left : 382px;"><img src="catalog/view/theme/default/image/headerMainMenuHover3.png" style="height: 71px;margin-left: -9px;margin-top: -10px;width: 137px;"/></div>
+                	<div class="menu-hover" style="left : <?=$l4?>px;"><img src="catalog/view/theme/default/image/headerMainMenuHover4_1.png" style="width: <?=$w4?>px;"/></div>
                 	<a href="<?php echo $this->url->link('product/order', '');?>"><?php echo $text_request;?></a></li>
-                <li class="main-menu-item"><div class="menu-hover" style="left : 506px;"><img src="catalog/view/theme/default/image/headerMainMenuHover3.png" style="height: 71px;margin-left: -16px;margin-top: -10px;width: 147px;"/></div><a href="index.php?route=information/information&information_id=8"><?php echo $text_news;?></a></li>
-                <li class="main-menu-item"><div class="menu-hover" style="left : 629px;"><img src="catalog/view/theme/default/image/headerMainMenuHover3.png" style="height: 71px;margin-left: -12px;margin-top: -10px;width: 144px;"/></div><a href="index.php?route=information/information&information_id=9"><?php echo $text_photo;?></a></li>
-                <li class="main-menu-item"><div class="menu-hover" style="left : 753px;"><img src="catalog/view/theme/default/image/headerMainMenuHover3.png" style="height: 71px;margin-left: -12px;margin-top: -10px;width: 138px;"/></div><a href="index.php?route=information/information&information_id=10"><?php echo $text_video;?></a></li>
-                <li class="main-menu-item"><div class="menu-hover" style="left : 876px;"><img src="catalog/view/theme/default/image/headerMainMenuHover3.png" style="height: 71px;margin-left: -18px;margin-top: -10px;width: 153px;"/></div><a href="index.php?route=information/information&information_id=11"><?php echo $text_contact;?></a></li>
+                <li class="main-menu-item"><div class="menu-hover" style="left : <?=$l5?>px;"><img src="catalog/view/theme/default/image/headerMainMenuHover4_1.png" style="width: <?=$w5?>px;"/></div><a href="index.php?route=information/information&information_id=8"><?php echo $text_news;?></a></li>
+                <li class="main-menu-item"><div class="menu-hover" style="left : <?=$l6?>px;"><img src="catalog/view/theme/default/image/headerMainMenuHover4_1.png" style="width: <?=$w6?>px;"/></div><a href="index.php?route=information/information&information_id=9"><?php echo $text_photo;?></a></li>
+                <li class="main-menu-item"><div class="menu-hover" style="left : <?=$l7?>px;"><img src="catalog/view/theme/default/image/headerMainMenuHover4_1.png" style="width: <?=$w7?>px;"/></div><a href="index.php?route=information/information&information_id=10"><?php echo $text_video;?></a></li>
+                <li class="main-menu-item"><div class="menu-hover" style="left : <?=$l8?>px;"><img src="catalog/view/theme/default/image/headerMainMenuHover4_1.png" style="width: <?=$w8?>px;"/></div><a href="index.php?route=information/information&information_id=11"><?php echo $text_contact;?></a></li>
             </ul>
         </div>
     </div>
 </div>    
 
 
-    
-<!--<div id="header">
-  <?php if ($logo) { ?>
-  <div id="logo"><a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a></div>
-  <?php } ?>
-  
-
-
-</div> -->
 
 <div id="notification"></div>

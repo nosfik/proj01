@@ -292,6 +292,7 @@
     <div style="display:none;font-weight:normal;font-size:9px;font-family:Tahoma;padding:0;margin:0;border:0;text-align:center;background:transparent;color:#EEEEEE;width:150px;" class="mlcalc_d3d3LmFtb3J0aXphdGlvbi1jYWxjLmNvbQ== mlcalc_ua_VUEtODE4MzUxOC0x" id="mlcalcWidgetHolder">
     <script type="text/javascript">document.write(unescape("%3Cscript src='" + (document.location.protocol == 'https:' ? 'https://ssl.mlcalc.com' : 'http://cdn.mlcalc.com') + "/ru/widget-narrow.js' type='text/javascript'%3E%3C/script%3E"));</script>
     Powered by <a href="http://www.amortization-calc.com/" style="font-weight:normal;font-size:9px;font-family:Tahoma;color:#EEEEEE;text-decoration:none;" class="panelItem">Amortization Schedule</a> <a href="http://www.mlcalc.com/" style="font-weight:normal;font-size:9px;font-family:Tahoma;color:#EEEEEE;text-decoration:none;" class="panelItem secondaryLink">Auto Loan Calculator</a>
+    
     </div>
     <div id="creditFormTabs" style="height:368px">
         <ul>

@@ -32,7 +32,7 @@ var droplinemenu={
                         var $targetul=$(this).children("ul:eq(0)")
                         if ($targetul.queue().length<=1) //if 1 or less queued animations
                             if (this.istopheader)
-                                $targetul.css({left: $mainmenu.position().left, top: $mainmenu.position().top+this._dimensions.h})
+                                $targetul.css({left: $mainmenu.position().left, top: $mainmenu.position().top+this._dimensions.h + 1})
                         if (document.all && !window.XMLHttpRequest) //detect IE6 or less, fix issue with overflow
                             $mainmenu.find('ul').css({overflow: (this.istopheader)? 'hidden' : 'visible'})
                         $targetul.dequeue().toggle()

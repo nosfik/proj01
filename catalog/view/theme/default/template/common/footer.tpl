@@ -29,6 +29,19 @@
 		 droplinemenu.buildmenu("headerMainMenu");
 		 $('#formTabs').css('height', '');
 		 $('#creditFormTabs').css('height', '');
+		 
+			var height = $('.page-wrapper').height()- 100;
+    		$('.bgimage').css('height', height);
+    		$('.bgimage').show();
+    		
+    		$('#tab-header-house, #tab-header-area, #tab-hypothec, #tab-credit').click(function(){
+    			console.log(height);
+    			var height = $('.page-wrapper').height()- 100;
+    			console.log(height);
+    		$('.bgimage').css('height', height);
+    		$('.bgimage').show();
+    		})
+	
 	})
 	
 </script>

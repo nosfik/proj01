@@ -1,26 +1,25 @@
 @font-face {
-    font-family: MyriadProBlack; /* Гарнитура шрифта */
-    src: url('../fonts/MyriadPro-Black.eot'); /* Путь к файлу со шрифтом */
-}
-
+				font-family: 'MyriadProSemiCn';
+				src: url('../fonts/myriadprosemicn.eot');
+				src: url('../fonts/myriadprosemicn.eot?#iefix') format('embedded-opentype'),
+						 url('../fonts/myriadprosemicn.woff') format('woff'),
+						 url('../fonts/myriadprosemicn.ttf') format('truetype'),
+						 url('../fonts/myriadprosemicn.svg#myriadprosemicn') format('svg');
+				font-weight: normal;
+				font-style: normal;
+		}
+		
+		
 @font-face {
-    font-family: MyriadProSemiCn; /* Гарнитура шрифта */
-    src: url('../fonts/MyriadPro-SemiCn.eot'); /* Путь к файлу со шрифтом */
-}
-
-
-
-
-@font-face {
-    font-family: MyriadProBlack; /* Гарнитура шрифта */
-    src: url('../fonts/MyriadPro-Black.otf'); /* Путь к файлу со шрифтом */
-}
-
-@font-face {
-    font-family: MyriadProSemiCn; /* Гарнитура шрифта */
-    src: url('../fonts/MyriadPro-SemiCn.otf'); /* Путь к файлу со шрифтом */
-
-}
+				font-family: 'MyriadProBlack';
+				src: url('../fonts/myriadproblack.eot');
+				src: url('../fonts/myriadproblack.eot?#iefix') format('embedded-opentype'),
+						 url('../fonts/myriadproblack.woff') format('woff'),
+						 url('../fonts/myriadproblack.ttf') format('truetype'),
+						 url('../fonts/myriadproblack.svg#myriadproblack') format('svg');
+				font-weight: normal;
+				font-style: normal;
+		}
 
 html, body, div, p, ul, ol, hr, a, td {
     margin: 0;
@@ -87,10 +86,12 @@ ul.menu-horizontal > li {
 	display:none;
 	
 	position:absolute; 
-	width:1200px; 
+	width:1480px; 
 	left:0;
 	right:0;
-	 margin:0 auto;z-index:1;height: 2480px;
+	 margin:0 auto
+	 ;z-index:1
+	 ;height: 2480px;
 	
 	
 }
@@ -121,6 +122,11 @@ ul.menu-horizontal > li {
 }
 
 .footer > ul.menu-horizontal > li:first-child a {
+    color: #80634F;
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s;
+}
+
+.footer > ul.menu-horizontal > li:first-child a:hover {
     color: #e6b74d;
 }
 
@@ -173,14 +179,17 @@ ul.menu-horizontal > li {
 
 #vk {
     background-image: url('../image/vk.png');
+    transition: background 0.2s ease;
 }
 
 #twit {
     background-image: url('../image/twitter.png');
+    transition: background 0.2s ease;
 }
 
 #facebook {
     background-image: url('../image/facebook.png');
+    transition: background 0.2s ease;
 }
 
 #socials-vk {
@@ -240,15 +249,14 @@ ul.menu-horizontal > li {
 
 #headerOuterMenu {
     
-    height: 62px;
+    height: 63px;
     width: 100%;
     background: url('../image/headerMainMenuBg.png') no-repeat 0 0;
 }
 
 #headerOuterMenu li > a {
-    width: 125px;
+    width: auto;
     margin: 0;
-    padding: 0;
     line-height: 62px;
     text-align: center;
     font-size: 18px;
@@ -276,22 +284,21 @@ ul.menu-horizontal > li {
     font-family: Arial,sans-serif;
     font-size: 11px;
     font-weight: normal;
-    height: 26px;
-    line-height: 40px;
-    margin: 0;
-    padding: 10px 12px 15px;
+    height: 31px;
+    line-height: 32px;
+    margin-top: 6px;
+    padding: 11px 22px 8px!important;
     text-transform: uppercase;
     white-space: nowrap;
     width: auto;
     word-wrap: normal;
-    height:31px;
 	
 }
 
 #headerInnerMenu li > a img {
 	display:none; 
 	position:absolute; 
-	top:45px; 
+	top:43px; 
 	left:50%
 }
 
@@ -433,7 +440,7 @@ ul.menu-horizontal > li {
     width: 258px;
     /*background: #ff00ff;*/
     float: right;
-    margin-bottom: -220px;
+    margin-bottom: -165px;
 }
 
 .clear-right {
@@ -681,14 +688,14 @@ form td.btn-container {
 
 .form-btn {
     width: 126px;
-    height: 33px;
-    background: url('../image/s_button.png') no-repeat 0px -5px #141414;
+    height: 46px;
+    background: url('../image/s_button1.png') no-repeat 0px 11px #141414;
     text-transform: uppercase;
     cursor: pointer;
 }
 
 .form-btn:hover {
-    background-position: 0px -45px;
+    background-position: 0px -39px;
 }
 
 form tr.row-separator {
@@ -944,20 +951,21 @@ form tr.row-separator {
 }
 
 #online-help a {
-    background: url("../image/b_button.png") no-repeat scroll 0 -7px transparent;
+    background: url("../image/b_button1.png") no-repeat scroll 0px 10px transparent;
     display: block;
-    height: 51px;
+    height: 61px;
     margin-bottom: 278px;
     margin-left: -9px;
     margin-right: -10px;
+    padding-left: 50px;
+    padding-top: 17px;
+    color:#000000;
+    font-size:19px
 	
 }
 
 #online-help a:hover {
-	
-	
-	  
-    background: url("../image/b_button.png") no-repeat scroll 0 -61px transparent;
+    background: url("../image/b_button1.png") no-repeat scroll 0 -73px transparent;
 }
 
 .menu-hover {
@@ -965,16 +973,13 @@ form tr.row-separator {
 	
 	display:none;
 	position: absolute; 
-	height: 62px; 
-	width: 123px; 
-
 }
 
 
 .menu-hover-1 {
 	
 	position: absolute; 
-	height: 62px; 
+	height: 63px; 
 	width: 134px; 
 	/*background: url('catalog/view/theme/default/image/headerMainMenuHover.png') repeat scroll -20px -20px transparent*/
 }
@@ -1113,5 +1118,9 @@ form tr.row-separator {
 	border: 5px solid white;
 }
 
+.menu-hover img {
+	height: 63px;
+	margin-left: -15px;
+}
 
 
