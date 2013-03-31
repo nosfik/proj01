@@ -178,7 +178,7 @@
                     </tr>
                     <tr>
                         <td class="btn-container" colspan="2">
-                            <input style="font-family: Arial, Helvetica, sans-serif; font-size:12px;" type="submit" value="найти" class="form-btn"/>
+                            <input style="font-family: Arial, Helvetica, sans-serif; font-size:12px;padding-right:16px;" type="submit" value="найти" class="form-btn"/>
                         </td>
                     </tr>
                 </table>
@@ -282,7 +282,7 @@
                     </tr>
                     <tr>
                         <td class="btn-container" colspan="2">
-                            <input type="submit" value="найти" class="form-btn"/>
+                            <input type="submit" value="найти" style="font-family: Arial, Helvetica, sans-serif; font-size:12px;padding-right:16px;" class="form-btn" />
                         </td>
                     </tr>
                 </table>
@@ -417,7 +417,7 @@
                     </tr>
                     <tr>
                         <td class="btn-container" colspan="2">
-                            <input type="button" style="font-family: Arial, Helvetica, sans-serif; font-size:12px;" onclick="$('#MLCalcFormMortgageForm .sbmButton').click()" value="посчитать" class="form-btn" style="padding: 0 5px;"/>
+                            <input type="button" style="font-family: Arial, Helvetica, sans-serif; font-size:12px;" onclick="$('#MLCalcFormMortgageForm .sbmButton').click()" value="посчитать" class="form-btn" />
                         </td>
                     </tr>
                 </table>
@@ -494,7 +494,7 @@
                     </tr>
                     <tr>
                         <td class="btn-container" colspan="2">
-                            <input type="button" onclick="$('.sbmButton').click()" value="посчитать" class="form-btn" style="padding: 0 5px;"/>
+                            <input type="button" style="font-family: Arial, Helvetica, sans-serif; font-size:12px;" onclick="$('.sbmButton').click()" value="посчитать" class="form-btn" />
                         </td>
                     </tr>
                 </table>
