@@ -4,7 +4,7 @@
             <li>
                 <p>&copy; 2013 Все права защищены</p>
 
-                <p>Сайт разработан в студии <a href="#">&laquo;ABWEB&raquo;</a></p>
+                <p>Сайт разработан в студии <a href="http://abweb.com.ua/">&laquo;ABWEB&raquo;</a></p>
             </li>
             <li class="socials">
                 <div id="twit"></div>

@@ -69,7 +69,7 @@ mlcalc_loan_term = '15';
 	    <li>
 	    	
 	    	<div class="house-item" onclick="location.href='<?php echo $product['url']; ?>'">
-                    <div class="frame"></div>
+                    <a href="<?php echo $product['url']; ?>"><div class="frame"></div></a>
                     <div style="width:228px; height:167px"><img height="167" width="228" src="<?php echo $product['thumb']; ?>"></div>
                     <?php if(!empty($product)) { ?>
                        <img height="68" width="68" class="house-tag" src="image/<?php echo $product['tag'];?>"> 
@@ -102,7 +102,7 @@ mlcalc_loan_term = '15';
 	    <li>
 	    	
 	    	<div class="house-item" onclick="location.href='<?php echo $product['url']; ?>'">
-                    <div class="frame"></div>
+                    <a href="<?php echo $product['url']; ?>"><div class="frame"></div></a>
                     <div style="width:228px; height:167px"><img height="167" width="228" src="<?php echo $product['thumb']; ?>"></div>
                     <?php if(!empty($product)) { ?>
                        <img height="68" width="68" class="house-tag" src="image/<?php echo $product['tag'];?>"> 

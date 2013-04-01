@@ -64,7 +64,7 @@
 	    <li>
 	    	
 	    	<div class="house-item" onclick="location.href='<?php echo $product['href']; ?>'">
-                    <div class="frame"></div>
+                    <a href="<?php echo $product['href']; ?>"><div class="frame"></div></a>
                     <div style="width:228px; height:167px"><img height="167" width="228" src="<?php echo $product['thumb']; ?>"></div>
                     <?php if(!empty($product)) { ?>
                        <img height="68" width="68" class="house-tag" src="<?php echo $product['tag'];?>"> 

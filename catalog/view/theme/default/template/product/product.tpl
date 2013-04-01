@@ -13,7 +13,7 @@
             <div style="float:left">
 
 
-                <div id="gallery" class="ad-gallery">
+                <div id="gallery" class="ad-gallery" style="height:630px">
                     <div class="gal-controls" style="">
                         <table><tr>
                             <td><div onclick="" class="first"></div></td>
@@ -120,6 +120,8 @@ $('.colorbox').colorbox({
 
 
         });
+        
+        $('.play').click();
 
         $('#gallery .gal-controls .next').click(function() {
             $('#gallery .ad-next').click();

@@ -14,7 +14,7 @@
 <div class="right">
 <?php echo $filter;?>
 </div>
-<div class="left">
+<div class="left" style="min-height: 1035px;">
 	
 	  <?php if ($products) { ?>
   <!--<div class="product-filter">
@@ -47,13 +47,13 @@
   	<ul class="menu-horizontal house-list">
   	<?php for ($i = 0; $i < count($products); $i++) { $product = $products[$i];	?>
   		
-	    <?php if($i >= 4 && $i % 4 == 0) {?>
+	    <?php if($i >= 3 && $i % 3 == 0) {?>
 	    	</ul><ul class="menu-horizontal house-list">
 	    <?php } ?>
 	    <li>
 	    	
 	    	<div class="house-item" onclick="location.href='<?php echo $product['href']; ?>'">
-                    <div class="frame"></div>
+                    <a href="<?php echo $product['href']; ?>"><div class="frame"></div></a>
                     <div style="width:228px; height:167px"><img height="167" width="228" src="<?php echo $product['thumb']; ?>"></div>
                     <?php if(!empty($product)) { ?>
                        <img height="68" width="68" class="house-tag" src="<?php echo $product['tag'];?>"> 
