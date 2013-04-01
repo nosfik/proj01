@@ -281,14 +281,13 @@
                 	var koef2 = this.height  / windowHeight;
                 	if(koef1 > koef2) {
                 		$cropDialog.dialog('option', 'width', windowWidth);
-                		imgRWidth = windowWidth;
+                		imgRWidth = windowWidth - 30;
                 		
-                		$cropDialog.dialog('option', 'height', windowWidth * (this.height / this.width));
-                		imgRHeight = windowWidth * (this.height / this.width);
+                		$cropDialog.dialog('option', 'height', imgRWidth * (this.height / this.width) + 100);
+                		imgRHeight = imgRWidth * (this.height / this.width);
                 	} else {
                 		$cropDialog.dialog('option', 'height', windowHeight );
                 		imgRHeight = windowHeight - 120;
-                		
                 		
                 		$cropDialog.dialog('option', 'width', imgRHeight * koef + 25);
                 		imgRWidth = imgRHeight * koef;
@@ -491,14 +490,11 @@
             
 
 							function calculateImgPrice(){
-							var price = parseFloat($('#imgFormat input:checked').attr('data-price')),
-							percent = parseFloat($('#imgPaper input:checked').attr('data-percent')),
-							total;
-							console.log(price)
-							console.log(percent)
-							total = price * (1 + percent/100);
-							console.log(total)
-							$priceTag.html((Math.round(total * 100) / 100).toFixed(2));
+								var price = parseFloat($('#imgFormat input:checked').attr('data-price')),
+								percent = parseFloat($('#imgPaper input:checked').attr('data-percent')),
+								total;
+								total = price * (1 + percent/100);
+								$priceTag.html((Math.round(total * 100) / 100).toFixed(2));
 							};
 							});
     </script>
