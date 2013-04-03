@@ -14,7 +14,7 @@
       <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a onclick="location = '<?php echo $cancel; ?>';" class="button"><?php echo $button_cancel; ?></a></div>
     </div>
     <div class="content">
-      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><a href="#tab-links"><?php echo $tab_links; ?></a><a href="#tab-image"><?php echo $tab_image; ?></a></div>
+      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><a href="#tab-links"><?php echo $tab_links; ?></a><a href="#tab-option">Доп. поля</a><a href="#tab-image"><?php echo $tab_image; ?></a></div>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
         <div id="tab-general">
           <div id="languages" class="htabs">
@@ -181,6 +181,40 @@
             </tr>
           </table>
         </div>
+        
+        <div id="tab-option">
+          	<div id="languages_option" class="htabs">
+            <?php foreach ($languages as $language) { ?>
+            <a href="#language_option<?php echo $language['language_id']; ?>"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?></a>
+            <?php } ?>
+          </div>
+          <?php foreach ($languages as $language) { ?>
+	          <div id="language_option<?php echo $language['language_id']; ?>">
+	            <table class="form">
+	             
+	              <!--<tr>
+	                <td>Отопление</td>
+	                <td><input type="text" name="product_option[<?php echo $language['language_id']; ?>][]" maxlength="255" size="100" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['heating'] : ''; ?>" /><a onclick="$(this).parent().parent().remove()">Удалить</a></td>
+	              </tr>-->
+	            
+	            </table>
+	            
+	            <table class="new-field">
+	            	<tr>
+	            		<th>Заголовок в админке</th>
+	            		<th></th>
+	            	</tr>
+	            	<tr>
+	            		<td><input type="text" id="new_option"/></td>
+	            		
+	            		<td align="right"><input type="button" onclick="addProductOption($('#new_option').val())" value="Добавить"/></td>
+	            	</tr>
+	            	
+	            </table>
+	          </div>
+            <?php } ?>
+        </div>
+        
         <div id="tab-links">
           <table class="form">
           	
@@ -295,7 +329,19 @@ $('#product-related div img').live('click', function() {
 //--></script> 
 
 
-
+<script type="text/javascript">
+	
+	function addProductOption(name){
+		$('div [id^="language_option"]').each(function() {
+			 var this_id = $(this).attr('id');
+			 var lang_id = this_id.charAt( this_id.length-1 );
+			 $(this).find('.form').append('<tr><td>'+name+'</td><td><input type="hidden" name="product_option' + lang_id + '[][\'key\']" value="'+name+'"/> Имя <input type="text" name="product_option' + lang_id + '[][\'header\']" maxlength="255" size="40"/> Значение<input type="text" name="product_option' + lang_id + '[][\'value\']" maxlength="255" size="40"/><a onclick="$(this).parent().parent().remove()">Удалить</a></td></tr>');
+		});
+	}
+	
+			
+	
+</script>
 
 <script type="text/javascript"><!--
 function getZones(country) {
@@ -373,6 +419,7 @@ $('.time').timepicker({timeFormat: 'h:m'});
 <script type="text/javascript"><!--
 $('#tabs a').tabs(); 
 $('#languages a').tabs(); 
+$('#languages_option a').tabs(); 
 $('#vtab-option a').tabs();
 //--></script> 
 <?php echo $footer; ?>
