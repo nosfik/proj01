@@ -13,7 +13,7 @@
   <?php } ?>
   <div class="box">
     <div class="heading">
-      <h1><img src="view/image/shipping.png" alt="" /> <?php echo $heading_title; ?></h1>
+      <h1><img src="view/image/shipping.png" alt="" /> Полезная информация</h1>
       <div class="buttons"><a onclick="location = '<?php echo $insert; ?>'" class="button"><?php echo $button_insert; ?></a><a onclick="$('form').submit();" class="button"><?php echo $button_delete; ?></a></div>
     </div>
     <div class="content">
@@ -23,9 +23,9 @@
             <tr>
               <td width="1" style="text-align: center;"><input type="checkbox" onclick="$('input[name*=\'selected\']').attr('checked', this.checked);" /></td>
               <td class="left"><?php if ($sort == 'name') { ?>
-                <a href="<?php echo $sort_name; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_name; ?></a>
+                <a href="<?php echo $sort_name; ?>" class="<?php echo strtolower($order); ?>">Имя</a>
                 <?php } else { ?>
-                <a href="<?php echo $sort_name; ?>"><?php echo $column_name; ?></a>
+                <a href="<?php echo $sort_name; ?>">Имя</a>
                 <?php } ?></td>
               <td class="right"><?php if ($sort == 'sort_order') { ?>
                 <a href="<?php echo $sort_sort_order; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_sort_order; ?></a>

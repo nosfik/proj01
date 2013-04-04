@@ -33,14 +33,6 @@
                   <?php } ?></td>
               </tr>
               <tr>
-                <td>Отопление</td>
-                <td><input type="text" name="product_description[<?php echo $language['language_id']; ?>][heating]" maxlength="255" size="100" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['heating'] : ''; ?>" /></td>
-              </tr>
-              <tr>
-                <td><?php echo $entry_seo_h1; ?></td>
-                <td><input type="text" name="product_description[<?php echo $language['language_id']; ?>][seo_h1]" maxlength="255" size="100" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['seo_h1'] : ''; ?>" /></td>
-              </tr>
-              <tr>
                 <td><?php echo $entry_seo_title; ?></td>
                 <td><input type="text" name="product_description[<?php echo $language['language_id']; ?>][seo_title]" maxlength="255" size="100" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['seo_title'] : ''; ?>" /></td>
               </tr>
@@ -102,7 +94,7 @@
             
             
             <tr>
-              <td><?php echo $entry_zone; ?></td>
+              <td>Город</td>
               <td>
               	<select onchange="getZones(this.value)" name="country">
                   <option value="0"><?php echo $text_none; ?></option>
@@ -123,7 +115,7 @@
               	
             </tr>
             <tr>
-              <td><?php echo $entry_product_currency; ?></td>
+              <td>Валюта</td>
               <td><select name="product_currency_id">
                   <option value="0"><?php echo $text_none; ?></option>
                   <?php foreach ($currencies as $currency) { ?>
@@ -136,7 +128,7 @@
                 </select></td>
             </tr>
             <tr>
-              <td><?php echo $entry_product_tag; ?></td>
+              <td>Тег</td>
               <td><select name="product_tag_id">
                   <option value="0"><?php echo $text_none; ?></option>
                   <?php foreach ($tags as $tag) { ?>
@@ -188,14 +180,20 @@
             <a href="#language_option<?php echo $language['language_id']; ?>"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?></a>
             <?php } ?>
           </div>
+          
+         
           <?php foreach ($languages as $language) { ?>
 	          <div id="language_option<?php echo $language['language_id']; ?>">
 	            <table class="form">
-	             
-	              <!--<tr>
-	                <td>Отопление</td>
-	                <td><input type="text" name="product_option[<?php echo $language['language_id']; ?>][]" maxlength="255" size="100" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['heating'] : ''; ?>" /><a onclick="$(this).parent().parent().remove()">Удалить</a></td>
-	              </tr>-->
+	            	 <?php if(!empty($product_options)) {?>
+	            	<?php foreach ($product_options[$language['language_id']] as $product_option) { ?>
+							<tr>
+							<td><?php echo $product_option['name'];?></td>
+							<td> Имя <input type="text" name="product_option[<?php echo $language['language_id'];?>][<?php echo $product_option['name'];?>][header]" maxlength="255" size="40" value="<?php echo $product_option['header'];?>"/> Значение<input type="text" name="product_option[<?php echo $language['language_id'];?>][<?php echo $product_option['name'];?>][value]" maxlength="255" size="40" value="<?php echo $product_option['value'];?>"/><a onclick="$(this).parent().parent().remove()">Удалить</a></td></tr>
+						<tr>
+			               
+	            	<?php }	?>
+	             <?php }	?>
 	            
 	            </table>
 	            
@@ -335,7 +333,7 @@ $('#product-related div img').live('click', function() {
 		$('div [id^="language_option"]').each(function() {
 			 var this_id = $(this).attr('id');
 			 var lang_id = this_id.charAt( this_id.length-1 );
-			 $(this).find('.form').append('<tr><td>'+name+'</td><td><input type="hidden" name="product_option' + lang_id + '[][\'key\']" value="'+name+'"/> Имя <input type="text" name="product_option' + lang_id + '[][\'header\']" maxlength="255" size="40"/> Значение<input type="text" name="product_option' + lang_id + '[][\'value\']" maxlength="255" size="40"/><a onclick="$(this).parent().parent().remove()">Удалить</a></td></tr>');
+			 $(this).find('.form').append('<tr><td>'+name+'</td><td> Имя <input type="text" name="product_option[' + lang_id + ']['+name+'][header]" maxlength="255" size="40"/> Значение<input type="text" name="product_option[' + lang_id + ']['+name+'][value]" maxlength="255" size="40"/><a onclick="$(this).parent().parent().remove()">Удалить</a></td></tr>');
 		});
 	}
 	

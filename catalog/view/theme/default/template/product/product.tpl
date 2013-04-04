@@ -60,6 +60,19 @@
                     <tr><td class="second-column"><table><tr><td class="table-header">Бассейн</td><td class="table-value"><?php echo $pool;?></td></tr></table></td></tr>
                     <tr><td class="first-column"><table><tr><td class="table-header">Отопление</td><td class="table-value"><?php echo $heating;?></td></tr></table></td></tr>
                     <tr><td class="second-column"><table><tr><td class="table-header">Кондиционер</td><td class="table-value"><?php echo $air_cond;?></td></tr></table></td></tr>
+                
+                <?php 
+                $tmp = 3;
+                foreach ($options as $option) {
+                   $css_class = ($tmp % 2 == 0) ? "second-column" : "first-column"; ?>
+                	<tr><td class="<?php echo $css_class ?>"><table><tr><td class="table-header"><?php echo $option['header'] ?></td><td class="table-value"><?php echo $option['value'] ?></td></tr></table></td></tr>
+                <?php $tmp++; ?>
+                    
+                <?php } ?>
+                
+                
+                
+                
                 </table>
 
                 <div class="contact-with-us">

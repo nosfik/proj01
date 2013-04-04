@@ -152,7 +152,7 @@ class ControllerCatalogDreamHouse extends Controller {
    		);
 
    		$this->data['breadcrumbs'][] = array(
-       		'text'      => $this->language->get('heading_title'),
+       		'text'      => 'Построй дом своей мечты',
 			'href'      => $this->url->link('catalog/dreamhouse', 'token=' . $this->session->data['token'] . $url, 'SSL'),
       		'separator' => ' :: '
    		);
@@ -331,7 +331,7 @@ class ControllerCatalogDreamHouse extends Controller {
    		);
 
    		$this->data['breadcrumbs'][] = array(
-       		'text'      => $this->language->get('heading_title'),
+       		'text'      => 'Построй дом своей мечты',
 			'href'      => $this->url->link('catalog/dreamhouse', 'token=' . $this->session->data['token'] . $url, 'SSL'),
       		'separator' => ' :: '
    		);

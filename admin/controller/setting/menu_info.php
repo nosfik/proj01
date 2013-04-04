@@ -152,7 +152,7 @@ class ControllerSettingMenuInfo extends Controller {
         );
 
         $this->data['breadcrumbs'][] = array(
-            'text'      => $this->language->get('heading_title'),
+            'text'      => 'Полезная информация',
             'href'      => $this->url->link('setting/menu_info', 'token=' . $this->session->data['token'] . $url, 'SSL'),
             'separator' => ' :: '
         );
@@ -325,7 +325,7 @@ class ControllerSettingMenuInfo extends Controller {
         );
 
         $this->data['breadcrumbs'][] = array(
-            'text'      => $this->language->get('heading_title'),
+            'text'      => 'Полезная информация',
             'href'      => $this->url->link('setting/menu_info', 'token=' . $this->session->data['token'] . $url, 'SSL'),
             'separator' => ' :: '
         );

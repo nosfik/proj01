@@ -152,7 +152,7 @@ class ControllerCatalogCurrency extends Controller {
    		);
 
    		$this->data['breadcrumbs'][] = array(
-       		'text'      => $this->language->get('heading_title'),
+       		'text'      => 'Валюта',
 			'href'      => $this->url->link('catalog/currency', 'token=' . $this->session->data['token'] . $url, 'SSL'),
       		'separator' => ' :: '
    		);
@@ -329,7 +329,7 @@ class ControllerCatalogCurrency extends Controller {
    		);
 
    		$this->data['breadcrumbs'][] = array(
-       		'text'      => $this->language->get('heading_title'),
+       		'text'      => 'Валюта',
 			'href'      => $this->url->link('catalog/currency', 'token=' . $this->session->data['token'] . $url, 'SSL'),
       		'separator' => ' :: '
    		);

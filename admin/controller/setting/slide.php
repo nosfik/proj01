@@ -152,7 +152,7 @@ class ControllerSettingSlide extends Controller {
         );
 
         $this->data['breadcrumbs'][] = array(
-            'text'      => $this->language->get('heading_title'),
+            'text'      => 'Слайдер на главной',
             'href'      => $this->url->link('setting/slide', 'token=' . $this->session->data['token'] . $url, 'SSL'),
             'separator' => ' :: '
         );
@@ -325,7 +325,7 @@ class ControllerSettingSlide extends Controller {
         );
 
         $this->data['breadcrumbs'][] = array(
-            'text'      => $this->language->get('heading_title'),
+            'text'      => 'Слайдер на главной',
             'href'      => $this->url->link('setting/slide', 'token=' . $this->session->data['token'] . $url, 'SSL'),
             'separator' => ' :: '
         );

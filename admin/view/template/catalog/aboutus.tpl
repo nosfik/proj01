@@ -10,7 +10,7 @@
   <?php } ?>
   <div class="box">
     <div class="heading">
-      <h1><img src="view/image/shipping.png" alt="" /> <?php echo $heading_title; ?></h1>
+      <h1><img src="view/image/shipping.png" alt="" /> О нас (на главной)</h1>
       <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a onclick="location = '<?php echo $cancel; ?>';" class="button"><?php echo $button_cancel; ?></a></div>
     </div>
     <div class="content">
@@ -19,9 +19,9 @@
         <div id="tab-general">
           <table class="form">
             <tr>
-              <td><span class="required">*</span> <?php echo $entry_url; ?></td>
+              <td><span class="required">*</span> Ссылка на полную страницу</td>
               <td><input type="text" name="url" value="<?php echo $url; ?>" maxlength="255" size="100" />
-                <?php if ($error_url) { ?>
+                <?php if (isset($error_url)) { ?>
                 <span class="error"><?php echo $error_url; ?></span>
                 <?php } ?></td>
             </tr>
@@ -43,7 +43,7 @@
           <div id="language<?php echo $language['language_id']; ?>">
             <table class="form">
               <tr>
-                <td><?php echo $entry_short_text; ?></td>
+                <td>Краткое содержание</td>
                 <td><textarea name="aboutus_short_text[<?php echo $language['language_id']; ?>][short_text]" id="short_text<?php echo $language['language_id']; ?>"><?php echo isset($aboutus_short_text[$language['language_id']]) ? $aboutus_short_text[$language['language_id']]['short_text'] : ''; ?></textarea></td>
               </tr>
             </table>

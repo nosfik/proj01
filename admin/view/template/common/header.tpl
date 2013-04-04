@@ -68,8 +68,8 @@ $(document).ready(function(){
           <li><a href="<?php echo $category; ?>"><?php echo $text_category; ?></a></li>
           <li><a href="<?php echo $product; ?>"><?php echo $text_product; ?></a></li>
           <li><a href="<?php echo $currency_p; ?>"><?php echo $text_currency; ?></a></li>
-          <li><a href="<?php echo $dreamhouse; ?>"><?php echo $text_dreamhouse; ?></a></li>
-          <li><a href="<?php echo $suggestion; ?>"><?php echo $text_suggestion; ?></a></li>
+          <li><a href="<?php echo $dreamhouse; ?>">Построй дом мечты</a></li>
+          <li><a href="<?php echo $suggestion; ?>">Интер. предложения</a></li>
           <li><a href="<?php echo $tag; ?>"><?php echo $text_tag; ?></a></li>
           <li><a href="<?php echo $information; ?>"><?php echo $text_information; ?></a></li>
         </ul>
@@ -78,7 +78,7 @@ $(document).ready(function(){
     
       <li id="system"><a class="top"><?php echo $text_system; ?></a>
         <ul>
-        	 <li><a href="<?php echo $about_us; ?>"><?php echo $text_about_us; ?></a></li>
+        	 <li><a href="<?php echo $about_us; ?>">О нас(на главной)</a></li>
             <li><a href="<?php echo $menu_info; ?>"><?php echo $text_menu_info; ?></a></li>
              <li><a href="<?php echo $slide; ?>"><?php echo $text_slide; ?></a></li>
           <li><a href="<?php echo $setting; ?>"><?php echo $text_setting; ?></a></li>
@@ -97,27 +97,9 @@ $(document).ready(function(){
           <li><a class="parent"><?php echo $text_localisation; ?></a>
             <ul>
               <li><a href="<?php echo $language; ?>"><?php echo $text_language; ?></a></li>
-              <li><a href="<?php echo $currency; ?>"><?php echo $text_currency; ?></a></li>
-              <li><a href="<?php echo $stock_status; ?>"><?php echo $text_stock_status; ?></a></li>
-              <li><a href="<?php echo $order_status; ?>"><?php echo $text_order_status; ?></a></li>
-              <li><a class="parent"><?php echo $text_return; ?></a>
-                <ul>
-                  <li><a href="<?php echo $return_status; ?>"><?php echo $text_return_status; ?></a></li>
-                  <li><a href="<?php echo $return_action; ?>"><?php echo $text_return_action; ?></a></li>
-                  <li><a href="<?php echo $return_reason; ?>"><?php echo $text_return_reason; ?></a></li>
-                </ul>
-              </li>
               <li><a href="<?php echo $country; ?>"><?php echo $text_country; ?></a></li>
               <li><a href="<?php echo $zone; ?>"><?php echo $text_zone; ?></a></li>
               <li><a href="<?php echo $geo_zone; ?>"><?php echo $text_geo_zone; ?></a></li>
-              <li><a class="parent"><?php echo $text_tax; ?></a>
-                <ul>
-                  <li><a href="<?php echo $tax_class; ?>"><?php echo $text_tax_class; ?></a></li>
-                  <li><a href="<?php echo $tax_rate; ?>"><?php echo $text_tax_rate; ?></a></li>
-                </ul>
-              </li>
-              <li><a href="<?php echo $length_class; ?>"><?php echo $text_length_class; ?></a></li>
-              <li><a href="<?php echo $weight_class; ?>"><?php echo $text_weight_class; ?></a></li>
             </ul>
           </li>
           <li><a href="<?php echo $error_log; ?>"><?php echo $text_error_log; ?></a></li>

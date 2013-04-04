@@ -152,7 +152,7 @@ class ControllerCatalogSuggestion extends Controller {
    		);
 
    		$this->data['breadcrumbs'][] = array(
-       		'text'      => $this->language->get('heading_title'),
+       		'text'      => 'Интересные предложения',
 			'href'      => $this->url->link('catalog/suggestion', 'token=' . $this->session->data['token'] . $url, 'SSL'),
       		'separator' => ' :: '
    		);
@@ -343,7 +343,7 @@ class ControllerCatalogSuggestion extends Controller {
    		);
 
    		$this->data['breadcrumbs'][] = array(
-       		'text'      => $this->language->get('heading_title'),
+       		'text'      => 'Интересные предложения',
 			'href'      => $this->url->link('catalog/suggestion', 'token=' . $this->session->data['token'] . $url, 'SSL'),
       		'separator' => ' :: '
    		);

@@ -109,7 +109,7 @@ class ControllerCatalogAboutus extends Controller {
    		);
 
    		$this->data['breadcrumbs'][] = array(
-       		'text'      => $this->language->get('heading_title'),
+       		'text'      => 'О нас',
 			'href'      => $this->url->link('catalog/aboutus', 'token=' . $this->session->data['token'] . $url, 'SSL'),
       		'separator' => ' :: '
    		);

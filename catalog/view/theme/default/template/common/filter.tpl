@@ -637,6 +637,19 @@
                 }
         );
         }); 
+        
+        
+        $('.cusel').click(function(){
+        	var $active = $(this);
+        	$('.cusel').each(function(){
+        		if($active != $(this)) {
+        			$(this).removeClass('cuselOpen');
+        		}
+        	})
+        })
+        
+        
+        
     });
     
     

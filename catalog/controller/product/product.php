@@ -135,8 +135,6 @@ class ControllerProductProduct extends Controller {
 			$this->document->setKeywords($product_info['meta_keyword']);
 			$this->document->addLink($this->url->link('product/product', 'product_id=' . $this->request->get['product_id']), 'canonical');
 			
-			$this->data['seo_h1'] = $product_info['seo_h1'];
-
 			$this->data['heading_title'] = $product_info['name'];
 			
 			$this->data['text_select'] = $this->language->get('text_select');
@@ -181,6 +179,22 @@ class ControllerProductProduct extends Controller {
 			} else {
 				$this->data['thumb'] = '';
 			}
+
+
+
+			$this->data['options'] = array();
+			
+			$results = $this->model_catalog_product->getProductOptions($this->request->get['product_id']);
+			
+			foreach ($results as $result) {
+				$this->data['options'][] = array(
+					'header' => $result['header'],
+					'value'  => $result['value']
+				);
+			}	
+
+
+
 			
 			$this->data['images'] = array();
 			

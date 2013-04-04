@@ -112,7 +112,7 @@ DD_belatedPNG.fix('#logo img');
 	$l8 = ($lang == 'en') ? 858 : 840;
 
 ?>
-<div class="bgimage"></div>
+<div id="bgimage_lazy"></div>
 
 <div class="page-wrapper" style="z-index:2">
 

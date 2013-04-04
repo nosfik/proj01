@@ -25,7 +25,21 @@ class ModelCatalogProduct extends Model {
 		}
 		
 		foreach ($data['product_description'] as $language_id => $value) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', heating ='".$this->db->escape($value['heating'])."', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', description = '" . $this->db->escape($value['description']) . "', seo_title = '" . $this->db->escape($value['seo_title']) . "', seo_h1 = '" . $this->db->escape($value['seo_h1']) . "'");
+			$this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "',  meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', description = '" . $this->db->escape($value['description']) . "', seo_title = '" . $this->db->escape($value['seo_title']) . "'");
+		}
+		
+		if(isset($data['product_option'])) {
+			foreach ($data['product_option'] as $language_id => $fields) {
+				
+				foreach ($fields as $field_name => $field_data) {
+					$this->db->query("INSERT INTO " . DB_PREFIX . "product_option SET product_id = '" . (int)$product_id . "', 
+					name = '" . $this->db->escape($field_name) . "', 
+					header = '" . $this->db->escape($field_data['header']) . "', 
+					value = '" . $this->db->escape($field_data['value']) . "', 
+					language_id = '" . (int)$language_id . "'");					
+				}
+				
+			}
 		}
 		
 		if (isset($data['product_image'])) {
@@ -99,7 +113,7 @@ class ModelCatalogProduct extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_description WHERE product_id = '" . (int)$product_id . "'");
 		
 		foreach ($data['product_description'] as $language_id => $value) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', heating ='".$this->db->escape($value['heating'])."', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', description = '" . $this->db->escape($value['description']) . "', seo_title = '" . $this->db->escape($value['seo_title']) . "', seo_h1 = '" . $this->db->escape($value['seo_h1']) . "'");
+			$this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', description = '" . $this->db->escape($value['description']) . "', seo_title = '" . $this->db->escape($value['seo_title']) . "'");
 		}
 
 		
@@ -108,6 +122,23 @@ class ModelCatalogProduct extends Model {
 		if (isset($data['product_image'])) {
 			foreach ($data['product_image'] as $product_image) {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "product_image SET product_id = '" . (int)$product_id . "', image = '" . $this->db->escape(html_entity_decode($product_image['image'], ENT_QUOTES, 'UTF-8')) . "', sort_order = '" . (int)$product_image['sort_order'] . "'");
+			}
+		}
+		
+		
+		$this->db->query("DELETE FROM " . DB_PREFIX . "product_option WHERE product_id = '" . (int)$product_id . "'");
+		
+		if(isset($data['product_option'])) {
+			foreach ($data['product_option'] as $language_id => $fields) {
+				
+				foreach ($fields as $field_name => $field_data) {
+					$this->db->query("INSERT INTO " . DB_PREFIX . "product_option SET product_id = '" . (int)$product_id . "', 
+					name = '" . $this->db->escape($field_name) . "', 
+					header = '" . $this->db->escape($field_data['header']) . "', 
+					value = '" . $this->db->escape($field_data['value']) . "', 
+					language_id = '" . (int)$language_id . "'");					
+				}
+				
 			}
 		}
 		
@@ -193,6 +224,7 @@ class ModelCatalogProduct extends Model {
 	public function getProduct($product_id) {
 		$query = $this->db->query("SELECT DISTINCT *, z.name as zone_name, (SELECT keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'product_id=" . (int)$product_id . "') AS keyword FROM " . DB_PREFIX . "product p 
 		LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) 
+		LEFT JOIN " . DB_PREFIX . "product_option po ON (p.product_id = po.product_id) 
 		LEFT JOIN " . DB_PREFIX . "zone z ON (p.zone_id = z.zone_id) 
 		WHERE p.product_id = '" . (int)$product_id . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 				
@@ -308,8 +340,6 @@ class ModelCatalogProduct extends Model {
 		foreach ($query->rows as $result) {
 			$product_description_data[$result['language_id']] = array(
 				'seo_title'        => $result['seo_title'],
-				'seo_h1'           => $result['seo_h1'],
-				'heating'          => $result['heating'],
 				'name'             => $result['name'],
 				'description'      => $result['description'],
 				'meta_keyword'     => $result['meta_keyword'],
@@ -325,6 +355,11 @@ class ModelCatalogProduct extends Model {
 	public function getProductImages($product_id) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_image WHERE product_id = '" . (int)$product_id . "'");
 		
+		return $query->rows;
+	}
+	
+	public function getProductOptions($product_id) {
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_option WHERE product_id = '" . (int)$product_id . "'");
 		return $query->rows;
 	}
 	

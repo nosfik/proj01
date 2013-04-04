@@ -196,6 +196,11 @@ class ModelCatalogProduct extends Model {
 
 		return $query->rows;
 	}
+	
+	public function getProductOptions($product_id) {
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_option WHERE product_id = '" . (int)$product_id . "' AND language_id = ".(int)$this->config->get('config_language_id'));
+		return $query->rows;
+	}
 		
 	public function getProductLayoutId($product_id) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_to_layout WHERE product_id = '" . (int)$product_id . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "'");

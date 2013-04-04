@@ -13,7 +13,7 @@
   <?php } ?>
   <div class="box">
     <div class="heading">
-      <h1><img src="view/image/shipping.png" alt="" /> <?php echo $heading_title; ?></h1>
+      <h1><img src="view/image/shipping.png" alt="" /> Построй дом своей мечты</h1>
       <div class="buttons"><a onclick="location = '<?php echo $insert; ?>'" class="button"><?php echo $button_insert; ?></a><a onclick="$('form').submit();" class="button"><?php echo $button_delete; ?></a></div>
     </div>
     <div class="content">
@@ -23,11 +23,11 @@
             <tr>
               <td width="1" style="text-align: center;"><input type="checkbox" onclick="$('input[name*=\'selected\']').attr('checked', this.checked);" /></td>
               <td class="left"><?php if ($sort == 'name') { ?>
-                <a href="<?php echo $sort_number; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_number; ?></a>
+                <a href="<?php echo $sort_number; ?>" class="<?php echo strtolower($order); ?>">Номер обьекта</a>
                 <?php } else { ?>
-                <a href="<?php echo $sort_number; ?>"><?php echo $column_number; ?></a>
+                <a href="<?php echo $sort_number; ?>">Номер объекта</a>
                 <?php } ?></td>
-             <td class="right"><?php echo $column_sort_order; ?></td>
+             <td class="right">Порядок вывода</td>
               <td class="right"><?php echo $column_action; ?></td>
             </tr>
           </thead>

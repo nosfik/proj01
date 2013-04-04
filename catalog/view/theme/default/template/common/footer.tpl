@@ -30,6 +30,9 @@
 		 $('#formTabs').css('height', '');
 		 $('#creditFormTabs').css('height', '');
 		 
+		 var $background = $('#bgimage_lazy');
+		 $background.addClass('bgimage')
+		 
 			var height = $('.page-wrapper').height()- 100;
     		$('.bgimage').css('height', height);
     		$('.bgimage').show();

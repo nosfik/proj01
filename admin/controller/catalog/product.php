@@ -822,10 +822,6 @@ class ControllerCatalogProduct extends Controller {
 		} else {
       		$this->data['status'] = 1;
     	}
-
-		
-		
-		
 		
 		
 		if (isset($this->request->post['product_image'])) {
@@ -834,6 +830,23 @@ class ControllerCatalogProduct extends Controller {
 			$product_images = $this->model_catalog_product->getProductImages($this->request->get['product_id']);
 		} else {
 			$product_images = array();
+		}
+		
+		if (isset($this->request->post['product_option'])) {
+			$product_options = $this->request->post['product_option'];
+		} elseif (isset($this->request->get['product_id'])) {
+			$product_options = $this->model_catalog_product->getProductOptions($this->request->get['product_id']);
+		} else {
+			$product_options = array();
+		}
+		
+		$this->data['product_options'] = array();
+		foreach ($product_options as $product_option) {
+			$this->data['product_options'][$product_option['language_id']][] = array(
+				'name'    => $product_option['name'],
+				'value'   => $product_option['value'],
+				'header'  => $product_option['header'],
+			);
 		}
 		
 		$this->data['product_images'] = array();
