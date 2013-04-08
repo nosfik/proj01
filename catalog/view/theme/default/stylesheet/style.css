@@ -85,9 +85,9 @@ a {outline-style:none; color:#2a6ca9; -webkit-transition: all 0.4s ease;-o-trans
 #right_cont #shop {width:180px; margin:0 auto}
 #right_cont #shop #title_left {float:left; text-align:center; font-family: 'Cuprum', sans-serif; text-transform:uppercase; font-size:14px; padding-left:28px; display:block; color:#FFF; text-shadow:1px 1px 0px #7f5d6c; line-height:18px; background: url(../image/sprite.png) no-repeat -474px -285px}
 #right_cont #shop #title_right {float:left; width:28px; height:40px; background:url(../image/sprite.png) -433px -285px}
-#right_cont #shop #pic {width:180px; height:170px; background:url(../image/sprite.png) 0 -339px; margin:10px 0 0 5px}
-#right_cont #shop #pic img {width:180px; height:170px; background:url(../image/sprite.png) -213px -339px; border:none; opacity:0; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0); -webkit-transition: all 0.4s ease;-o-transition: all 0.4s ease;-moz-transition: all 0.4s ease;transition: all 0.4s ease}
-#right_cont #shop.hover #pic img {opacity:1;filter:1}
+#right_cont #shop #pic {width:180px; height:170px; margin:10px 0 0 5px}
+#right_cont #shop #pic img {width:180px; height:170px; background:url(../image/sprite.png) -6px -339px; border:none;}
+#right_cont #shop.hover #pic img {background:url(../image/sprite.png) -198px -339px; border:none}
 #right_cont #cart {width:105px; margin:0 auto}
 #right_cont #cart #title_left {float:left; text-align:center; font-family: 'Cuprum', sans-serif; text-transform:uppercase; font-size:14px; padding-left:28px; display:block; color:#FFF; text-shadow:1px 1px 0px #7f5d6c; line-height:18px; background: url(../image/sprite.png) no-repeat -474px -291px}
 #right_cont #cart #title_right {margin-left: 80px;width:28px; height:25px; background:url(../image/sprite.png) -433px -291px}
