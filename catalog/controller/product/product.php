@@ -180,7 +180,12 @@ class ControllerProductProduct extends Controller {
 				$this->data['thumb'] = '';
 			}
 
-
+            
+            
+          if($this->model_catalog_product->isProductSale($this->request->get['product_id'])){
+              $this->data['sales'] = true;
+          }
+            
 
 			$this->data['options'] = array();
 			
@@ -214,11 +219,6 @@ class ControllerProductProduct extends Controller {
 			$this->data['name'] = $product_info['name'];
 			$this->data['number'] = $product_info['number'];
 			$this->data['city'] = $product_info['city'];
-			$this->data['air_cond'] = $product_info['air_cond'];
-			$this->data['pool'] = $product_info['pool'];
-			$this->data['garden'] = $product_info['garden'];
-			$this->data['kitchen'] = $product_info['kitchen'];
-			$this->data['heating'] = $product_info['heating'];
 			$this->data['currency'] = $product_info['currency'];
 			$this->data['number'] = $product_info['number'];
 			$this->data['tag'] = $product_info['tag'];

@@ -5,10 +5,6 @@ class ModelCatalogProduct extends Model {
 		number = '" . $this->db->escape($data['number']) . "', 
 		area = '" . $this->db->escape($data['area']) . "', 
 		bathroom = '" . $this->db->escape($data['bathroom']) . "', 
-		air_cond = '" . $this->db->escape($data['air_cond']) . "', 
-		pool = '" . $this->db->escape($data['pool']) . "', 
-		garden = '" . $this->db->escape($data['garden']) . "', 
-		kitchen = '" . $this->db->escape($data['kitchen']) . "', 
 		bedroom = '" . $this->db->escape($data['bedroom']) . "', 
 		zone_id = '" . (int)$data['zone_id'] . "', 
 		product_currency_id = '" .(int)$data['product_currency_id'] . "', 
@@ -93,10 +89,6 @@ class ModelCatalogProduct extends Model {
 		area = '" . $this->db->escape($data['area']) . "', 
 		bathroom = '" . $this->db->escape($data['bathroom']) . "', 
 		bedroom = '" . $this->db->escape($data['bedroom']) . "', 
-		air_cond = '" . $this->db->escape($data['air_cond']) . "', 
-		pool = '" . $this->db->escape($data['pool']) . "', 
-		garden = '" . $this->db->escape($data['garden']) . "', 
-		kitchen = '" . $this->db->escape($data['kitchen']) . "', 
 		zone_id = '" . $this->db->escape($data['zone_id']) . "', 
 		product_currency_id = '" . $this->db->escape($data['product_currency_id']) . "', 
 		product_tag_id = '" . $this->db->escape($data['product_tag_id']) . "', 
@@ -178,38 +170,7 @@ class ModelCatalogProduct extends Model {
 		$this->cache->delete('product');
 	}
 	
-	public function copyProduct($product_id) {
-		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p.product_id = '" . (int)$product_id . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 		
-		if ($query->num_rows) {
-			$data = array();
-			
-			$data = $query->row;
-			
-			$data['sku'] = '';
-			$data['upc'] = '';
-			$data['viewed'] = '0';
-			$data['keyword'] = '';
-			$data['status'] = '0';
-						
-			$data = array_merge($data, array('product_description' => $this->getProductDescriptions($product_id)));			
-			$data = array_merge($data, array('product_image' => $this->getProductImages($product_id)));
-			
-			$data['product_image'] = array();
-			
-			$results = $this->getProductImages($product_id);
-			
-			foreach ($results as $result) {
-				$data['product_image'][] = $result['image'];
-			}
-						
-			$data = array_merge($data, array('product_category' => $this->getProductCategories($product_id)));
-			$data = array_merge($data, array('product_layout' => $this->getProductLayouts($product_id)));
-			
-			$this->addProduct($data);
-		}
-	}
-	
 	public function deleteProduct($product_id) {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_description WHERE product_id = '" . (int)$product_id . "'");

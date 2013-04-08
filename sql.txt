@@ -1,0 +1,1 @@
+ALTER TABLE `realty`.`slide_description` CHANGE COLUMN `text` `price` VARCHAR(30) NOT NULL DEFAULT ''  , ADD COLUMN `object` VARCHAR(255) NOT NULL DEFAULT ''  AFTER `price` ;

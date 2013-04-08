@@ -49,8 +49,12 @@
           <div id="language<?php echo $language['language_id']; ?>">
             <table class="form">
               <tr>
-                <td><?php echo $entry_name; ?></td>
-                <td><textarea name="slide_description[<?php echo $language['language_id']; ?>][text]" id="text<?php echo $language['language_id']; ?>"><?php echo isset($slide_description[$language['language_id']]) ? $slide_description[$language['language_id']]['text'] : ''; ?></textarea></td>
+                <td>Цена</td>
+                <td><input type="text" name="slide_description[<?php echo $language['language_id']; ?>][price]" value="<?php echo isset($slide_description[$language['language_id']]) ? $slide_description[$language['language_id']]['price'] : ''; ?>" /></td>
+              </tr>
+              <tr>
+                <td>Название обьекта</td>
+                <td><input type="text" name="slide_description[<?php echo $language['language_id']; ?>][object]" value="<?php echo isset($slide_description[$language['language_id']]) ? $slide_description[$language['language_id']]['object'] : ''; ?>" /></td>
               </tr>
             </table>
           </div>
@@ -61,19 +65,8 @@
   </div>
 </div>
 
-<script type="text/javascript" src="view/javascript/ckeditor/ckeditor.js"></script> 
-<script type="text/javascript"><!--
-<?php foreach ($languages as $language) { ?>
-CKEDITOR.replace('text<?php echo $language['language_id']; ?>', {
-    filebrowserBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-    filebrowserImageBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-    filebrowserFlashBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-    filebrowserUploadUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-    filebrowserImageUploadUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-    filebrowserFlashUploadUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>'
-});
-<?php } ?>
-//--></script> 
+
+
 <script type="text/javascript"><!--
 function image_upload(field, thumb) {
 	$('#dialog').remove();

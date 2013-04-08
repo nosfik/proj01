@@ -40,7 +40,8 @@ class ControllerCommonHome extends Controller {
         $slide_list = $this->model_menu_slide->getSlideItems();
         foreach ($slide_list as $slide) {
             $this->data['slide_items'][] = array(
-                'text'      => html_entity_decode($slide['text']),
+                'object'      => html_entity_decode($slide['object']),
+                'price'      => html_entity_decode($slide['price']),
                 'picture'   => 'image/'.$slide['picture'],
                 'url'       => HTTP_SERVER . $slide['url']
             );
@@ -53,8 +54,6 @@ class ControllerCommonHome extends Controller {
             $this->data['dreamhouse_items'][] = array(
                 'name'             => $dreamhouse['name'],
 				'city'         	   => $dreamhouse['city'],
-				'pool'         	   => $dreamhouse['pool'],
-				'garden'           => $dreamhouse['garden'],
 				'currency'         => $dreamhouse['currency'],
 				'number'           => $dreamhouse['number'],
 				'tag'              => $dreamhouse['tag'],
@@ -74,8 +73,6 @@ class ControllerCommonHome extends Controller {
             $this->data['suggestion_items'][] = array(
                 'name'             => $suggestion['name'],
 				'city'         	   => $suggestion['city'],
-				'pool'         	   => $suggestion['pool'],
-				'garden'           => $suggestion['garden'],
 				'currency'         => $suggestion['currency'],
 				'number'           => $suggestion['number'],
 				'tag'              => $suggestion['tag'],

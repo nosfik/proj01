@@ -8,7 +8,7 @@ class ModelSettingSlide extends Model {
             $this->db->query("UPDATE " . DB_PREFIX . "slide SET picture = '" . $this->db->escape(html_entity_decode($data['picture'], ENT_QUOTES, 'UTF-8')) . "' WHERE slide_id = '" . (int)$slide_id . "'");
         }
         foreach ($data['slide_description'] as $language_id => $value) {
-            $this->db->query("INSERT INTO " . DB_PREFIX . "slide_description SET slide_id = '" . (int)$slide_id . "',  language_id = '" . (int)$language_id . "', text = '" . $this->db->escape($value['text'])."'");
+                        $this->db->query("INSERT INTO " . DB_PREFIX . "slide_description SET slide_id = '" . (int)$slide_id . "', language_id = '" . (int)$language_id . "', price = '" . $this->db->escape($value['price'])."', object = '" . $this->db->escape($value['object'])."'");
         }
                 
     }
@@ -20,7 +20,7 @@ class ModelSettingSlide extends Model {
         }
         $this->db->query("DELETE FROM " . DB_PREFIX . "slide_description WHERE slide_id = '" . (int)$slide_id . "'");
         foreach ($data['slide_description'] as $language_id => $value) {
-            $this->db->query("INSERT INTO " . DB_PREFIX . "slide_description SET slide_id = '" . (int)$slide_id . "', language_id = '" . (int)$language_id . "', text = '" . $this->db->escape($value['text'])."'");
+            $this->db->query("INSERT INTO " . DB_PREFIX . "slide_description SET slide_id = '" . (int)$slide_id . "', language_id = '" . (int)$language_id . "', price = '" . $this->db->escape($value['price'])."', object = '" . $this->db->escape($value['object'])."'");
         }
         
     }
@@ -80,7 +80,7 @@ class ModelSettingSlide extends Model {
         
         return $query->row['total'];
     }   
-
+    
     public function getSlideDescriptions($slide_id) {
         $slide_description_data = array();
         
@@ -88,11 +88,12 @@ class ModelSettingSlide extends Model {
         
         foreach ($query->rows as $result) {
             $slide_description_data[$result['language_id']] = array(
-                'text'        => $result['text']
+                'price'        => $result['price'],
+                'object'        => $result['object']
             );
         }
-        
         return $slide_description_data;
-    }   
+    }
+
 }
 ?>

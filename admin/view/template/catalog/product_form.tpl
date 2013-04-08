@@ -76,24 +76,6 @@
             </tr>
             
             <tr>
-              <td>Количество кондиционеров</td>
-              <td><input type="text" name="air_cond" value="<?php echo $air_cond; ?>" /></td>
-            </tr>
-            <tr>
-              <td>Количество басейнов</td>
-              <td><input type="text" name="pool" value="<?php echo $pool; ?>" /></td>
-            </tr>
-            <tr>
-              <td>Количество садов</td>
-              <td><input type="text" name="garden" value="<?php echo $garden; ?>" /></td>
-            </tr>
-            <tr>
-              <td>Количество кухонь</td>
-              <td><input type="text" name="kitchen" value="<?php echo $kitchen; ?>" /></td>
-            </tr>
-            
-            
-            <tr>
               <td>Город</td>
               <td>
               	<select onchange="getZones(this.value)" name="country">

@@ -53,14 +53,11 @@
                     <tr><td class="first-column"><table><tr><td class="table-header">Номер объекта</td><td class="table-value"><?php echo $number;?></td></tr></table></td></tr>
                     <tr><td class="second-column"><table><tr><td class="table-header">Цена</td><td class="table-value"><?php echo $price;?> <?php echo $currency;?></td></tr></table></td></tr>
                     <tr><td class="first-column"><table><tr><td class="table-header">Общая площадь</td><td class="table-value"><?php echo $area;?> м/кв</td></tr></table></td></tr>
-                    <tr><td class="second-column"><table><tr><td class="table-header">Спален</td><td class="table-value"><?php echo $bedroom;?></td></tr></table></td></tr>
-                    <tr><td class="first-column"><table><tr><td class="table-header">Ванных комнат</td><td class="table-value"><?php echo $bathroom;?></td></tr></table></td></tr>
-                    <tr><td class="second-column"><table><tr><td class="table-header">Кухня</td><td class="table-value"><?php echo $kitchen;?></td></tr></table></td></tr>
-                    <tr><td class="first-column"><table><tr><td class="table-header">Сад</td><td class="table-value"><?php echo $garden;?></td></tr></table></td></tr>
-                    <tr><td class="second-column"><table><tr><td class="table-header">Бассейн</td><td class="table-value"><?php echo $pool;?></td></tr></table></td></tr>
-                    <tr><td class="first-column"><table><tr><td class="table-header">Отопление</td><td class="table-value"><?php echo $heating;?></td></tr></table></td></tr>
-                    <tr><td class="second-column"><table><tr><td class="table-header">Кондиционер</td><td class="table-value"><?php echo $air_cond;?></td></tr></table></td></tr>
-                
+                    
+                    <?php if(isset($sales)) { ?>
+                        <tr><td class="second-column"><table><tr><td class="table-header">Спален</td><td class="table-value"><?php echo $bedroom;?></td></tr></table></td></tr>
+                        <tr><td class="first-column"><table><tr><td class="table-header">Ванных комнат</td><td class="table-value"><?php echo $bathroom;?></td></tr></table></td></tr>
+                    <?php } ?>
                 <?php 
                 $tmp = 3;
                 foreach ($options as $option) {

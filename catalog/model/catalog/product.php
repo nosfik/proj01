@@ -24,11 +24,6 @@ class ModelCatalogProduct extends Model {
 				'meta_description' => $query->row['meta_description'],
 				'meta_keyword'     => $query->row['meta_keyword'],
 				'city'         	   => $query->row['city'],
-				'air_cond'     	   => $query->row['air_cond'],
-				'pool'         	   => $query->row['pool'],
-				'garden'           => $query->row['garden'],
-				'kitchen'          => $query->row['kitchen'],
-				'heating'          => $query->row['heating'],
 				'currency'         => $query->row['currency'],
 				'number'           => $query->row['number'],
 				'tag'              => $query->row['tag'],
@@ -47,6 +42,14 @@ class ModelCatalogProduct extends Model {
 			return false;
 		}
 	}
+
+    public function isProductSale($product_id) {
+        
+        $query = $this->db->query("SELECT main_category FROM product_to_category WHERE product_id =".(int)$product_id." LIMIT 1");
+        
+        return ($query->row['main_category'] == 1 || $query->row['main_category'] == 11);
+        
+    }
 
 	public function getProducts($data = array()) {	
 		

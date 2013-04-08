@@ -683,40 +683,6 @@ class ControllerCatalogProduct extends Controller {
       		$this->data['number'] = '';
     	}
 
-
-
-		if (isset($this->request->post['air_cond'])) {
-      		$this->data['air_cond'] = $this->request->post['air_cond'];
-    	} elseif (!empty($product_info)) {
-			$this->data['air_cond'] = $product_info['air_cond'];
-		} else {
-      		$this->data['air_cond'] = '';
-    	}
-
-		if (isset($this->request->post['pool'])) {
-      		$this->data['pool'] = $this->request->post['pool'];
-    	} elseif (!empty($product_info)) {
-			$this->data['pool'] = $product_info['pool'];
-		} else {
-      		$this->data['pool'] = '';
-    	}
-		
-		if (isset($this->request->post['garden'])) {
-      		$this->data['garden'] = $this->request->post['garden'];
-    	} elseif (!empty($product_info)) {
-			$this->data['garden'] = $product_info['garden'];
-		} else {
-      		$this->data['garden'] = '';
-    	}
-		
-		if (isset($this->request->post['kitchen'])) {
-      		$this->data['kitchen'] = $this->request->post['kitchen'];
-    	} elseif (!empty($product_info)) {
-			$this->data['kitchen'] = $product_info['kitchen'];
-		} else {
-      		$this->data['kitchen'] = '';
-    	}
-
 		if (isset($this->request->post['area'])) {
       		$this->data['area'] = $this->request->post['area'];
     	} elseif (!empty($product_info)) {
