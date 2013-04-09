@@ -24,7 +24,7 @@
                      slideshow: {
                        enable: true,
                        autostart: false,
-                       speed: 1000,
+                       speed: 2000,
                        start_label: 'Start',
                        stop_label: 'Stop',
                        stop_on_scroll: true,

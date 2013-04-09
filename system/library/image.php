@@ -67,8 +67,12 @@ class Image {
 			return;
 		}
 		
-		$new_width = (int)($this->info['width'] * $scale);
-		$new_height = (int)($this->info['height'] * $scale);			
+			$new_width = $width;
+			$new_height = $height;		
+			//	$new_width = (int)($this->info['width'] * $scale);
+		//$new_height = (int)($this->info['height'] * $scale);
+		
+			
     	$xpos = (int)(($width - $new_width) / 2);
    		$ypos = (int)(($height - $new_height) / 2);
         		        

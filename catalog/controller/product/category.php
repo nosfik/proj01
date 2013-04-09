@@ -82,16 +82,6 @@ class ControllerProductCategory extends Controller {
         $this->document->addScript('catalog/view/javascript/jScrollPane.js');
         $this->document->addScript('catalog/view/javascript/jquery.mousewheel.js');
         $this->document->addStyle('catalog/view/theme/default/stylesheet/cusel.css');
-		 $this->load->model('menu/slide');
-        
-        $slide_list = $this->model_menu_slide->getSlideItems();
-        foreach ($slide_list as $slide) {
-            $this->data['slide_items'][] = array(
-                'text'      => html_entity_decode($slide['text']),
-                'picture'   => 'image/'.$slide['picture'],
-                'url'       => HTTP_SERVER . $slide['url']
-            );
-        }
 		
 		
 		

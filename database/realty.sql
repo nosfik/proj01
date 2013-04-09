@@ -636,7 +636,7 @@ CREATE TABLE `currency` (
 
 LOCK TABLES `currency` WRITE;
 /*!40000 ALTER TABLE `currency` DISABLE KEYS */;
-INSERT INTO `currency` VALUES (1,'Рубль','RUB','',' р.','2',30.89900017,1,'2013-03-22 10:44:50'),(2,'US Dollar','USD','$','','2',1.00000000,1,'2013-03-22 13:28:06'),(3,'Euro','EUR','','€','2',0.77450001,1,'2013-03-22 10:44:50');
+INSERT INTO `currency` VALUES (1,'Рубль','RUB','',' р.','2',31.02000046,1,'2013-04-09 21:17:18'),(2,'US Dollar','USD','$','','2',1.00000000,1,'2013-04-09 21:17:18'),(3,'Euro','EUR','','€','2',0.76389998,1,'2013-04-09 21:17:18');
 /*!40000 ALTER TABLE `currency` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -927,7 +927,7 @@ CREATE TABLE `dreamhouse` (
   `number` varchar(45) NOT NULL,
   `sort_order` int(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`dreamhouse_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -936,7 +936,7 @@ CREATE TABLE `dreamhouse` (
 
 LOCK TABLES `dreamhouse` WRITE;
 /*!40000 ALTER TABLE `dreamhouse` DISABLE KEYS */;
-INSERT INTO `dreamhouse` VALUES (3,'123',1),(4,'236',12);
+INSERT INTO `dreamhouse` VALUES (3,'23523',1),(4,'236',12),(5,'234',12);
 /*!40000 ALTER TABLE `dreamhouse` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1044,7 +1044,7 @@ CREATE TABLE `information_description` (
 
 LOCK TABLES `information_description` WRITE;
 /*!40000 ALTER TABLE `information_description` DISABLE KEYS */;
-INSERT INTO `information_description` VALUES (5,1,'Условия соглашения','&lt;p&gt;\r\n	Условия соглашения&lt;/p&gt;\r\n','','','',''),(3,1,'Политика Безопасности','&lt;p&gt;\r\n	Политика Безопасности&lt;/p&gt;\r\n','','','',''),(6,1,'Информация о доставке','&lt;p&gt;\r\n	Информация о доставке&lt;/p&gt;\r\n','','','',''),(4,1,'О нас','&lt;p&gt;\r\n	&lt;span style=&quot;color:#fff0f5;&quot;&gt;О насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО нас&lt;/span&gt;&lt;/p&gt;\r\n','','','',''),(5,2,'Terms &amp; Conditions','&lt;p&gt;\r\n	Terms &amp;amp; Conditions&lt;/p&gt;\r\n','','','',''),(3,2,'Privacy Policy','&lt;p&gt;\r\n	Privacy Policy&lt;/p&gt;\r\n','','','',''),(6,2,'Delivery Information','&lt;p&gt;\r\n	Delivery Information&lt;/p&gt;\r\n','','','',''),(4,2,'About Us','&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n','','','',''),(8,1,'Новости','&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n','','','',''),(8,2,'News','sdf','','','',''),(9,1,'Фото','&lt;p&gt;\r\n	Фото&lt;/p&gt;\r\n','','','',''),(9,2,'Photo','&lt;p&gt;\r\n	Photo&lt;/p&gt;\r\n','','','',''),(10,1,'Видео','&lt;p&gt;\r\n	Видео&lt;/p&gt;\r\n','','','',''),(10,2,'Video','&lt;p&gt;\r\n	Video&lt;/p&gt;\r\n','','','',''),(11,1,'Контакты','&lt;p&gt;\r\n	Контакты&lt;/p&gt;\r\n','','','',''),(11,2,'Contacts','&lt;p&gt;\r\n	Contacts&lt;/p&gt;\r\n','','','',''),(12,1,'Дизайн','&lt;p&gt;\r\n	Дизайн&lt;/p&gt;\r\n','','','',''),(12,2,'Design','&lt;p&gt;\r\n	Design&lt;/p&gt;\r\n','','','',''),(13,1,'Отзывы','&lt;p&gt;\r\n	Отзывы&lt;/p&gt;\r\n','','','',''),(13,2,'Comments','&lt;p&gt;\r\n	Comments&lt;/p&gt;\r\n','','','',''),(14,1,'Статьи','&lt;p&gt;\r\n	Статьи&lt;/p&gt;\r\n','','','',''),(14,2,'Articles','&lt;p&gt;\r\n	Articles&lt;/p&gt;\r\n','','','',''),(15,1,'somemenu','&lt;p&gt;\r\n	somemenu&lt;/p&gt;\r\n','','','',''),(15,2,'somemenu','&lt;p&gt;\r\n	somemenu&lt;/p&gt;\r\n','','','',''),(16,1,'Мебель','&lt;p&gt;\r\n	Мебель&lt;/p&gt;\r\n','','','',''),(16,2,'Furniture','&lt;p&gt;\r\n	Furniture&lt;/p&gt;\r\n','','','','');
+INSERT INTO `information_description` VALUES (5,1,'Условия соглашения','&lt;p&gt;\r\n	Условия соглашения&lt;/p&gt;\r\n','','','',''),(3,1,'Политика Безопасности','&lt;p&gt;\r\n	Политика Безопасности&lt;/p&gt;\r\n','','','',''),(6,1,'Информация о доставке','&lt;p&gt;\r\n	Информация о доставке&lt;/p&gt;\r\n','','','',''),(4,1,'О нас','&lt;p&gt;\r\n	&lt;span style=&quot;color:#fff0f5;&quot;&gt;О насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО насО нас&lt;/span&gt;&lt;/p&gt;\r\n','','','',''),(5,2,'Terms &amp; Conditions','&lt;p&gt;\r\n	Terms &amp;amp; Conditions&lt;/p&gt;\r\n','','','',''),(3,2,'Privacy Policy','&lt;p&gt;\r\n	Privacy Policy&lt;/p&gt;\r\n','','','',''),(6,2,'Delivery Information','&lt;p&gt;\r\n	Delivery Information&lt;/p&gt;\r\n','','','',''),(4,2,'About Us','&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#faebd7;&quot;&gt;About Us&lt;/span&gt;&lt;/p&gt;\r\n','','','',''),(8,1,'Новости','&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n&lt;p&gt;\r\n	Новости Новости Новости&lt;/p&gt;\r\n','','','',''),(8,2,'News','sdf','','','',''),(9,1,'Фото','&lt;p&gt;\r\n	Фото&lt;/p&gt;\r\n','','','',''),(9,2,'Photo','&lt;p&gt;\r\n	Photo&lt;/p&gt;\r\n','','','',''),(11,1,'Контакты','&lt;p&gt;\r\n	Контакты&lt;/p&gt;\r\n','','','',''),(11,2,'Contacts','&lt;p&gt;\r\n	Contacts&lt;/p&gt;\r\n','','','',''),(12,1,'Дизайн','&lt;p&gt;\r\n	Дизайн&lt;/p&gt;\r\n','','','',''),(12,2,'Design','&lt;p&gt;\r\n	Design&lt;/p&gt;\r\n','','','',''),(13,1,'Отзывы','&lt;p&gt;\r\n	Отзывы&lt;/p&gt;\r\n','','','',''),(13,2,'Comments','&lt;p&gt;\r\n	Comments&lt;/p&gt;\r\n','','','',''),(14,1,'Статьи','&lt;p&gt;\r\n	Статьи&lt;/p&gt;\r\n','','','',''),(14,2,'Articles','&lt;p&gt;\r\n	Articles&lt;/p&gt;\r\n','','','',''),(15,1,'somemenu','&lt;p&gt;\r\n	somemenu&lt;/p&gt;\r\n','','','',''),(15,2,'somemenu','&lt;p&gt;\r\n	somemenu&lt;/p&gt;\r\n','','','',''),(16,1,'Мебель','&lt;p&gt;\r\n	Мебель&lt;/p&gt;\r\n','','','',''),(16,2,'Furniture','&lt;p&gt;\r\n	Furniture&lt;/p&gt;\r\n','','','',''),(10,2,'Video','&lt;p&gt;\r\n	&lt;iframe allowfullscreen=&quot;&quot; frameborder=&quot;0&quot; height=&quot;315&quot; src=&quot;http://www.youtube.com/embed/U9rymViMk8g&quot; width=&quot;420&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;\r\n','','','',''),(10,1,'Видео','&lt;p&gt;\r\n	&lt;iframe allowfullscreen=&quot;&quot; frameborder=&quot;0&quot; height=&quot;315&quot; src=&quot;http://www.youtube.com/embed/U9rymViMk8g&quot; width=&quot;420&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;\r\n','','','','');
 /*!40000 ALTER TABLE `information_description` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1069,7 +1069,7 @@ CREATE TABLE `information_to_layout` (
 
 LOCK TABLES `information_to_layout` WRITE;
 /*!40000 ALTER TABLE `information_to_layout` DISABLE KEYS */;
-INSERT INTO `information_to_layout` VALUES (8,0,0),(9,0,0),(10,0,0),(11,0,0),(12,0,0),(13,0,0),(14,0,0),(15,0,0),(16,0,0);
+INSERT INTO `information_to_layout` VALUES (8,0,0),(9,0,0),(11,0,0),(12,0,0),(13,0,0),(14,0,0),(15,0,0),(16,0,0);
 /*!40000 ALTER TABLE `information_to_layout` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1855,7 +1855,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'data/logo.png','236','123',509,1,50,1200006,'0000-00-00 00:00:00',1,2,18,'2013-03-14 19:47:56','1','1','5','4','3',2),(3,'data/menu_info/pic1.png','234','207',453,234,34,345,'2013-03-14 16:34:11',1,1,13,'0000-00-00 00:00:00','1','1','0','0','0',0),(4,'','123','17',1,2,3,345,'2013-03-14 19:48:57',1,1,3,'0000-00-00 00:00:00','1','1','7','6','5',4),(5,'data/demo/other/dream-house-3.png','23523','68',345,345,345,0,'2013-03-20 11:22:28',1,1,13,'0000-00-00 00:00:00','1','1','1','4','3',2);
+INSERT INTO `product` VALUES (1,'data/IMG_0448.jpg','777','2973',210,3,4,550000,'0000-00-00 00:00:00',1,1,127,'2013-04-02 11:30:53','1','0','1','1','3',1),(3,'data/342.png','234','207',453,234,34,345,'2013-03-14 16:34:11',1,1,30,'2013-03-29 00:26:55','1','1','0','0','0',0),(4,'data/IMG_0634.jpg','123','2973',1,2,3,430000,'2013-03-14 19:48:57',1,1,20,'2013-04-01 15:25:24','1','2','7','6','5',4),(5,'data/IMG_0634.jpg','23523','68',345,345,345,0,'2013-03-20 11:22:28',1,1,21,'2013-04-01 15:24:30','1','1','1','4','3',2);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1915,7 +1915,7 @@ CREATE TABLE `product_description` (
 
 LOCK TABLES `product_description` WRITE;
 /*!40000 ALTER TABLE `product_description` DISABLE KEYS */;
-INSERT INTO `product_description` VALUES (1,2,'Big house','&lt;p&gt;\r\n	dfg2&lt;/p&gt;\r\n','dfg2','fdg2','dfg2','fdg2','ffg'),(4,1,'dfgret','&lt;p&gt;\r\n	sdfsdf&lt;/p&gt;\r\n','','','','','rwer'),(3,1,'цук','&lt;p&gt;\r\n	укеук&lt;/p&gt;\r\n','вап','уке','авп','цуе','нету'),(3,2,'dfsd','&lt;p&gt;\r\n	sgdd&lt;/p&gt;\r\n','fdgdf','bdf','ger','wer','нету'),(1,1,'Большой дом','&lt;p&gt;\r\n	dfg0&lt;/p&gt;\r\n','dfg1','dfgdfg1','dfg1','dfg1','ыва'),(4,2,'erter','&lt;p&gt;\r\n	dfg&lt;/p&gt;\r\n','','','','','terter'),(5,1,'dfgdf','&lt;p&gt;\r\n	dfghdfg&lt;/p&gt;\r\n','dfgh','dfgh','dfgh','dfg','ert'),(5,2,'dfgh','&lt;p&gt;\r\n	dfgh&lt;/p&gt;\r\n','dfghfdg','ert','ert','ert','ret');
+INSERT INTO `product_description` VALUES (3,2,'dfsd','&lt;p&gt;\r\n	sgdd&lt;/p&gt;\r\n','fdgdf','bdf','ger','wer','нету'),(3,1,'цук','&lt;p&gt;\r\n	укеук&lt;/p&gt;\r\n','вап','уке','авп','цуе','нету'),(1,1,'Дом с видом на море','&lt;p&gt;\r\n	&lt;span style=&quot;font-family: arial, sans-serif; font-size: 13.333333969116211px;&quot;&gt;Шикарные апартаменты в Альтеа с видом на море.&amp;nbsp;&lt;/span&gt;&lt;/p&gt;\r\n&lt;div style=&quot;font-family: arial, sans-serif; font-size: 13.333333969116211px;&quot;&gt;\r\n	Площадь составляет 210 м2,4 спальни, 3 ванных комнаты, 2 террасы, американская кухня, просторный зал,вид на море,имеется центральный кондиционер, центральное газовое отопление. В цену входит парковочное место и кладовка. В жилом комлексе так же имеется: 3 бассейна, &amp;nbsp;сквош, детская площадка.&lt;/div&gt;\r\n&lt;div style=&quot;font-family: arial, sans-serif; font-size: 13.333333969116211px;&quot;&gt;\r\n	Тихий микрорайон находится в городке Альтеа, в 5 минутах от жилого комплекса есть супермаркет, а в пешей доступности расположен пляж, бары и рестораны.&lt;/div&gt;\r\n&lt;p&gt;\r\n	&amp;nbsp;&lt;/p&gt;\r\n','dfg1','dfgdfg1','dfg1','dfg1','Автоновное'),(4,2,'Super Home','&lt;p&gt;\r\n	dfg&lt;/p&gt;\r\n','','','','','Super Termo'),(5,2,'dfgh','&lt;p&gt;\r\n	dfgh&lt;/p&gt;\r\n','dfghfdg','ert','ert','ert','ret'),(5,1,'dfgdf','&lt;p&gt;\r\n	dfghdfg&lt;/p&gt;\r\n','dfgh','dfgh','dfgh','dfg','ert'),(4,1,'Супер Дом','&lt;p&gt;\r\n	Супер&lt;/p&gt;\r\n','','','','','Супер отопление'),(1,2,'Big house','&lt;p&gt;\r\n	dfg2&lt;/p&gt;\r\n','dfg2','fdg2','dfg2','fdg2','ffg');
 /*!40000 ALTER TABLE `product_description` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1932,7 +1932,7 @@ CREATE TABLE `product_image` (
   `image` varchar(255) DEFAULT NULL,
   `sort_order` int(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`product_image_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1941,7 +1941,7 @@ CREATE TABLE `product_image` (
 
 LOCK TABLES `product_image` WRITE;
 /*!40000 ALTER TABLE `product_image` DISABLE KEYS */;
-INSERT INTO `product_image` VALUES (22,1,'data/menu_info/pic1.png',2),(21,1,'data/menu_info/fon.jpg',1),(5,3,'data/slider/1.jpg',1),(6,3,'data/slider/2.jpg',2),(23,5,'data/menu_info/fon.jpg',0);
+INSERT INTO `product_image` VALUES (30,3,'data/slider/2.jpg',2),(29,3,'data/slider/1.jpg',1),(37,5,'data/menu_info/fon.jpg',0),(38,4,'no_image.jpg',0),(98,1,'data/zzz/IMG_0444.jpg',6),(95,1,'data/zzz/IMG_0443.jpg',2),(96,1,'data/zzz/IMG_0430.jpg',0),(97,1,'data/zzz/IMG_0448.jpg',1),(94,1,'data/zzz/IMG_0429.jpg',3),(93,1,'data/zzz/IMG_0428.jpg',4),(99,1,'data/zzz/IMG_0431.jpg',5);
 /*!40000 ALTER TABLE `product_image` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1999,6 +1999,31 @@ INSERT INTO `product_old` VALUES (28,'Товар 1','','','','','','','',939,7,'
 UNLOCK TABLES;
 
 --
+-- Table structure for table `product_option`
+--
+
+DROP TABLE IF EXISTS `product_option`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product_option` (
+  `product_id` int(11) NOT NULL,
+  `language_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `header` varchar(255) NOT NULL,
+  `value` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_option`
+--
+
+LOCK TABLES `product_option` WRITE;
+/*!40000 ALTER TABLE `product_option` DISABLE KEYS */;
+/*!40000 ALTER TABLE `product_option` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `product_tag`
 --
 
@@ -2019,7 +2044,7 @@ CREATE TABLE `product_tag` (
 
 LOCK TABLES `product_tag` WRITE;
 /*!40000 ALTER TABLE `product_tag` DISABLE KEYS */;
-INSERT INTO `product_tag` VALUES (1,'hot','data/tags/hot-tag.png'),(2,'sale','data/tags/sale-25-tag.png'),(3,'new','data/tags/new-tag.png');
+INSERT INTO `product_tag` VALUES (1,'hot','data/tags/hot-tag.png'),(2,'new','data/tags/new-tag.png'),(3,'sale','data/tags/sale-25-tag.png');
 /*!40000 ALTER TABLE `product_tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2154,7 +2179,7 @@ CREATE TABLE `slide` (
 
 LOCK TABLES `slide` WRITE;
 /*!40000 ALTER TABLE `slide` DISABLE KEYS */;
-INSERT INTO `slide` VALUES (1,'data/slider/1.jpg','gsd2',3,'werh1'),(2,'data/slider/2.jpg','234',3,'sdfsdf');
+INSERT INTO `slide` VALUES (1,'data/34.jpg','gsd2',3,'werh1'),(2,'data/slider/2.jpg','234',3,'sdfsdf');
 /*!40000 ALTER TABLE `slide` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2168,7 +2193,8 @@ DROP TABLE IF EXISTS `slide_description`;
 CREATE TABLE `slide_description` (
   `slide_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
-  `text` text,
+  `price` varchar(30) NOT NULL DEFAULT '',
+  `object` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`slide_id`,`language_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -2179,7 +2205,7 @@ CREATE TABLE `slide_description` (
 
 LOCK TABLES `slide_description` WRITE;
 /*!40000 ALTER TABLE `slide_description` DISABLE KEYS */;
-INSERT INTO `slide_description` VALUES (0,1,'&lt;p&gt;\r\n	Приветт&lt;/p&gt;\r\n'),(0,2,'&lt;p&gt;\r\n	Hello&lt;/p&gt;\r\n'),(1,1,'&lt;p&gt;\r\n	ПРИВЕТ ДОРОГИЕ ДРУЗЬЯ&lt;/p&gt;\r\n'),(1,2,'&lt;p&gt;\r\n	sdf&lt;/p&gt;\r\n'),(2,1,'&lt;p&gt;\r\n	&lt;span style=&quot;font-size:36px;&quot;&gt;&lt;span style=&quot;font-family: comic sans ms,cursive;&quot;&gt;&lt;span style=&quot;background-color:#ffffff;&quot;&gt;dfgdfgdfg&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;\r\n'),(2,2,'');
+INSERT INTO `slide_description` VALUES (0,1,'&lt;p&gt;\r\n	Приветт&lt;/p&gt;\r',''),(0,2,'&lt;p&gt;\r\n	Hello&lt;/p&gt;\r\n',''),(1,1,'500 000$','ВИЛЛЫ В ЖИТОМИРЕ'),(1,2,'&lt;p&gt;	sdf&lt;/p&gt;',''),(2,1,'120 000&amp;euro;','Виллы в тернополе'),(2,2,'','');
 /*!40000 ALTER TABLE `slide_description` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2245,7 +2271,7 @@ CREATE TABLE `suggestion` (
   `number` varchar(45) NOT NULL,
   `sort_order` int(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`suggestion_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2254,7 +2280,7 @@ CREATE TABLE `suggestion` (
 
 LOCK TABLES `suggestion` WRITE;
 /*!40000 ALTER TABLE `suggestion` DISABLE KEYS */;
-INSERT INTO `suggestion` VALUES (1,'236',2),(2,'234',2);
+INSERT INTO `suggestion` VALUES (1,'236',2),(2,'234',2),(3,'123',1);
 /*!40000 ALTER TABLE `suggestion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2377,7 +2403,7 @@ CREATE TABLE `url_alias` (
   `query` varchar(255) NOT NULL,
   `keyword` varchar(255) NOT NULL,
   PRIMARY KEY (`url_alias_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=797 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=834 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2386,7 +2412,7 @@ CREATE TABLE `url_alias` (
 
 LOCK TABLES `url_alias` WRITE;
 /*!40000 ALTER TABLE `url_alias` DISABLE KEYS */;
-INSERT INTO `url_alias` VALUES (704,'product_id=48','ipod_classic'),(773,'category_id=20','desktops'),(503,'category_id=26','pc'),(505,'category_id=27','mac'),(730,'manufacturer_id=8','apple'),(796,'information_id=4','about_us'),(768,'product_id=42','test'),(767,'category_id=34','mp3-players'),(536,'category_id=36','Normal'),(795,'category_id=3','ert'),(792,'product_id=1','665'),(784,'product_id=3','ff'),(793,'product_id=4','rty');
+INSERT INTO `url_alias` VALUES (704,'product_id=48','ipod_classic'),(773,'category_id=20','desktops'),(503,'category_id=26','pc'),(505,'category_id=27','mac'),(730,'manufacturer_id=8','apple'),(796,'information_id=4','about_us'),(768,'product_id=42','test'),(767,'category_id=34','mp3-players'),(536,'category_id=36','Normal'),(795,'category_id=3','ert'),(833,'product_id=1','665'),(802,'product_id=3','ff'),(808,'product_id=4','rty');
 /*!40000 ALTER TABLE `url_alias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2671,4 +2697,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-22 13:37:39
+-- Dump completed on 2013-04-09 21:28:16
