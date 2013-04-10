@@ -50,6 +50,32 @@ class ModelCatalogProduct extends Model {
         return ($query->row['main_category'] == 1 || $query->row['main_category'] == 11);
         
     }
+	
+	public function getTotalPhotos() {
+		$sql = "Select COUNT(*) as total FROM product WHERE status=1";
+		$query = $this->db->query($sql);
+		return $query->row['total'];
+	}
+	
+	public function getPhotos($data = array()) {
+		
+		$sql = "Select product_id, image FROM product WHERE status=1";
+		
+		if (isset($data['start']) || isset($data['limit'])) {
+			if ($data['start'] < 0) {
+				$data['start'] = 0;
+			}				
+
+			if ($data['limit'] < 1) {
+				$data['limit'] = 20;
+			}	
+		
+			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
+		}
+		
+		$query = $this->db->query($sql);
+		return $query->rows;
+	}
 
 	public function getProducts($data = array()) {	
 		
@@ -155,17 +181,7 @@ class ModelCatalogProduct extends Model {
 				$sql .= " ASC, LCASE(pd.name) ASC";
 			}
 		
-			if (isset($data['start']) || isset($data['limit'])) {
-				if ($data['start'] < 0) {
-					$data['start'] = 0;
-				}				
-	
-				if ($data['limit'] < 1) {
-					$data['limit'] = 20;
-				}	
 			
-				$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
-			}
 			
 			$product_data = array();
 					

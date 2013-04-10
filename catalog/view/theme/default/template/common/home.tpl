@@ -14,8 +14,6 @@ mlcalc_loan_amount = '150,000';
 mlcalc_loan_term = '15';
 </script>
 <div class="content-wrapper">
-    <?php print_r($slide_items)?>
-
 <div id="slider">
     <div id="slideshow">
     	 <div class="slider-shadow"></div>
@@ -32,17 +30,20 @@ mlcalc_loan_term = '15';
             
          <div class="bigslide">
           <a href="<?php echo $slide_item['url'];?> "><img src="<?php echo $slide_item['picture'];?>" width="1200px" height="527px" /></a>
-            <span style="z-index:1001; style:display:block">
+            
+            <?php if(!empty($slide_item['object']) && !empty($slide_item['price'])) { ?>
+            	<span style="z-index:1001; style:display:block">
+	            	<h1 style="background:url('catalog/view/theme/default/image/slide_fon1.png') repeat; font-family: 'MyriadProSemiCn';font-size:36px;text-transform: uppercase; color:#cc7c1a;margin-bottom: -1px;padding:10px 10px 0">
+	                   <?php echo $slide_item['object'];?>
+	               </h1>
                
-               <h1 style="background:url('catalog/view/theme/default/image/slide_fon1.png') repeat; font-family: 'MyriadProSemiCn';font-size:36px;text-transform: uppercase; color:#cc7c1a;margin-bottom: -1px;padding:10px 10px 0">
-                   <?php echo $slide_item['object'];?>
-               </h1>
-               
-               <h1 style="background:url('catalog/view/theme/default/image/slide_fon1.png') repeat; font-family: 'MyriadProSemiCn'; font-size:27px;text-transform: uppercase; color:#f7b310;display:inline;padding:0px 10px 10px 10px">
-                   <?php echo $slide_item['price'];?>
-               </h1>
+	               <h1 style="background:url('catalog/view/theme/default/image/slide_fon1.png') repeat; font-family: 'MyriadProSemiCn'; font-size:27px;text-transform: uppercase; color:#f7b310;display:inline;padding:0px 10px 10px 10px">
+	                   <?php echo $slide_item['price'];?>
+	               </h1>
+	          
               
            </span>
+            <?php } ?>
         </div>
             
        <?php } ?>
@@ -82,7 +83,7 @@ mlcalc_loan_term = '15';
 	    	<div class="house-item" onclick="location.href='<?php echo $product['url']; ?>'">
                     <a href="<?php echo $product['url']; ?>"><div class="frame"></div></a>
                     <div style="width:228px; height:167px"><img height="167" width="228" src="<?php echo $product['thumb']; ?>"></div>
-                    <?php if(!empty($product)) { ?>
+                    <?php if(!empty($product['tag'])) { ?>
                        <img height="68" width="68" class="house-tag" src="image/<?php echo $product['tag'];?>"> 
                     <?php } ?>
                     <p class="house-price"><?php echo $product['price'];?> <?php echo $product['currency'];?></p>

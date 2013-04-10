@@ -1,5 +1,7 @@
 <?php
 class ModelCatalogCategory extends Model {
+	
+	
 	public function getCategory($category_id) {
 		return $this->getCategories((int)$category_id, 'by_id');
 	}

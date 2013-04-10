@@ -31,7 +31,7 @@
                         <div class="ad-thumbs">
                             <ul class="ad-thumb-list">
                             	<?php foreach ($images as $image) { ?>
-									<li>thumb
+									<li>
 	                                    <a href="<?php echo $image['popup'];?>">
 	                                        <img src="<?php echo $image['thumb'];?>" class="image0">
 	                                    </a>
@@ -89,7 +89,7 @@
 
 
             <div class="item-description">
-                <p class="header2">[Описание] <?php echo $name;?></p>
+                <p class="header2"><?php echo $name;?></p>
                 <div class="text2"> <?php echo $description;?></p>
 
             </div>
