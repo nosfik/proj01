@@ -1,1 +1,12 @@
 ALTER TABLE `realty`.`slide_description` CHANGE COLUMN `text` `price` VARCHAR(30) NOT NULL DEFAULT ''  , ADD COLUMN `object` VARCHAR(255) NOT NULL DEFAULT ''  AFTER `price` ;
+
+
+CREATE  TABLE `realty`.`video` (
+
+  `video_id` INT NOT NULL ,
+
+  `href` VARCHAR(255) NOT NULL ,
+
+  `order` INT(3) NOT NULL DEFAULT '0' ,
+
+  PRIMARY KEY (`video_id`) );

@@ -1,0 +1,62 @@
+2013-04-11 20:11:18 - PHP Notice:  Error: Table 'realty.news' doesn't exist<br />Error No: 1146<br />SELECT * FROM news in Z:\home\realty\www\system\database\mysql.php on line 49
+2013-04-11 20:11:57 - PHP Notice:  Error: Table 'realty.news' doesn't exist<br />Error No: 1146<br />SELECT * FROM news in Z:\home\realty\www\system\database\mysql.php on line 49
+2013-04-11 20:12:21 - PHP Notice:  Error: Table 'realty.news' doesn't exist<br />Error No: 1146<br />SELECT * FROM news in Z:\home\realty\www\system\database\mysql.php on line 49
+2013-04-11 20:33:25 - PHP Notice:  Undefined variable: column_left in Z:\home\realty\www\catalog\view\theme\default\template\information\news.tpl on line 1
+2013-04-11 20:33:25 - PHP Notice:  Undefined variable: column_right in Z:\home\realty\www\catalog\view\theme\default\template\information\news.tpl on line 1
+2013-04-14 20:32:13 - PHP Notice:  Undefined variable: sort_name in Z:\home\realty\www\admin\view\template\setting\video_list.tpl on line 26
+2013-04-14 20:32:47 - PHP Notice:  Undefined variable: sort_name in Z:\home\realty\www\admin\view\template\setting\video_list.tpl on line 26
+2013-04-14 20:32:49 - PHP Notice:  Undefined variable: sort_name in Z:\home\realty\www\admin\view\template\setting\video_list.tpl on line 26
+2013-04-14 20:32:49 - PHP Notice:  Undefined variable: sort_name in Z:\home\realty\www\admin\view\template\setting\video_list.tpl on line 26
+2013-04-14 20:32:49 - PHP Notice:  Undefined variable: sort_name in Z:\home\realty\www\admin\view\template\setting\video_list.tpl on line 26
+2013-04-14 20:33:22 - PHP Notice:  Undefined variable: name in Z:\home\realty\www\admin\view\template\setting\video_form.tpl on line 23
+2013-04-14 20:33:22 - PHP Notice:  Undefined variable: error_name in Z:\home\realty\www\admin\view\template\setting\video_form.tpl on line 24
+2013-04-14 20:33:22 - PHP Notice:  Undefined variable: url in Z:\home\realty\www\admin\view\template\setting\video_form.tpl on line 30
+2013-04-14 20:33:22 - PHP Notice:  Undefined variable: thumb in Z:\home\realty\www\admin\view\template\setting\video_form.tpl on line 34
+2013-04-14 20:33:22 - PHP Notice:  Undefined variable: picture in Z:\home\realty\www\admin\view\template\setting\video_form.tpl on line 35
+2013-04-14 20:33:22 - PHP Notice:  Undefined variable: no_image in Z:\home\realty\www\admin\view\template\setting\video_form.tpl on line 36
+2013-04-14 20:33:22 - PHP Notice:  Undefined variable: languages in Z:\home\realty\www\admin\view\template\setting\video_form.tpl on line 44
+2013-04-14 20:33:22 - PHP Warning:  Invalid argument supplied for foreach() in Z:\home\realty\www\admin\view\template\setting\video_form.tpl on line 44
+2013-04-14 20:33:22 - PHP Notice:  Undefined variable: languages in Z:\home\realty\www\admin\view\template\setting\video_form.tpl on line 48
+2013-04-14 20:33:22 - PHP Warning:  Invalid argument supplied for foreach() in Z:\home\realty\www\admin\view\template\setting\video_form.tpl on line 48
+2013-04-14 20:38:36 - PHP Notice:  Undefined variable: sort_name in Z:\home\realty\www\admin\view\template\setting\video_list.tpl on line 26
+2013-04-14 20:38:46 - PHP Notice:  Undefined variable: sort_name in Z:\home\realty\www\admin\view\template\setting\video_list.tpl on line 26
+2013-04-14 20:38:54 - PHP Notice:  Undefined variable: sort_name in Z:\home\realty\www\admin\view\template\setting\video_list.tpl on line 26
+2013-04-14 20:48:11 - PHP Notice:  Error: Could not load language information/video! in Z:\home\realty\www\vqmod\vqcache\vq2-system_library_language.php on line 41
+2013-04-14 21:33:23 - PHP Notice:  Undefined offset: 1 in Z:\home\realty\www\catalog\controller\information\video.php on line 35
+2013-04-14 21:33:23 - PHP Notice:  Undefined offset: 1 in Z:\home\realty\www\catalog\controller\information\video.php on line 36
+2013-04-14 21:33:23 - PHP Notice:  Undefined offset: 1 in Z:\home\realty\www\catalog\controller\information\video.php on line 35
+2013-04-14 21:33:23 - PHP Notice:  Undefined offset: 1 in Z:\home\realty\www\catalog\controller\information\video.php on line 36
+2013-04-14 21:34:06 - PHP Notice:  Undefined offset: 1 in Z:\home\realty\www\catalog\controller\information\video.php on line 35
+2013-04-14 21:34:06 - PHP Notice:  Undefined offset: 1 in Z:\home\realty\www\catalog\controller\information\video.php on line 36
+2013-04-14 21:34:06 - PHP Notice:  Undefined offset: 1 in Z:\home\realty\www\catalog\controller\information\video.php on line 35
+2013-04-14 21:34:06 - PHP Notice:  Undefined offset: 1 in Z:\home\realty\www\catalog\controller\information\video.php on line 36
+2013-04-14 21:34:35 - PHP Notice:  Undefined offset: 1 in Z:\home\realty\www\catalog\controller\information\video.php on line 35
+2013-04-14 21:34:35 - PHP Notice:  Undefined offset: 1 in Z:\home\realty\www\catalog\controller\information\video.php on line 36
+2013-04-14 21:34:35 - PHP Notice:  Undefined offset: 1 in Z:\home\realty\www\catalog\controller\information\video.php on line 35
+2013-04-14 21:34:35 - PHP Notice:  Undefined offset: 1 in Z:\home\realty\www\catalog\controller\information\video.php on line 36
+2013-04-14 21:37:17 - PHP Notice:  Undefined variable: sort_name in Z:\home\realty\www\admin\view\template\setting\video_list.tpl on line 26
+2013-04-14 21:37:33 - PHP Notice:  Undefined variable: sort_name in Z:\home\realty\www\admin\view\template\setting\video_list.tpl on line 26
+2013-04-14 21:42:09 - PHP Notice:  Undefined variable: matches1 in Z:\home\realty\www\catalog\controller\information\video.php on line 33
+2013-04-14 21:42:09 - PHP Notice:  Undefined variable: matches1 in Z:\home\realty\www\catalog\controller\information\video.php on line 36
+2013-04-14 21:42:09 - PHP Notice:  Undefined variable: matches1 in Z:\home\realty\www\catalog\controller\information\video.php on line 33
+2013-04-14 21:42:09 - PHP Notice:  Undefined variable: matches1 in Z:\home\realty\www\catalog\controller\information\video.php on line 36
+2013-04-14 21:43:07 - PHP Warning:  preg_match() [<a href='function.preg-match'>function.preg-match</a>]: No ending delimiter '/' found in Z:\home\realty\www\catalog\controller\information\video.php on line 32
+2013-04-14 21:43:07 - PHP Warning:  preg_match() [<a href='function.preg-match'>function.preg-match</a>]: No ending delimiter '/' found in Z:\home\realty\www\catalog\controller\information\video.php on line 32
+2013-04-14 22:05:43 - PHP Notice:  Undefined variable: entry_header in Z:\home\realty\www\admin\view\template\catalog\category_form.tpl on line 52
+2013-04-14 22:05:43 - PHP Notice:  Undefined variable: entry_header in Z:\home\realty\www\admin\view\template\catalog\category_form.tpl on line 52
+2013-04-14 22:06:35 - PHP Notice:  Undefined variable: entry_header in Z:\home\realty\www\admin\view\template\catalog\category_form.tpl on line 52
+2013-04-14 22:06:35 - PHP Notice:  Undefined variable: entry_header in Z:\home\realty\www\admin\view\template\catalog\category_form.tpl on line 52
+2013-04-14 22:08:28 - PHP Notice:  Undefined variable: entry_header in Z:\home\realty\www\admin\view\template\catalog\category_form.tpl on line 52
+2013-04-14 22:08:28 - PHP Notice:  Undefined variable: entry_header in Z:\home\realty\www\admin\view\template\catalog\category_form.tpl on line 52
+2013-04-14 22:12:05 - PHP Notice:  Undefined variable: entry_header in Z:\home\realty\www\admin\view\template\catalog\category_form.tpl on line 52
+2013-04-14 22:12:05 - PHP Notice:  Undefined variable: entry_header in Z:\home\realty\www\admin\view\template\catalog\category_form.tpl on line 52
+2013-04-14 22:49:21 - PHP Notice:  Undefined index: src in Z:\home\realty\www\catalog\view\theme\default\template\product\photo.tpl on line 29
+2013-04-14 22:49:21 - PHP Notice:  Undefined index: src in Z:\home\realty\www\catalog\view\theme\default\template\product\photo.tpl on line 29
+2013-04-14 22:49:21 - PHP Notice:  Undefined index: src in Z:\home\realty\www\catalog\view\theme\default\template\product\photo.tpl on line 29
+2013-04-14 22:49:21 - PHP Notice:  Undefined index: src in Z:\home\realty\www\catalog\view\theme\default\template\product\photo.tpl on line 29
+2013-04-14 22:49:27 - PHP Notice:  Undefined index: src in Z:\home\realty\www\catalog\view\theme\default\template\product\photo.tpl on line 29
+2013-04-14 22:49:27 - PHP Notice:  Undefined index: src in Z:\home\realty\www\catalog\view\theme\default\template\product\photo.tpl on line 29
+2013-04-14 22:49:27 - PHP Notice:  Undefined index: src in Z:\home\realty\www\catalog\view\theme\default\template\product\photo.tpl on line 29
+2013-04-14 22:49:27 - PHP Notice:  Undefined index: src in Z:\home\realty\www\catalog\view\theme\default\template\product\photo.tpl on line 29
+2013-04-14 23:00:28 - PHP Notice:  Error: Unknown column 'p.product_id' in 'field list'<br />Error No: 1054<br />Select p.product_id, p.image, pd.name FROM product LEFT JOIN product_description pd ON (p.product_id = pd.product_id) WHERE status=1 AND pd.language_id = '2' LIMIT 0,16 in Z:\home\realty\www\system\database\mysql.php on line 49
+2013-04-14 23:05:57 - PHP Notice:  Error: Could not load language information/video! in Z:\home\realty\www\vqmod\vqcache\vq2-system_library_language.php on line 41

@@ -59,7 +59,7 @@ class ModelCatalogProduct extends Model {
 	
 	public function getPhotos($data = array()) {
 		
-		$sql = "Select product_id, image FROM product WHERE status=1";
+		$sql = "Select p.product_id, p.image, pd.name FROM product as p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE status=1 AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
 		
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {

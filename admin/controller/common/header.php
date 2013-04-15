@@ -166,6 +166,7 @@ class ControllerCommonHeader extends Controller {
 			$this->data['return_status'] = $this->url->link('localisation/return_status', 'token=' . $this->session->data['token'], 'SSL');			
 			$this->data['shipping'] = $this->url->link('extension/shipping', 'token=' . $this->session->data['token'], 'SSL');
             $this->data['menu_info'] = $this->url->link('setting/menu_info', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['video'] = $this->url->link('setting/video', 'token=' . $this->session->data['token'], 'SSL');
             $this->data['slide'] = $this->url->link('setting/slide', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['setting'] = $this->url->link('setting/store', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['store'] = HTTP_CATALOG;

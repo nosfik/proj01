@@ -75,10 +75,19 @@ $(document).ready(function(){
         </ul>
       </li>
     
-    
+     <li id="extension"><a class="top"><?php echo $text_extension; ?></a>
+        <ul>
+          <li><a href="<?php echo $module; ?>"><?php echo $text_module; ?></a></li>
+          <li><a href="<?php echo $shipping; ?>"><?php echo $text_shipping; ?></a></li>
+          <li><a href="<?php echo $payment; ?>"><?php echo $text_payment; ?></a></li>
+          <li><a href="<?php echo $total; ?>"><?php echo $text_total; ?></a></li>
+          <li><a href="<?php echo $feed; ?>"><?php echo $text_feed; ?></a></li>
+        </ul>
+      </li>
       <li id="system"><a class="top"><?php echo $text_system; ?></a>
         <ul>
         	 <li><a href="<?php echo $about_us; ?>">О нас(на главной)</a></li>
+        	 <li><a href="<?php echo $video; ?>">Видео</a></li>
             <li><a href="<?php echo $menu_info; ?>"><?php echo $text_menu_info; ?></a></li>
              <li><a href="<?php echo $slide; ?>"><?php echo $text_slide; ?></a></li>
           <li><a href="<?php echo $setting; ?>"><?php echo $text_setting; ?></a></li>
@@ -88,6 +97,7 @@ $(document).ready(function(){
               <li><a href="<?php echo $banner; ?>"><?php echo $text_banner; ?></a></li>
             </ul>
           </li>
+          
           <li><a class="parent"><?php echo $text_users; ?></a>
             <ul>
               <li><a href="<?php echo $user; ?>"><?php echo $text_user; ?></a></li>

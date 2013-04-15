@@ -25,10 +25,13 @@
 	    <?php } ?>
 	    <li>
 	    	
-	    	<div class="house-item" onclick="location.href='<?php echo $image['href']; ?>'">
-                    <a href="<?php echo $image['href']; ?>"><div class="frame"></div></a>
-                    <div style="width:228px; height:167px"><img height="167" width="228" src="<?php echo $image['image']; ?>"></div>
-                </div>
+	    	
+	    	
+	    	<div class="house-item" >
+	    		
+                    <a title="<a href='<?php echo $image['href']; ?>'><?php echo $image['name']; ?></a>" rel="example_group" href="<?php echo $image['image']; ?>" ><img height="167" width="228" src="<?php echo $image['image']; ?>"></a>
+		<div class="frame" ></div>               
+		</div>
 	    	
 	    </li>
     <?php } ?>
@@ -47,6 +50,23 @@
   <?php echo $content_bottom; ?></div>
   
   </div>
-  
+
+<script type="text/javascript">
+		$(document).ready(function() {
+
+			$("a[rel=example_group]").fancybox({
+				'transitionIn'		: 'none',
+				'transitionOut'		: 'none',
+				'titlePosition' 	: 'over',
+				'titleFormat'		: function(title, currentArray, currentIndex, currentOpts) {
+					return '<span id="fancybox-title-over"> ' + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+				}
+			});
+			
+			$('.frame').click(function(){
+				$(this).parent().find('a').click();
+			});
+		});
+	</script>
 
 <?php echo $footer; ?>

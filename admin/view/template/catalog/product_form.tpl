@@ -200,8 +200,6 @@
           	
             <tr>
               <td><?php echo $entry_main_category; ?></td>
-              <pre>
-              </pre>
               <td><select name="main_category_id">
                 <option value="0" selected="selected"><?php echo $text_none; ?></option>
                 <?php foreach ($categories as $category) { ?>

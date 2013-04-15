@@ -1,7 +1,10 @@
 <?php
 class ControllerProductPhoto extends Controller {
 	public function index() {
-
+		
+		
+		$this->document->addScript('catalog/view/javascript/jquery.fancybox-1.3.4.pack.js');
+		$this->document->addStyle('catalog/view/theme/default/stylesheet/jquery.fancybox-1.3.4.css');
 
 		$this->language->load('product/photo');
 
@@ -49,6 +52,7 @@ class ControllerProductPhoto extends Controller {
 			
 			$this->data['images'][] = array(
 				'image' => 'image/'.$image['image'],
+				'name' => $image['name'],
 				'href' => $this->url->link('product/product', 'product_id='.$image['product_id'])
 			);
 			

@@ -151,9 +151,9 @@ DD_belatedPNG.fix('#logo img');
                 <li class="main-menu-item">
                 	<div class="menu-hover" style="left : <?=$l4?>px;"><img src="catalog/view/theme/default/image/headerMainMenuHover4_1.png" style="width: <?=$w4?>px;"/></div>
                 	<a href="<?php echo $this->url->link('product/order', '');?>"><?php echo $text_request;?></a></li>
-                <li class="main-menu-item"><div class="menu-hover" style="left : <?=$l5?>px;"><img src="catalog/view/theme/default/image/headerMainMenuHover4_1.png" style="width: <?=$w5?>px;"/></div><a href="index.php?route=information/information&information_id=8"><?php echo $text_news;?></a></li>
+                <li class="main-menu-item"><div class="menu-hover" style="left : <?=$l5?>px;"><img src="catalog/view/theme/default/image/headerMainMenuHover4_1.png" style="width: <?=$w5?>px;"/></div><a href="index.php?route=information/news"><?php echo $text_news;?></a></li>
                 <li class="main-menu-item"><div class="menu-hover" style="left : <?=$l6?>px;"><img src="catalog/view/theme/default/image/headerMainMenuHover4_1.png" style="width: <?=$w6?>px;"/></div><a href="index.php?route=product/photo"><?php echo $text_photo;?></a></li>
-                <li class="main-menu-item"><div class="menu-hover" style="left : <?=$l7?>px;"><img src="catalog/view/theme/default/image/headerMainMenuHover4_1.png" style="width: <?=$w7?>px;"/></div><a href="index.php?route=information/information&information_id=10"><?php echo $text_video;?></a></li>
+                <li class="main-menu-item"><div class="menu-hover" style="left : <?=$l7?>px;"><img src="catalog/view/theme/default/image/headerMainMenuHover4_1.png" style="width: <?=$w7?>px;"/></div><a href="index.php?route=information/video"><?php echo $text_video;?></a></li>
                 <li class="main-menu-item"><div class="menu-hover" style="left : <?=$l8?>px;"><img src="catalog/view/theme/default/image/headerMainMenuHover4_1.png" style="width: <?=$w8?>px;"/></div><a href="index.php?route=information/information&information_id=11"><?php echo $text_contact;?></a></li>
             </ul>
         </div>

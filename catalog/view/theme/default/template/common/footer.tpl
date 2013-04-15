@@ -17,7 +17,7 @@
             </li>
         </ul>
         <div class="up">
-            <a onclick="window.scroll(0,0)">
+            <a onclick="$('html, body').animate({ scrollTop: '0' },400);">
                 <p>наверх</p>
             </a>
         </div>

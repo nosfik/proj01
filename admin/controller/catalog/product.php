@@ -837,7 +837,7 @@ class ControllerCatalogProduct extends Controller {
 		$this->load->model('catalog/category');
 				
 		$categories = $this->model_catalog_category->getAllCategories();
-
+		
 		$this->data['categories'] = $this->getAllCategories($categories);
 		
 		if (isset($this->request->post['main_category_id'])) {
