@@ -289,6 +289,12 @@ class ControllerLocalisationZone extends Controller {
 		} else {
 			$this->data['error_name'] = '';
 		}
+        
+        if (isset($this->error['name_en'])) {
+            $this->data['error_name_en'] = $this->error['name_en'];
+        } else {
+            $this->data['error_name_en'] = '';
+        }
 		
 		$url = '';
 			
@@ -345,6 +351,14 @@ class ControllerLocalisationZone extends Controller {
 		} else {
 			$this->data['name'] = '';
 		}
+        
+        if (isset($this->request->post['name_en'])) {
+            $this->data['name_en'] = $this->request->post['name_en'];
+        } elseif (!empty($zone_info)) {
+            $this->data['name_en'] = $zone_info['name_en'];
+        } else {
+            $this->data['name_en'] = '';
+        }
 
 		if (isset($this->request->post['code'])) {
 			$this->data['code'] = $this->request->post['code'];
@@ -383,6 +397,9 @@ class ControllerLocalisationZone extends Controller {
 		if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 64)) {
 			$this->error['name'] = $this->language->get('error_name');
 		}
+        if ((utf8_strlen($this->request->post['name_en']) < 3) || (utf8_strlen($this->request->post['name_en']) > 64)) {
+            $this->error['name_en'] = $this->language->get('error_name_en');
+        }
 
 		if (!$this->error) {
 			return true;

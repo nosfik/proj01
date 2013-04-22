@@ -10,3 +10,38 @@ CREATE  TABLE `realty`.`video` (
   `order` INT(3) NOT NULL DEFAULT '0' ,
 
   PRIMARY KEY (`video_id`) );
+  
+  
+  
+  
+ALTER TABLE `zone` ADD COLUMN `name_en` VARCHAR(128) NOT NULL DEFAULT ''  AFTER `name` ;
+
+
+CREATE  TABLE `product_order` (
+
+  `product_order_id` INT NOT NULL AUTO_INCREMENT ,
+
+  `name` VARCHAR(100) NOT NULL ,
+
+  `phone` VARCHAR(100) NOT NULL ,
+
+  `mail` VARCHAR(100) NOT NULL ,
+
+  `peoples` VARCHAR(255) NOT NULL DEFAULT '' ,
+
+  `service` VARCHAR(255) NOT NULL DEFAULT '' ,
+
+  `wish` TEXT NULL ,
+
+  `question` TEXT NULL ,
+
+  `term` TEXT NULL ,
+
+  `other_info` TEXT NULL ,
+
+  PRIMARY KEY (`product_order_id`) );
+  
+  ALTER TABLE `product_order` ADD COLUMN `date` DATETIME NOT NULL  AFTER `other_info` ;
+  
+  ALTER TABLE `product_order` ADD COLUMN `viewed` TINYINT(1) NOT NULL DEFAULT '0'  AFTER `other_info` ;
+

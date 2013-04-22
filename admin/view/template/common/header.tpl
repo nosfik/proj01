@@ -68,6 +68,7 @@ $(document).ready(function(){
           <li><a href="<?php echo $category; ?>"><?php echo $text_category; ?></a></li>
           <li><a href="<?php echo $product; ?>"><?php echo $text_product; ?></a></li>
           <li><a href="<?php echo $currency_p; ?>"><?php echo $text_currency; ?></a></li>
+          <li><a href="<?php echo $cat_order; ?>">Заявки</a></li>
           <li><a href="<?php echo $dreamhouse; ?>">Построй дом мечты</a></li>
           <li><a href="<?php echo $suggestion; ?>">Интер. предложения</a></li>
           <li><a href="<?php echo $tag; ?>"><?php echo $text_tag; ?></a></li>
@@ -77,10 +78,6 @@ $(document).ready(function(){
     
      <li id="extension"><a class="top"><?php echo $text_extension; ?></a>
         <ul>
-          <li><a href="<?php echo $module; ?>"><?php echo $text_module; ?></a></li>
-          <li><a href="<?php echo $shipping; ?>"><?php echo $text_shipping; ?></a></li>
-          <li><a href="<?php echo $payment; ?>"><?php echo $text_payment; ?></a></li>
-          <li><a href="<?php echo $total; ?>"><?php echo $text_total; ?></a></li>
           <li><a href="<?php echo $feed; ?>"><?php echo $text_feed; ?></a></li>
         </ul>
       </li>

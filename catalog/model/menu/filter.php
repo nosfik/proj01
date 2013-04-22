@@ -2,7 +2,8 @@
 class ModelMenuFilter extends Model {
     
     public function getZones($sales = 1) {
-        $query = $this->db->query("SELECT p.zone_id as id, z.name as city FROM product as p JOIN zone as z ON z.zone_id = p.zone_id 
+        $city = ((int)$this->config->get('config_language_id') == 1) ? 'z.name' : 'z.name_en';
+        $query = $this->db->query("SELECT p.zone_id as id, ".$city." as city FROM product as p JOIN zone as z ON z.zone_id = p.zone_id 
 		JOIN product_to_category as pc ON p.product_id = pc.product_id JOIN category as c ON c.category_id = pc.category_id WHERE c.parent_id = ".(int)$sales." GROUP BY p.zone_id Order by z.name");
         return $query->rows;
     }

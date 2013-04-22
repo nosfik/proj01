@@ -5,9 +5,9 @@ class ModelCatalogProduct extends Model {
 	}
 	
 	public function getProduct($product_id) {
-		
+		$city = ((int)$this->config->get('config_language_id') == 1) ? 'z.name' : 'z.name_en';
 		$query = $this->db->query(
-		"SELECT DISTINCT *, pd.name AS name, p.image, z.name as city, pt.image as tag, pc.value as currency FROM " . DB_PREFIX . "product p 
+		"SELECT DISTINCT *, pd.name AS name, p.image, ".$city." as city, pt.image as tag, pc.value as currency FROM " . DB_PREFIX . "product p 
 		LEFT JOIN " . DB_PREFIX . "zone z ON (p.zone_id = z.zone_id) 
 		LEFT JOIN " . DB_PREFIX . "product_tag pt ON (p.product_tag_id = pt.product_tag_id) 
 		LEFT JOIN " . DB_PREFIX . "product_currency pc ON (p.product_currency_id = pc.product_currency_id) 

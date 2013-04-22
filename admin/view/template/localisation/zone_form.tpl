@@ -17,9 +17,16 @@
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
         <table class="form">
           <tr>
-            <td><span class="required">*</span> <?php echo $entry_name; ?></td>
+            <td><span class="required">*</span> <?php echo $entry_name; ?>(RU)</td>
             <td><input type="text" name="name" value="<?php echo $name; ?>" />
               <?php if ($error_name) { ?>
+              <span class="error"><?php echo $error_name; ?></span>
+              <?php } ?></td>
+          </tr>
+           <tr>
+            <td><span class="required">*</span> <?php echo $entry_name; ?>(EN)</td>
+            <td><input type="text" name="name_en" value="<?php echo $name_en; ?>" />
+              <?php if ($error_name_en) { ?>
               <span class="error"><?php echo $error_name; ?></span>
               <?php } ?></td>
           </tr>

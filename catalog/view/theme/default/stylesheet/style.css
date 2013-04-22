@@ -77,7 +77,7 @@ ul.menu-horizontal > li {
 }
 
 .header-wrapper {
-    height: 274px;
+    height: 290px;
 }
 
 .bgimage{
@@ -203,6 +203,7 @@ ul.menu-horizontal > li {
 .logo {
     padding-top: 44px;
     text-align: center;
+    margin-bottom: -50px;
 }
 
 .moto {

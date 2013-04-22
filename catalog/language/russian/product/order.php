@@ -29,4 +29,13 @@ $_['text_rating_desc']  = 'Рейтинг (по убыванию)';
 $_['text_model_asc']    = 'Модель (А -&gt; Я)';
 $_['text_model_desc']   = 'Модель (Я -&gt; А)';
 $_['text_limit']        = 'На странице:';
+
+
+
+
+$_['error_customerName']        = 'Введите имя';
+$_['error_telephoneNumber']     = 'Номер телефона введен неправильно';
+$_['error_email']               = 'Email не коректен';
+$_['error_captcha']             = 'Код введен неправильно';
+
 ?>

@@ -23,25 +23,35 @@
                               <tr>
                                   <td>
                                       <p><label for="customerName">Ф.И.О или Ваше имя для сообщения:</label><span class="orange">*</span></p>
-                                      <input type="text" name="customerName" id="customerName"/>
+                                      <input type="text" name="customerName" id="customerName" value="<?php echo $customerName ?>"/>
+                                      <?php if(isset($error_customerName)) { ?>
+                                          <br/><p style="color:red"><?php echo $error_customerName; ?></p>
+                                      <?php } ?>
+                                      
                                   </td>
                               </tr>
                               <tr>
                                   <td>
                                       <p><label for="telephoneNumber">Номера телефонов:</label><span class="orange">*</span></p>
-                                      <input type="text" name="telephoneNumber" id="telephoneNumber"/>
+                                      <input type="text" name="telephoneNumber" id="telephoneNumber" value="<?php echo $telephoneNumber ?>"/>
+                                      <?php if(isset($error_telephoneNumber)) { ?>
+                                          <br/><p style="color:red"><?php echo $error_telephoneNumber; ?></p>
+                                      <?php } ?>
                                   </td>
                               </tr>
                               <tr>
                                   <td>
                                       <p><label for="email">Эл. почта (E-Mail):</label><span class="orange">*</span></p>
-                                      <input type="text" name="email" id="email"/>
+                                      <input type="text" name="email" id="email" value="<?php echo $email ?>"/>
+                                      <?php if(isset($error_email)) { ?>
+                                          <br/><p style="color:red"><?php echo $error_email; ?></p>
+                                      <?php } ?>
                                   </td>
                               </tr>
                               <tr>
                                   <td>
                                       <p><label for="otherPeople">Другие лица от клиента и их контакты:</label></p>
-                                      <input type="text" name="otherPeople" id="otherPeople"/>
+                                      <input type="text" name="otherPeople" id="otherPeople" value="<?php echo $otherPeople ?>"/>
                                   </td>
                               </tr>
                               <tr>
@@ -70,31 +80,36 @@
                               <tr>
                                   <td colspan="3">
                                       <p><label for="preferences">Как можно более подробно укажите Ваше пожелание:</label></p>
-                                      <textarea id="preferences" name="preferences"></textarea>
+                                      <textarea id="preferences" name="preferences"><?php echo $preferences ?></textarea>
                                   </td>
                               </tr>
                               <tr>
                                   <td colspan="3">
                                       <p><label for="questions">Как можно более подробно укажите интересующие Вас вопросы:</label></p>
-                                      <textarea id="questions" name="questions"></textarea>
+                                      <textarea id="questions" name="questions"><?php echo $questions ?></textarea>
                                   </td>
                               </tr>
                               <tr>
                                   <td colspan="3">
                                       <p><label for="terms">Желаемый срок и даты:</label></p>
-                                      <textarea id="terms" name="terms"></textarea>
+                                      <textarea id="terms" name="terms"><?php echo $terms ?></textarea>
                                   </td>
                               </tr>
                               <tr>
                                   <td colspan="3" style="height: 130px;">
                                       <p><label for="additionalInfo">Дополнительная информация:</label></p>
-                                      <textarea id="additionalInfo" name="additionalInfo"></textarea>
+                                      <textarea id="additionalInfo" name="additionalInfo"><?php echo $additionalInfo ?></textarea>
                                   </td>
                               </tr>
                               <tr>
                                   <td style="padding: 0 0 0 30px;height: 75px;">
                                       <p><label for="capchaField">Введите код с картинки:</label><span class="orange">*</span></p>
-                                      <input type="text" name="capchaField" id="capchaField" style="float: left;"/>
+                                      <input type="text" name="captcha" id="capchaField" style="float: left;" value="<?php echo $captcha ?>"/>
+                                      <?php if(isset($error_captcha)) { ?>
+                                         <br/><span style="color:red"><?php echo $error_captcha; ?></span>
+                                      <?php } ?>
+                                      
+                                      
                                   </td>
                                   <td style="padding: 0;height: 75px;">
                                       <p class="capcha-text" style="margin-top: 42px; padding: 0;"><img style=" margin-left: -40px; margin-top: -11px; width: 120px;"src="index.php?route=product/order/captcha" alt="" />

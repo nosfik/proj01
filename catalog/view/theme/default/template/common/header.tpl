@@ -122,8 +122,8 @@ DD_belatedPNG.fix('#logo img');
     	<div class="logo"><a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a></div>
 
        
-        <div class="moto">
-            <p>слоган компании</p>      <?php echo $language; ?>
+        <div class="moto" >
+                <?php echo $language; ?>
         </div>
         <div id="headerMainMenu" class="droplinebar">
             <ul id="headerOuterMenu">
