@@ -85,31 +85,31 @@ DD_belatedPNG.fix('#logo img');
 <body>
 <style>
 	#headerOuterMenu li > a {
-	    padding: 0 <?php if($lang == 'en') {echo "34px";} else {echo "28px";}?>
+	    padding: 0 <?php if($lang == 'en') {echo "36px";} else {echo "27px";}?>
 	}
 
 </style>
 
 <?php
 
-	$w1 = ($lang == 'en') ? 182 : 132;
+	$w1 = ($lang == 'en') ? 152 : 160;
 	
-	$w2 = ($lang == 'en') ? 144 : 174;
-	$w3 = ($lang == 'en') ? 172 : 222;
-	$w4 = ($lang == 'en') ? 160 : 154;
-	$w5 = ($lang == 'en') ? 152 : 160;
-	$w6 = ($lang == 'en') ? 143 : 141;
-	$w7 = ($lang == 'en') ? 150 : 132;
-	$w8 = ($lang == 'en') ? 178 : 199;
+	$w2 = ($lang == 'en') ? 145 : 170;
+	$w3 = ($lang == 'en') ? 184 : 218;
+	$w4 = ($lang == 'en') ? 166 : 150;
+	$w5 = ($lang == 'en') ? 156 : 156;
+	$w6 = ($lang == 'en') ? 143 : 137;
+	$w7 = ($lang == 'en') ? 155 : 128;
+	$w8 = ($lang == 'en') ? 188 : 199;
 	
-	$l1 = ($lang == 'en') ? -6 : 0;
-	$l2 = ($lang == 'en') ? 138 : 95;
-	$l3 = ($lang == 'en') ? 247 : 225;
-	$l4 = ($lang == 'en') ? 386 : 404;
-	$l5 = ($lang == 'en') ? 511 : 520;
-	$l6 = ($lang == 'en') ? 630 : 642;
-	$l7 = ($lang == 'en') ? 741 : 748;
-	$l8 = ($lang == 'en') ? 858 : 840;
+	$l1 = ($lang == 'en') ? -3 : -4;
+	$l2 = ($lang == 'en') ? 115 : 115;
+	$l3 = ($lang == 'en') ? 222 : 242;
+	$l4 = ($lang == 'en') ? 367 : 420;
+	$l5 = ($lang == 'en') ? 497 : 533;
+	$l6 = ($lang == 'en') ? 620 : 654;
+	$l7 = ($lang == 'en') ? 735 : 755;
+	$l8 = ($lang == 'en') ? 850 : 840;
 
 ?>
 <div id="bgimage_lazy"></div>
@@ -127,7 +127,7 @@ DD_belatedPNG.fix('#logo img');
         </div>
         <div id="headerMainMenu" class="droplinebar">
             <ul id="headerOuterMenu">
-                <li class="main-menu-item"><div class="menu-hover" style="left : <?=$l1?>px;"><img src="catalog/view/theme/default/image/headerMainMenuHover4_1.png" style="width: <?=$w1?>px;"/></div><a href="index.php?route=information/information&information_id=4"><?php echo $text_about_us;?></a>
+                <li class="main-menu-item"><div class="menu-hover" style="left : <?=$l1?>px;"><img src="catalog/view/theme/default/image/headerMainMenuHover4_1.png" style="width: <?=$w1?>px;"/></div><a href="index.php?route=common/home"><?php echo $text_about_us;?></a>
                 	
                 	</li>
                 <li class="main-menu-item">

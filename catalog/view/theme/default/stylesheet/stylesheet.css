@@ -49,11 +49,6 @@ form {
 	display: inline;
 }
 input[type='text'], input[type='password'], textarea {
-	background: #F8F8F8;
-	border: 1px solid #CCCCCC;
-	padding: 3px;
-	margin-left: 0px;
-	margin-right: 0px;
 }
 select {
 	background: #F8F8F8;

@@ -41,6 +41,7 @@
 	left: 0;
 	width: 70px;
 	text-align:center;
+	color:#000000;
 }
 
 .cuselText { /* контейнер для отображенного текста селект */
@@ -54,6 +55,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	color:#000000;
 
 }
 * html .cuselText { /* высота блока для текста для ие6 */
@@ -65,6 +67,7 @@
 	white-space: nowrap;
 	padding: 2px 15px 2px 5px; /* паддинг справа - это отступ текста от ползунка */
 	zoom: 1;
+	color:#000000;
 }
 .cusel span:hover,
 .cusel .cuselOptHover { /* реакция оптиона на наведение */

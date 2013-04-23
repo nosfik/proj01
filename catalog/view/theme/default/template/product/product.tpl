@@ -1,6 +1,6 @@
 <?php echo $header; ?>
  <div class="content-wrapper">
-        <div class="content" style="margin-top:30px"><?php echo $content_top; ?>
+        <div class="content"><?php echo $content_top; ?>
   <div class="breadcrumb">
   	<div>
 	    <?php foreach ($breadcrumbs as $breadcrumb) { ?>

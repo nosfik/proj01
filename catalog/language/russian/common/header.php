@@ -3,7 +3,7 @@
 
 
 
-$_['text_about_us']         = 'О нас';
+$_['text_about_us']         = 'Главная';
 $_['text_sales']           = 'Продажи';
 $_['text_building']         = 'Строительство';
 $_['text_request']          = 'Заявки';

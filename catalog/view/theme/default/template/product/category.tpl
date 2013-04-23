@@ -4,7 +4,7 @@
 	
 	
 	
-    <div class="content">
+    <div class="content" style="margin-top: 0">
     <?php echo $content_top; ?>
   <div style="margin-top:20px;" class="breadcrumb">
   	<div>

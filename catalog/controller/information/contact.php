@@ -70,5 +70,15 @@ class ControllerInformationContact extends Controller {
                 
         $this->response->setOutput($this->render()); 
     }
+
+public function captcha() {
+		$this->load->library('captcha');
+		
+		$captcha = new Captcha();
+		
+		$this->session->data['captcha'] = $captcha->getCode();
+		
+		$captcha->showImage();
+	}	
 }
 ?>

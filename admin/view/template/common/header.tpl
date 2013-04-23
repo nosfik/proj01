@@ -78,6 +78,7 @@ $(document).ready(function(){
     
      <li id="extension"><a class="top"><?php echo $text_extension; ?></a>
         <ul>
+        	<li><a href="<?php echo $module; ?>"><?php echo $text_module; ?></a></li>
           <li><a href="<?php echo $feed; ?>"><?php echo $text_feed; ?></a></li>
         </ul>
       </li>

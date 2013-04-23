@@ -4,7 +4,7 @@
 
 
 
-$_['text_about_us']         = 'About us';
+$_['text_about_us']         = 'Home';
 $_['text_sales']           = 'Sales';
 $_['text_building']         = 'Building';
 $_['text_request']          = 'Request';

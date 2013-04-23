@@ -9,6 +9,7 @@
     </div>
   </div>
   <h1><?php echo $heading_title; ?></h1>
+  <?php echo $text_message; ?>
  
   <?php echo $content_bottom; ?></div>
   </div>

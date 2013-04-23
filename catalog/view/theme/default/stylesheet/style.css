@@ -26,6 +26,7 @@ html, body, div, p, ul, ol, hr, a, td {
     padding: 0;
     position: relative;
     font-family: Arial, sans-serif;
+    color:#787878;
 }
 
 html, body {
@@ -354,6 +355,7 @@ ul.menu-horizontal > li {
 
 .content {
 	margin-bottom:15px;
+	margin-top:30px
    /* background: #ffe4c4;*/
 }
 
@@ -498,6 +500,7 @@ li:first-child div.house-item {
 
 .house-price {
     position: absolute;
+    color:#000000;
     top: 123px;
     left: 0;
     background: url('../image/dream-house-price-bg..png') no-repeat 0 0;
@@ -1154,3 +1157,61 @@ form tr.row-separator {
 	border: 5px solid #FF9E14;
 }
 
+.input-review {
+	-moz-box-sizing: border-box;
+    background: url("../image/input.png") repeat scroll 0 0 transparent;
+    border: 1px solid #2A2725;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6) inset;
+    color: #787878 !important;
+    font-family: inherit;
+    font-size: inherit;
+    height: 31px;
+    outline: medium none;
+    padding: 7px 8px 6px;
+}
+
+.textarea-review {
+	-moz-box-sizing: border-box;
+    background: url("../image/input.png") repeat scroll 0 0 transparent;
+    border: 1px solid #2A2725;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6) inset;
+    color: #787878;
+    font: inherit;
+    outline: medium none;
+    overflow: auto;
+    padding: 8px;
+    resize: none;
+    width: 100%;
+}
+.review-text{
+	font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    line-height: 22px;
+    vertical-align: top;
+}
+
+.button-review{
+	background: url("../image/button_tail.jpg") repeat-x scroll 0 0 transparent;
+    border: medium none;
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.2) inset, -3px 3px 7px rgba(0, 0, 0, 0.37);
+    display: inline-block;
+    font-family: 'Marcellus SC',serif;
+    font-size: 13px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 19px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.2s ease-out 0s;
+    cursor:pointer;
+}
+
+.button-review:hover{
+	color:#908889;
+	background: none repeat scroll 0 0 #3D3838;	
+}
+
+.s-review{
+	font-size: 14px;
+    font-weight: 900;
+}
