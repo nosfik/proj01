@@ -29,7 +29,8 @@ mlcalc_loan_term = '15';
             ?>
             
          <div class="bigslide">
-          <a href="<?php echo $slide_item['url'];?> "><img src="<?php echo $slide_item['picture'];?>" width="1200px" height="527px" /></a>
+          <a href="<?php echo $slide_item['url'];?>" style="position:absolute;display:block; width:1200px; height:527px;z-index:1000"></a>
+          <img data-url="<?php echo $slide_item['url'];?>" src="<?php echo $slide_item['picture'];?>" width="1200px" height="527px" />
             
             <?php if(!empty($slide_item['object']) && !empty($slide_item['price'])) { ?>
             	<span style="z-index:1001; style:display:block">
@@ -116,7 +117,7 @@ mlcalc_loan_term = '15';
 	    	<div class="house-item" onclick="location.href='<?php echo $product['url']; ?>'">
                     <a href="<?php echo $product['url']; ?>"><div class="frame"></div></a>
                     <div style="width:228px; height:167px"><img height="167" width="228" src="<?php echo $product['thumb']; ?>"></div>
-                    <?php if(!empty($product)) { ?>
+                    <?php if(!empty($product['tag'])) { ?>
                        <img height="68" width="68" class="house-tag" src="image/<?php echo $product['tag'];?>"> 
                     <?php } ?>
                     <p class="house-price"><?php echo $product['price'];?> <?php echo $product['currency'];?></p>
@@ -289,6 +290,7 @@ mlcalc_loan_term = '15';
         $('#con-right').click(function(){
             $('.jcarousel-next').click();
         });
+        
         
     });
 </script>

@@ -43,7 +43,7 @@ class ControllerCommonHome extends Controller {
                 'object'      => html_entity_decode($slide['object']),
                 'price'      => html_entity_decode($slide['price']),
                 'picture'   => 'image/'.$slide['picture'],
-                'url'       => HTTP_SERVER . $slide['url']
+                'url'       =>  $slide['url']
             );
         }
         

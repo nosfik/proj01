@@ -15,7 +15,7 @@
                      description_wrapper: false,
                      thumb_opacity: 0.7,
                      animate_first_image: false,
-                     animation_speed: 400,
+                     animation_speed: 1000,
                      width: false,
                      height: false,
                      display_next_and_prev: true,
@@ -24,7 +24,7 @@
                      slideshow: {
                        enable: true,
                        autostart: false,
-                       speed: 3000,
+                       speed: 4000,
                        start_label: 'Start',
                        stop_label: 'Stop',
                        stop_on_scroll: true,
@@ -316,9 +316,7 @@
         last_height = list.height();
         i++;
       };
-      if(list.width() < this.nav.width()) {
-        list.width(this.nav.width());
-      };
+      
     },
     _initLink: function(link) {
       var context = this;

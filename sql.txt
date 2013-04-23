@@ -44,4 +44,15 @@ CREATE  TABLE `product_order` (
   ALTER TABLE `product_order` ADD COLUMN `date` DATETIME NOT NULL  AFTER `other_info` ;
   
   ALTER TABLE `product_order` ADD COLUMN `viewed` TINYINT(1) NOT NULL DEFAULT '0'  AFTER `other_info` ;
+  
+  
+  
+  
+  ALTER TABLE `product` CHANGE COLUMN `price` `price` VARCHAR(20) NOT NULL DEFAULT '0'  ;
+  
+  
+  
+  DELETE FROM country WHERE country_id <> 195
+  DELETE FROM zone WHERE zone_id <> 3016
+  
 

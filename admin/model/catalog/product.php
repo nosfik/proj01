@@ -9,7 +9,7 @@ class ModelCatalogProduct extends Model {
 		zone_id = '" . (int)$data['zone_id'] . "', 
 		product_currency_id = '" .(int)$data['product_currency_id'] . "', 
 		product_tag_id = '" . (int)$data['product_tag_id'] . "', 
-		price = '" . (float)$data['price'] . "', 
+		price = '" . $this->db->escape($data['price']) . "', 
 		status = '" . (int)$data['status'] . "', 
 		sort_order = '" . (int)$data['sort_order'] . "', 
 		date_added = NOW()");
@@ -92,7 +92,7 @@ class ModelCatalogProduct extends Model {
 		zone_id = '" . $this->db->escape($data['zone_id']) . "', 
 		product_currency_id = '" . $this->db->escape($data['product_currency_id']) . "', 
 		product_tag_id = '" . $this->db->escape($data['product_tag_id']) . "', 
-		price = '" . (float)$data['price'] . "', 
+		price = '" . $this->db->escape($data['price']) . "', 
 		status = '" . (int)$data['status'] . "', 
 		sort_order = '" . (int)$data['sort_order'] . "', 
 		date_modified = NOW() WHERE product_id = '" . (int)$product_id . "'");
@@ -139,7 +139,8 @@ class ModelCatalogProduct extends Model {
 		if (isset($data['product_category'])) {
 			foreach ($data['product_category'] as $category_id) {
 				$res_cat = $this->db->query("SELECT parent_id FROM " . DB_PREFIX . "category WHERE category_id = ".(int)$category_id);
-				$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$category_id . "', main_category =".(int)$res_cat['parent_id']);
+				$res_cat = $res_cat->row['parent_id'];
+				$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$category_id . "', main_category =".(int)$res_cat);
 			}
 		}
 

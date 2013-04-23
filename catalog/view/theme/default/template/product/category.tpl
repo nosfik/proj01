@@ -48,8 +48,8 @@
   
   <div class="right">
         <?php echo $filter;?>
-        <div id="online-help">
-            <a href="#"></a>
+         <div id="online-help">
+            <a href="#">ОНЛАЙН ПОМОЩЬ</a>
         </div>
     </div>
   <div class="left">
@@ -66,7 +66,7 @@
 	    	<div class="house-item" onclick="location.href='<?php echo $product['href']; ?>'">
                     <a href="<?php echo $product['href']; ?>"><div class="frame"></div></a>
                     <div style="width:228px; height:167px"><img height="167" width="228" src="<?php echo $product['thumb']; ?>"></div>
-                    <?php if(!empty($product['tag'])) { ?>
+                    <?php if($product['tag'] != 'image/') { ?>
                        <img height="68" width="68" class="house-tag" src="<?php echo $product['tag'];?>"> 
                     <?php } ?>
                     <p class="house-price"><?php echo $product['price'];?> <?php echo $product['currency'];?></p>
