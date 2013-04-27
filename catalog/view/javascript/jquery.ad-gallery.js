@@ -697,7 +697,7 @@
             wrapper.append(desc);
           };
         };
-        this.highLightThumb(this.images[index].thumb_link);
+        this.highLightThumb(this.images[index].thumb_link, (index == (this.images.length -1)));
         
         var direction = 'right';
         if(this.current_index < index) {
@@ -856,16 +856,19 @@
       };
       return true;
     },
-    highLightThumb: function(thumb) {
+    highLightThumb: function(thumb, isLast) {
       this.thumbs_wrapper.find('.ad-active').removeClass('ad-active');
       thumb.addClass('ad-active');
       if(this.settings.thumb_opacity < 1) {
         this.thumbs_wrapper.find('a:not(.ad-active) img').fadeTo(300, this.settings.thumb_opacity);
         thumb.find('img').fadeTo(300, 1);
       };
-      var left = thumb[0].parentNode.offsetLeft;
-      left -= (this.nav_display_width / 2) - (thumb[0].offsetWidth / 2);
-      this.thumbs_wrapper.animate({scrollLeft: left +'px'});
+      if(!isLast) {
+      	var left = thumb[0].parentNode.offsetLeft;
+      	left -= (this.nav_display_width / 2) - (thumb[0].offsetWidth / 2);
+      	this.thumbs_wrapper.animate({scrollLeft: left +'px'});
+      }
+      
     },
     fireCallback: function(fn) {
       if($.isFunction(fn)) {
