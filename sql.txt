@@ -50,6 +50,7 @@ CREATE  TABLE `product_order` (
   
   ALTER TABLE `product` CHANGE COLUMN `price` `price` VARCHAR(20) NOT NULL DEFAULT '0'  ;
   
+  ALTER TABLE `product` CHANGE COLUMN `price` `price` DOUBLE NOT NULL DEFAULT '0'  ;
   
   
   DELETE FROM country WHERE country_id <> 195

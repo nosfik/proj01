@@ -31,7 +31,7 @@ class ModelCatalogProduct extends Model {
 				'bathroom'         => $query->row['bathroom'],
 				'bedroom'          => $query->row['bedroom'],
 				'image'            => $query->row['image'],
-				'price'            => $query->row['price'],
+				'price'            => number_format($query->row['price'],0,'.',' '),
 				'sort_order'       => $query->row['sort_order'],
 				'status'           => $query->row['status'],
 				'date_added'       => $query->row['date_added'],

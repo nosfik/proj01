@@ -692,7 +692,7 @@ class ControllerCatalogProduct extends Controller {
     	}
 		
 		if (isset($this->request->post['bathroom'])) {
-      		$this->data['upc'] = $this->request->post['bathroom'];
+      		$this->data['bathroom'] = $this->request->post['bathroom'];
     	} elseif (!empty($product_info)) {
 			$this->data['bathroom'] = $product_info['bathroom'];
 		} else {
@@ -716,6 +716,8 @@ class ControllerCatalogProduct extends Controller {
     	}
 		if (isset($this->request->post['zone_id'])) {
       		$this->data['zone_id'] = $this->request->post['zone_id'];
+			$this->data['country_id'] = $this->request->post['country'];
+			$this->data['zone_name'] = $this->request->post['zone_name_tmp'];
     	} elseif (!empty($product_info)) {
 			$this->data['zone_id'] = $product_info['zone_id'];
 			$this->data['zone_name'] = $product_info['zone_name'];
@@ -798,22 +800,38 @@ class ControllerCatalogProduct extends Controller {
 			$product_images = array();
 		}
 		
+		
+		
+		
+		$this->data['product_options'] = array();		
 		if (isset($this->request->post['product_option'])) {
 			$product_options = $this->request->post['product_option'];
+			foreach ($product_options as $product_option_language => $product_option_arr) {
+				foreach ($product_option_arr as $header => $arr) {
+					$this->data['product_options'][$product_option_language][] = array(
+					'name'    => $header,
+					'value'   => $arr['value'],
+					'header'  => $arr['header']
+				);
+				}
+			}
+			
+			
 		} elseif (isset($this->request->get['product_id'])) {
 			$product_options = $this->model_catalog_product->getProductOptions($this->request->get['product_id']);
+			foreach ($product_options as $product_option) {
+				$this->data['product_options'][$product_option['language_id']][] = array(
+					'name'    => $product_option['name'],
+					'value'   => $product_option['value'],
+					'header'  => $product_option['header'],
+				);
+			}
 		} else {
 			$product_options = array();
 		}
 		
-		$this->data['product_options'] = array();
-		foreach ($product_options as $product_option) {
-			$this->data['product_options'][$product_option['language_id']][] = array(
-				'name'    => $product_option['name'],
-				'value'   => $product_option['value'],
-				'header'  => $product_option['header'],
-			);
-		}
+		
+		
 		
 		$this->data['product_images'] = array();
 		

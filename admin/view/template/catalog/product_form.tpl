@@ -88,12 +88,13 @@
                   <?php } ?>
                   <?php } ?>
                 </select>
-              	<select id="zone" name="zone_id">
+              	<select onchange="$('#zone_name_tmp').val($(this).find('option:selected').text())" id="zone" name="zone_id">
                   <option value="0"><?php echo $text_none; ?></option>
                   <?php if (!empty($zone_id)) { ?>
                   	<option selected="selected" value="<?php echo $zone_id; ?>"><?php echo $zone_name; ?></option>
                   <?php } ?>
                 </select>
+                <input type="hidden" id="zone_name_tmp" name="zone_name_tmp" value="" />
               	
             </tr>
             <tr>
@@ -185,7 +186,7 @@
 	            		<th></th>
 	            	</tr>
 	            	<tr>
-	            		<td><input type="text" id="new_option"/></td>
+	            		<td><input type="text" id="new_option" value="Доп. поле"/></td>
 	            		
 	            		<td align="right"><input type="button" onclick="addProductOption($('#new_option').val())" value="Добавить"/></td>
 	            	</tr>
