@@ -39,7 +39,7 @@ class ControllerProductPhoto extends Controller {
 		}
 		
 		$this->load->model('catalog/product');	
-		
+		$this->load->model('tool/image');	
 		$data = array(
 			'start'   => ($page - 1) * $limit,
 			'limit'   => $limit
@@ -49,10 +49,9 @@ class ControllerProductPhoto extends Controller {
 		
 		$this->data['images'] = array();
 		foreach ($images as $image) {
-			
 			$this->data['images'][] = array(
-				'image' => 'image/'.$image['image'],
 				'name' => $image['name'],
+				'image' => $this->model_tool_image->resize($image['image'], 610, 444, 2),
 				'href' => $this->url->link('product/product', 'product_id='.$image['product_id'])
 			);
 			

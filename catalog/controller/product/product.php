@@ -207,8 +207,8 @@ class ControllerProductProduct extends Controller {
 			
 			foreach ($results as $result) {
 				$this->data['images'][] = array(
-					'popup' => $this->model_tool_image->resize($result['image'], 610, 444),
-					'thumb' => $this->model_tool_image->resize($result['image'], 181, 130)
+					'popup' => $this->model_tool_image->resize($result['image'], 610, 444, 2),
+					'thumb' => $this->model_tool_image->resize($result['image'], 181, 130, 1)
 				);
 			}	
 						

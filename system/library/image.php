@@ -97,32 +97,33 @@ class Image {
         $this->info['height'] = $height;
     }
     
-    public function watermark($file, $position = 'bottomright') {
-        $watermark = $this->create($file);
+    public function watermark($type) {
+		
+		
+		
+		if($type == 1) {
+			$watermark = imagecreatefrompng(DIR_IMAGE.'watermark_small.png');
+			$watermark_width = 75;
+			$watermark_height = 20;
+			$watermark_pos_x = 55;
+            $watermark_pos_y = 90;
+		} elseif($type == 2) {
+			$watermark = imagecreatefrompng(DIR_IMAGE.'watermark_big.png');
+			$watermark_width = 250;
+			$watermark_height = 68;
+			$watermark_pos_x = 177;
+            $watermark_pos_y = 290;
+		} elseif($type == 3) {
+			$watermark = imagecreatefrompng(DIR_IMAGE.'watermark_small.png');
+			$watermark_width = 75;
+			$watermark_height = 20;
+			$watermark_pos_x = 80;
+            $watermark_pos_y = 110;
+		}
         
-        $watermark_width = imagesx($watermark);
-        $watermark_height = imagesy($watermark);
         
-        switch($position) {
-            case 'topleft':
-                $watermark_pos_x = 0;
-                $watermark_pos_y = 0;
-                break;
-            case 'topright':
-                $watermark_pos_x = $this->info['width'] - $watermark_width;
-                $watermark_pos_y = 0;
-                break;
-            case 'bottomleft':
-                $watermark_pos_x = 0;
-                $watermark_pos_y = $this->info['height'] - $watermark_height;
-                break;
-            case 'bottomright':
-                $watermark_pos_x = $this->info['width'] - $watermark_width;
-                $watermark_pos_y = $this->info['height'] - $watermark_height;
-                break;
-        }
-        
-        imagecopy($this->image, $watermark, $watermark_pos_x, $watermark_pos_y, 0, 0, 120, 40);
+        imagecopy($this->image, $watermark,$watermark_pos_x, $watermark_pos_y, 0, 0, $watermark_width, $watermark_height);
+		
         
         imagedestroy($watermark);
     }

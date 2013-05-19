@@ -304,7 +304,7 @@ class ControllerProductSearch extends Controller {
 			
 			foreach ($results as $result) {
 				if ($result['image']) {
-					$image = $this->model_tool_image->resize($result['image'], 228, 167);
+					$image = $this->model_tool_image->resize($result['image'], 228, 167, 3);
 				} else {
 					$image = false;
 				}
