@@ -3,7 +3,7 @@
   <h1><?php echo $heading_title; ?></h1>
   <?php if ($orders) { ?>
   <?php foreach ($orders as $order) { ?>
-  <div class="order-list">
+  <div style="margin-top:15px" class="order-list">
     <div class="order-id"><b><?php echo $text_order_id; ?></b> #<?php echo $order['order_id']; ?></div>
     <div class="order-status"><b><?php echo $text_status; ?></b> <?php echo $order['status']; ?></div>
     <div class="order-content">

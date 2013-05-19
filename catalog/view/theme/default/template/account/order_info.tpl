@@ -1,7 +1,7 @@
 <?php echo $header; ?>
 <div id="content"><?php echo $content_top; ?>
   <h1><?php echo $heading_title; ?></h1>
-  <table class="list">
+  <table style="margin-top:15px" class="list">
     <thead>
       <tr>
         <td class="left" colspan="2"><?php echo $text_order_detail; ?></td>
@@ -35,13 +35,19 @@
       </tr>
     </tbody>
   </table>
-    <table class="list">
+  
+  
+  
+  
+  
+  
+    <table class="list" cellpadding="0" cellpadding="0">
     <thead>
       <tr>
-          <td>Наименование</td>
-          <td class="left">Фотографии</td>
-          <td class="left">Копии</td>
-          <td class="right">Сумма</td>
+          <td width="300px" class="left">Наименование</td>
+          <td width="150px" class="left">Фотографии</td>
+          <td width="100px" class="right">Копии</td>
+          <td width="200px" class="right">Сумма</td>
           <td class="right">Итого</td>
       </tr>
     </thead>
@@ -53,36 +59,21 @@
               <td class="right"><?php echo $album['quantity'];?></td>
               <td class="right"><?php echo $album['price'];?></td>
               <td class="right"><?php echo $album['total'];?></td>
-              <td  class="del">
-                  <a href="<?php echo $this->url->link('checkout/cart', 'removeAlbum='.$album['key']);?> "> <img src="catalog/view/theme/default/image/blank.gif">   </a>
-              </td>
+             
             </tr>
           <?php } ?>
         </tbody>
 
   </table>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <table class="list">
+  <table class="list" cellpadding="0" cellpadding="0">
     <thead>
       <tr>
-        <td class="left"><?php echo $column_name; ?></td>
-        <td class="left"><?php echo $column_model; ?></td>
-        <td class="right"><?php echo $column_quantity; ?></td>
-        <td class="right"><?php echo $column_price; ?></td>
+        <td width="300px" class="left"><?php echo $column_name; ?></td>
+        <td width="150px" class="left"><?php echo $column_model; ?></td>
+        <td width="100px" class="right"><?php echo $column_quantity; ?></td>
+        <td width="200px" class="right"><?php echo $column_price; ?></td>
         <td class="right"><?php echo $column_total; ?></td>
-        <?php if ($products) { ?>
-        <td style="width: 1px;"></td>
-        <?php } ?>
       </tr>
     </thead>
     <tbody>
@@ -106,9 +97,6 @@
         <td class="right">1</td>
         <td class="right"><?php echo $voucher['amount']; ?></td>
         <td class="right"><?php echo $voucher['amount']; ?></td>
-        <?php if ($products) { ?>
-        <td></td>
-        <?php } ?>
       </tr>
       <?php } ?>
     </tbody>
@@ -118,9 +106,6 @@
         <td colspan="3"></td>
         <td class="right"><b><?php echo $total['title']; ?>:</b></td>
         <td class="right"><?php echo $total['text']; ?></td>
-        <?php if ($products) { ?>
-        <td></td>
-        <?php } ?>
       </tr>
       <?php } ?>
     </tfoot>

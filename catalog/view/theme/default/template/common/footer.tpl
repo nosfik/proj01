@@ -10,7 +10,10 @@
   ?>
 
 <?php } ?></div>
-</td></tr></table>
+</td>
+<td>&nbsp;</td>
+
+</tr></table>
 <table id="footer" cellspacing="0" cellpadding="0" border="0">
 	<tr>
 		<td>&nbsp;</td>
@@ -59,6 +62,8 @@
 		</div>
 			</div></td>
 		<td id="right">&nbsp;</td>
+		<td>&nbsp;</td>
+		
 	</tr>
 </table>
 </body></html>
