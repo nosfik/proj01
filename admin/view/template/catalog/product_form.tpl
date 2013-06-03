@@ -168,15 +168,18 @@
           <?php foreach ($languages as $language) { ?>
 	          <div id="language_option<?php echo $language['language_id']; ?>">
 	            <table class="form">
+	            	<?php $count = 0;?>
 	            	 <?php if(!empty($product_options)) {?>
 	            	<?php foreach ($product_options[$language['language_id']] as $product_option) { ?>
 							<tr>
 							<td><?php echo $product_option['name'];?></td>
 							<td> Имя <input type="text" name="product_option[<?php echo $language['language_id'];?>][<?php echo $product_option['name'];?>][header]" maxlength="255" size="40" value="<?php echo $product_option['header'];?>"/> Значение<input type="text" name="product_option[<?php echo $language['language_id'];?>][<?php echo $product_option['name'];?>][value]" maxlength="255" size="40" value="<?php echo $product_option['value'];?>"/><a onclick="$(this).parent().parent().remove()">Удалить</a></td></tr>
 						<tr>
-			               
-	            	<?php }	?>
-	             <?php }	?>
+			          <?php $count++;     
+	            	 }	
+	              } else {
+	             	 $count++;  
+	             }	?>
 	            
 	            </table>
 	            
@@ -186,9 +189,9 @@
 	            		<th></th>
 	            	</tr>
 	            	<tr>
-	            		<td><input type="text" id="new_option" value="Доп. поле"/></td>
+	            		<td><input type="text" id="new_option" value="<?php echo $count;?>"/></td>
 	            		
-	            		<td align="right"><input type="button" onclick="addProductOption($('#new_option').val())" value="Добавить"/></td>
+	            		<td align="right"><input type="button" onclick="addProductOption($('#new_option'))" value="Добавить"/></td>
 	            	</tr>
 	            	
 	            </table>
@@ -329,7 +332,13 @@ $('#product-related div img').live('click', function() {
 
 <script type="text/javascript">
 	
-	function addProductOption(name){
+	function addProductOption($new_option){
+		var name = $new_option.val();
+		if(name % 1 === 0) {
+			$new_option.val(parseInt(name) + 1);
+			alert(1);
+		}
+		
 		$('div [id^="language_option"]').each(function() {
 			 var this_id = $(this).attr('id');
 			 var lang_id = this_id.charAt( this_id.length-1 );

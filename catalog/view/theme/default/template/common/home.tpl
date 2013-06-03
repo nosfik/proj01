@@ -71,6 +71,40 @@ mlcalc_loan_term = '15';
         </div>
     </div>
 <div class="left">
+
+	<div class="dream-house">
+  	<div onclick="location.href='index.php?route=product/category&path=11'" class="interesting-proposal-title-<?php echo $lang;?>"></div>
+  	<ul class="menu-horizontal house-list">
+  	<?php for ($i = 0; $i < count($suggestion_items); $i++) { $product = $suggestion_items[$i];	?>
+  		
+	    <?php if($i >= 3 && $i % 3 == 0) {?>
+	    	</ul><ul class="menu-horizontal house-list">
+	    <?php } ?>
+	    <li>
+	    	
+	    	<div class="house-item" onclick="location.href='<?php echo $product['url']; ?>'">
+                    <a href="<?php echo $product['url']; ?>"><div class="frame"></div></a>
+                    <div style="width:228px; height:167px"><img height="167" width="228" src="<?php echo $product['thumb']; ?>"></div>
+                    <?php if(!empty($product['tag'])) { ?>
+                       <img height="68" width="68" class="house-tag" src="image/<?php echo $product['tag'];?>"> 
+                    <?php } ?>
+                    <p class="house-price"><?php echo $product['price'];?> <?php echo $product['currency'];?></p>
+                    <a href="<?php echo $product['url']; ?>"><?php echo $product['name']; ?></a>
+                    <ul class="house-characteristics">
+                        <li class="house-number"><?php echo $product['number']; ?></li>
+                        <li class="house-placement"><?php echo $product['city']; ?></li>
+                        <li class="house-bathroom"><?php echo $product['bathroom']; ?> санузлов</li>
+                        <li class="house-area"><?php echo $product['area']; ?> м/кв</li>
+                        <li class="house-bedroom"><?php echo $product['bedroom']; ?> спальни</li>
+                    </ul>
+                </div>
+	    	
+	    </li>
+    <?php } ?>
+    </ul>
+    
+  </div>
+	
    <div class="dream-house">
   	<div onclick="location.href='index.php?route=product/category&path=10'" class="build-dream-house-title-<?php echo $lang;?>"></div>
   	<ul class="menu-horizontal house-list">
@@ -104,38 +138,7 @@ mlcalc_loan_term = '15';
     
   </div>
   
-    <div class="dream-house">
-  	<div onclick="location.href='index.php?route=product/category&path=11'" class="interesting-proposal-title-<?php echo $lang;?>"></div>
-  	<ul class="menu-horizontal house-list">
-  	<?php for ($i = 0; $i < count($suggestion_items); $i++) { $product = $suggestion_items[$i];	?>
-  		
-	    <?php if($i >= 3 && $i % 3 == 0) {?>
-	    	</ul><ul class="menu-horizontal house-list">
-	    <?php } ?>
-	    <li>
-	    	
-	    	<div class="house-item" onclick="location.href='<?php echo $product['url']; ?>'">
-                    <a href="<?php echo $product['url']; ?>"><div class="frame"></div></a>
-                    <div style="width:228px; height:167px"><img height="167" width="228" src="<?php echo $product['thumb']; ?>"></div>
-                    <?php if(!empty($product['tag'])) { ?>
-                       <img height="68" width="68" class="house-tag" src="image/<?php echo $product['tag'];?>"> 
-                    <?php } ?>
-                    <p class="house-price"><?php echo $product['price'];?> <?php echo $product['currency'];?></p>
-                    <a href="<?php echo $product['url']; ?>"><?php echo $product['name']; ?></a>
-                    <ul class="house-characteristics">
-                        <li class="house-number"><?php echo $product['number']; ?></li>
-                        <li class="house-placement"><?php echo $product['city']; ?></li>
-                        <li class="house-bathroom"><?php echo $product['bathroom']; ?> санузлов</li>
-                        <li class="house-area"><?php echo $product['area']; ?> м/кв</li>
-                        <li class="house-bedroom"><?php echo $product['bedroom']; ?> спальни</li>
-                    </ul>
-                </div>
-	    	
-	    </li>
-    <?php } ?>
-    </ul>
     
-  </div>
     <div style="margin-bottom:50px">
         <div onclick="location.href='index.php?route=information/information&information_id=4'" class="about-us-header-<?php echo $lang;?>"></div>
         <div class="about-us-content">

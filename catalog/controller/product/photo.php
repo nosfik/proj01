@@ -51,7 +51,7 @@ class ControllerProductPhoto extends Controller {
 		foreach ($images as $image) {
 			$this->data['images'][] = array(
 				'name' => $image['name'],
-				'image' => $this->model_tool_image->resize($image['image'], 610, 444, 2),
+				'image' => $this->model_tool_image->resize($image['image'], 1000, 640, 2),
 				'href' => $this->url->link('product/product', 'product_id='.$image['product_id'])
 			);
 			
