@@ -71,6 +71,22 @@ class ModelAccountCustomer extends Model {
       }
     }
   }
+  
+  public function addCustomerToFotobook($data) {
+  
+  $link = mysql_connect(DB_HOSTNAME, DB_USERNAME_2, DB_PASSWORD_2);
+  mysql_query("use ".DB_DATABASE_2, $link);
+  mysql_query("SET NAMES 'utf8'", $link);
+		mysql_query("SET CHARACTER SET utf8", $link);
+		mysql_query("SET CHARACTER_SET_CONNECTION=utf8", $link);
+		
+		$query = $this -> db -> query("SELECT `name` FROM zone WHERE zone_id=".$data['zone_id']);
+		$region = mysql_real_escape_string($query -> row['name']);
+		
+  mysql_query("INSERT INTO `bfb_users` (`login`, `cust_pass`, `e_mail`, `first_name`, `last_name`, `subs4news`, `phone`, `addres`, `state`, `city`, `countryId`, `zip`, `Activ_Code`,
+				`utype`, `usite`) VALUES ('".mysql_real_escape_string($data['email'])."', '".mysql_real_escape_string(base64_encode($data['password']))."', '".mysql_real_escape_string($data['email'])."', '".mysql_real_escape_string($data['firstname'])."', '".mysql_real_escape_string($data['lastname'])."', 0, '".mysql_real_escape_string($data['telephone'])."', '', '".$region."', '".$data['city']."', '".(int)$data['country_id']."' , '', '', 0, '')", $link);  
+  mysql_close($link);
+  }
 
   public function editCustomer($data) {
     $this -> db -> query("UPDATE " . DB_PREFIX . "customer SET firstname = '" . $this -> db -> escape($data['firstname']) . "', lastname = '" . $this -> db -> escape($data['lastname']) . "',  note = '" . $this -> db -> escape($data['note']) . "', email = '" . $this -> db -> escape($data['email']) . "', telephone = '" . $this -> db -> escape($data['telephone']) . "', skype = '" . $this -> db -> escape($data['skype']) . "' WHERE customer_id = '" . (int)$this -> customer -> getId() . "'");

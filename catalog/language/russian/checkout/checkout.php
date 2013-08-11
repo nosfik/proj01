@@ -46,8 +46,8 @@ $_['entry_firstname']                = 'Имя, Отчество:';
 $_['entry_lastname']                 = 'Фамилия:';
 $_['entry_telephone']                = 'Телефон:';
 $_['entry_fax']                      = 'Факс:';
+$_['entry_account']                  = 'Account:';
 $_['entry_company']                  = 'Компания:';
-$_['entry_customer_group']           = 'Business Type:';
 $_['entry_company_id']               = 'Company ID:';
 $_['entry_tax_id']                   = 'Tax ID:';
 $_['entry_address_1']                = 'Адрес:';
@@ -84,4 +84,8 @@ $_['error_shipping']                 = 'Необходимо указать сп
 $_['error_no_shipping']              = 'Доставка по данному адресу невозможна. <a href="%s">Свяжитесь с нами</a>, и мы найдём решение проблемы!';
 $_['error_payment']                  = 'Необходимо указать способ оплаты!';
 $_['error_no_payment']               = 'На данный момент мы не принимаем оплату от плательщиков находящихся по этому адресу. <a href="%s">Свяжитесь с нами</a>, и мы найдём решение проблемы!';
+
+// loginza
+$_['text_enter_with_loginza']			= 'Оформить с помощью социальных сервисов';
+// loginza
 ?>

@@ -15,7 +15,7 @@ class ControllerAccountRegister extends Controller {
 		
     	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
   			$this->model_account_customer->addCustomer($this->request->post);
-  
+			$this->model_account_customer->addCustomerToFotobook($this->request->post);
   			$this->customer->login($this->request->post['email'], $this->request->post['password']);
   			
   			unset($this->session->data['guest']);

@@ -19,4 +19,8 @@ $_['entry_password']				       = 'Пароль:';
 // Error
 $_['error_login']					         = 'Неправильно заполнены поля E-Mail и/или пароль!';
 $_['error_approved']               = 'Warning: Your account requires approval before you can login.'; 
+
+// loginza
+$_['text_enter_with_loginza']			= 'Вход\регистрация с помощью социальных сервисов';
+// loginza
 ?>

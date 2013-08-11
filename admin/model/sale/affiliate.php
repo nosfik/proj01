@@ -112,8 +112,7 @@ class ModelSaleAffiliate extends Model {
 			$message .= $this->language->get('text_approve_login') . "\n";
 			$message .= HTTP_CATALOG . 'index.php?route=affiliate/login' . "\n\n";
 			$message .= $this->language->get('text_approve_services') . "\n\n";
-			$message .= $this->language->get('text_approve_thanks') . "\n";
-			$message .= $this->config->get('config_name');
+			$message .= $this->language->get('text_approve_thanks');
 	
 			$mail = new Mail();
 			$mail->protocol = $this->config->get('config_mail_protocol');
